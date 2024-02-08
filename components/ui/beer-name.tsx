@@ -8,16 +8,25 @@ interface BeerProps {
     cerveja: {
         nomeCerveja: string;
         tipoCerveja: string;
-    };
+    }
+}
+
+const normalizeTitleCase = (beer: string) => {
+    return beer.toLowerCase().replace(/(?:^|\s)\w/g, (match) => {
+        return match.toUpperCase()
+    })
 }
 
 export const BeerName: React.FC<BeerProps> = ({ cerveja }) => {
     const { nomeCerveja, tipoCerveja } = cerveja
 
+    const nomeCervejaNormalizado = normalizeTitleCase(nomeCerveja)
+    const tipoCervejaNormalizado = normalizeTitleCase(tipoCerveja)
+
     return (
-        <div className={`my-8 text-marfim-barzim ${font.className}`}>
-            <p className="text-[12px] opacity-60">{cerveja.nomeCerveja}</p>
-            <p className='font-medium'>{cerveja.tipoCerveja}</p>
+        <div className={`text-marfim-barzim ${font.className}`}>
+            <p className="text-[12px] opacity-60">{tipoCervejaNormalizado}</p>
+            <p className='font-medium'>{nomeCervejaNormalizado}</p>
         </div>
     )
 }
