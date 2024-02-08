@@ -8,6 +8,12 @@
 # testing
 /coverage
 
+/app/admin
+/app/cervejas
+/app/age-verification
+
+prisma/utils/seed.mjs
+
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal

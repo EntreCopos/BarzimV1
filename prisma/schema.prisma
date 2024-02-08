@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String?
+  password              String?
+  role                  UserRole               @default(USER)
+  isTwoFactorEnabled    Boolean                @default(false)
+  dateOfBirth           DateTime?
+  username              String?                @unique
+  accounts              Account[]
+  twoFactorConfirmation TwoFactorConfirmation?
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model VerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model TwoFactorToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model TwoFactorConfirmation {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Marca {
+  id            Int         @id @default(autoincrement())
+  nome          String
+  cervejariaId  Int
+  cervejaria    Cervejaria  @relation(fields: [cervejariaId], references: [id])
+  cervejas      Cerveja[]
+}
+
+model Cervejaria {
+  id       Int       @id @default(autoincrement())
+  nome     String
+  marcas   Marca[]
+  cervejas Cerveja[]
+}
+
+model TipoCerveja {
+  id        Int       @id @default(autoincrement())
+  nome      String
+  descricao String
+  cervejas  Cerveja[]
+}
+
+model Cerveja {
+  id                      Int         @id @default(autoincrement())
+  mainImage               String
+  nomeCerveja             String
+  descriCerveja           String
+  teorAlcoolico           Float
+  tempIdeal               String
+  valorIBU                Float
+  corpo                   String
+  codBarras               String      @unique
+  informacoesNutricionais Json
+  harmonizacoes           String[]
+  tamanhosEmbalagem       String[]
+  ingredientes            String[]
+  images                  String[]
+  marcaId                 Int
+  cervejariaId            Int
+  tipoCervejaId           Int
+  cervejaria              Cervejaria  @relation(fields: [cervejariaId], references: [id])
+  marca                   Marca       @relation(fields: [marcaId], references: [id])
+  tipoCerveja             TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
+
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  SUPPORT
+  GUEST
+}
