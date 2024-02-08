@@ -24,7 +24,7 @@ export const BeerName: React.FC<BeerProps> = ({ cerveja }) => {
     const tipoCervejaNormalizado = normalizeTitleCase(tipoCerveja)
 
     return (
-        <div className={`text-marfim-barzim ${font.className}`}>
+        <div className={`text-marfim-barzim text-left ${font.className}`}>
             <p className="text-[12px] opacity-60">{tipoCervejaNormalizado}</p>
             <p className='font-medium'>{nomeCervejaNormalizado}</p>
         </div>
