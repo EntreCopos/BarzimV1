@@ -20,6 +20,8 @@ const config = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/ban-ts-comment": "off", //porra chata do ****** se eu quero desabilitar o ts check, eu quero, me deixa porra
+
 
     "@typescript-eslint/consistent-type-imports": [
       "warn",
