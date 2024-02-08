@@ -24,14 +24,6 @@ export const Social = () => {
       >
         <FcGoogle className="h-5 w-5" />
       </Button>
-      {/* <Button
-        size="lg"
-        className="w-full"
-        variant="outline"
-        onClick={() => onClick('apple')}
-      >
-        <FaApple className="h-5 w-5" />
-      </Button> */}
       <Button
         size="lg"
         className="w-full"
@@ -40,14 +32,14 @@ export const Social = () => {
       >
         <FaDiscord className="h-5 w-5" />
       </Button>
-      {/* <Button
+      <Button
         size="lg"
         className="w-full"
         variant="outline"
         onClick={() => onClick('github')}
       >
         <FaGithub className="h-5 w-5" />
-      </Button> */}
+      </Button>
     </div>
   )
 }
