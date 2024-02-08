@@ -21,7 +21,7 @@ const SettingsPage = async () => {
   }
 
   return (
-    <div className="flex h-full items-center justify-center gap-4 bg-yellow-400 text-black">
+    <div className="flex h-full items-center justify-center gap-4 bg-yellow-barzim text-black">
       <Avatar>
         <AvatarImage src={user.imageUrl} />
         <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>

@@ -19,6 +19,11 @@ const config = {
     },
     extend: {
       colors: {
+        'yellow-barzim': 'var(--yellow-barzim)',
+        'slate-barzim': 'var(--slate-barzim)',
+        'marfim-barzim': 'var(--marfim-barzim)',
+        'deep-black': 'var(--deep-black)',
+        'deep-vermillo': 'var(--deep-vermillo)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -52,6 +57,14 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      boxShadow: {
+        'sutil-shadow': 'var(--sutil-shadow)',
+        'sharp-shadow': 'var(--sharp-shadow)'
+      },
+     backgroundImage: {
+        'yellow-transparent-gradient': 'var(--yellow-trasparent-gradient)',
+        'black-radial-gradient': 'var(--black-radial-gradient)'
       },
       borderRadius: {
         lg: 'var(--radius)',
