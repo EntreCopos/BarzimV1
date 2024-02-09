@@ -10,6 +10,7 @@
   --marfim-barzim: #FFFEEF;
   --deep-black: #141414;
   --deep-vermillo: #B82F18;
+  --stroke-bg-cervejas: rgb(107, 107, 107, .10);
 
   --yellow-trasparent-gradient: linear-gradient( #FEAE16, rgba(254, 174, 22, .35), #FEAE16);
   --black-radial-gradient: radial-gradient(circle, #3D3D3D, #141414);

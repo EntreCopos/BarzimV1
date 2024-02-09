@@ -7,6 +7,22 @@ const nextConfig = {
     // !! WARN !!
     // DANGER ZONEEEEEEEEE
     ignoreBuildErrors: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.ambev.com.br',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   }
 }
 
