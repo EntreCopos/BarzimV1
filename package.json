@@ -19,6 +19,7 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
+    "cloudinary": "^2.0.1",
     "clsx": "^2.0.0",
     "next": "14.0.4",
     "next-auth": "^5.0.0-beta.4",
