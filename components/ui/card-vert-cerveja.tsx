@@ -32,5 +32,5 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({ nomeCerveja, n
             />
         </div>
         <BeerName cerveja={cerveja} />
-        </div>
+    </div>
 }

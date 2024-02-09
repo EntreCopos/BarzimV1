@@ -1,15 +1,17 @@
-import { BeerName } from '@/components/ui/beer-name';
 import { CardVertCerveja } from '@/components/ui/card-vert-cerveja';
-import beerData from '@/data/cervejas-mock.json';
+import { Logo } from '@/components/ui/logo';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center bg-black-radial-gradient">
+    <main className="flex h-full flex-col items-center bg-black-radial-gradient justify-center">
       <div className="space-y-6 text-center">
-        <h1 className={cn('text-6xl font-semibold text-marfim-barzim mt-20')}>
-          Welcome to the War
-        </h1>
+        <div className="hero flex items-baseline gap-7 mb-14">
+          <h1 className={cn('text-6xl font-semibold text-marfim-barzim mt-20')}>
+            Welcome to the
+          </h1>
+          <Logo variant='secondary' width={180} />
+        </div>
 
         <div className='flex gap-10 '>
           <CardVertCerveja nomeCerveja="Beck's" novidade={true} />
