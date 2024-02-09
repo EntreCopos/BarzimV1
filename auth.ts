@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import { type UserRole } from '@prisma/client'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { cookies as c } from 'next/headers'
 
 import { db } from '@/lib/db'
 import authConfig from '@/auth.config'
@@ -20,8 +21,8 @@ export const {
   },
   events: {
     async linkAccount({ user }) {
-      //console.log('LINKING ACCOUNT HERE, USER IS::', user)
-
+      console.log('LINKING ACCOUNT HERE::')
+      const dateOfBirth = c().get('dateOfBirth')
       const email = user?.email
       const username = !!email
         ? generateFromEmail(email, 3)
@@ -32,6 +33,7 @@ export const {
         data: {
           emailVerified: new Date(),
           username,
+          dateOfBirth: dateOfBirth?.value,
         },
       })
     },

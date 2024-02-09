@@ -29,7 +29,7 @@ export default auth((req) => {
     return null
   }
 
-  if (!isDob && isAgeCheckRoute) {
+  if ((!isDob && isAgeCheckRoute) || (!isDob && isLoggedIn)) {
     return null
   }
 

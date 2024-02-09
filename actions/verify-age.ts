@@ -25,15 +25,15 @@ function calculateAge(birthdate: string): number {
 
 export default async function verifyAge(isoDate: string) {
   const age = calculateAge(isoDate)
-  if (age <= 18) {
+  if (age < 18) {
     console.log('n vai entrar naooo')
-    redirect('https://www.peppapig.com/en-us/')
+    redirect('https://www.peppapig.com/en-gb')
   } else {
     console.log('liberado senhor')
     cookies().set('dateOfBirth', isoDate, {
-      secure: true,
+      httpOnly: true,
       expires: Date.now() + 60 * 60 * 1000,
     })
-    redirect('/dashboard')
+    redirect('/')
   }
 }
