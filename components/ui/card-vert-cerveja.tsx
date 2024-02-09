@@ -18,8 +18,8 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({ nomeCerveja, n
 
     const imagem: string = cerveja.imagensProduto[0] || imagemPadrao
 
-    return (
-        <div className='w-36 h-30 bg-stroke-cervejas p-2 rounded-lg flex flex-col items-center relative'>
+    return <div className='border-[1px] border-stroke-cervejas rounded-t-xl rounded-b-xl hover:scale-105 transition-all duration-200 cursor-pointer'>
+        <div className='w-36 h-30 bg-stroke-cervejas p-2 rounded-t-lg flex flex-col items-center relative'>
             {novidade && (
                 <span className="text-xs font-medium text-black-500 bg-yellow-barzim p-1 rounded-ee-lg rounded-tl-lg absolute top-0 left-0">Novidade</span>
             )}
@@ -30,7 +30,7 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({ nomeCerveja, n
                 alt={cerveja.nomeCerveja}
                 className='pb-1'
             />
-            <BeerName cerveja={cerveja} />
         </div>
-    )
+        <BeerName cerveja={cerveja} />
+        </div>
 }
