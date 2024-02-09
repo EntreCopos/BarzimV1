@@ -24,6 +24,7 @@ const config = {
         'marfim-barzim': 'var(--marfim-barzim)',
         'deep-black': 'var(--deep-black)',
         'deep-vermillo': 'var(--deep-vermillo)',
+        'stroke-cervejas': 'var(--stroke-bg-cervejas)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
