@@ -1,0 +1,1137 @@
+[
+    {
+      "nomeCerveja": "Adriática",
+      "descriCerveja": "A Cerveja Adriática 600ml foi criada pelo alemão Henrique Thielen, um visionário cervejeiro do início do século XX. Ela teve seu nome em homenagem à cervejaria que traduz toda uma era de tradição passada de pai para filho. Hoje, conhecida como a irmã mais velha da Original.",
+      "valorIBU": "9.50",
+      "teorAlcoolico": "4,90",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "Premium American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Adriatica%20-%20600ml.png.webp?itok=F7eZrLaN"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Andes",
+      "descriCerveja": "Puro malte argentino inspirado no frescor das Cordilheiras dos Andes. Cerveja mais fresca, inspirada nas cordilheiras. Ingredientes argentinos: malte e lúpulo argentinos.",
+      "valorIBU": "12.00",
+      "teorAlcoolico": "4,80",
+      "corpo": "(1)",
+      "tempIdeal": "",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "Premium American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/andes350ml_0.png.webp?itok=EWbV51KC",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/andes350ml%20%281%29.png.webp?itok=OnK7hvAN",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/andes350ml%20%282%29.png.webp?itok=8iKqwWPV"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "355ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "39 kcal / Porção 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "2,7 g / Porção 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Queijos leves"
+      ]
+    },
+    {
+      "nomeCerveja": "ANTARCTICA",
+      "descriCerveja": "",
+      "valorIBU": "",
+      "teorAlcoolico": "",
+      "corpo": "",
+      "tempIdeal": "",
+      "ingredientes": [],
+      "informacaoAlergen": "Receba suas bebidas preferidas todo mês sem sair de casa!",
+      "tipoCerveja": "",
+      "imagensProduto": [],
+      "tamanhosEmbalagem": [],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Beck's",
+      "descriCerveja": "Beck’s é uma legítima German Lager Puro Malte, que segue à risca a lei da pureza da cerveja alemã desde 1873. Seu IBU (unidade internacional de amargor) é 20. O resultado é uma cerveja de amargor intenso, sabor marcante e excepcional pureza.Ela é provocante, cheia de personalidade e com um sabor característico e único. A cerveja alemã mais vendida no mundo.",
+      "valorIBU": "20.00",
+      "teorAlcoolico": "5,00",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "GERMAN PILSNER",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/becksln.png.webp?itok=n2JXtr2i",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/becks350ml.png.webp?itok=OZpKsOir",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/becks600ml.png.webp?itok=7l369teA"
+      ],
+      "tamanhosEmbalagem": [
+        "330ml",
+        "350ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "80 kcal / Porção de 200ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "5,2 g / Porção de 200ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Pratos Tradicionais Alemães",
+        "Peixes",
+        "Frutos do Mar",
+        "Saladas"
+      ]
+    },
+    {
+      "nomeCerveja": "Berrió do Piauí",
+      "descriCerveja": "Produzida e vendida somente no Piauí, ideal para aliviar o B-R-O-BRÓ sem fim do estado. Leva na receita caju plantado e colhido por pequenos produtores do estado, adquirido sem intermédios gerando renda para as regiões menos favorecidas e diminuindo o desperdício do insumo.",
+      "valorIBU": "7.00",
+      "teorAlcoolico": "4,40",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Lúpulo",
+        "Água",
+        "Malte",
+        "Milho",
+        "Suco de caju"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Berrio%20do%20Piaui%20-%20350ml.png.webp?itok=FW_A6fbR",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Berrio%20do%20Piaui%20-%20660ml.png.webp?itok=-5yc3IoC"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "39 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,4 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Paçoca",
+        "Arroz",
+        "Capote frito"
+      ]
+    },
+    {
+      "nomeCerveja": "Bohemia Puro Malte",
+      "descriCerveja": "Criada em 1853 pelo alemao Henrique Kremer, Bohemia é a primeira cerveja do Brasil. Produzida com matéria prima importada desde sua primeira garrafa, ela é indispensavel no copo de quem entende de cerveja.",
+      "valorIBU": "9.00",
+      "teorAlcoolico": "5,00",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "Premium American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_2.png.webp?itok=awJin9z7",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_3.png.webp?itok=uzNXyaPL",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_4.png.webp?itok=eaI7XD_K",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_5.png.webp?itok=yGJICpUi",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_6.png.webp?itok=ydqyX7CM",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_7.png.webp?itok=mZeBuzK3",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_8.png.webp?itok=gJxQ07cj",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_9.png.webp?itok=GnVaLuni"
+      ],
+      "tamanhosEmbalagem": [
+        "990ml",
+        "600ml",
+        "473ml",
+        "355ml",
+        "350ml",
+        "300ml",
+        "269ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "40 kcal / Porção 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "2,7 g / Porção 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Aromas florais",
+        "Pratos embutidos",
+        "Saladas"
+      ]
+    },
+    {
+      "nomeCerveja": "Brahma Chopp",
+      "descriCerveja": "A referencia do sabor de cerveja no Brasil desde 1888, a Brahma Lager é uma cerveja saborosa e balanceada, com o sabor autêntico de cerveja brasileira, com espuma cremosa e persistente, amargor presente e ligeiramente encorpada.",
+      "valorIBU": "10.00",
+      "teorAlcoolico": "4,80",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20269ml.png.webp?itok=AGEZv59P",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20300ml.png.webp?itok=Ohs42KBf",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20350ml.png.webp?itok=dNDWXg7B",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20355ml.png.webp?itok=g0tUJFkk",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20473ml.png.webp?itok=xvFb5fgn",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20550ml.png.webp?itok=Pit3SNNj",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%20600ml.png.webp?itok=5cz81g_u",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Brahma%20Chopp%201Litro.png.webp?itok=vO2YK6bF"
+      ],
+      "tamanhosEmbalagem": [
+        "269ml",
+        "300ml",
+        "350ml",
+        "355ml",
+        "473ml",
+        "550ml",
+        "600ml",
+        "1L"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "41 kcal / Porção 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,4 g / Porção 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Queijos Pouco Condimentados",
+        "Saladas",
+        "Frutos do Mar",
+        "Petiscos Fritos"
+      ]
+    },
+    {
+      "nomeCerveja": "Budweiser",
+      "descriCerveja": "O processo de produçãoda Budweiser é diferenciado, por utilizar lascas de Beechwood (madeira especial) durante os processos de fermentação e maturação. O resultado é um cerveja de sabor único e com equilíbrio perfeito: marcante no início e suave no final.",
+      "valorIBU": "10.00",
+      "teorAlcoolico": "5,00",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20269ml.png.webp?itok=mh6-3VVQ",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20330ml.png.webp?itok=IY02CJax",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20350ml.png.webp?itok=At1r548G",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20410ml.png.webp?itok=ohw9yTTs",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20473ml.png.webp?itok=CB5cXXh4",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20550ml.png.webp?itok=3xefIs-W",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20600ml.png.webp?itok=qs6jLiBO",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Budweiser%20990ml.png.webp?itok=ex3dF8xB"
+      ],
+      "tamanhosEmbalagem": [
+        "269ml",
+        "330ml",
+        "350ml",
+        "410ml",
+        "473ml",
+        "550ml",
+        "600ml",
+        "990ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "",
+          "nutrientValue": ""
+        },
+        {
+          "nutrientName": "",
+          "nutrientValue": ""
+        }
+      ],
+      "harmonizacoes": [
+        "Arroz",
+        "Hambúrguer",
+        "Presunto",
+        "Mix de castanhas"
+      ]
+    },
+    {
+      "nomeCerveja": "Caracu",
+      "descriCerveja": "Caracu, a cerveja preta FORTE E GOSTOSA, foi lançada em 1899. Hoje uma das marcas mais tradicionais do Brasil, Caracu é conhecida por seu sabor encorpado e sua energia, possui aroma de malte torrado, que faz lembrar café. E sua fama de ser uma cerveja forte não é à toa. Por não ser filtrada, Caracu é mais nutritiva, contém levedura e proteínas.",
+      "valorIBU": "22.00",
+      "teorAlcoolico": "5,40",
+      "corpo": "(1)",
+      "tempIdeal": "8-12 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Lúpulo",
+        "Corante de caramelo III INS 150c"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "sweet stout",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_13.png.webp?itok=Tps6Oo9u",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_14.png.webp?itok=6U6p5zAV"
+      ],
+      "tamanhosEmbalagem": [
+        "355ml",
+        "350ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "67 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "8,7 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Sobremesa",
+        "Torta de chocolate",
+        "Sorvete de creme"
+      ]
+    },
+    {
+      "nomeCerveja": "Colorado Appia",
+      "descriCerveja": "A palavra Appia vem do latim e significa mel. O nome perfeito para a primeira cerveja do Brasil a utilizar mel em sua fórmula. Uma combinação exótica que, além do mel das flores das laranjeiras, é feita a partir dos melhores maltes de cevada e trigo, além de nossa exclusiva levedura de alta fermentação.",
+      "valorIBU": "10.00",
+      "teorAlcoolico": "5,50",
+      "corpo": "(1)",
+      "tempIdeal": "4-8 °C",
+      "ingredientes": [
+        "Cerveja",
+        "Água",
+        "Mel",
+        "Levedura"
+      ],
+      "informacaoAlergen": "Contém trigo, cevada e glúten.",
+      "tipoCerveja": "Honey Wheat Ale",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/appia-350ml_0.png.webp?itok=h9F7421m",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/appia-410ml_0.png.webp?itok=JcsI3lxJ",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/appia-300ml_0.png.webp?itok=xSAtcya-",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/appia-600ml_0.png.webp?itok=4iy4NoHH"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "410ml",
+        "300ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "49 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "4,2 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Comidas Leves",
+        "Saladas",
+        "Galinhada",
+        "Massas Leves",
+        "Queijo brie"
+      ]
+    },
+    {
+      "nomeCerveja": "Corona",
+      "descriCerveja": "",
+      "valorIBU": "",
+      "teorAlcoolico": "",
+      "corpo": "",
+      "tempIdeal": "",
+      "ingredientes": [],
+      "informacaoAlergen": "Receba suas bebidas preferidas todo mês sem sair de casa!",
+      "tipoCerveja": "",
+      "imagensProduto": [],
+      "tamanhosEmbalagem": [],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Esmera do Goiás",
+      "descriCerveja": "Produzida e vendida exclusivamente em Goiás, para brindar os goianos e toda a cultura do estado. A receita tem mandioca do pé rachado ou seja, mandioca cultivada por agricultores da região nordeste de Goiás, adquirida sem intermédios, levando renda às famílias de regiões menos favorecidas. Feita por goianos e para goianos, Esmera é uma cerveja leve e refrescante, preparada com ingredientes do daqui para homenagear tudo que é goianos demais da conta.",
+      "valorIBU": "9.00",
+      "teorAlcoolico": "4,30",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Lúpulo",
+        "Água",
+        "Malte",
+        "Mandioca",
+        "Milho"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/PRODUTOS_17.png.webp?itok=ZoODI0jl"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "37 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Arroz com pequi",
+        "Galinhada",
+        "Pamonha salgada"
+      ]
+    },
+    {
+      "nomeCerveja": "Franziskaner Hell",
+      "descriCerveja": "Fundada em 1363 em Munique, capital do tradicional polo cervejeiro da Bavária, a marca mantém até hoje os preceitos da Lei de Pureza da Baviera de 1516. A Franziskaner Hefe Weissbier Hell é uma cerveja de trigo clara, turva, com aroma frutado, lembrando banana e cravo. Espuma abundante, branca e cremosa.Tem um teor alcoólico de 5% e harmoniza com saladas, peixes e frutos do mar.",
+      "valorIBU": "",
+      "teorAlcoolico": "5,00",
+      "corpo": "(1)",
+      "tempIdeal": "4-8 °C",
+      "ingredientes": [
+        "Água",
+        "Malte de Trigo",
+        "Malte de Cevada",
+        "Lúpulo",
+        "Fermento"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "DUNKEL WEISSBIER",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Franziskaner%20Hell%20500ml.png.webp?itok=hVw5dDNp"
+      ],
+      "tamanhosEmbalagem": [
+        "500ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": [
+        "Culinária chinesa",
+        "Comida Mexicana",
+        "Salsichão"
+      ]
+    },
+    {
+      "nomeCerveja": "Goose Island IPA",
+      "descriCerveja": "A Goose Island IPA é inspirada nas tradicionais India Pale Ales que eram enviadas da Inglaterra para a Índia – altamente lupulada para preservar seu sabor distinto durante a longa viagem. O resultado é o sonho de um amante de lúpulo com um aroma frutado tropical e herbal desencadeado pelo dry hop e um sabor maltado agradável com corpo médio e um amargor equilibrado.",
+      "valorIBU": "55.00",
+      "teorAlcoolico": "5,90",
+      "corpo": "(1)",
+      "tempIdeal": "8-12 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten. Pode conter trigo.",
+      "tipoCerveja": "INDIA PALE ALE",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/goose.png.webp?itok=V8O2BwMT"
+      ],
+      "tamanhosEmbalagem": [
+        "355ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": [
+        "Carnes vermelhas",
+        "Queijos azuis"
+      ]
+    },
+    {
+      "nomeCerveja": "Hoegaarden Wit Blanche",
+      "descriCerveja": "Hoegaarden é uma Witbier belga feita de trigo, não filtrada e de cor clara. As sementes de coentro e raspas de casca de laranja, utilizadas em sua receita, conferem um sabor refrescante, suave e ao mesmo tempo doce e levemente cítrico. Com um aroma marcante e sabor original, Hoegaarden ganhou o World Beer Cup® Gold Award 6 vezes e, harmoniza perfeitamente com peixes e frutos do mar.",
+      "valorIBU": "13.00",
+      "teorAlcoolico": "4,90",
+      "corpo": "(1)",
+      "tempIdeal": "4-8 °C",
+      "ingredientes": [
+        "Água",
+        "Malte de Cevada",
+        "Trigo",
+        "semente de coentro",
+        "Casca Laranja",
+        "Lúpulo",
+        "estabilizante pectina de fruta"
+      ],
+      "informacaoAlergen": "Contém cevada, trigo e glúten.",
+      "tipoCerveja": "WITBIER",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/hoegaarden.png.webp?itok=5aWUfNsz"
+      ],
+      "tamanhosEmbalagem": [
+        "330ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "139 kcal / Porção de 330ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Peixes",
+        "frango grelhado",
+        "Ceviche",
+        "Feijoada"
+      ]
+    },
+    {
+      "nomeCerveja": "Kona Big Wave",
+      "descriCerveja": "Inspirada nas ondas da praia de Waime, a cerveja Kona Big Wave Golden Ale é uma cerveja dourada, com aroma e sabor de lúpulo tropical que lembra muito a natureza de sua terra natal, o Hawaii. É suave, fácil de beber e refrescante. Perfeita para acompanhar frutos do mar, saladas e massas leves",
+      "valorIBU": "",
+      "teorAlcoolico": "",
+      "corpo": "(1)",
+      "tempIdeal": "",
+      "ingredientes": [],
+      "informacaoAlergen": "",
+      "tipoCerveja": "",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Kona%20Big%20Wave%20355ml.png.webp?itok=5V2mts-g"
+      ],
+      "tamanhosEmbalagem": [
+        "355ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Leffe Blonde",
+      "descriCerveja": "A cerveja Leffe Blonde possui maltes selecionados que criam uma cerveja encorpada e turva. Seu aroma é extremamente maltado e aroma sabor adocicado. É uma cerveja do tipo Belgian Blond Ale com 6,6% de teor alcoólico e harmoniza com peixes, frutos do mar e queijo gruyère ou emmental.",
+      "valorIBU": "21.50",
+      "teorAlcoolico": "6,60",
+      "corpo": "(1)",
+      "tempIdeal": "4-8 °C",
+      "ingredientes": [
+        "Água",
+        "Malte de Cevada",
+        "Milho",
+        "Cevada",
+        "Açúcar de cana",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "BELGIAN BLOND ALE",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/leffe.png.webp?itok=hQA0Ra5-"
+      ],
+      "tamanhosEmbalagem": [
+        "330ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Legítima",
+      "descriCerveja": "Feita no Ceará para os cearences, com mandioca do interior que traz leveza e refrescância para a cerveja.",
+      "valorIBU": "8.00",
+      "teorAlcoolico": "4,40",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Mandioca",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Legitima%20269ml.png.webp?itok=_Q9jJ-qA",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Legitima%20300ml.png.webp?itok=Y62dWXZX",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Legitima%20600ml.png.webp?itok=18HAEE0z"
+      ],
+      "tamanhosEmbalagem": [
+        "269ml",
+        "300ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "38 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "2,8 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Frutos do Mar",
+        "Peixe",
+        "Amendoim"
+      ]
+    },
+    {
+      "nomeCerveja": "Magnífica",
+      "descriCerveja": "Magnífica é uma cerveja saborosa, leve e refrescante e tem como princípio fomentar a economia local do Maranhão. Ela é feita a partir da mandioca plantada e colhida na região de Tabuleiro de São Bernardo, a qual traz à cerveja refrescância e sabor e combina perfeitamente com o clima quente do Maranhão.",
+      "valorIBU": "8.00",
+      "teorAlcoolico": "4,40",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "água",
+        "Malte",
+        "Milho",
+        "Mandioca",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Magn%C3%ADfica%20269ml.png.webp?itok=sNPw4gne",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Magn%C3%ADfica%20600ml.png.webp?itok=RZSDNzvi",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Magn%C3%ADfica%201L.png.webp?itok=6CmmA04-"
+      ],
+      "tamanhosEmbalagem": [
+        "269ml",
+        "600ml",
+        "1L"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "39 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,1 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Carangueijo",
+        "Saladas",
+        "Mix de castanhas"
+      ]
+    },
+    {
+      "nomeCerveja": "Modelo",
+      "descriCerveja": "Maltes tostados lentamente para um sabor por mais tempo. Uma cerveja especialmente preparada com todo o capricho e excelência. Modelo, aperfeiçoando há 90 anos a arte de tostar maltes.",
+      "valorIBU": "13.00",
+      "teorAlcoolico": "4,80",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "Premium American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Modelo%20350ml.png.webp?itok=CX6z21M_",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Modelo%20355ml.png.webp?itok=_e-ICWUp",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Modelo%20600ml.png.webp?itok=jfTVLFLg"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "355ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "41 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,2 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Croquete de carne",
+        "Mix de nuts",
+        "Tacos de carne"
+      ]
+    },
+    {
+      "nomeCerveja": "Nossa de Pernambuco",
+      "descriCerveja": "Feita no Pernambuco para os pernabucanos, com mandioca do interior que traz leveza e refrescância para a cerveja.",
+      "valorIBU": "8.00",
+      "teorAlcoolico": "4,40",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Mandioca",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Nossa%20de%20Pernambuco%20300ml.png.webp?itok=tJZi5o7A",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Nossa%20de%20Pernambuco%20600ml.png.webp?itok=MwrvQUJO",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/Nossa%20de%20Pernambuco%201%20Litro.png.webp?itok=C1kQ5CfF"
+      ],
+      "tamanhosEmbalagem": [
+        "300ml",
+        "600ml",
+        "1 Litro"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "38 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "2,9 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Frutos do Mar",
+        "Peixe",
+        "Amendoim"
+      ]
+    },
+    {
+      "nomeCerveja": "Antarctica Original",
+      "descriCerveja": "Mais que uma simples cerveja, é uma verdadeira preciosidade engarrafada. Reconhecida por preservar sua essência, tradição e qualidade, a marca Original, criada em 1931, é considerada um clássico entre os apreciadores da bebida. Cerveja do tipo Pilsen, tem sabor suave, com leve amargor e aroma de lúpulo. A alta carbonatação garante a refrescância, fazendo desta uma das cervejas favoritas dos brasileiros.",
+      "valorIBU": "9.50",
+      "teorAlcoolico": "4,90",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/original.png.webp?itok=eM6LLTLt",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/original1.png.webp?itok=zN_KvGwH",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/original2.png.webp?itok=pg-SA7eR"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml",
+        "350ml",
+        "300ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "43 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,6 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Comida de boteco",
+        "Fritura"
+      ]
+    },
+    {
+      "nomeCerveja": "Patagonia Bohemian Pilsener",
+      "descriCerveja": "A Patagonia Bohemian Pilsener é uma tradicional cerveja do tipo Pilsen. Ela é produzida com o lúpulo tcheco Saaz que proporciona um aroma fresco e frutado bem característico, além de uma coloração dourada profunda. Escolha pratos com frutos do mar e peixes, como anchovas ou bacalhau, para combinar com o sabor dessa cerveja argentina.",
+      "valorIBU": "18.00",
+      "teorAlcoolico": "5,20",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "BOHEMIAN PILSNER",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/becksln_0.png.webp?itok=B7x1zUHO",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/boh.png.webp?itok=VonXLzXm",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/bohp.png.webp?itok=xqErsENp"
+      ],
+      "tamanhosEmbalagem": [
+        "740ml",
+        "473ml",
+        "355ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "94 kcal / Porção de 355ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "7,8 g / Porção de 355ml"
+        }
+      ],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Polar",
+      "descriCerveja": "",
+      "valorIBU": "",
+      "teorAlcoolico": "",
+      "corpo": "",
+      "tempIdeal": "",
+      "ingredientes": [],
+      "informacaoAlergen": "Receba suas bebidas preferidas todo mês sem sair de casa!",
+      "tipoCerveja": "",
+      "imagensProduto": [],
+      "tamanhosEmbalagem": [],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Polar Puro Malte Gaúcho",
+      "descriCerveja": "O sabor de Polar que você já conhece com amargor balanceado para lembrar ainda mais o típico malte gaúcho.Não é só mais uma puro malte. é uma puro Malte Gaúcho. Feita com 100%do malte produzido no estado.Com o gaúcho desde 1912, Polar é parte da cultura e da história do estado.",
+      "valorIBU": "13.00",
+      "teorAlcoolico": "4,90",
+      "corpo": "(4)",
+      "tempIdeal": "",
+      "ingredientes": [
+        "Lúpulo",
+        "Água",
+        "Malte"
+      ],
+      "informacaoAlergen": "",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-10/3D%20Polar%20PM%20%28lata%29.png.webp?itok=jZ9QW27u",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-10/Polar%20Garrafa.png.webp?itok=jVfFj6d8"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "1L"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "82 kcal / Porção de 200ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "6 g / Porção de 200ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Polenta frita",
+        "Arroz Carreteiro",
+        "Tainha na taquara"
+      ]
+    },
+    {
+      "nomeCerveja": "Serramalte",
+      "descriCerveja": "Serramalte é uma cerveja puro malte, de cor dourado escura, encorpada, com um sabor maltado bastante presente e um amargor pronunciado.",
+      "valorIBU": "19.50",
+      "teorAlcoolico": "5,50",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "Premium American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/serra.png.webp?itok=rrIeIJ7W"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "47 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,7 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Serrana",
+      "descriCerveja": "Nascida na Serra, refrescante e saborosa. Presente nos estados de São Paulo, Minas Gerais e Santa Catarina nas versões 350ml, 473ml e 600ml. Uma cerveja democrática feita de ingredientes naturais, pura e fresca como as águas da Serra.",
+      "valorIBU": "8.00",
+      "teorAlcoolico": "4,50",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Milho",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/serra%20%281%29.png.webp?itok=-RjhgMHo"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "40 kcal / Porção de 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,4 g / Porção de 100ml"
+        }
+      ],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Michelob Ultra",
+      "descriCerveja": "É uma cerveja de baixa caloria e baixo teor de carboidratos, muito refrescante. São 79 calorias e 2,4g de carboidratos (por long neck, cerca de 80% menos carboidratos em relação às marcas do mercado), uma escolha equilibrada para quem sabe aproveitar bem o hoje e quer aproveitar ainda mais o amanhã.",
+      "valorIBU": "3.00",
+      "teorAlcoolico": "4,20",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "ULTRA LIGHT LAGER",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/michelob.png.webp?itok=PYsGLUVw"
+      ],
+      "tamanhosEmbalagem": [
+        "330ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "44,5 kcal / Porção de 200ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "1,35 g / Porção de 200ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Arroz"
+      ]
+    },
+    {
+      "nomeCerveja": "Spaten",
+      "descriCerveja": "SPATEN: Autoridade em cerveja. Uma das primeiras puro malte do mundo e uma das cervejarias oficiais da Oktoberfest de Munique, na Alemanha. Feita com um rigoroso processo, seguindo a receita de Munique, onde foi criada em 1397. Uma cerveja puro malte com um sabor marcante e amargor presente.",
+      "valorIBU": "16.00",
+      "teorAlcoolico": "5,20",
+      "corpo": "(1)",
+      "tempIdeal": "0-4 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": ".",
+      "tipoCerveja": "MUNICH HELLES",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/spaten-350ml.png.webp?itok=CuCvrESQ",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/spaten-355ml.png.webp?itok=-v4eSlv-",
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-06/spaten-600ml.png.webp?itok=NQGFMSDz"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml",
+        "355ml",
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "42 kcal / Porção 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "2,9 g / Porção 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Bolinho de peixe",
+        "Salada caprese",
+        "Salsicha alemã"
+      ]
+    },
+    {
+      "nomeCerveja": "Stella Artois",
+      "descriCerveja": "",
+      "valorIBU": "",
+      "teorAlcoolico": "",
+      "corpo": "",
+      "tempIdeal": "",
+      "ingredientes": [],
+      "informacaoAlergen": "Receba suas bebidas preferidas todo mês sem sair de casa!",
+      "tipoCerveja": "",
+      "imagensProduto": [],
+      "tamanhosEmbalagem": [],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Três Fidalgas",
+      "descriCerveja": "Inspirada na herança cultural da cidade de São Paulo, a Cerveja Três Fidalgas é uma Pale Ale que homenageia as Vilas Ida, Madalena e Beatriz. No século XIX, havia a história de um nobre português que dividiu suas terras entre as três filhas, dando origem às vilas que foram batizadas conforme o nome de cada fidalga. Hoje, esta região une a convivência entre o clássico e o contemporâneo, sendo considerada como uma das áreas mais boêmias do Brasil. Produzida com três tipos de malte e três tipos de lúpulo, sua receita 100% malte e sem adição de outros cereais vai te impressionar por seu sabor suave com menos amargor, sua refrescância, personalidade e identidade única!",
+      "valorIBU": "26.00",
+      "teorAlcoolico": "5,20",
+      "corpo": "(4)",
+      "tempIdeal": "5-7 °C",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Lúpulo"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten.",
+      "tipoCerveja": "AMERICAN PALE ALE",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/tres.png.webp?itok=b1bPUXUa"
+      ],
+      "tamanhosEmbalagem": [
+        "600ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "45 kcal / Porção 100ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,5 g / Porção 100ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Cogumelos",
+        "Carne assada",
+        "Legumes"
+      ]
+    },
+    {
+      "nomeCerveja": "Wäls 42",
+      "descriCerveja": "Cerveja do Estilo Saison, de receita belga. Coloração dourado âmbar.",
+      "valorIBU": "30.00",
+      "teorAlcoolico": "6,50",
+      "corpo": "(1)",
+      "tempIdeal": "4-8 °C",
+      "ingredientes": [
+        "Água",
+        "Malte de Cevada",
+        "Açúcar de cana",
+        "Lúpulo",
+        "Extrato de abacaxi",
+        "Extrato de limão",
+        "Extrato de Coentro",
+        "Extrato de Amêndoa",
+        "Extrato de Café",
+        "Levedura"
+      ],
+      "informacaoAlergen": "Contém cevada e glúten. Pode conter trigo.",
+      "tipoCerveja": "SAISON",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-09/wals.png.webp?itok=t2T6mC8g"
+      ],
+      "tamanhosEmbalagem": [
+        "375ml"
+      ],
+      "informacoesNutricionais": [],
+      "harmonizacoes": []
+    },
+    {
+      "nomeCerveja": "Abiúda de Sergipe",
+      "descriCerveja": "A receita traz uma cerveja leve e refrescante. O adicional da laranja traz diferenciação e qualidade à um preço acessível para o consumidor e tem como objetivo movimentar a economia local e dar mais oportunidade para a agricultura familiar no estado de Sergipe.",
+      "valorIBU": "9.00",
+      "teorAlcoolico": "4,20",
+      "corpo": "(2)",
+      "tempIdeal": "",
+      "ingredientes": [
+        "Água",
+        "Malte",
+        "Cevada",
+        "Lúpulo",
+        "Laranja"
+      ],
+      "informacaoAlergen": "",
+      "tipoCerveja": "American Lager",
+      "imagensProduto": [
+        "https://www.ambev.com.br/sites/g/files/wnfebl5836/files/styles/webp/public/paragraphs/product_size/2022-10/Abiuda.png.webp?itok=rHw6XJLr"
+      ],
+      "tamanhosEmbalagem": [
+        "350ml"
+      ],
+      "informacoesNutricionais": [
+        {
+          "nutrientName": "Calorias",
+          "nutrientValue": "63 kcal / Porção de 200ml"
+        },
+        {
+          "nutrientName": "Carboidratos",
+          "nutrientValue": "3,5 g / Porção de 200ml"
+        }
+      ],
+      "harmonizacoes": [
+        "Carangueijo",
+        "Frutos do Mar",
+        "Pastel de aratu"
+      ]
+    }
+  ]

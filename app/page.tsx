@@ -1,3 +1,4 @@
+import { BeerName } from '@/components/ui/beer-name'
 import { cn } from '@/lib/utils'
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
         </h1>
 
         <div>
-          <p className="text-2xl text-slate-barzim">Olá do Next.JS</p>
+          <p className="text-2xl text-yellow-barzim mb-4">Olá do Next.JS</p>
         </div>
       </div>
     </main>
