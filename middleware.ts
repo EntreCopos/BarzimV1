@@ -11,7 +11,6 @@ import {
 
 const { auth } = NextAuth(authConfig)
 
-//@ts-expect-error (????)
 export default auth((req) => {
   //console.log('REQ Auth Passando pelo Middleware contem session ::::', req.auth)
 
@@ -21,25 +20,26 @@ export default auth((req) => {
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
   const isAuthRoute = authRoutes.includes(nextUrl.pathname)
-  //  const dob = cookies().get('dateOfBirth')
-  // const isAgeCheckRoute = nextUrl.pathname == '/age-verification'
-  // const isDob = !!dob
+  const isAgeCheckRoute = nextUrl.pathname == '/age-verification'
+
+  const dob = cookies().get('dateOfBirth')
+  const isDob = !!dob
 
   if (isApiAuthRoute) {
     return null
   }
 
-  // if (!isDob && isAgeCheckRoute) {
-  //   return null
-  // }
+  if ((!isDob && isAgeCheckRoute) || (!isDob && isLoggedIn)) {
+    return null
+  }
 
-  // if (!isDob && !isLoggedIn) {
-  //   return Response.redirect(new URL('/age-verification', nextUrl))
-  // }
+  if (!isDob && !isLoggedIn) {
+    return Response.redirect(new URL('/age-verification', nextUrl))
+  }
 
-  // if (isAgeCheckRoute && isDob) {
-  //   return Response.redirect(new URL('/', nextUrl))
-  // }
+  if (isAgeCheckRoute && isDob) {
+    return Response.redirect(new URL('/', nextUrl))
+  }
 
   if (isAuthRoute) {
     if (isLoggedIn) {

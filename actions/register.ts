@@ -2,6 +2,7 @@
 
 import type * as z from 'zod'
 import bcrypt from 'bcryptjs'
+import { cookies as c } from 'next/headers'
 
 import { db } from '@/lib/db'
 import { RegisterSchema } from '@/schemas'
@@ -18,7 +19,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: 'Campos inválidos' }
   }
 
-  const { email, dateOfBirth, password, name } = validatedFields.data
+  const { email, password, name } = validatedFields.data
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const existingEmail = await getUserByEmail(email)
@@ -27,13 +28,15 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: 'esse email já foi usado :((((' }
   }
 
+  const dateOfBirth = c().get('dateOfBirth')
+
   await db.user.create({
     data: {
       name,
       username: generateFromEmail(email, 4),
       email,
       password: hashedPassword,
-      dateOfBirth: new Date(dateOfBirth),
+      dateOfBirth: dateOfBirth?.value,
       emailVerified: new Date(), // PROVISÓRIO. enquanto n temos o dominio p enviar o email de verif. validamos o email ja no cadastro
     },
   })

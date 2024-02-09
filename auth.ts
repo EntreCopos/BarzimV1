@@ -1,11 +1,13 @@
 import NextAuth from 'next-auth'
 import { type UserRole } from '@prisma/client'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { cookies as c } from 'next/headers'
 
 import { db } from '@/lib/db'
 import authConfig from '@/auth.config'
 import { getUserById } from '@/data/user'
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation'
+import { generateFromEmail, generateUsername } from 'unique-username-generator'
 
 export const {
   handlers: { GET, POST },
@@ -19,9 +21,20 @@ export const {
   },
   events: {
     async linkAccount({ user }) {
+      console.log('LINKING ACCOUNT HERE::')
+      const dateOfBirth = c().get('dateOfBirth')
+      const email = user?.email
+      const username = !!email
+        ? generateFromEmail(email, 3)
+        : generateUsername('_', 3)
+
       await db.user.update({
         where: { id: user.id },
-        data: { emailVerified: new Date() },
+        data: {
+          emailVerified: new Date(),
+          username,
+          dateOfBirth: dateOfBirth?.value,
+        },
       })
     },
     async createUser({ user }) {
@@ -53,7 +66,6 @@ export const {
 
       return true
     },
-    //@ts-expect-error ((não tenho ideia pq ele n identifica o Type token como param aqui))
     async session({ session, token }) {
       if (token.sub && session.user) {
         session.user.id = token.sub

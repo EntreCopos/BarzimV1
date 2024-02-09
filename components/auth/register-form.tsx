@@ -30,7 +30,6 @@ export const RegisterForm = () => {
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: '',
-      dateOfBirth: '',
       password: '',
       confirmPassword: '',
       name: '',
@@ -70,24 +69,6 @@ export const RegisterForm = () => {
                       {...field}
                       disabled={isPending}
                       placeholder="Zé do Barzim"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="dateOfBirth"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Data dxi naiscimentuu</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="11/09/2001"
-                      type="date"
                     />
                   </FormControl>
                   <FormMessage />

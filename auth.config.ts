@@ -30,6 +30,7 @@ export default {
           const { email, password } = validatedFields.data
 
           const user = await getUserByEmail(email)
+          // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
           if (!user || !user.password) return null
 
           const passwordsMatch = await bcrypt.compare(password, user.password)

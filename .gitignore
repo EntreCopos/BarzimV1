@@ -10,7 +10,6 @@
 
 /app/admin
 /app/cervejas
-/app/age-verification
 
 prisma/utils/seed.mjs
 
