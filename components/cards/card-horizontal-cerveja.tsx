@@ -2,14 +2,14 @@ import beerData from '@/data/cervejas-mock.json'
 import { JsonObject } from "@prisma/client/runtime/library"
 import Image from 'next/image'
 import { BeerName } from "../titles/beer-name"
-interface CardVertCervejaProps {
+interface CardHorizontalCervejaProps {
     nomeCerveja: string;
     novidade: boolean;
 }
 
 const imagemPadrao = 'https://res.cloudinary.com/dvprux49g/image/upload/v1707506581/yvfngsc2qlgddxqyzhhq.png'
 
-export const CardHorizontalCerveja: React.FC<CardVertCervejaProps> = ({ nomeCerveja, novidade }) => {
+export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({ nomeCerveja, novidade }) => {
     const cerveja = beerData.find((cerveja: JsonObject) => cerveja.nomeCerveja === nomeCerveja)
 
     if (!cerveja) {
