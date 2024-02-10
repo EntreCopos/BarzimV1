@@ -1,6 +1,7 @@
-import { CardVertCerveja } from '@/components/cards/card-vert-cerveja';
-import { Logo } from '@/components/logo';
-import { cn } from '@/lib/utils';
+import { CardHorizontalCerveja } from '@/components/cards/card-horizontal-cerveja'
+import { CardVertCerveja } from '@/components/cards/card-vertical-cerveja'
+import { Logo } from '@/components/logo'
+import { cn } from '@/lib/utils'
 
 export default function Home() {
   return (
@@ -18,7 +19,12 @@ export default function Home() {
           <CardVertCerveja nomeCerveja="Brahma Chopp" novidade={false} />
           <CardVertCerveja nomeCerveja="Serrana" novidade={false} />
         </div>
+
+        <div className='flex gap-10 '>
+          <CardHorizontalCerveja nomeCerveja='Brahma Chopp' novidade={false} />
+          <CardHorizontalCerveja nomeCerveja='Bohemia Puro Malte' novidade={true} />
+        </div>
       </div>
     </main>
-  );
+  )
 }

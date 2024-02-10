@@ -1,7 +1,7 @@
-import beerData from '@/data/cervejas-mock.json';
-import { JsonObject } from "@prisma/client/runtime/library";
-import Image from 'next/image';
-import { BeerName } from "../titles/beer-name";
+import beerData from '@/data/cervejas-mock.json'
+import { JsonObject } from "@prisma/client/runtime/library"
+import Image from 'next/image'
+import { BeerName } from "../titles/beer-name"
 interface CardVertCervejaProps {
     nomeCerveja: string;
     novidade: boolean;
