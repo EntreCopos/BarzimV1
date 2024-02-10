@@ -11,8 +11,6 @@
 /app/admin
 /app/cervejas
 
-prisma/utils/seed.mjs
-
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
