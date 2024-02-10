@@ -1,5 +1,5 @@
-import { CardVertCerveja } from '@/components/ui/card-vert-cerveja';
-import { Logo } from '@/components/ui/logo';
+import { CardVertCerveja } from '@/components/cards/card-vert-cerveja';
+import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
