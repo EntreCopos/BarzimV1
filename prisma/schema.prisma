@@ -100,17 +100,16 @@ model Cerveja {
   id                      Int         @id @default(autoincrement())
   mainImage               String
   nomeCerveja             String
-  descriCerveja           String
-  teorAlcoolico           Float
-  tempIdeal               String
-  valorIBU                Float
-  corpo                   String
-  codBarras               String      @unique
-  informacoesNutricionais Json
-  harmonizacoes           String[]
-  tamanhosEmbalagem       String[]
-  ingredientes            String[]
-  images                  String[]
+  descriCerveja           String?
+  teorAlcoolico           Float?
+  tempIdeal               String?
+  valorIBU                Float?
+  corpo                   String?
+  codBarras               String?      @unique
+  informacoesNutricionais Json?
+  harmonizacoes           String?
+  tamanhosEmbalagem       String?
+  ingredientes            String?
   marcaId                 Int
   cervejariaId            Int
   tipoCervejaId           Int
