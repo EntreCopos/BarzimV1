@@ -32,7 +32,7 @@ export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({ no
                     className='pb-1'
                 />
             </div>
-            <BeerName cerveja={cerveja} />
+            <BeerName cerveja={cerveja} variant='dark-mode' />
         </div>
     </div>
 }
