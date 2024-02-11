@@ -31,6 +31,6 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({ nomeCerveja, n
                 className='pb-1'
             />
         </div>
-        <BeerName cerveja={cerveja} />
+        <BeerName cerveja={cerveja} variant='dark-mode'/>
     </div>
 }
