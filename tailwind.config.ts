@@ -25,6 +25,7 @@ const config = {
         'marfim-barzim': 'var(--marfim-barzim)',
         'deep-black': 'var(--deep-black)',
         'deep-vermillo': 'var(--deep-vermillo)',
+        'tabs-background': 'var(--tabs-background)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

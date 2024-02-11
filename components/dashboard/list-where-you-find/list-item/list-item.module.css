@@ -1,0 +1,21 @@
+/* list-item.module.css */
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 0.01em solid var(--slate-barzim); /* Use a unidade em */
+}
+  
+.title {
+    color: var(--marfim-barzim);
+}
+  
+.description {
+    color: var(--tabs-background);
+    font-size: 14px;
+}
+
+.emoji {
+    font-size: 32px;
+}

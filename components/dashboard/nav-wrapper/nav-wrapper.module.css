@@ -1,0 +1,14 @@
+/* nav-wrapper.module.css */
+.navWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    background-color: var(--yellow-barzim); 
+    color: var(--deep-black);
+  }
+
+  .icons {
+    display: flex;
+    gap: 1rem; /* Adjust the gap between icons as needed */
+  }
