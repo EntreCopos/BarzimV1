@@ -1,4 +1,3 @@
-import { BeerName } from '@/components/ui/beer-name'
 import { cn } from '@/lib/utils'
 
 export default function Home() {
