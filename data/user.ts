@@ -33,6 +33,7 @@ export const getUserByUsername = async (username: string) => {
         image: true,
         username: true,
         followers: true,
+        following: true,
       },
     })
     return user

@@ -22,8 +22,8 @@ model User {
   accounts              Account[]
   twoFactorConfirmation TwoFactorConfirmation?
   isPrivate             Boolean                @default(false)
-  followers             UserFollowing[]        @relation("Followers")
-  following             UserFollowing[]        @relation("Following")
+  following             UserFollowing[]        @relation("Followers")
+  followers             UserFollowing[]        @relation("Following")
 }
 
 model UserFollowing {
