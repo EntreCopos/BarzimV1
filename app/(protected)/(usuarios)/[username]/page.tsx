@@ -23,7 +23,10 @@ const UserProfilePage = async ({
 
   const user = await getUserByUsername(params.username)
 
-  //a fazer::: tratar bem melhor esse possivel null aqui
+  //a fazer::: tratar melhor esse possivel null aqui
+  // pq esse null é **possivel**. eu acho.
+  // esqueça, virou um problema de url, qualquer coisa (errada) passada depois da / cai aqui agora
+  //a fazer::: mudar isso, de alguma forma
   if (user === null) return <h1>Error</h1>
 
   console.log('USER IS:::', user)
@@ -43,18 +46,20 @@ const UserProfilePage = async ({
           <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
         </Avatar>
       </div>
-      <div className="bg-destructive text-red-800 "> Experimental</div>
-      <form
-        action={async () => {
-          'use server'
-          await handleRelationship(myId, user.id)
-          revalidatePath('/')
-        }}
-      >
-        <Button variant="outline" type="submit">
-          {relationship ? 'Deixar de seguir' : 'Seguir'}
-        </Button>
-      </form>
+      <div className="bg-destructive text-red-200 "> Experimental follow</div>
+      {!!(myId !== user.id) && (
+        <form
+          action={async () => {
+            'use server'
+            await handleRelationship(myId, user.id)
+            revalidatePath('/')
+          }}
+        >
+          <Button variant="outline" type="submit">
+            {relationship ? 'Deixar de seguir' : 'Seguir'}
+          </Button>
+        </form>
+      )}
     </main>
   )
 }
