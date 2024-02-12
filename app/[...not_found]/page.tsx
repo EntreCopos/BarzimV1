@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function Custom404() {
     return (
-        <body className="bg-[url('https://res.cloudinary.com/dvprux49g/image/upload/v1707588745/wplegnjrdeqrm7gayfgx.png')] bg-cover">
+        <div className="bg-[url('https://res.cloudinary.com/dvprux49g/image/upload/v1707588745/wplegnjrdeqrm7gayfgx.png')] bg-cover">
             <main className="flex justify-center items-center h-[60svh]">
                 <div className="flex flex-col items-center gap-7">.
                     <Logo variant="secondary" width={200} />
@@ -16,6 +16,6 @@ export default function Custom404() {
                     </Link>
                 </div>
             </main>
-        </body>
+        </div>
     )
 }

@@ -3,7 +3,7 @@ import { Logo } from '@/components/logo'
 
 export default async function AgeVerificationPage() {
   return (
-    <body className='bg-no-repeat bg-hero-age-mobile md:bg-hero-age-desktop h-svh w-svw bg-cover'>
+    <div className='bg-no-repeat bg-hero-age-mobile md:bg-hero-age-desktop h-svh w-svw bg-cover'>
 
       <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-7 md:gap-64">
 
@@ -20,6 +20,6 @@ export default async function AgeVerificationPage() {
         </div>
 
       </div>
-    </body>
+    </div>
   )
 }
