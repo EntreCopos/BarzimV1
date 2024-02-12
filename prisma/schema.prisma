@@ -21,6 +21,21 @@ model User {
   username              String?                @unique
   accounts              Account[]
   twoFactorConfirmation TwoFactorConfirmation?
+  isPrivate             Boolean                @default(false)
+  followers             UserFollowing[]        @relation("Followers")
+  following             UserFollowing[]        @relation("Following")
+}
+
+model UserFollowing {
+  id              String    @id @default(cuid())
+  follower        User      @relation("Followers", fields: [followerId], references: [id])
+  followerId      String
+  following       User      @relation("Following", fields: [followingId], references: [id])
+  followingId     String
+  isRequested     Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+
+  @@unique([followerId, followingId])
 }
 
 model Account {
