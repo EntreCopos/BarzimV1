@@ -13,12 +13,12 @@ export const Social = () => {
     })
   }
 
-  return (<div>
+  return (<div className='flex flex-col items-center'>
     <div className="p-1 pt-5 font-medium text-sm text-[#FFFEEF] text-opacity-60 text-center">
       <p>ou entre com um desses serviços</p>
     </div>
 
-    <div className="flex w-full items-center gap-x-2">
+    <div className="flex w-3/4 items-center justify-center gap-x-2">
       <Button
         size="lg"
         className="w-full rounded-2xl bg-[#FFFEEF] bg-opacity-60 border-none"
