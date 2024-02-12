@@ -27,6 +27,7 @@ const config = {
         'deep-vermillo': 'var(--deep-vermillo)',
         'tabs-background': 'var(--tabs-background)',
         'stroke-cervejas': 'var(--stroke-bg-cervejas)',
+        'black-fill' : '--black-fill-cards',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -63,11 +64,17 @@ const config = {
       },
       boxShadow: {
         'sutil-shadow': 'var(--sutil-shadow)',
-        'sharp-shadow': 'var(--sharp-shadow)'
+        'sharp-shadow': 'var(--sharp-shadow)',
       },
-     backgroundImage: {
+      dropShadow: {
+        'sharp-shadow': 'var(--sharp-shadow)',
+      },
+      backgroundImage: {
         'yellow-transparent-gradient': 'var(--yellow-trasparent-gradient)',
-        'black-radial-gradient': 'var(--black-radial-gradient)'
+        'black-radial-gradient': 'var(--black-radial-gradient)',
+        'hero-age-mobile': "url('../public/images/bg-age-mobile.png')",
+        'hero-age-desktop': "url('../public/images/bg-age-desktop.png')",
+        'hero-register-desktop': "url('../public/images/bg-register-desktop.png')",
       },
       borderRadius: {
         lg: 'var(--radius)',
