@@ -23,11 +23,10 @@ const UserProfilePage = async ({
 
   const user = await getUserByUsername(params.username)
 
-  //a fazer::: tratar melhor esse possivel null aqui
-  // pq esse null é **possivel**. eu acho.
-  // esqueça, virou um problema de url, qualquer coisa (errada) passada depois da / cai aqui agora
-  //a fazer::: mudar isso, de alguma forma
-  if (user === null) return <h1>Error</h1>
+  //ok, tratamento melhor, com esse throw error aqui, deve ser invocada a pagina error
+  //precisa ser criada ainda
+  if (user === null)
+    throw new Error('Não foi localizado um usuário com esse username')
 
   console.log('USER IS:::', user)
 

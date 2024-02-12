@@ -21,7 +21,7 @@ const ExploreUsersPage = async () => {
         manyUsers.map((user) => {
           return (
             <div key={user.id}>
-              <Link href={user.username ?? 'dashboard'}>
+              <Link href={`/usuarios/${user.username} ` ?? 'dashboard'}>
                 <Avatar>
                   <AvatarImage src={user?.image ?? defaultAvatarIcon} />
                   <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
