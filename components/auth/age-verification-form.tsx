@@ -49,7 +49,7 @@ export const AgeVerificationForm = () => {
             name="day"
             render={({ field }) => (
               <FormItem className=''>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-20 md:w-24'>
+                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
                   <Input {...field} placeholder="Dia" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -61,7 +61,7 @@ export const AgeVerificationForm = () => {
             name="month"
             render={({ field }) => (
               <FormItem>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-20 md:w-24'>
+                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
                   <Input {...field} placeholder="Mês" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -73,7 +73,7 @@ export const AgeVerificationForm = () => {
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-20 md:w-24'>
+                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
                   <Input {...field} placeholder="Ano" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -81,7 +81,7 @@ export const AgeVerificationForm = () => {
             )}
           />
         </div>
-        <Button className='w-full h-12 my-5 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]'>Verificar minha idade</Button>
+        <Button className='w-full h-12 mt-3 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]'>Verificar minha idade</Button>
       </form>
     </Form>
   )
