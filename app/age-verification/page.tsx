@@ -9,7 +9,7 @@ export default async function AgeVerificationPage() {
 
         <Logo color='#FFEEC3' width={320} className='drop-shadow-sharp-shadow' />
 
-        <div className="bg-[#131313] text-[#FFFEEE] bg-opacity-85 w-[95%] md:w-[30rem] h-fit rounded-lg flex flex-col  gap-2 px-8 pt-12 pb-8">
+        <div className="bg-[#131313] text-[#FFFEEE] bg-opacity-85 w-[95%] md:w-[30rem] h-fit rounded-lg flex flex-col  gap-2 px-8 pt-12 pb-8 backdrop-blur-lg">
           <h1 className='text-2xl'>Precisamos saber sua <span className='text-yellow-barzim font-bold'>idade</span></h1>
 
           <p className='pb-4'>Para visitar e criar sua conta no Barzim você precisa ter mais de 18 anos</p>

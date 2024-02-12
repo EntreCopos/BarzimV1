@@ -31,11 +31,6 @@ export const RegisterSchema = z
     password: z.string().min(6, {
       message: 'No minimo 6 caracteres, né',
     }),
-    confirmPassword: z.string().min(1, 'É necessário confirmar a Senha'),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ['confirmPassword'],
-    message: 'Senhas não são iguais',
   })
 
 export const AddCervejaSchema = z.object({

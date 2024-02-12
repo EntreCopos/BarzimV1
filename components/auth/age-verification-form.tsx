@@ -79,8 +79,8 @@ export const AgeVerificationForm = () => {
             </FormItem>
           )}
         />
-      </form>
       <Button className='w-10/12 h-12 my-5 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]'>Verificar minha idade</Button>
+      </form>
     </Form>
   )
 }
