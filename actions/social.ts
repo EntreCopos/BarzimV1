@@ -1,15 +1,9 @@
 'use server'
-
-import { db } from '@/lib/db'
+import { createFollow, deleteFollow, findRelationship } from '@/data/social'
 
 export const isFollowing = async (userIdA: string, userIdB: string) => {
   try {
-    const res = await db.userFollowing.findFirst({
-      where: {
-        followerId: userIdA,
-        followingId: userIdB,
-      },
-    })
+    const res = await findRelationship(userIdA, userIdB)
     return res
   } catch (err) {
     return null
@@ -18,13 +12,8 @@ export const isFollowing = async (userIdA: string, userIdB: string) => {
 
 export const follow = async (userIdA: string, userIdB: string) => {
   try {
-    await db.userFollowing.create({
-      data: {
-        followerId: userIdA,
-        followingId: userIdB,
-        createdAt: new Date(),
-      },
-    })
+    await createFollow(userIdA, userIdB)
+
     console.log(userIdA, 'agora segue ', userIdB)
   } catch (err) {
     return null
@@ -33,12 +22,7 @@ export const follow = async (userIdA: string, userIdB: string) => {
 
 export const unfollow = async (userIdA: string, userIdB: string) => {
   try {
-    await db.userFollowing.deleteMany({
-      where: {
-        followerId: userIdA,
-        followingId: userIdB,
-      },
-    })
+    await deleteFollow(userIdA, userIdB)
     console.log(userIdA, 'parou de seguir ', userIdB)
   } catch (err) {
     throw err
@@ -47,29 +31,14 @@ export const unfollow = async (userIdA: string, userIdB: string) => {
 
 export const handleRelationship = async (userIdA: string, userIdB: string) => {
   try {
-    const _isFollowing = await db.userFollowing.findFirst({
-      where: {
-        followerId: userIdA,
-        followingId: userIdB,
-      },
-    })
+    const _isFollowing = await findRelationship(userIdA, userIdB)
 
     if (!!_isFollowing) {
-      await db.userFollowing.deleteMany({
-        where: {
-          followerId: userIdA,
-          followingId: userIdB,
-        },
-      })
+      await deleteFollow(userIdA, userIdB)
+
       console.log(userIdA, 'parou de seguir ', userIdB)
     } else {
-      await db.userFollowing.create({
-        data: {
-          followerId: userIdA,
-          followingId: userIdB,
-          createdAt: new Date(),
-        },
-      })
+      await createFollow(userIdA, userIdB)
     }
   } catch (err) {
     return null
