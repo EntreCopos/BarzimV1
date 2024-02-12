@@ -1,3 +1,4 @@
+import { Background } from '@/components/assets/background'
 import { AgeVerificationForm } from '@/components/auth/age-verification-form'
 import { BoxRegister } from '@/components/cards/box-register'
 import { Logo } from '@/components/logo'
@@ -19,19 +20,25 @@ export default async function AgeVerificationPage() {
   )
 
   return (
-    <div className='bg-no-repeat bg-hero-age-mobile md:bg-hero-age-desktop h-svh w-svw bg-cover'>
-      <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-7 md:gap-64">
+    <div>
+      <Background
+        mobileBackground="bg-hero-age-mobile"
+        desktopBackground="bg-hero-age-desktop"
+      >
+        <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-7 md:gap-64">
 
-        <Logo color='#FFEEC3' width={320} className='drop-shadow-sharp-shadow' />
+          <Logo color='#FFEEC3' width={320} className='drop-shadow-sharp-shadow' />
 
-        <BoxRegister
-          headerTitle={headerTitle}
-          headerSubtitle={headerSubtitle}
-          formComponent={<AgeVerificationForm />}
-          showSocial={false}
-          footer={footer}>
-        </BoxRegister>
-      </div>
+          <BoxRegister
+            headerTitle={headerTitle}
+            headerSubtitle={headerSubtitle}
+            formComponent={<AgeVerificationForm />}
+            showSocial={false}
+            footer={footer}>
+          </BoxRegister>
+
+        </div>
+      </Background>
     </div>
   )
 }
