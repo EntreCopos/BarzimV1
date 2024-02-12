@@ -25,6 +25,7 @@ const config = {
         'marfim-barzim': 'var(--marfim-barzim)',
         'deep-black': 'var(--deep-black)',
         'deep-vermillo': 'var(--deep-vermillo)',
+        'tabs-background': 'var(--tabs-background)',
         'stroke-cervejas': 'var(--stroke-bg-cervejas)',
         'black-fill' : '--black-fill-cards',
         border: 'hsl(var(--border))',
