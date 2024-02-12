@@ -73,6 +73,7 @@ const config = {
         'black-radial-gradient': 'var(--black-radial-gradient)',
         'hero-age-mobile': "url('../public/images/bg-age-mobile.png')",
         'hero-age-desktop': "url('../public/images/bg-age-desktop.png')",
+        'hero-register-desktop': "url('../public/images/bg-register-desktop.png')",
       },
       borderRadius: {
         lg: 'var(--radius)',
