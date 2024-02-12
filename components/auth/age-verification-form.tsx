@@ -31,7 +31,7 @@ export const AgeVerificationForm = () => {
   const onSubmit = (data: { day: number; month: number; year: number }) => {
     const isoDate = new Date(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      `${data?.day}-${data?.month}-${data?.year}`
+      `${data?.year}-${data?.month}-${data?.day}T00:00:00` //FIX FORMATO DATA
     ).toISOString()
 
     verifyAge(isoDate)
