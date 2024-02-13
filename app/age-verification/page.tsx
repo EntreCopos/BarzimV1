@@ -23,7 +23,7 @@ export default async function AgeVerificationPage() {
     <div>
       <Background
         mobileBackground="bg-hero-age-mobile"
-        desktopBackground="bg-hero-age-desktop"
+        desktopBackground="md:bg-hero-age-desktop"
       >
         <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-7 md:gap-64">
 

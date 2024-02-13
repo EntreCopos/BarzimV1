@@ -27,7 +27,7 @@ const config = {
         'deep-vermillo': 'var(--deep-vermillo)',
         'tabs-background': 'var(--tabs-background)',
         'stroke-cervejas': 'var(--stroke-bg-cervejas)',
-        'black-fill' : '--black-fill-cards',
+        'black-fill': '--black-fill-cards',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -75,6 +75,8 @@ const config = {
         'hero-age-mobile': "url('../public/images/bg-age-mobile.png')",
         'hero-age-desktop': "url('../public/images/bg-age-desktop.png')",
         'hero-register-desktop': "url('../public/images/bg-register-desktop.png')",
+        'hero-login-desktop': "url('../public/images/bg-login-desktop.png')",
+        'hero-login-mobile': "url('../public/images/bg-login-mobile.png')",
       },
       borderRadius: {
         lg: 'var(--radius)',

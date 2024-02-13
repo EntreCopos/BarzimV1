@@ -2,6 +2,7 @@ import { Background } from '@/components/assets/background'
 import { RegisterForm } from '@/components/auth/register-form'
 import { BoxRegister } from '@/components/cards/box-register'
 import { Logo } from '@/components/logo'
+import Link from 'next/link'
 
 const RegisterPage = () => {
 
@@ -14,12 +15,12 @@ const RegisterPage = () => {
   )
 
   const footer = (
-    <p className='text-[10px] font-medium text-center pt-6 w-full'>Ao usar o webapp você afirma estar de acordo com nossos <span className='text-yellow-barzim font-bold'>Termos e Condições de Uso</span>, nossa <span className='text-yellow-barzim font-bold'>Política de Cookies</span > e nossa <span className='text-yellow-barzim font-bold'>Política de Privacidade</span></p>
+    <p className='text-[10px] font-medium text-center pt-6 w-full'>Ao usar o webapp você afirma estar de acordo com nossos <span className='text-yellow-barzim font-bold'><Link href={"/legal/termos"}>Termos e Condições de Uso</Link></span>, nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Cookies</Link></span > e nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Privacidade</Link></span></p>
   )
 
   return (<div>
     <Background
-      desktopBackground='bg-hero-register-desktop'
+      desktopBackground='md:bg-hero-register-desktop'
       mobileBackground='bg-hero-age-mobile'
     >
 
