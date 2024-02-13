@@ -106,14 +106,14 @@ model Marca {
   id           Int        @id @default(autoincrement())
   nome         String
   cervejariaId Int
-  cervejaria   Cervejaria @relation(fields: [cervejariaId], references: [id])
-  cervejas     Cerveja[]
+  // cervejaria   Cervejaria @relation(fields: [cervejariaId], references: [id])
+  // cervejas     Cerveja[]
 }
 
 model Cervejaria {
   id       Int       @id @default(autoincrement())
   nome     String
-  marcas   Marca[]
+  // marcas   Marca[]
   cervejas Cerveja[]
 }
 
@@ -135,11 +135,11 @@ model Cerveja {
   corpo                   String?
   informacoesNutricionais Json?
   tamanhosEmbalagem       String?
-  marcaId                 Int
+  // marcaId                 Int
   cervejariaId            Int
   tipoCervejaId           Int
   cervejaria              Cervejaria            @relation(fields: [cervejariaId], references: [id])
-  marca                   Marca                 @relation(fields: [marcaId], references: [id])
+  // marca                   Marca                 @relation(fields: [marcaId], references: [id])
   tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
   notaMedia               Float?
   ingredientesCerveja     IngredienteCerveja[]  @relation("IngredientesDaCerveja")
