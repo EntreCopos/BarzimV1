@@ -141,7 +141,7 @@ model Cerveja {
   cervejaria              Cervejaria            @relation(fields: [cervejariaId], references: [id])
   marca                   Marca                 @relation(fields: [marcaId], references: [id])
   tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
-  notaMedia               Int?
+  notaMedia               Float?
   ingredientesCerveja     IngredienteCerveja[]  @relation("IngredientesDaCerveja")
   harmonizacoesCerveja    HarmonizacaoCerveja[] @relation("HarmonizacoesDaCerveja")
   UserCerveja             UserCerveja[]
@@ -156,9 +156,8 @@ model UserCerveja {
   jaBebida    Boolean  @default(false)
   reviewTexto String?
   reviewLikes Int?     @default(0)
-  nota        Int?
+  nota        Float?
   imagens     String[]
-
   createdAt   DateTime?
 
   usuario User    @relation(fields: [usuarioId], references: [id])
@@ -167,13 +166,11 @@ model UserCerveja {
   @@unique([usuarioId, cervejaId])
 }
 
-
 model Ingrediente {
   id                  Int                  @id @default(autoincrement())
   name                String
   IngredientesCerveja IngredienteCerveja[]
 }
-
 
 model IngredienteCerveja {
   id          Int         @id @default(autoincrement())
