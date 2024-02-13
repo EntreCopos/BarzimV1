@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { AgeVerificationSchema } from '@/schemas'
 
 import { Button } from '@/components/ui/button'
+import { type AgeVerifFormData } from '@/data/data'
 
 export const AgeVerificationForm = () => {
   const form = useForm({
@@ -26,30 +27,22 @@ export const AgeVerificationForm = () => {
     },
   })
 
-  const { handleSubmit } = form
-
-  const onSubmit = (data: { day: number; month: number; year: number }) => {
-    const isoDate = new Date(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      `${data?.day}-${data?.month}-${data?.year}` //FIX FORMATO DATA
-    ).toISOString()
-
-    verifyAge(isoDate)
-  }
-
   return (
     <Form {...form}>
-      <form className='flex flex-col gap-2 w-10/12 items-center justify-center'
+      <form
+        className="flex w-10/12 flex-col items-center justify-center gap-2"
         //@ts-expect-error handle submit ta se abobando ai, fique quieto
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit((data: AgeVerifFormData) =>
+          verifyAge(data)
+        )}
       >
         <div className="flex gap-3">
           <FormField
             control={form.control}
             name="day"
             render={({ field }) => (
-              <FormItem className=''>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
+              <FormItem className="">
+                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
                   <Input {...field} placeholder="Dia" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -61,7 +54,7 @@ export const AgeVerificationForm = () => {
             name="month"
             render={({ field }) => (
               <FormItem>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
+                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
                   <Input {...field} placeholder="Mês" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -73,7 +66,7 @@ export const AgeVerificationForm = () => {
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 text-center border-black border-2 border-opacity-20 w-24 md:w-24 p-5'>
+                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
                   <Input {...field} placeholder="Ano" type="number" />
                 </FormControl>
                 <FormMessage />
@@ -81,7 +74,9 @@ export const AgeVerificationForm = () => {
             )}
           />
         </div>
-        <Button className='w-full h-12 mt-3 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]'>Verificar minha idade</Button>
+        <Button className="mt-3 h-12 w-full rounded-full bg-yellow-barzim bg-opacity-80 font-bold text-black hover:bg-[#ecbf4e] hover:bg-opacity-100">
+          Verificar minha idade
+        </Button>
       </form>
     </Form>
   )

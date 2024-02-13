@@ -10,4 +10,10 @@ interface CervejaData {
   tipoCervejaId: number
 }
 
-export { type CervejaData }
+interface AgeVerifFormData {
+  day: number
+  month: number
+  year: number
+}
+
+export { type CervejaData, type AgeVerifFormData }
