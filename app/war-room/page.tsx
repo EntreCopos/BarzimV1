@@ -1,3 +1,4 @@
+import { Background } from '@/components/assets/background'
 import { AgeVerificationForm } from '@/components/auth/age-verification-form'
 import { BoxRegister } from '@/components/cards/box-register'
 import { CardHorizontalCerveja } from '@/components/cards/card-horizontal-cerveja'
@@ -16,10 +17,12 @@ export default function Home() {
   const headerSubtitle = (
     <p className='pb-4'>Para visitar e criar sua conta no Barzim você precisa ter mais de 18 anos</p>
   )
-
-
+  
   return (<div>
-    <main className="flex h-full flex-col items-center bg-black-radial-gradient justify-center">
+    <Background
+      mobileBackground="bg-hero-age-mobile"
+      desktopBackground="bg-hero-register-desktop"
+    >
       <div className="space-y-6 text-center">
         <div className="hero flex items-baseline gap-7 mb-14">
           <h1 className={cn('text-6xl font-semibold text-marfim-barzim mt-20')}>
@@ -40,15 +43,15 @@ export default function Home() {
         </div>
       </div>
 
-    </main>
+      <BoxRegister
+        headerTitle={headerTitle}
+        headerSubtitle={headerSubtitle}
+        formComponent={<AgeVerificationForm />}
+        showSocial={false}
+        footer={<p className='text-[10px] font-medium text-center pt-6'>Ao clicar verificar você afirma a veracidade da informação enviada e isenta o Barzim de quaisquer eventuais responsabilidades.</p>}>
+      </BoxRegister>
+    </Background>
 
-    <BoxRegister
-      headerTitle={headerTitle}
-      headerSubtitle={headerSubtitle}
-      formComponent={<AgeVerificationForm />}
-      showSocial={false}
-      footer={<p className='text-[10px] font-medium text-center pt-6'>Ao clicar verificar você afirma a veracidade da informação enviada e isenta o Barzim de quaisquer eventuais responsabilidades.</p>}>
-    </BoxRegister>
 
   </div>
   )
