@@ -21,7 +21,7 @@ export default function Home() {
   return (<div>
     <Background
       mobileBackground="bg-hero-age-mobile"
-      desktopBackground="bg-hero-register-desktop"
+      desktopBackground="md:bg-hero-register-desktop"
     >
       <div className="space-y-6 text-center">
         <div className="hero flex items-baseline gap-7 mb-14">
