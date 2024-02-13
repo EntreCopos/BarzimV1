@@ -8,54 +8,7 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id                    String                 @id @default(cuid())
-  name                  String?
-  email                 String?                @unique
-  emailVerified         DateTime?
-  image                 String?
-  password              String?
-  role                  UserRole               @default(USER)
-  isTwoFactorEnabled    Boolean                @default(false)
-  dateOfBirth           DateTime?
-  username              String?                @unique
-  accounts              Account[]
-  twoFactorConfirmation TwoFactorConfirmation?
-  isPrivate             Boolean                @default(false)
-  following             UserFollowing[]        @relation("Followers")
-  followers             UserFollowing[]        @relation("Following")
-}
-
-model UserFollowing {
-  id              String    @id @default(cuid())
-  follower        User      @relation("Followers", fields: [followerId], references: [id])
-  followerId      String
-  following       User      @relation("Following", fields: [followingId], references: [id])
-  followingId     String
-  isRequested     Boolean   @default(false)
-  createdAt       DateTime  @default(now())
-
-  @@unique([followerId, followingId])
-}
-
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-
+//AUTH RELATED
 model VerificationToken {
   id      String   @id @default(cuid())
   email   String
@@ -89,12 +42,72 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+//USER RELATED
+model User {
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String?
+  password              String?
+  role                  UserRole               @default(USER)
+  isTwoFactorEnabled    Boolean                @default(false)
+  dateOfBirth           DateTime?
+  username              String?                @unique
+  accounts              Account[]
+  twoFactorConfirmation TwoFactorConfirmation?
+  isPrivate             Boolean                @default(false)
+  following             UserFollowing[]        @relation("Followers")
+  followers             UserFollowing[]        @relation("Following")
+  UserCerveja           UserCerveja[]
+}
+
+//SOCIAL
+model UserFollowing {
+  id          String   @id @default(cuid())
+  follower    User     @relation("Followers", fields: [followerId], references: [id])
+  followerId  String
+  following   User     @relation("Following", fields: [followingId], references: [id])
+  followingId String
+  isRequested Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  SUPPORT
+  GUEST
+}
+
+//EXTERNAL ACCOUNT OAUTH CONNECTION
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+//CERVEJA RELATED FROM HERE
 model Marca {
-  id            Int         @id @default(autoincrement())
-  nome          String
-  cervejariaId  Int
-  cervejaria    Cervejaria  @relation(fields: [cervejariaId], references: [id])
-  cervejas      Cerveja[]
+  id           Int        @id @default(autoincrement())
+  nome         String
+  cervejariaId Int
+  cervejaria   Cervejaria @relation(fields: [cervejariaId], references: [id])
+  cervejas     Cerveja[]
 }
 
 model Cervejaria {
@@ -112,7 +125,7 @@ model TipoCerveja {
 }
 
 model Cerveja {
-  id                      Int         @id @default(autoincrement())
+  id                      Int                   @id @default(autoincrement())
   mainImage               String
   nomeCerveja             String
   descriCerveja           String?
@@ -120,23 +133,36 @@ model Cerveja {
   tempIdeal               String?
   valorIBU                Float?
   corpo                   String?
-  codBarras               String?      @unique
   informacoesNutricionais Json?
-  harmonizacoes           String?
   tamanhosEmbalagem       String?
-  ingredientes            String?
   marcaId                 Int
   cervejariaId            Int
   tipoCervejaId           Int
-  cervejaria              Cervejaria  @relation(fields: [cervejariaId], references: [id])
-  marca                   Marca       @relation(fields: [marcaId], references: [id])
-  tipoCerveja             TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
-
+  cervejaria              Cervejaria            @relation(fields: [cervejariaId], references: [id])
+  marca                   Marca                 @relation(fields: [marcaId], references: [id])
+  tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
+  averageStarRating       Int?
+  // ingredientesCerveja     IngredienteCerveja[]  @relation("IngredientesDaCerveja")
+  // harmonizacoesCerveja    HarmonizacaoCerveja[] @relation("HarmonizacoesDaCerveja")
+  UserCerveja             UserCerveja[]
 }
 
-enum UserRole {
-  ADMIN
-  USER
-  SUPPORT
-  GUEST
+model UserCerveja {
+  id          Int      @id @default(autoincrement())
+  usuarioId   String
+  cervejaId   Int
+  favorita    Boolean  @default(false)
+  queroBeber  Boolean  @default(false)
+  jaBebida    Boolean  @default(false)
+  reviewTexto String?
+  nota        Int?
+  reviewLikes Int?     @default(0)
+  imagens     String[]
+
+  createdAt   DateTime?
+
+  usuario User    @relation(fields: [usuarioId], references: [id])
+  cerveja Cerveja @relation(fields: [cervejaId], references: [id])
+
+  @@unique([usuarioId, cervejaId])
 }
