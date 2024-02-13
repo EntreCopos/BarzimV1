@@ -1,20 +1,25 @@
-import React from "react"
 import { BreadcrumbItem } from "./breadcrumb-item"
 import { BreadcrumbSeparator } from "./breadcrumb-separator"
 
-interface BreadcrumbsProps {
-    items: string[]
+interface CervejaInfo {
+    nomeCerveja: string
+    cervejaria: { nome: string }
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
+interface BreadcrumbsProps {
+    cervejaInfo: CervejaInfo
+}
+
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ cervejaInfo }) => {
+    const { nomeCerveja, cervejaria } = cervejaInfo
+
     return (
         <div>
-            {items.map((item, index) => (
-                <React.Fragment key={index}>
-                    <BreadcrumbItem label={item} />
-                    {index !== items.length - 1 && <BreadcrumbSeparator />}
-                </React.Fragment>
-            ))}
+            <BreadcrumbItem label="Cervejas" />
+            <BreadcrumbSeparator />
+            <BreadcrumbItem label={cervejaria.nome} />
+            <BreadcrumbSeparator />
+            <BreadcrumbItem label={nomeCerveja} />
         </div>
     )
 }
