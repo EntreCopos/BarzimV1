@@ -1,5 +1,5 @@
 import { db } from '@/lib/db'
-import { type CervejaData } from './data.d'
+//import { type CervejaData } from './data.d'
 
 export const getAllCervejas = async () => {
   try {
@@ -18,7 +18,6 @@ export const getCervejaById = async (id: number) => {
   try {
     const cerveja = await db.cerveja.findUnique({
       include: {
-        marca: true,
         tipoCerveja: true,
         cervejaria: true,
       },
