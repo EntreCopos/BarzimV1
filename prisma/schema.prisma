@@ -143,7 +143,7 @@ model Cerveja {
   tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
   averageStarRating       Int?
   ingredientesCerveja     IngredienteCerveja[]  @relation("IngredientesDaCerveja")
-  // harmonizacoesCerveja    HarmonizacaoCerveja[] @relation("HarmonizacoesDaCerveja")
+  harmonizacoesCerveja    HarmonizacaoCerveja[] @relation("HarmonizacoesDaCerveja")
   UserCerveja             UserCerveja[]
 }
 
@@ -184,4 +184,21 @@ model IngredienteCerveja {
   ingredienteId Int
 
   @@unique([cervejaId, ingredienteId])
+}
+
+model Harmonizacao {
+  id                  Int                   @id @default(autoincrement())
+  name                String
+  HarmonizacaoCerveja HarmonizacaoCerveja[]
+}
+
+model HarmonizacaoCerveja {
+  id           Int          @id @default(autoincrement())
+  cerveja      Cerveja      @relation("HarmonizacoesDaCerveja", fields: [cervejaId], references: [id])
+  harmonizacao Harmonizacao @relation(fields: [harmonizacaoId], references: [id])
+
+  cervejaId      Int
+  harmonizacaoId Int
+
+  @@unique([cervejaId, harmonizacaoId])
 }
