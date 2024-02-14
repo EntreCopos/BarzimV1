@@ -1,0 +1,32 @@
+
+.container {
+    text-align: center;
+  }
+  
+  .image {
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .text {
+    color: var(--slate-barzim);
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    background-color: transparent;
+    color: var(--marfim-barzim);
+    padding: 4px 10px;
+    font-size: 8px;
+    border-radius: 9999px;
+    border: 1px solid var(--marfim-barzim);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: .5px;
+  }
+  
+  .button:hover {
+    background-color: var(--deep-vermillo);
+  }
+  
