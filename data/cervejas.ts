@@ -3,7 +3,12 @@ import { db } from '@/lib/db'
 
 export const getAllCervejas = async () => {
   try {
-    return await db.cervejaShadow.findMany()
+    return await db.cervejaShadow.findMany({
+      include: {
+        cervejaria: true,
+        tipoCerveja: true,
+      },
+    })
   } catch {
     return null
   }

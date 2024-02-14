@@ -16,11 +16,11 @@ export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({
   const novidade = true
 
   return (
-    <div className="cursor-pointer rounded-md border-[1px] border-stroke-cervejas transition-all duration-200 hover:scale-[1.005]">
+    <div className="cursor-pointer rounded-lg border-2 overflow-hidden border-stroke-cervejas transition-all duration-200 hover:scale-[1.02]">
       <div className="h-30 relative m-0 flex w-96 items-center gap-3 p-0">
-        <div className="flex w-5/12 items-center justify-center rounded-sm bg-stroke-cervejas  ">
+        <div className="flex w-5/12 items-center justify-center bg-stroke-cervejas  ">
           {novidade && (
-            <span className="text-black-500 absolute left-0 top-0 rounded-ee-lg rounded-tl-sm bg-yellow-barzim p-1 text-xs font-medium">
+            <span className="text-black-500 absolute left-0 top-0 rounded-ee-lg bg-yellow-barzim p-1 text-xs font-medium">
               Novidade
             </span>
           )}
