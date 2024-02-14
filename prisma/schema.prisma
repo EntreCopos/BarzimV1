@@ -103,7 +103,7 @@ model Account {
 
 //CERVEJA RELATED FROM HERE
 model Marca {
-  id           Int        @id @default(autoincrement())
+  id           Int    @id @default(autoincrement())
   nome         String
   cervejariaId Int
   // cervejaria   Cervejaria @relation(fields: [cervejariaId], references: [id])
@@ -111,17 +111,20 @@ model Marca {
 }
 
 model Cervejaria {
-  id       Int       @id @default(autoincrement())
-  nome     String
+  id            Int             @id @default(autoincrement())
+  nome          String
+  logo          String?
   // marcas   Marca[]
-  cervejas Cerveja[]
+  cervejas      Cerveja[]
+  CervejaShadow CervejaShadow[]
 }
 
 model TipoCerveja {
-  id        Int       @id @default(autoincrement())
-  nome      String
-  descricao String
-  cervejas  Cerveja[]
+  id            Int             @id @default(autoincrement())
+  nome          String
+  descricao     String
+  cervejas      Cerveja[]
+  CervejaShadow CervejaShadow[]
 }
 
 model Cerveja {
@@ -147,15 +150,35 @@ model Cerveja {
   UserCerveja             UserCerveja[]
 }
 
+model CervejaShadow {
+  id                      Int         @id @default(autoincrement())
+  mainImage               String
+  nomeCerveja             String
+  descriCerveja           String?
+  teorAlcoolico           Float?
+  tempIdeal               String?
+  valorIBU                Float?
+  corpo                   String?
+  informacoesNutricionais Json?
+  tamanhosEmbalagem       String[]
+  cervejariaId            Int
+  tipoCervejaId           Int
+  cervejaria              Cervejaria  @relation(fields: [cervejariaId], references: [id])
+  tipoCerveja             TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
+  notaMedia               Float?
+  ingredientes            String[]
+  harmonizacoes           String[]
+}
+
 model UserCerveja {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   usuarioId   String
   cervejaId   Int
-  favorita    Boolean  @default(false)
-  queroBeber  Boolean  @default(false)
-  jaBebida    Boolean  @default(false)
+  favorita    Boolean   @default(false)
+  queroBeber  Boolean   @default(false)
+  jaBebida    Boolean   @default(false)
   reviewTexto String?
-  reviewLikes Int?     @default(0)
+  reviewLikes Int?      @default(0)
   nota        Float?
   imagens     String[]
   createdAt   DateTime?

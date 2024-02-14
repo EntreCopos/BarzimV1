@@ -1,15 +1,16 @@
 /* carousel-card.module.css */
 .card {
-  background-color: var(--tabs-background);
+  background-color: var(--bg-cards);
+  border: 1px solid var(--stroke-bg-cervejas);
   width: 140px;
-  height: 100px; /* Ajuste a altura conforme necessário */
+  min-height: 80px; 
   border-radius: var(--radius);
   box-shadow: var(--sutil-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem; /* Ajuste o preenchimento conforme necessário */
+  padding: 0.5rem;
 }
 
 .image {
@@ -21,9 +22,8 @@
 
 .text {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--marfim-barzim);
   margin-top: 0.5rem;
-  height: 50px; /* Ajuste a altura conforme necessário para garantir uniformidade */
   letter-spacing: var(--letter-spacing)
 }

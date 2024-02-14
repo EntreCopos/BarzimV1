@@ -1,8 +1,7 @@
 /* title-section.module.css */
 .title {
   color: var(--yellow-barzim);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing);
 }
 
@@ -10,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 1rem 0;
 }
 
 .buttonContainer {
