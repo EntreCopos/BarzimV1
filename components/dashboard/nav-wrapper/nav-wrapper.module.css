@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 1.5rem 1rem 1.5rem;
+    padding: 2.2rem 1.5rem 1rem 1.5rem;
     background-color: var(--yellow-barzim); 
     color: var(--deep-black);
   }

@@ -3,13 +3,19 @@ import { auth, signOut } from '@/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
+import Carousel from '@/components/dashboard/carousel/carousel';
+import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper';
+import styles from "./page.module.css"
+import BeersCarousel from '@/components/dashboard/beers-carousel/beers-carousel';
+import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find';
+
 function firstTwoLetters(name: string | undefined | null) {
   if (typeof name == 'undefined' || name == null) return 'US'
 
   return name.substring(0, 2).toUpperCase()
 }
 
-const SettingsPage = async () => {
+const DashboardPage = async () => {
   const session = await auth()
 
   console.log('USER SESSION IS:::', session)
@@ -23,7 +29,11 @@ const SettingsPage = async () => {
   }
 
   return (
-    <div className="flex h-full items-center justify-center gap-4 bg-yellow-barzim text-black">
+    <div className={styles.bodyDashboard}>
+      {/* <Carousel/> */}
+      <BeersCarousel/>
+      <ListFindings/>
+      <div className='flex w-full justify-center gap-4 align-middle h-fit'>
       <Avatar>
         <AvatarImage src={user.imageUrl} />
         <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
@@ -38,8 +48,9 @@ const SettingsPage = async () => {
           Sair
         </Button>
       </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default SettingsPage
+export default DashboardPage
