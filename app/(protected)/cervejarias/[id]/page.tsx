@@ -1,5 +1,7 @@
 import { getCervejasByCervejaria } from '@/data/cervejas'
-import Link from 'next/link'
+import SectionTitle from '@/components/dashboard/title-sections/title-section'
+
+import ListaDeCervejas from '@/components/lists/lista-cervjas'
 
 export default async function CervejariaByIdPage({
   params,
@@ -7,24 +9,20 @@ export default async function CervejariaByIdPage({
   params: { id: string }
 }) {
   const cervejariaData = await getCervejasByCervejaria(params.id)
-  console.log(cervejariaData?.nome)
 
-  return (
-    <>
-      <h1>Cervejaria {cervejariaData?.nome}</h1>
-      <ul>
-        {cervejariaData?.CervejaShadow.map((cerveja) => {
-          return (
-            <li key={cerveja.id}>
-              <h2>
-                <Link href={`/cervejas/${cerveja.id}`}>
-                  {cerveja.nomeCerveja}
-                </Link>
-              </h2>
-            </li>
-          )
-        })}
-      </ul>
-    </>
-  )
+  console.log(cervejariaData?.CervejaShadow);
+  
+
+  if(!!cervejariaData){
+    return (
+      <>
+        <SectionTitle title={`Cervejas da ${cervejariaData?.nome}`} />
+        <ListaDeCervejas cervejas={cervejariaData.CervejaShadow} />
+      </>
+    )
+
+  }
+  else throw new Error('faltou cerveja')
 }
+
+
