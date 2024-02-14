@@ -1,0 +1,16 @@
+/* styles/AvatarReview.module.css */
+
+.avatarContainer {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--yellow-barzim); /* Adapte conforme necessário */
+  }
+  
+  .avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
