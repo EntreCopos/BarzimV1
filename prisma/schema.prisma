@@ -113,6 +113,7 @@ model Marca {
 model Cervejaria {
   id            Int             @id @default(autoincrement())
   nome          String
+  logo          String?
   // marcas   Marca[]
   cervejas      Cerveja[]
   CervejaShadow CervejaShadow[]

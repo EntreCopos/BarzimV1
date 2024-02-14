@@ -15,14 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className=' bg-red-600 w-full min-h-screen'>
+      <body className="bg-red-600 w-full min-h-screen">
         <MobileScreenDefaulWrapper>
-          <>
-            <NavWrapper/>
-            <InnerContentWrapper>
-              {children}
-            </InnerContentWrapper>
-          </>
+          <NavWrapper/>
+          <InnerContentWrapper>
+            {children}
+          </InnerContentWrapper>
         </MobileScreenDefaulWrapper>
       </body>
     </html>

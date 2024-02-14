@@ -1,8 +1,7 @@
 /* title-section.module.css */
 .title {
   color: var(--yellow-barzim);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing);
 }
 

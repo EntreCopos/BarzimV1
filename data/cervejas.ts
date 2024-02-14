@@ -14,6 +14,9 @@ export const getAllCervejas = async () => {
   }
 }
 
+export type TypeListaDeCervejas = ReturnType<typeof getAllCervejas>
+
+
 export const getCervejarias = async () => {
   try {
     return await db.cervejaria.findMany()

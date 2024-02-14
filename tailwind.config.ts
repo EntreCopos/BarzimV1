@@ -27,6 +27,7 @@ const config = {
         'deep-vermillo': 'var(--deep-vermillo)',
         'tabs-background': 'var(--tabs-background)',
         'stroke-cervejas': 'var(--stroke-bg-cervejas)',
+        'gray-cards': 'var(--bg-cards)',
         'black-fill': '--black-fill-cards',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
