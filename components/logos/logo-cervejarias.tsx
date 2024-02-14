@@ -2,12 +2,10 @@ import Image from "next/image"
 
 interface LogoProps {
     src: string
-    width: number
-    height: number
 }
 
-export const LogoCervejaria: React.FC<LogoProps> = ({ src, width, height }) => {
+export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
     return (
-        <Image src={src} width={width} height={height} alt="Logo cervejaria - Barzim"></Image>
+        <Image src={src} width={70} height={70} alt="Logo cervejaria - Barzim" className="object-cover"></Image>
     )
 }
