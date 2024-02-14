@@ -493,6 +493,22 @@ async function seed() {
       ],
     })
 
+    const usersCerveja = await prisma.userCerveja.createMany({
+      data: [
+        {
+          usuarioId: "clsjby2s00000hlpx7skiv8q6",
+          cervejaId: 1,
+          favorita: true,
+          queroBeber: false,
+          jaBebida: true,
+          imagens: ["a"],
+          createdAt: new Date()
+        },
+        // Adicione mais objetos aqui para inserir mais linhas
+      ],
+    });
+    console.log('UserCerveja inserido:', usersCerveja);
+
     // console.log('Cervejarias inseridas:', cervejarias)
 
     // Inserir tipos de cerveja
