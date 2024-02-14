@@ -1,38 +1,39 @@
 import beerData from '@/data/cervejas-mock.json'
-import { JsonObject } from "@prisma/client/runtime/library"
+import { JsonObject } from '@prisma/client/runtime/library'
 import Image from 'next/image'
-import { BeerName } from "../titles/beer-name"
+import { BeerName } from '../titles/beer-name'
 interface CardHorizontalCervejaProps {
-    nomeCerveja: string;
-    novidade: boolean;
+  children: React.ReactNode
+  imagem: string
+  nomeCerveja: string
 }
 
-const imagemPadrao = 'https://res.cloudinary.com/dvprux49g/image/upload/v1707506581/yvfngsc2qlgddxqyzhhq.png'
+export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({
+  children,
+  nomeCerveja,
+  imagem,
+}) => {
+  const novidade = true
 
-export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({ nomeCerveja, novidade }) => {
-    const cerveja = beerData.find((cerveja: JsonObject) => cerveja.nomeCerveja === nomeCerveja)
-
-    if (!cerveja) {
-        return <div className='text-white'>Cerveja não encontrada 🙁</div>
-    }
-
-    const imagem: string = cerveja.imagensProduto[0] || imagemPadrao
-
-    return <div className='border-[1px] border-stroke-cervejas rounded-md hover:scale-105 transition-all duration-200 cursor-pointer'>
-        <div className='w-96 h-30 p-0 m-0 flex items-center relative gap-3'>
-            <div className="bg-stroke-cervejas w-5/12 flex justify-center items-center rounded-sm  ">
-                {novidade && (
-                    <span className="text-xs font-medium text-black-500 bg-yellow-barzim p-1 rounded-ee-lg rounded-tl-sm absolute top-0 left-0">Novidade</span>
-                )}
-                <Image
-                    src={imagem}
-                    width={48}
-                    height={48}
-                    alt={cerveja.nomeCerveja}
-                    className='pb-1'
-                />
-            </div>
-            <BeerName cerveja={cerveja} variant='dark-mode' />
+  return (
+    <div className="cursor-pointer rounded-md border-[1px] border-stroke-cervejas transition-all duration-200 hover:scale-[1.005]">
+      <div className="h-30 relative m-0 flex w-96 items-center gap-3 p-0">
+        <div className="flex w-5/12 items-center justify-center rounded-sm bg-stroke-cervejas  ">
+          {novidade && (
+            <span className="text-black-500 absolute left-0 top-0 rounded-ee-lg rounded-tl-sm bg-yellow-barzim p-1 text-xs font-medium">
+              Novidade
+            </span>
+          )}
+          <Image
+            src={imagem}
+            width={48}
+            height={48}
+            alt={nomeCerveja}
+            className="pb-1"
+          />
         </div>
+        {children}
+      </div>
     </div>
+  )
 }
