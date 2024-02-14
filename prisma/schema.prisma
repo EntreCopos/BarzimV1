@@ -145,8 +145,8 @@ model Cerveja {
   // marca                   Marca                 @relation(fields: [marcaId], references: [id])
   tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
   notaMedia               Float?
-  ingredientesCerveja     IngredienteCerveja[]  @relation("IngredientesDaCerveja")
-  harmonizacoesCerveja    HarmonizacaoCerveja[] @relation("HarmonizacoesDaCerveja")
+  ingredientesCerveja     String[]
+  harmonizacoesCerveja    String[]
   UserCerveja             UserCerveja[]
 }
 
@@ -189,36 +189,3 @@ model UserCerveja {
   @@unique([usuarioId, cervejaId])
 }
 
-model Ingrediente {
-  id                  Int                  @id @default(autoincrement())
-  name                String
-  IngredientesCerveja IngredienteCerveja[]
-}
-
-model IngredienteCerveja {
-  id          Int         @id @default(autoincrement())
-  cerveja     Cerveja     @relation("IngredientesDaCerveja", fields: [cervejaId], references: [id])
-  ingrediente Ingrediente @relation(fields: [ingredienteId], references: [id])
-
-  cervejaId     Int
-  ingredienteId Int
-
-  @@unique([cervejaId, ingredienteId])
-}
-
-model Harmonizacao {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  HarmonizacaoCerveja HarmonizacaoCerveja[]
-}
-
-model HarmonizacaoCerveja {
-  id           Int          @id @default(autoincrement())
-  cerveja      Cerveja      @relation("HarmonizacoesDaCerveja", fields: [cervejaId], references: [id])
-  harmonizacao Harmonizacao @relation(fields: [harmonizacaoId], references: [id])
-
-  cervejaId      Int
-  harmonizacaoId Int
-
-  @@unique([cervejaId, harmonizacaoId])
-}
