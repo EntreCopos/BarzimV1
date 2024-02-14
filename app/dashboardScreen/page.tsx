@@ -3,6 +3,7 @@ import NavWrapper from '../../components/dashboard/nav-wrapper/nav-wrapper';
 import styles from "./page.module.css"
 import BeersCarousel from '@/components/dashboard/beers-carousel/beers-carousel';
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find';
+import ReviewHeader from '@/components/review/review-header/review-header';
 
 const DashboardPage: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const DashboardPage: React.FC = () => {
       <Carousel/>
       <BeersCarousel/>
       <ListFindings/>
+      <ReviewHeader userName="lara" beerName="Budweiser" />
     </div>
   );
 };
