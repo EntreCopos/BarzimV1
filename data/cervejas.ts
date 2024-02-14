@@ -1,5 +1,4 @@
 import { db } from '@/lib/db'
-//import { type CervejaData } from './data.d'
 
 export const getAllCervejas = async () => {
   try {
@@ -13,9 +12,6 @@ export const getAllCervejas = async () => {
     return null
   }
 }
-
-export type TypeListaDeCervejas = ReturnType<typeof getAllCervejas>
-
 
 export const getCervejarias = async () => {
   try {
@@ -34,7 +30,11 @@ export const getCervejasByCervejaria = async (id: string) => {
       },
       select: {
         nome: true,
-        CervejaShadow: true,
+        CervejaShadow: {
+          include: {
+            tipoCerveja: true
+          }
+        },
       },
     })
   } catch (err) {

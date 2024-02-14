@@ -1,11 +1,8 @@
-import { cn } from '@/lib/utils'
+//import { cn } from '@/lib/utils'
 import { getAllCervejas, getCervejarias } from '@/data/cervejas'
-import { BeerName } from '@/components/titles/beer-name'
-import { CardHorizontalCerveja } from '@/components/cards/card-horizontal-cerveja'
 import Link from 'next/link'
-
+import ListaDeCervejas from '@/components/lists/lista-cervjas'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
-
 import CarouselWrapper from '@/components/dashboard/carousel/carousel'
 import CarouselCard from '@/components/dashboard/carousel/carousel-card/carousel-card'
 
@@ -19,44 +16,18 @@ export default async function Cervejas() {
         <CarouselWrapper>
           {cervejarias?.map(cervejaria => {
             return (
-              <CarouselCard altText={cervejaria.nome} key={cervejaria.id} title={cervejaria.nome} imageSrc={cervejaria.logo}/>
+              <span key={cervejaria.id}>
+
+              <Link href={`/cervejarias/${cervejaria.id}`}>
+                <CarouselCard altText={cervejaria.nome} title={cervejaria.nome} imageSrc={cervejaria.logo}/>
+              </Link>
+              </span>
             )
           })}
         </CarouselWrapper>
-        <ListaDeCervejas cervejas={listaDeCervejas} />
+      <ListaDeCervejas cervejas={listaDeCervejas} />
       </>
     )
   else throw new Error('faltou cerveja')
 }
 
-import { type TypeListaDeCervejas } from '@/data/cervejas'
-
-function ListaDeCervejas({ cervejas }: { cervejas: TypeListaDeCervejas }) {
-  return (
-    <ul className="flex flex-col gap-4">
-      {/* //@ts-ignore */}
-      {cervejas.map(
-        ({
-          id,
-          nomeCerveja,
-          mainImage,
-          tipoCerveja: { nome: tipoCerveja },
-        }) => (
-          <li style={{ display: 'contents' }} key={id}>
-            <Link href={`/cervejas/${id}`}>
-              <CardHorizontalCerveja
-                nomeCerveja={nomeCerveja}
-                imagem={mainImage}
-              >
-                <BeerName
-                  variant="dark-mode"
-                  cerveja={{ nomeCerveja, tipoCerveja }}
-                />
-              </CardHorizontalCerveja>
-            </Link>
-          </li>
-        )
-      )}
-    </ul>
-  )
-}
