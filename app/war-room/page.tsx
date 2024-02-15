@@ -18,6 +18,7 @@ import { ReviewDescription } from "@/components/wrappers/review-description-wrap
 import { ReviewWrapper } from "@/components/wrappers/review-wrapper"
 import beerImage from '../../components/assets/imgs-beers/Captura de Tela 2024-02-09 às 11.38 1.png'
 import { getAllCervejas } from "@/data/cervejas"
+import UnconventionalTabs from "@/components/stepper/stepper-listas/stepper-listas"
 
 export default async function War() {
 
@@ -36,7 +37,23 @@ export default async function War() {
     id: 'some-unique-id',
   };
 
-  return (<div className='bg-black-radial-gradient bg-cover h-svh gap-10 flex justify-center items-center'>
+  const tabsData = [
+    {
+      title: 'Já Bebi',
+      tag: 'Tag 1',
+      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      link: '/tab1',
+    },
+    {
+      title: 'Vou Beber',
+      tag: 'Tag 1',
+      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      link: '/tab1',
+    }]
+
+
+  return (
+  <div className='bg-black-radial-gradient bg-cover h-svh gap-10 flex justify-center items-center'>
 
     <div className="flex flex-col gap-7">
       <div className="flex ">
@@ -69,15 +86,9 @@ export default async function War() {
         <ReviewDescription description="esperava mais. Não que seja ruim, mas o sabor não me cativou. Faltou algo, sabe? Por isso, dou nota 2. Há espaço para evolução." />
         <BrindarReviewButton />
          </ReviewWrapper>
-
-    </div>
-        </ButtonsWrapper>
-        <div>
-        <CardReviews evaluation={evaluation} />
-        </div>
-
-      <BeerFilter cervejas={cervejas} />
       
+      
+         <UnconventionalTabs tabs={tabsData} />
     </div >
     </div>
   )
