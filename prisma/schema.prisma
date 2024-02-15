@@ -1,3 +1,21 @@
+// ENUMS
+enum UserRole {
+  ADMIN
+  USER
+  SUPPORT
+  GUEST
+}
+
+enum Genero {
+  MASCULINO
+  FEMININO
+  NAO_BINARIO
+  AGENERO
+  GENERO_FLUIDO
+  BIGENERO
+  OUTRO
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -76,23 +94,6 @@ model UserFollowing {
   createdAt   DateTime @default(now())
 
   @@unique([followerId, followingId])
-}
-
-enum UserRole {
-  ADMIN
-  USER
-  SUPPORT
-  GUEST
-}
-
-enum Genero {
-  MASCULINO
-  FEMININO
-  NAO_BINARIO
-  AGENERO
-  GENERO_FLUIDO
-  BIGENERO
-  OUTRO
 }
 
 //EXTERNAL ACCOUNT OAUTH CONNECTION
