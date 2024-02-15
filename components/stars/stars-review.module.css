@@ -1,0 +1,20 @@
+/* stars-reviews.module.css */
+.textBarzim {
+    color: var(--slate-barzim);
+    font-size: 12px;
+  }
+  
+  .starsContainer {
+    margin-bottom: 10px;
+  }
+  
+  .star {
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  
+  .star.gold {
+    color: gold;
+  }
+  
