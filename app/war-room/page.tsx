@@ -19,7 +19,7 @@ export default async function War() {
     tipoCerveja: 'Tipo da Cerveja'
   }
 
-  return (<div className='bg-black-radial-gradient bg-cover h-svh gap-10 flex justify-center items-center'>
+  return (<div className='bg-black-radial-gradient bg-cover gap-10 flex justify-center items-center'>
 
     <div className="flex flex-col gap-7">
       <div className="flex ">
