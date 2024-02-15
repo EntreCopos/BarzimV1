@@ -5,6 +5,10 @@ import BeersCarousel from '@/components/dashboard/beers-carousel/beers-carousel'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find';
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review';
 import avatarImage from '../../components/assets/icons/Designer (11) 1.png'
+import NinguemAvaliou from '@/components/cards/ninguem-avaliou/ninguem-avaliou';
+import StarReviews from '@/components/stars/stars-reviews';
+import StarReviewsMini from '@/components/stars/startsMini/stars-mini';
+import ReviewHeader from '@/components/review/review-header/review-header';
 
 const DashboardPage: React.FC = () => {
   return (
@@ -14,6 +18,8 @@ const DashboardPage: React.FC = () => {
       <BeersCarousel/>
       <ListFindings/>
       <AvatarReview avatarSrc={avatarImage}/>
+      <NinguemAvaliou cervejaId='2'/>
+      <StarReviews nota={2} />
     </div>
   );
 };
