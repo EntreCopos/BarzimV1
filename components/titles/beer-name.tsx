@@ -28,9 +28,9 @@ export const BeerName: React.FC<BeerProps> = ({ cerveja, variant }) => {
     const tipoCervejaNormalizado = normalizeTitleCase(tipoCerveja)
 
     return (
-        <div className={`${getThemeByVariant(variant)} text-left p-2`}>
+        <div className={`${getThemeByVariant(variant)} text-left`}>
             <p className="text-[12px] opacity-60">{tipoCervejaNormalizado}</p>
-            <p className='font-medium'>{nomeCervejaNormalizado}</p>
+            <p className='font-medium text-[20px]'>{nomeCervejaNormalizado}</p>
         </div>
     )
 }
