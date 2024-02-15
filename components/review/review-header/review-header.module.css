@@ -1,0 +1,17 @@
+
+.reviewHeader {
+  font-weight: bold;
+}
+
+.userName {
+  color: var(--yellow-barzim);
+}
+
+.beerName {
+  color: var(--yellow-barzim);
+}
+
+.avaliedText {
+  color: white;
+  font-weight: normal; /* Adiciona esta linha para remover o negrito */
+}
