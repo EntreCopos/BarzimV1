@@ -118,7 +118,7 @@ model Cervejaria {
   id            Int             @id @default(autoincrement())
   nome          String
   createdAt     DateTime?
-  // marcas   Marca[]
+  logo          String?
   cervejas      Cerveja[]
   CervejaShadow CervejaShadow[]
 }
