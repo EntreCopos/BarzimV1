@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 // data.d.ts
 
 interface CervejaData {
@@ -18,26 +19,26 @@ interface AgeVerifFormData {
 
 interface TypeListaDeCerveja {
   map(arg0: ({ id, nomeCerveja, mainImage, tipoCerveja: { nome: tipoCerveja }, }: { id: number; nomeCerveja: string; mainImage: string; tipoCerveja: { nome: string } }) => import("react").JSX.Element): import("react").ReactNode
-  id: number;
-  mainImage: string;
-  nomeCerveja: string;
-  descriCerveja: string;
-  teorAlcoolico: number;
-  tempIdeal: string;
-  valorIBU: number;
-  corpo: string;
-  informacoesNutricionais: string[]; // Ou outro tipo de dado, se aplicável
-  tamanhosEmbalagem: string[];
-  cervejariaId: number;
-  tipoCervejaId: number;
-  notaMedia: number | null;
-  ingredientes: string[];
-  harmonizacoes: string[];
+  id: number
+  mainImage: string | null
+  nomeCerveja: string
+  descriCerveja: string | null
+  teorAlcoolico: number | null
+  tempIdeal: string | null
+  valorIBU: number | null
+  corpo: string | null
+  informacoesNutricionais: string[] | null
+  tamanhosEmbalagem: string[] | null
+  cervejariaId: number
+  tipoCervejaId: number
+  notaMedia: number | null
+  ingredientes: string[] | null
+  harmonizacoes: string[] | null
   tipoCerveja: {
-    id: number;
-    nome: string;
-    descricao: string;
-  };
+    id: number
+    nome: string
+    descricao: string | null
+  }
 }
 
 export { type CervejaData, type AgeVerifFormData, type TypeListaDeCerveja }

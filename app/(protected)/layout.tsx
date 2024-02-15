@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   description: '',
 }
 
-export default function RootLayout({
+export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="pt-br">
-      <body className="bg-red-600 w-full min-h-screen">
+      <body style={{backgroundColor: 'var(--deep-vermillo)', minHeight: '100svh'}}>
         <MobileScreenDefaulWrapper>
           <NavWrapper/>
           <InnerContentWrapper>

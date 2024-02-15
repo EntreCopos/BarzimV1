@@ -25,6 +25,8 @@
     "embla-carousel-react": "^8.0.0-rc22",
     "next": "14.0.4",
     "next-auth": "^5.0.0-beta.4",
+    "posthog-js": "^1.105.9",
+    "posthog-node": "^3.6.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",

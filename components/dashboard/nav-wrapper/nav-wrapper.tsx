@@ -4,7 +4,7 @@ import styles from './nav-wrapper.module.css';
 // import iconNotification from "../../assets/icons/notification.png";
 // import LogoBarzimNavWrapper from './nav-wrapper-logo-barzim/nav-wrapper-logo-barzim';
 // import NavWrapperIcon from './nav-wrapper-icons/nav-wrapper-icons';
-import {HiMiniBell} from 'react-icons/hi2'
+import { IoNotifications } from "react-icons/io5";
 
 import Link from 'next/link';
 
@@ -17,7 +17,7 @@ const NavWrapper: React.FC = () => {
       <Logo width={120}/>
       </Link>
       <div className={styles.icons}>
-        <HiMiniBell className="text-3xl" />
+        <IoNotifications className="text-3xl" />
       </div>
     </div>
   );
