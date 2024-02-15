@@ -1,0 +1,41 @@
+/* card-review.module.css */
+
+.cardReviewsContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-cards);
+    border-radius: 8px;
+    box-shadow: var(--sutil-shadow);
+    position: relative;
+    max-width: 400px;
+  }
+  
+  .imageContainer {
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .imageContainer img {
+    width: 100px;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-left: 20px;
+  }
+  
+  .placeholderText {
+    color:var(--tabs-background);
+    margin-left: 10px;
+    text-align: center;
+  }
+  
+  .arrowIcon {
+    position: absolute;
+    right: 15px;
+  }
