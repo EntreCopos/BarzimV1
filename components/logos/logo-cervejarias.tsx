@@ -1,7 +1,7 @@
-import Image from "next/image"
+import Image, { type StaticImageData } from "next/image"
 
 interface LogoProps {
-    src: string
+    src: string | StaticImageData
 }
 
 export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
