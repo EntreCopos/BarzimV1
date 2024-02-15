@@ -1,3 +1,4 @@
+import { BeerFilter } from "@/components/beer-filter"
 import { AddtoListButton } from "@/components/buttons/add-to-list-button"
 import { BrindarButton } from "@/components/buttons/brindar-button"
 import { BrindarReviewButton } from "@/components/buttons/brindar-review-button"
@@ -7,8 +8,11 @@ import { BeerNameLarge } from "@/components/titles/beer-name-lg"
 import { BeerDescription } from "@/components/wrappers/beer-description-wrapper"
 import { BeerImage } from "@/components/wrappers/beer-image-wrapper"
 import { ButtonsWrapper } from "@/components/wrappers/buttons-wrapper"
+import { getAllCervejas } from "@/data/cervejas"
 
-export default function War() {
+export default async function War() {
+
+  const cervejas = await getAllCervejas()
 
   const cerveja = {
     nomeCerveja: 'Nome da Cerveja',
@@ -39,6 +43,8 @@ export default function War() {
         <AddtoListButton />
         <BrindarReviewButton />
       </ButtonsWrapper>
+
+      <BeerFilter cervejas={cervejas} />
     </div >
   </div>
   )
