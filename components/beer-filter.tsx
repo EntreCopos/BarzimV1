@@ -2,9 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 import ListaDeCervejas from "./lists/lista-cervejas"
-
 
 interface Cerveja {
     id: number
@@ -22,52 +21,60 @@ export const BeerFilter: React.FC<{ cervejas: Cerveja[] }> = ({ cervejas }) => {
         setCervejasFiltradas(cervejas)
     }, [cervejas])
 
-    const ordenarCervejas = (parametroOrdenacao: keyof Cerveja) => {
-        const cervejasOrdenadas = [...cervejasFiltradas].sort((a, b) => {
-            const valorA = a[parametroOrdenacao]
-            const valorB = b[parametroOrdenacao]
-            return ordem === 'asc' ? valorA - valorB : valorB - valorA
-        })
-        console.log("Cervejas ordenadas:", cervejasOrdenadas)
+    const ordenarCervejas = (fnComparacao: (a: Cerveja, b: Cerveja) => number) => {
+        const cervejasOrdenadas = [...cervejasFiltradas].sort(fnComparacao)
         setCervejasFiltradas(cervejasOrdenadas)
         setOrdem(ordem === 'asc' ? 'desc' : 'asc')
     }
 
-    const createOrdenador = (parametroOrdenacao: keyof Cerveja) => () => {
-        ordenarCervejas(parametroOrdenacao)
+    const createOrdenador = (fnComparacao: (a: Cerveja, b: Cerveja) => number) => () => {
+        ordenarCervejas(fnComparacao)
     }
 
-    const ordenarPorNota = createOrdenador('notaMedia')
-    const ordenarPorIBU = createOrdenador('valorIBU')
-    const ordenarPorTeorAlcoolico = createOrdenador('teorAlcoolico')
-    const ordenarPorNome = createOrdenador('nomeCerveja')
+    const ordenarPorNota = createOrdenador((a, b) => {
+        const notaA = a.notaMedia ?? 0
+        const notaB = b.notaMedia ?? 0
+        return ordem === 'asc' ? notaA - notaB : notaB - notaA
+    })
 
-    return (<>
+    const ordenarPorIBU = createOrdenador((a, b) => {
+        return ordem === 'asc' ? a.valorIBU - b.valorIBU : b.valorIBU - a.valorIBU
+    })
 
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="default">Ordenar</Button>
-            </DropdownMenuTrigger>
+    const ordenarPorTeorAlcoolico = createOrdenador((a, b) => {
+        return ordem === 'asc' ? a.teorAlcoolico - b.teorAlcoolico : b.teorAlcoolico - a.teorAlcoolico
+    })
 
-            <DropdownMenuContent className="w-56">
-                <DropdownMenuItem onClick={ordenarPorNota}>
-                    <span>Por Nota</span>
-                </DropdownMenuItem>
+    const ordenarPorNome = createOrdenador((a, b) => {
+        return a.nomeCerveja.localeCompare(b.nomeCerveja)
+    })
 
-                <DropdownMenuItem onClick={ordenarPorIBU}>
-                    <span>Por Amargura</span>
-                </DropdownMenuItem>
+    return (
+        <>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="default">Ordenar</Button>
+                </DropdownMenuTrigger>
 
-                <DropdownMenuItem onClick={ordenarPorTeorAlcoolico}>
-                    <span>Por Teor Alcoólico</span>
-                </DropdownMenuItem>
+                <DropdownMenuContent className="w-56">
+                    <DropdownMenuItem onClick={ordenarPorNota}>
+                        <span>Por Nota</span>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem onClick={ordenarPorNome}>
-                    <span>Por Nome</span>
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
-        <ListaDeCervejas cervejas={cervejasFiltradas} />
-    </>
+                    <DropdownMenuItem onClick={ordenarPorIBU}>
+                        <span>Por Amargura</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem onClick={ordenarPorTeorAlcoolico}>
+                        <span>Por Teor Alcoólico</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem onClick={ordenarPorNome}>
+                        <span>Por Nome</span>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+            <ListaDeCervejas cervejas={cervejasFiltradas} />
+        </>
     )
 }

@@ -29,6 +29,8 @@ export default async function War() {
     tipoCerveja: 'Tipo da Cerveja'
   }
 
+  return (<div className='bg-black-radial-gradient bg-cover gap-10 flex justify-center items-center'>
+
   const evaluation = {
     nota: 2,
     caminhoImage: beerImage,
