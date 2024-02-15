@@ -5,11 +5,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import CarouselCard from './carousel-card/carousel-card'
-import imgIconCardAmigos from '../../assets/icons/frame (1).png'
-import imgIconCardRecomendacoes from '../../assets/icons/frame (2).png'
-import imgIconCardRecentes from '../../assets/icons/frame.png'
-import SectionTitle from '../title-sections/title-section'
+// import CarouselCard from './carousel-card/carousel-card'
+// import imgIconCardAmigos from '../../assets/icons/frame (1).png'
+// import imgIconCardRecomendacoes from '../../assets/icons/frame (2).png'
+// import imgIconCardRecentes from '../../assets/icons/frame.png'
+// import SectionTitle from '../title-sections/title-section'
 
 type Props = {
   children: ReactNode
@@ -18,9 +18,9 @@ type Props = {
 const CarouselWrapper = ({ children }: Props): JSX.Element => {
   return (
     <div className={styles.carousel}>
-      <Carousel>
-        <CarouselContent className="flex">
-          <CarouselItem className="flex space-x-1">{children}</CarouselItem>
+      <Carousel opts={{align: 'start', loop: true, dragFree: true}} className='w-full'>
+        <CarouselContent className='-ml-2 md:-ml-4'>
+          {children}
         </CarouselContent>
       </Carousel>
     </div>
