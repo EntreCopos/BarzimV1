@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import React, { useEffect, useState } from 'react'
+import ListaDeCervejas from "./lists/lista-cervejas"
 
 
 interface Cerveja {
@@ -41,7 +42,8 @@ export const BeerFilter: React.FC<{ cervejas: Cerveja[] }> = ({ cervejas }) => {
     const ordenarPorTeorAlcoolico = createOrdenador('teorAlcoolico')
     const ordenarPorNome = createOrdenador('nomeCerveja')
 
-    return (
+    return (<>
+
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="default">Ordenar</Button>
@@ -65,5 +67,7 @@ export const BeerFilter: React.FC<{ cervejas: Cerveja[] }> = ({ cervejas }) => {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
+        <ListaDeCervejas cervejas={cervejasFiltradas} />
+    </>
     )
 }
