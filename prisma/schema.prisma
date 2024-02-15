@@ -1,3 +1,20 @@
+enum UserRole {
+  ADMIN
+  USER
+  SUPPORT
+  GUEST
+}
+
+enum Genero {
+  MASCULINO
+  FEMININO
+  NAO_BINARIO
+  AGENERO
+  GENERO_FLUIDO
+  BIGENERO
+  OUTRO
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -57,9 +74,12 @@ model User {
   accounts              Account[]
   twoFactorConfirmation TwoFactorConfirmation?
   isPrivate             Boolean                @default(false)
+  genero                Genero
+  cep                   String?
   following             UserFollowing[]        @relation("Followers")
   followers             UserFollowing[]        @relation("Following")
   UserCerveja           UserCerveja[]
+  userBadges            UserBadges[]
 }
 
 //SOCIAL
@@ -73,13 +93,6 @@ model UserFollowing {
   createdAt   DateTime @default(now())
 
   @@unique([followerId, followingId])
-}
-
-enum UserRole {
-  ADMIN
-  USER
-  SUPPORT
-  GUEST
 }
 
 //EXTERNAL ACCOUNT OAUTH CONNECTION
@@ -101,20 +114,11 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-//CERVEJA RELATED FROM HERE
-model Marca {
-  id           Int    @id @default(autoincrement())
-  nome         String
-  cervejariaId Int
-  // cervejaria   Cervejaria @relation(fields: [cervejariaId], references: [id])
-  // cervejas     Cerveja[]
-}
-
 model Cervejaria {
   id            Int             @id @default(autoincrement())
   nome          String
+  createdAt     DateTime?
   logo          String?
-  // marcas   Marca[]
   cervejas      Cerveja[]
   CervejaShadow CervejaShadow[]
 }
@@ -123,51 +127,50 @@ model TipoCerveja {
   id            Int             @id @default(autoincrement())
   nome          String
   descricao     String
+  createdAt     DateTime?
   cervejas      Cerveja[]
   CervejaShadow CervejaShadow[]
 }
 
 model Cerveja {
-  id                      Int                   @id @default(autoincrement())
-  mainImage               String
-  nomeCerveja             String
-  descriCerveja           String?
-  teorAlcoolico           Float?
-  tempIdeal               String?
-  valorIBU                Float?
-  corpo                   String?
-  informacoesNutricionais Json?
-  tamanhosEmbalagem       String?
+  id                   Int           @id @default(autoincrement())
+  mainImage            String
+  nomeCerveja          String
+  descriCerveja        String?
+  teorAlcoolico        Float?
+  tempIdeal            String?
+  valorIBU             Float?
+  corpo                String?
   // marcaId                 Int
-  cervejariaId            Int
-  tipoCervejaId           Int
-  cervejaria              Cervejaria            @relation(fields: [cervejariaId], references: [id])
+  cervejariaId         Int
+  tipoCervejaId        Int
+  cervejaria           Cervejaria    @relation(fields: [cervejariaId], references: [id])
   // marca                   Marca                 @relation(fields: [marcaId], references: [id])
-  tipoCerveja             TipoCerveja           @relation(fields: [tipoCervejaId], references: [id])
-  notaMedia               Float?
-  ingredientesCerveja     String[]
-  harmonizacoesCerveja    String[]
-  UserCerveja             UserCerveja[]
+  tipoCerveja          TipoCerveja   @relation(fields: [tipoCervejaId], references: [id])
+  notaMedia            Float?
+  ingredientesCerveja  String[]
+  harmonizacoesCerveja String[]
+  createdAt            DateTime?
+  UserCerveja          UserCerveja[]
 }
 
 model CervejaShadow {
-  id                      Int         @id @default(autoincrement())
-  mainImage               String
-  nomeCerveja             String
-  descriCerveja           String?
-  teorAlcoolico           Float?
-  tempIdeal               String?
-  valorIBU                Float?
-  corpo                   String?
-  informacoesNutricionais Json?
-  tamanhosEmbalagem       String[]
-  cervejariaId            Int
-  tipoCervejaId           Int
-  cervejaria              Cervejaria  @relation(fields: [cervejariaId], references: [id])
-  tipoCerveja             TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
-  notaMedia               Float?
-  ingredientes            String[]
-  harmonizacoes           String[]
+  id            Int         @id @default(autoincrement())
+  mainImage     String
+  nomeCerveja   String
+  descriCerveja String?
+  teorAlcoolico Float?
+  tempIdeal     String?
+  valorIBU      Float?
+  corpo         String?
+  cervejariaId  Int
+  tipoCervejaId Int
+  cervejaria    Cervejaria  @relation(fields: [cervejariaId], references: [id])
+  tipoCerveja   TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
+  notaMedia     Float?
+  ingredientes  String[]
+  harmonizacoes String[]
+  createdAt     DateTime?
 }
 
 model UserCerveja {
@@ -182,6 +185,7 @@ model UserCerveja {
   nota        Float?
   imagens     String[]
   createdAt   DateTime?
+  localizacao String?
 
   usuario User    @relation(fields: [usuarioId], references: [id])
   cerveja Cerveja @relation(fields: [cervejaId], references: [id])
@@ -189,3 +193,21 @@ model UserCerveja {
   @@unique([usuarioId, cervejaId])
 }
 
+model Badges {
+  id         Int          @id @default(autoincrement())
+  name       String
+  image      String
+  userBadges UserBadges[]
+}
+
+model UserBadges {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  badgeId   Int
+  createdAt DateTime @default(now())
+
+  user  User   @relation(fields: [userId], references: [id])
+  badge Badges @relation(fields: [badgeId], references: [id])
+
+  @@unique([userId, badgeId])
+}
