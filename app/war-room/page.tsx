@@ -1,12 +1,17 @@
 import { AddtoListButton } from "@/components/buttons/add-to-list-button"
 import { BrindarButton } from "@/components/buttons/brindar-button"
 import { BrindarReviewButton } from "@/components/buttons/brindar-review-button"
+import CardReviews from "@/components/cards/CardReviews/card-review"
 import { LogoCervejaria } from "@/components/logos/logo-cervejarias"
+import StarReviews from "@/components/stars/stars-reviews"
+import StarReviewsMini from "@/components/stars/startsMini/stars-mini"
 import { IngredientsTag } from "@/components/tags/ingredients-tag"
+import { BeerName } from "@/components/titles/beer-name"
 import { BeerNameLarge } from "@/components/titles/beer-name-lg"
 import { BeerDescription } from "@/components/wrappers/beer-description-wrapper"
 import { BeerImage } from "@/components/wrappers/beer-image-wrapper"
 import { ButtonsWrapper } from "@/components/wrappers/buttons-wrapper"
+import beerImage from '../../components/assets/imgs-beers/Captura de Tela 2024-02-09 às 11.38 1.png'
 
 export default function War() {
 
@@ -14,6 +19,14 @@ export default function War() {
     nomeCerveja: 'Nome da Cerveja',
     tipoCerveja: 'Tipo da Cerveja'
   }
+
+  const evaluation = {
+    nota: 2,
+    caminhoImage: beerImage,
+    tipoCerveja: 'American Lager',
+    nomeCerveja: 'Budweiser',
+    id: 'some-unique-id',
+  };
 
   return (<div className='bg-black-radial-gradient bg-cover h-svh gap-10 flex justify-center items-center'>
 
@@ -38,7 +51,10 @@ export default function War() {
         <BrindarButton />
         <AddtoListButton />
         <BrindarReviewButton />
-      </ButtonsWrapper>
+        </ButtonsWrapper>
+        <div>
+        <CardReviews evaluation={evaluation} />
+        </div>
     </div >
   </div>
   )
