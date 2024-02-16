@@ -29,9 +29,9 @@ const LoginPage = () => {
         <BoxRegister
           headerTitle={headerTitle}
           headerSubtitle={headerSubtitle}
-          formComponent={<LoginForm />}
           showSocial={true}
           footer={footer}>
+          <LoginForm />
         </BoxRegister>
 
       </div>
