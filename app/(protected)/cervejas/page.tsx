@@ -1,31 +1,32 @@
 //import { cn } from '@/lib/utils'
 import { getAllCervejas, getCervejarias } from '@/data/cervejas'
-import Link from 'next/link'
-import ListaDeCervejas from '@/components/lists/lista-cervjas'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import CarouselWrapper from '@/components/dashboard/carousel/carousel'
 import CarouselCard from '@/components/dashboard/carousel/carousel-card/carousel-card'
+import { CarouselItem } from '@/components/ui/carousel'
+
+import { BeerFilter } from '@/components/beer-filter'
 
 export default async function Cervejas() {
   const listaDeCervejas = await getAllCervejas()
   const cervejarias = await getCervejarias()
+  const cervejariasDuplicada = cervejarias?.concat(cervejarias)
+
   if (!!listaDeCervejas?.length)
     return (
       <>
         <SectionTitle title='Por Cervejaria' />
         <CarouselWrapper>
-          {cervejarias?.map(cervejaria => {
+          {cervejariasDuplicada?.map((cervejaria, index) => {
             return (
-              <span key={cervejaria.id}>
 
-              <Link href={`/cervejarias/${cervejaria.id}`}>
-                <CarouselCard altText={cervejaria.nome} title={cervejaria.nome} imageSrc={cervejaria.logo}/>
-              </Link>
-              </span>
+              <CarouselItem key={index} className='basis-1/3'>
+                <CarouselCard link={cervejaria.id} altText={cervejaria.nome} title={cervejaria.nome} imageSrc={cervejaria.logo}/>
+              </CarouselItem>
             )
           })}
         </CarouselWrapper>
-      <ListaDeCervejas cervejas={listaDeCervejas} />
+        <BeerFilter cervejas={listaDeCervejas}/>
       </>
     )
   else throw new Error('faltou cerveja')
