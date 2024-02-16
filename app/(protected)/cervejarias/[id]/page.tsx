@@ -1,6 +1,7 @@
-import { getCervejasByCervejaria } from '@/data/cervejas'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
-import ListaDeCervejas from '@/components/lists/lista-cervjas'
+import { getCervejasByCervejaria } from '@/data/cervejas'
+
+import ListaDeCervejas from '@/components/lists/lista-cervejas'
 
 export default async function CervejariaByIdPage({
   params,
@@ -9,10 +10,10 @@ export default async function CervejariaByIdPage({
 }) {
   const cervejariaData = await getCervejasByCervejaria(params.id)
 
-  console.log('LOG NA PAGINA CERVEJARIA [LISTA CERVEJAS p CERVEJARIA]',cervejariaData?.CervejaShadow)
-  
+  console.log(cervejariaData?.CervejaShadow)
 
-  if(!!cervejariaData){
+
+  if (!!cervejariaData) {
     return (
       <>
         <SectionTitle title={`Cervejas de ${cervejariaData?.nome}`} />

@@ -8,7 +8,7 @@ const config = {
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
+    // "plugin:@typescript-eslint/stylistic-type-checked",
   ],
   rules: {
     // These opinionated rules are enabled in stylistic-type-checked above.
@@ -22,6 +22,7 @@ const config = {
     "@typescript-eslint/no-empty-interface": "warn",
     "@typescript-eslint/ban-ts-comment": "off", //porra chata do ****** se eu quero desabilitar o ts check, eu quero, me deixa porra
     "@typescript-eslint/prefer-optional-chain": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
 
     "@typescript-eslint/consistent-type-imports": [
       "warn",

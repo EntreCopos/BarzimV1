@@ -1,0 +1,15 @@
+
+.selectedTab {
+  color:var(--yellow-barzim);
+  border-bottom: 2px solid var(--yellow-barzim) 
+}
+
+.notSelectedTab{
+  color: var(  --tabs-background);
+  border-bottom: 2px solid var(  --tabs-background);
+}
+
+/* Hover effect for non-selected tabs */
+.notSelectedTab:hover {
+  color: var(  --slate-barzim); /* Adjust the hover color as needed */
+}

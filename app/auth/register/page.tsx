@@ -1,7 +1,7 @@
 import { Background } from '@/components/assets/background'
 import { RegisterForm } from '@/components/auth/register-form'
 import { BoxRegister } from '@/components/cards/box-register'
-import { Logo } from '@/components/logo'
+import { Logo } from '@/components/logos/logo-barzim'
 import Link from 'next/link'
 
 const RegisterPage = () => {

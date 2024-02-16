@@ -1,28 +1,31 @@
 import Link from 'next/link'
 import { BeerName } from '../titles/beer-name'
 import { CardHorizontalCerveja } from '../cards/card-horizontal-cerveja'
-import { type TypeListaDeCerveja } from '@/data/data'
+import { type TypeObjectCerveja } from '@/data/data'
 
-function ListaDeCervejas({ cervejas }: { cervejas: TypeListaDeCerveja }) {
+interface TItemCerveja {
+  id: number
+  nomeCerveja: string
+  mainImage: string | null
+  tipoCerveja: { nome: string}
+}
+
+const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({ cervejas }) => {
   return (
     <ul className="flex flex-col gap-4">
-      {cervejas.map(
-        ({
-          id,
-          nomeCerveja,
-          mainImage,
-          tipoCerveja: { nome: tipoCerveja },
-        }: {
-          id: number,
-          nomeCerveja: string,
-          mainImage: string,
-          tipoCerveja: {nome: string}
-        }) => (
-          <li style={{ display: 'contents' }} key={id}>
+      {cervejas.map((itemCerveja: TItemCerveja) : JSX.Element => {
+          const {
+            id,
+            nomeCerveja,
+            mainImage,
+            tipoCerveja: { nome: tipoCerveja },
+          } = itemCerveja as TItemCerveja
+          return (
+          <li key={id}>
             <Link href={`/cervejas/${id}`}>
               <CardHorizontalCerveja
                 nomeCerveja={nomeCerveja}
-                imagem={mainImage}
+                imagem={mainImage ?? 'undefined'}
               >
                 <BeerName
                   variant="dark-mode"
@@ -31,7 +34,7 @@ function ListaDeCervejas({ cervejas }: { cervejas: TypeListaDeCerveja }) {
               </CardHorizontalCerveja>
             </Link>
           </li>
-        )
+        )}
       )}
     </ul>
   )

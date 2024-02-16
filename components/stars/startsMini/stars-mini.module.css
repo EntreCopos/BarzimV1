@@ -1,0 +1,15 @@
+  
+  .starsContainer {
+    margin-bottom: 10px;
+  }
+  
+  .star {
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  
+  .star.gold {
+    color: gold;
+  }
+  

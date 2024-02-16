@@ -17,9 +17,8 @@ interface AgeVerifFormData {
   year: number
 }
 
-interface TypeListaDeCerveja {
-  map(arg0: ({ id, nomeCerveja, mainImage, tipoCerveja: { nome: tipoCerveja }, }: { id: number; nomeCerveja: string; mainImage: string; tipoCerveja: { nome: string } }) => import("react").JSX.Element): import("react").ReactNode
-  id: number
+interface TypeObjectCerveja {
+  id: number;
   mainImage: string | null
   nomeCerveja: string
   descriCerveja: string | null
@@ -27,13 +26,12 @@ interface TypeListaDeCerveja {
   tempIdeal: string | null
   valorIBU: number | null
   corpo: string | null
-  informacoesNutricionais: string[] | null
-  tamanhosEmbalagem: string[] | null
+  tamanhosEmbalagem: string[]
   cervejariaId: number
   tipoCervejaId: number
   notaMedia: number | null
-  ingredientes: string[] | null
-  harmonizacoes: string[] | null
+  ingredientes: string[]
+  harmonizacoes: string[]
   tipoCerveja: {
     id: number
     nome: string
@@ -41,4 +39,4 @@ interface TypeListaDeCerveja {
   }
 }
 
-export { type CervejaData, type AgeVerifFormData, type TypeListaDeCerveja }
+export { type CervejaData, type AgeVerifFormData, type TypeObjectCerveja }
