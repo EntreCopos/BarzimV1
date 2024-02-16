@@ -12,7 +12,7 @@ export const AddImageButton = () => {
     return (
         <div className="flex gap-[1px] text-[#CCCCCC]">
             <button
-                className="bg-[#2D2D2D] bg-opacity-65 rounded-l-lg flex items-center justify-center py-2 px-4"
+                className="bg-[#2D2D2D] bg-opacity-65 rounded-l-lg flex items-center justify-center py-3 px-4"
             >
                 <FaImage />
                 <input
