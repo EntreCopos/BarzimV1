@@ -27,6 +27,8 @@
     "next": "14.0.4",
     "next-auth": "^5.0.0-beta.4",
     "prop-types": "^15.8.1",
+    "posthog-js": "^1.105.9",
+    "posthog-node": "^3.6.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
