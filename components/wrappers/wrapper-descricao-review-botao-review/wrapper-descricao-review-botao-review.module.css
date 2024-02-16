@@ -1,0 +1,9 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.5rem;
+  }
+  
+  /* Adicione mais estilos conforme necessário para personalizar o layout */
+  
