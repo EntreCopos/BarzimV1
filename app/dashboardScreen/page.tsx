@@ -6,7 +6,10 @@ import ListFindings from '@/components/dashboard/list-where-you-find/list-where-
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas';
 import imgTest from '../../components/assets/icons/designer.png'
 import { AddImageButton } from '@/components/buttons/add-image-review-button';
-import WrapperReviewImage from '@/components/wrappers/wrapper-review-image/wrapper-review-image';
+import SendReviewButton from '@/components/buttons/send-review-button/send-review-button';
+import { TextareaReview } from '@/components/ui/textareaReview';
+import WrapperDescricaoReviewBotaoReview from '@/components/wrappers/wrapper-descricao-review-botao-review/wrapper-descricao-review-botao-review';
+
 
 const DashboardPage: React.FC = () => {
 
@@ -16,7 +19,8 @@ const DashboardPage: React.FC = () => {
       <Carousel />
       <BeersCarousel />
       <ListFindings />
-      <WrapperReviewImage/>
+      <WrapperDescricaoReviewBotaoReview />
+
     </div>
   );
 };
