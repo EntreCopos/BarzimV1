@@ -1,0 +1,9 @@
+.wrapper {
+    display: flex;
+    padding: 2rem; /* Adicione o espaçamento interno conforme necessário */
+    border-radius: var(--radius); /* Adicione bordas arredondadas conforme necessário */
+    align-items: center; /* Centraliza os itens verticalmente */
+    height: 20px; /* Altura de 20px */
+    width: 353px; /* Largura de 353px */
+    justify-content: space-between;
+  }

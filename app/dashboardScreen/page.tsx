@@ -5,6 +5,8 @@ import BeersCarousel from '@/components/dashboard/beers-carousel/beers-carousel'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find';
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas';
 import imgTest from '../../components/assets/icons/designer.png'
+import { AddImageButton } from '@/components/buttons/add-image-review-button';
+import WrapperReviewImage from '@/components/wrappers/wrapper-review-image/wrapper-review-image';
 
 const DashboardPage: React.FC = () => {
 
@@ -14,6 +16,7 @@ const DashboardPage: React.FC = () => {
       <Carousel />
       <BeersCarousel />
       <ListFindings />
+      <WrapperReviewImage/>
     </div>
   );
 };
