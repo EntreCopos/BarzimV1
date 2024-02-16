@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Roboto } from 'next/font/google'
+import { PHProvider } from './providers'
+import dynamic from 'next/dynamic'
 const font = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
+})
+
+
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
+  ssr: false,
 })
 
 export const metadata: Metadata = {
@@ -19,7 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={font.className}>{children}</body>
+      <PHProvider>
+        <body className={font.className}>
+          <PostHogPageView />
+          {children}
+        </body>
+      </PHProvider>
     </html>
   )
 }

@@ -19,7 +19,7 @@ const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({ cervejas
             nomeCerveja,
             mainImage,
             tipoCerveja: { nome: tipoCerveja },
-          } = itemCerveja as TItemCerveja
+          } = itemCerveja
           return (
           <li key={id}>
             <Link href={`/cervejas/${id}`}>

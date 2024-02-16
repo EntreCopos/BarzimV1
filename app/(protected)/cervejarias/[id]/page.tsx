@@ -16,7 +16,7 @@ export default async function CervejariaByIdPage({
   if (!!cervejariaData) {
     return (
       <>
-        <SectionTitle title={`Cervejas da ${cervejariaData?.nome}`} />
+        <SectionTitle title={`Cervejas de ${cervejariaData?.nome}`} />
         <ListaDeCervejas cervejas={cervejariaData.CervejaShadow} />
       </>
     )

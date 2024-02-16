@@ -25,6 +25,7 @@ export default async function Cervejas() {
               </CarouselItem>
             )
           })}
+
         </CarouselWrapper>
         <BeerFilter cervejas={listaDeCervejas}/>
       </>

@@ -13,6 +13,7 @@ enum Genero {
   GENERO_FLUIDO
   BIGENERO
   OUTRO
+  N_INFORMADO
 }
 
 generator client {
@@ -74,7 +75,7 @@ model User {
   accounts              Account[]
   twoFactorConfirmation TwoFactorConfirmation?
   isPrivate             Boolean                @default(false)
-  genero                Genero
+  genero                Genero?
   cep                   String?
   following             UserFollowing[]        @relation("Followers")
   followers             UserFollowing[]        @relation("Following")

@@ -15,7 +15,8 @@ export const getAllCervejas = async () => {
 
 export const getCervejarias = async () => {
   try {
-    return await db.cervejaria.findMany()
+    const cervejarias = await db.cervejaria.findMany() 
+    return cervejarias
   } catch (err) {
     console.error(err)
     return null

@@ -1,4 +1,4 @@
-import { TypeObjectCerveja } from '@/data/data';
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 // data.d.ts
 
 interface CervejaData {
@@ -35,7 +35,7 @@ interface TypeObjectCerveja {
   tipoCerveja: {
     id: number
     nome: string
-    descricao: string
+    descricao: string | null
   }
 }
 
