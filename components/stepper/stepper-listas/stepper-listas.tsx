@@ -2,56 +2,54 @@
 
 import { useRef, useEffect, Fragment } from 'react'
 import { Tab } from '@headlessui/react'
-import { Caveat } from 'next/font/google'
 import styles from './stepper-lista.module.css'
-
-const caveat = Caveat({
-    subsets: ['latin'],
-    variable: '--font-caveat',
-    display: 'swap'
-})
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface Tab {
-    title: string
-    tag: string
-    excerpt: string
-    link: string
+  title: string
+  link: string
 }
 
 export default function UnconventionalTabs({ tabs }: { tabs: Tab[] }) {
+  const tabsRef = useRef<HTMLDivElement>(null)
 
-    const tabsRef = useRef<HTMLDivElement>(null)
+  const heightFix = () => {
+    if (tabsRef.current && tabsRef.current.parentElement)
+      tabsRef.current.parentElement.style.height = `${tabsRef.current.clientHeight}px`
+  }
 
-    const heightFix = () => {
-        if (tabsRef.current && tabsRef.current.parentElement) tabsRef.current.parentElement.style.height = `${tabsRef.current.clientHeight}px`
-    }
+  useEffect(() => {
+    heightFix()
+  }, [])
 
-    useEffect(() => {
-        heightFix()
-    }, [])
+  const fullCurrPath = usePathname()
 
-    return (
-        <Tab.Group>
-            {({ selectedIndex }) => (
-                <div className={`${caveat.variable}`}>
-                    {/* Buttons */}
-                    <div className="flex justify-center">
-                        <Tab.List className={`max-[480px]:max-w-[180px] inline-flex flex-wrap justify-center mb-8 min-[480px]:mb-12`}>
-                            {tabs.map((tab, index) => (
-                                <Tab key={index} as={Fragment}>
-                                    <button
-                                        className={`flex-1 text-sm font-medium h-8 px-4 rounded-none whitespace-nowrap focus-visible:outline-none ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-indigo-300 transition-colors duration-150 ease-in-out ${selectedIndex === index
-                                                ? styles.selectedTab
-                                                : `${styles.notSelectedTab} hover:${styles.notSelectedTab}`
-                                            }`}>
-                                        {tab.title}
-                                    </button>
-                                </Tab>
-                            ))}
-                        </Tab.List>
-                    </div>
+  const currPath = fullCurrPath.split('/view_')[0]
+
+  return (
+    <Tab.Group>
+      {({ selectedIndex }) => (
+          <Tab.List
+            className={`mb-8 pt-4 inline-flex w-full flex-wrap justify-center`}
+          >
+            {tabs.map((tab, index) => (
+              <Tab key={index} as={Fragment}>
+                <Link style={{display: 'contents'}} href={currPath + tab.link}>
+                <div
+                  className={`text-center ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-indigo-300 h-8 flex-1 whitespace-nowrap rounded-none px-4 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none ${
+                    selectedIndex === index
+                      ? styles.selectedTab
+                      : `${styles.notSelectedTab} hover:${styles.notSelectedTab}`
+                  }`}
+                >
+                  {tab.title}
                 </div>
-            )}
-        </Tab.Group>
-    );
+                </Link>
+              </Tab>
+            ))}
+          </Tab.List>
+      )}
+    </Tab.Group>
+  )
 }

@@ -29,8 +29,6 @@ export default async function War() {
     tipoCerveja: 'Tipo da Cerveja'
   }
 
-  return (<div className='bg-black-radial-gradient bg-cover gap-10 flex justify-center items-center'>
-
   const evaluation = {
     nota: 2,
     caminhoImage: beerImage,
@@ -41,17 +39,18 @@ export default async function War() {
 
   const tabsData = [
     {
+      title: 'Feed',
+      link: '/feed',
+    },
+    {
       title: 'Já Bebi',
-      tag: 'Tag 1',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '/tab1',
+      link: '/bebi',
     },
     {
       title: 'Vou Beber',
-      tag: 'Tag 1',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '/tab1',
-    }]
+      link: '/voubeber',
+    }
+  ]
 
 
   return (
@@ -71,7 +70,7 @@ export default async function War() {
       </div>
 
       <ButtonsWrapper>
-        <BrindarButton />
+        <BrindarButton onClick={console.log('clicouuuuu')} />
         <AddtoListButton />
       </ButtonsWrapper>
 
@@ -87,10 +86,10 @@ export default async function War() {
         <StarReviewsMini nota={2} />
         <ReviewDescription description="esperava mais. Não que seja ruim, mas o sabor não me cativou. Faltou algo, sabe? Por isso, dou nota 2. Há espaço para evolução." />
         <BrindarReviewButton />
-         </ReviewWrapper>
+        </ReviewWrapper>
       
       
-         <UnconventionalTabs tabs={tabsData} />
+         <UnconventionalTabs className="w-full" tabs={tabsData} />
     </div >
     </div>
   )

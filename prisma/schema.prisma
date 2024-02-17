@@ -67,6 +67,8 @@ model User {
   email                 String?                @unique
   emailVerified         DateTime?
   image                 String?
+  bio                   String                 @default("Esse usuário misterioso ainda não escreveu uma bio")
+  link                  String?
   password              String?
   role                  UserRole               @default(USER)
   isTwoFactorEnabled    Boolean                @default(false)

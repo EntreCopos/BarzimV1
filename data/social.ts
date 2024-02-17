@@ -83,7 +83,11 @@ export const getUserMetrics = async (userName: string) => {
   const userFollowersCount = await countUserFollowers(userId)
   const avaliacaoUserCount = await countUserAvaliacoes(userId)
   
-  return { userFollowingsCount, userFollowersCount, avaliacaoUserCount }
+  return {
+    avaliacaoUserCount, 
+    userFollowingsCount, 
+    userFollowersCount
+  }
 }
 
 export const getUserFollowersList = async (userName: string) => {
