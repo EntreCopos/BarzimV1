@@ -81,6 +81,7 @@ model User {
   followers             UserFollowing[]        @relation("Following")
   UserCerveja           UserCerveja[]
   userBadges            UserBadges[]
+  createdAt             DateTime               @default(now())
 }
 
 //SOCIAL
@@ -151,7 +152,7 @@ model Cerveja {
   notaMedia            Float?
   ingredientesCerveja  String[]
   harmonizacoesCerveja String[]
-  createdAt            DateTime?
+  createdAt            DateTime?     @default(now())
   UserCerveja          UserCerveja[]
 }
 
@@ -185,7 +186,7 @@ model UserCerveja {
   reviewLikes Int?      @default(0)
   nota        Float?
   imagens     String[]
-  createdAt   DateTime?
+  createdAt   DateTime  @default(now())
   localizacao String?
 
   usuario User    @relation(fields: [usuarioId], references: [id])

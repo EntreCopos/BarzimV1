@@ -39,38 +39,94 @@ export const getUserIdByUsername = async (username: string) =>{
     select: {
       id: true,
     },
-  })
-  return userId
+  }) 
+  return userId?.id as string
 }
 
-export const countUserFollowers = async (userName: string) => {
-  const userId = await getUserIdByUsername(userName)  
+export const countUserFollowers = async (userId: string) => {
   const userFollowersNumber = await db.userFollowing.count({
     where: {
       followingId: {
-        equals: userId?.id as unknown as string
+        equals: userId
       },
     },
   })
   return userFollowersNumber
 }
 
-export const countUserFollowing = async (userName: string) => {
-  const userId = await getUserIdByUsername(userName)  
+export const countUserFollowing = async (userId: string) => {
   const userFollowingsNumber = await db.userFollowing.count({
     where: {
       followerId: {
-        equals: userId?.id as unknown as string
+        equals: userId
       },
     },
   })
   return userFollowingsNumber
 }
 
+export const countUserAvaliacoes = async (userId: string) => {
+  return await db.userCerveja.count({
+    where: {
+      usuarioId: userId,
+      AND :{
+        nota: { not: null}
+      }
+    }
+  })
+  
+}
+
 export const getUserMetrics = async (userName: string) => {
   const userId = await getUserIdByUsername(userName)  
-  const userFollowingsNumber = await countUserFollowing(userId?.id as unknown as string)
-  const userFollowersNumber = await countUserFollowers(userId?.id as unknown as string)
+  const userFollowingsCount = await countUserFollowing(userId)
+  const userFollowersCount = await countUserFollowers(userId)
+  const avaliacaoUserCount = await countUserAvaliacoes(userId)
   
-  return { userFollowersNumber, userFollowingsNumber}
+  return { userFollowingsCount, userFollowersCount, avaliacaoUserCount }
+}
+
+export const getUserFollowersList = async (userName: string) => {
+  const userId = await getUserIdByUsername(userName)
+  return await db.user.findUnique({
+    where: {
+      id: userId
+    },
+    select: {
+      followers: {
+        select: {
+          follower :{
+            select: {
+              name: true,
+              id: true,
+              username: true,
+              image: true
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
+export const getUsersFollowingList = async (username: string) => {
+  const userId = await getUserIdByUsername(username)
+  return await db.user.findUnique({
+    where: {
+      id: userId
+    },
+    select: {
+      following: {
+        select: {
+          following :{
+            select: {
+              name: true,
+              username: true,
+              image: true
+            }
+          }
+        }
+      }
+    }
+  })
 }
