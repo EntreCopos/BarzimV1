@@ -1,3 +1,5 @@
+"use client"
+
 import AvatarReview from "@/components/avatar/avatar-review/avatar-review"
 import { AddImageButton } from "@/components/buttons/add-image-review-button"
 import { AddtoListButton } from "@/components/buttons/add-to-list-button"
@@ -5,29 +7,26 @@ import { BrindarButton } from "@/components/buttons/brindar-button"
 import { BrindarReviewButton } from "@/components/buttons/brindar-review-button"
 import { LogoCervejaria } from "@/components/logos/logo-cervejarias"
 import ReviewHeader from "@/components/review/review-header/review-header"
+import ImageSlotsWrapper from "@/components/review/review-image/imageSlotsWrapper"
 import StarReviewsMini from "@/components/stars/startsMini/stars-mini"
 import { IngredientsTag } from "@/components/tags/ingredients-tag"
 import { BeerNameLarge } from "@/components/titles/beer-name-lg"
-import { Textarea } from "@/components/ui/textareaReview"
 import { BeerDescription } from "@/components/wrappers/beer-description-wrapper"
 import { BeerImage } from "@/components/wrappers/beer-image-wrapper"
 import { ButtonsWrapper } from "@/components/wrappers/buttons-wrapper"
 import { ReviewDescription } from "@/components/wrappers/review-description-wrapper"
 import { ReviewWrapper } from "@/components/wrappers/review-wrapper"
-import { getAllCervejas } from "@/data/cervejas"
 
-export default async function War() {
-
-  const cervejas = await getAllCervejas()
+export default function War() {
 
   const cerveja = {
     nomeCerveja: 'Nome da Cerveja',
     tipoCerveja: 'Tipo da Cerveja'
   }
 
+  const urlsImagens = ['https://res.cloudinary.com/dvprux49g/image/upload/v1707497542/cdoakfhhxiptlpyirglq.png', 'https://res.cloudinary.com/dvprux49g/image/upload/v1707497541/rgyjny9jonmdain64xez.png', 'https://res.cloudinary.com/dvprux49g/image/upload/v1707497540/idgkz9hx0wgxekmcvqxp.png']
+
   return (<div className='bg-black-radial-gradient min-h-svh bg-cover gap-10 flex justify-center items-center backdrop-blur-5'>
-
-
 
     <div className="flex flex-col gap-7">
       <div className="flex ">
@@ -63,7 +62,9 @@ export default async function War() {
 
       <AddImageButton />
 
-      <Textarea />
+      <ImageSlotsWrapper />
+      <ImageSlotsWrapper imageUrls={urlsImagens} />
+      
     </div >
   </div>
   )
