@@ -31,9 +31,9 @@ const RegisterPage = () => {
         <BoxRegister
           headerTitle={headerTitle}
           headerSubtitle={headerSubtitle}
-          formComponent={<RegisterForm />}
           showSocial={true}
           footer={footer}>
+          <RegisterForm />
         </BoxRegister>
 
       </div>

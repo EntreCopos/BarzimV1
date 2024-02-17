@@ -32,13 +32,13 @@ export default async function AgeVerificationPage() {
           <BoxRegister
             headerTitle={headerTitle}
             headerSubtitle={headerSubtitle}
-            formComponent={<AgeVerificationForm />}
             showSocial={false}
             footer={footer}>
+            <AgeVerificationForm />
           </BoxRegister>
 
         </div>
-      </Background>
-    </div>
+      </Background >
+    </div >
   )
 }
