@@ -1,0 +1,9 @@
+.reviewLabel {
+    color: var(--marfim-barzim);
+  }
+  
+  .beerName {
+    color:  var(--yellow-barzim);
+    font-weight: bold;
+  }
+  
