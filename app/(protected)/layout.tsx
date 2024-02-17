@@ -14,23 +14,22 @@ export default async function ProtectedLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body style={{backgroundColor: 'var(--deep-vermillo)', minHeight: '100svh'}}>
-        <MobileScreenDefaulWrapper>
-          <NavWrapper/>
-          <InnerContentWrapper>
-            {children}
-          </InnerContentWrapper>
-        </MobileScreenDefaulWrapper>
-      </body>
-    </html>
+
+      <MobileScreenDefaulWrapper>
+        <NavWrapper />
+        {children}
+      </MobileScreenDefaulWrapper>
   )
 }
 
-const MobileScreenDefaulWrapper = ({children}: {children: React.ReactNode}) => {
-  return <section className="md:mx-auto w-full md:max-w-[480px] min-h-screen bg-black-radial-gradient flex flex-col" >{children}</section>
-}
-
-const InnerContentWrapper = ({children}: {children: React.ReactNode}) => {
-  return <section className='py-6 px-4 w-full h-full'>{children}</section>
+const MobileScreenDefaulWrapper = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => {
+  return (
+    <div className="flex min-h-screen w-full flex-col bg-black-radial-gradient md:mx-auto md:max-w-[480px]">
+      {children}
+    </div>
+  )
 }

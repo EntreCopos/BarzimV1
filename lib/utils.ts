@@ -10,3 +10,8 @@ export function firstTwoLetters(name: string | undefined | null): string {
 
   return name.substring(0, 2).toUpperCase()
 }
+
+export function sanitizeUserLink(src: string):string {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+  return src.split('://')[1] as string
+}

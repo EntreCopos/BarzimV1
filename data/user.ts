@@ -27,6 +27,8 @@ export const getUserByUsername = async (username: string) => {
         id: true,
         name: true,
         image: true,
+        bio: true,
+        link: true,
         username: true,
         followers: true,
         following: true,

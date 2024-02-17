@@ -3,6 +3,7 @@ import './globals.css'
 import { Roboto } from 'next/font/google'
 import { PHProvider } from './providers'
 import dynamic from 'next/dynamic'
+import { cn } from '@/lib/utils'
 const font = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={font.className}>
+        <body className={cn('bg-deep-vermillo w-full min-h-screen', font.className)}>
           <PostHogPageView />
           {children}
         </body>
