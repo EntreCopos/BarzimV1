@@ -6,15 +6,9 @@ import { cn } from '@/lib/utils'
 import { isFollowing, handleRelationship } from '@/actions/social'
 import { revalidatePath } from 'next/cache'
 import { getUserMetrics } from '@/data/social'
-import {
-  getCervejaAvaliacoes,
-  getUserCervejaFavoritas,
-  getUserCerverjasQueroBeber,
-} from '@/data/avaliacao'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
-
-import styles from './user_page.module.css'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
+import styles from './user_page.module.css'
 
 enum SocialLabels {
   avaliacaoUserCount = 'Avaliações',
@@ -22,53 +16,30 @@ enum SocialLabels {
   userFollowersCount = 'Seguidores',
 }
 
+interface Metrics {
+  [key: string]: number
+}
+
 const tabsData = [
-  {
-    title: 'Feed',
-    link: '',
-  },
-  {
-    title: 'Já Bebi',
-    link: '/view_jabebi',
-  },
-  {
-    title: 'Vou Beber',
-    link: '/view_querobeber',
-  },
+  { title: 'Feed', link: '' },
+  { title: 'Já Bebi', link: '/view_jabebi' },
+  { title: 'Quero Beber', link: '/view_querobeber' },
 ]
 
-const defaultAvatarIcon =
-  'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'
-
 const UserPageLayout = async ({
-  children, params,
+  children,
+  params,
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
   params: { username: string }
 }) => {
+  
   const session = await auth()
-
   if (!session) throw new Error('session messed up')
 
   const myId = session?.user.id
   const user = await getUserByUsername(params.username)
   const metrics: Metrics = await getUserMetrics(params.username)
-
-  interface Metrics {
-    [key: string]: number
-  }
-
-  interface SocialLabels {
-    [key: string]: string
-  }
-
-  const avaliacoes = await getCervejaAvaliacoes()
-
-  const favoritasUser = await getUserCervejaFavoritas('elianoliveira234647')
-  const queroBeberUser = await getUserCerverjasQueroBeber('elianoliveira234647')
-
-  console.log('user metrics: ', { metrics })
-  console.log({ user })
 
   //ok, tratamento melhor, com esse throw error aqui, deve ser invocada a pagina error
   //precisa ser criada ainda
