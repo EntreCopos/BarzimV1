@@ -62,5 +62,14 @@ export interface CervejaDetails {
   corpo: { key: string; value: string | null }
 }
 
+export interface CervejariaBreadcrumb {
+  nome: string;
+  path: number; 
+}
+
+export interface CervejaBreadcrumbs {
+  cervejaria: CervejariaBreadcrumb;
+  nome: string;
+}
 
 export { type CervejaData, type AgeVerifFormData, type TypeObjectCerveja}
