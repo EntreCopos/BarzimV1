@@ -20,6 +20,7 @@
   }
   
   .detailRow {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: 1rem;

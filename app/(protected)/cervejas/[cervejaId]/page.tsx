@@ -57,10 +57,7 @@ export default async function Cerveja({
         <section className="overflow-hidden bg-deep-black object-cover">
           <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
-          <div
-            style={{ maxHeight: 280 }}
-            className="flex items-center justify-center gap-4"
-          >
+          <div className="flex max-h-[280px] items-center justify-center gap-4">
             <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
             <div className="flex flex-col gap-2">
@@ -79,14 +76,10 @@ export default async function Cerveja({
         {cerveja.descriCerveja && (
           <BeerDescription description={cerveja.descriCerveja} />
         )}
-        <DetalhesCerveja cervejaDetails={cervejaDetails}/>
-        {/* 
-      <ButtonsWrapper>
-        <BrindarButton />
-        <AddtoListButton />
-      </ButtonsWrapper>
-
-      <div className=" flex gap-2">
+        <DetalhesCerveja cervejaDetails={cervejaDetails} />
+        
+        {/*
+      <div className="flex gap-2">
         <IngredientsTag label="Água" />
         <IngredientsTag label="Malte" />
         <IngredientsTag label="Lúpulo" />
@@ -99,11 +92,7 @@ export default async function Cerveja({
         <ReviewDescription description="esperava mais. Não que seja ruim, mas o sabor não me cativou. Faltou algo, sabe? Por isso, dou nota 2. Há espaço para evolução." />
         <BrindarReviewButton />
       </ReviewWrapper>
-
-      <AddImageButton />
-
-      <ImageSlotsWrapper />
-      <ImageSlotsWrapper imageUrls={urlsImagens} /> */}
+       */}
       </div>
     </>
   )
