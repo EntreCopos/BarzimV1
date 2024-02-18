@@ -13,9 +13,11 @@ import { IngredientsTag } from "@/components/tags/ingredients-tag"
 import { BeerNameLarge } from "@/components/titles/beer-name-lg"
 import { BeerDescription } from "@/components/wrappers/beer-description-wrapper"
 import { BeerImage } from "@/components/wrappers/beer-image-wrapper"
+import BoxReview from "@/components/wrappers/box-review/box-review"
 import { ButtonsWrapper } from "@/components/wrappers/buttons-wrapper"
 import { ReviewDescription } from "@/components/wrappers/review-description-wrapper"
 import { ReviewWrapper } from "@/components/wrappers/review-wrapper"
+
 
 export default function War() {
 
@@ -66,6 +68,8 @@ export default function War() {
 
       <ImageSlotsWrapper />
       <ImageSlotsWrapper imageUrls={urlsImagens} />
+
+      <BoxReview beerName="Budweiser" urlsImagens={urlsImagens}/>
       
     </div >
   </div>
