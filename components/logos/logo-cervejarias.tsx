@@ -1,13 +1,19 @@
-import Image, { type StaticImageData } from "next/image"
+import Image from 'next/image'
 
 interface LogoProps {
-    src: string | StaticImageData
+  src: string | null
 }
 
 export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
+  if (src) {
     return (
-        <Image src={src} width={70} height={70} alt="Logo cervejaria - Barzim" className="object-cover">
-            
-        </Image>
+      <Image
+        src={src}
+        width={70}
+        height={70}
+        alt="Logo cervejaria - Barzim"
+        className="object-cover"
+      ></Image>
     )
+  }
 }

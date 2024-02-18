@@ -10,6 +10,7 @@ import StarReviews from '@/components/stars/stars-reviews'
 import { ButtonsWrapper } from '@/components/wrappers/buttons-wrapper'
 import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
+import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 
 interface Cervejaria {
   nome: string
@@ -19,6 +20,13 @@ interface Cervejaria {
 interface CervejaBreadcrumbs {
   cervejaria: Cervejaria
   nome: string
+}
+
+interface CervejaDetails {
+  teorAlcoolico: { key: string; value: number | null }
+  tempIdeal: { key: string; value: string | null }
+  valorIBU: { key: string; value: number | null }
+  corpo: { key: string; value: string | null }
 }
 
 // const cerveja = {
@@ -58,8 +66,7 @@ export default async function Cerveja({
   params: { cervejaId: string }
 }) {
   const cerveja = await getCervejaById(params.cervejaId)
-
-  if(!cerveja) throw new Error('sem cerveja')
+  if (!cerveja) throw new Error('sem cerveja')
 
   const cervejaHeading = {
     nomeCerveja: cerveja?.nomeCerveja,
@@ -74,17 +81,43 @@ export default async function Cerveja({
     nome: cerveja?.nomeCerveja,
   }
 
+  const cervejaDetails: CervejaDetails = {
+    teorAlcoolico: {
+      key: 'Teor Alcoólico',
+      value: cerveja.teorAlcoolico,
+    },
+    tempIdeal: {
+      key: 'Temperatura Ideal',
+      value: cerveja.tempIdeal,
+    },
+    valorIBU: {
+      key: 'Valor IBU',
+      value: cerveja.valorIBU,
+    },
+    corpo: {
+      key: 'Corpo',
+      value: cerveja.corpo,
+    },
+  }
+
   return (
     <>
       <div className="flex flex-col gap-4">
         <section className="overflow-hidden bg-deep-black object-cover">
           <Breadcrumbs cerveja={cervejaBreadcrumbs} />
-          <div style={{maxHeight: 280}} className="flex items-center justify-center gap-4">
+
+          <div
+            style={{ maxHeight: 280 }}
+            className="flex items-center justify-center gap-4"
+          >
             <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
+
             <div className="flex flex-col gap-2">
-              <LogoCervejaria src={cerveja.cervejaria.logo} />
+              <LogoCervejaria src={cerveja?.cervejaria.logo} />
               <BeerNameLarge variant="dark-mode" cerveja={cervejaHeading} />
+
               {cerveja.notaMedia && <StarReviews nota={cerveja.notaMedia} />}
+
               <ButtonsWrapper>
                 <BrindarButton />
                 <AddtoListButton />
@@ -92,9 +125,30 @@ export default async function Cerveja({
             </div>
           </div>
         </section>
-          {cerveja.descriCerveja && (
-            <BeerDescription description={cerveja.descriCerveja} />
+        {cerveja.descriCerveja && (
+          <BeerDescription description={cerveja.descriCerveja} />
+        )}
+        <DetalhesCerveja cervejaDetails={cervejaDetails}/>
+        {/* <div>
+          {Object.entries(cervejaDetails).map(
+            ([key, { key: attrKey, value }]) => {
+              console.log(value)
+              
+              //eslint-disable-next-line @typescript-eslint/no-unsafe-return
+              return (
+                value && (
+                  <div
+                    key={key}
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                  >
+                    <h3>{attrKey}</h3>
+                    <p>{value}</p>
+                  </div>
+                )
+              )
+            }
           )}
+        </div> */}
         {/* 
       <ButtonsWrapper>
         <BrindarButton />

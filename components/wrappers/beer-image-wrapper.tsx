@@ -8,16 +8,16 @@ interface ImageProps {
 
 export const BeerImage: React.FC<ImageProps> = ({
   src,
-  width = 150,
+  width = 130,
   alt = 'Imagem Cerveja',
 }) => {
   return (
     <div title={alt + ' no Barzim'} className='min-w-32 p-4 max-h-[320px] object-cover object-top'>
       <Image
-        style={{marginTop: -50, scale: ".9"}}
+        style={{marginTop: -40, scale: ".85"}}
         src={src}
         width={width}
-        height={120}
+        height={100}
         alt={alt + 'no Barzim'}
         className="object-cover"
       />
