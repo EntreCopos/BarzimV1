@@ -24,33 +24,11 @@ export default function War() {
     tipoCerveja: 'Tipo da Cerveja'
   }
 
-
-  const evaluation = {
-    nota: 2,
-    caminhoImage: beerImage,
-    tipoCerveja: 'American Lager',
-    nomeCerveja: 'Budweiser',
-    id: 'some-unique-id',
-  };
-
-  const tabsData = [
-    {
-      title: 'Feed',
-      link: '/feed',
-    },
-    {
-      title: 'Já Bebi',
-      link: '/bebi',
-    },
-    {
-      title: 'Vou Beber',
-      link: '/voubeber',
-    }
-  ]
-
   const urlsImagens = ['https://res.cloudinary.com/dvprux49g/image/upload/v1707497542/cdoakfhhxiptlpyirglq.png', 'https://res.cloudinary.com/dvprux49g/image/upload/v1707497541/rgyjny9jonmdain64xez.png', 'https://res.cloudinary.com/dvprux49g/image/upload/v1707497540/idgkz9hx0wgxekmcvqxp.png']
 
-  return (<div className='bg-black-radial-gradient min-h-svh bg-cover gap-10 flex justify-center items-center backdrop-blur-5'>
+  return (
+  <>
+  <div className='bg-black-radial-gradient min-h-svh bg-cover gap-10 flex justify-center items-center backdrop-blur-5'>
 
     <div className="flex flex-col gap-7">
       <div className="flex ">
@@ -66,7 +44,7 @@ export default function War() {
       </div>
 
       <ButtonsWrapper>
-        <BrindarButton onClick={console.log('clicouuuuu')} />
+        <BrindarButton />
         <AddtoListButton />
       </ButtonsWrapper>
 
@@ -82,18 +60,16 @@ export default function War() {
         <StarReviewsMini nota={2} />
         <ReviewDescription description="esperava mais. Não que seja ruim, mas o sabor não me cativou. Faltou algo, sabe? Por isso, dou nota 2. Há espaço para evolução." />
         <BrindarReviewButton />
-        </ReviewWrapper>
-      
-      
-         <UnconventionalTabs className="w-full" tabs={tabsData} />
-
       </ReviewWrapper>
 
       <AddImageButton />
 
       <ImageSlotsWrapper />
       <ImageSlotsWrapper imageUrls={urlsImagens} />
+      
     </div >
   </div>
+  
+  </>
   )
 }

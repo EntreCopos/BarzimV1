@@ -26,7 +26,6 @@ interface TypeObjectCerveja {
   tempIdeal: string | null
   valorIBU: number | null
   corpo: string | null
-  tamanhosEmbalagem: string[]
   cervejariaId: number
   tipoCervejaId: number
   notaMedia: number | null

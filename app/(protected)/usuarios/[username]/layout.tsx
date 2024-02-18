@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache'
 import { getUserMetrics } from '@/data/social'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
-import styles from './user_page.module.css'
+import styles from './layout.module.css'
 
 enum SocialLabels {
   avaliacaoUserCount = 'Avaliações',

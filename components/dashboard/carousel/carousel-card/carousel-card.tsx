@@ -8,7 +8,7 @@ interface CarouselCardProps {
   imageSrc: string | StaticImageData | null
   altText: string
   link: number | string
-  forceShowtext: boolean
+  forceShowtext?: boolean
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = ({
