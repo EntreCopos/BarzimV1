@@ -1,25 +1,16 @@
-import { BreadcrumbItem } from "./breadcrumb-item"
-import { BreadcrumbSeparator } from "./breadcrumb-separator"
+import { type CervejaBreadcrumbs } from '@/data/data'
+import { BreadcrumbItem } from './breadcrumb-item'
+import { BreadcrumbSeparator } from './breadcrumb-separator'
 
-interface CervejaInfo {
-    nomeCerveja: string
-    cervejaria: { nome: string }
-}
-
-interface BreadcrumbsProps {
-    cervejaInfo: CervejaInfo
-}
-
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ cervejaInfo }) => {
-    const { nomeCerveja, cervejaria } = cervejaInfo
-
-    return (
-        <div>
-            <BreadcrumbItem label="Cervejas" />
-            <BreadcrumbSeparator />
-            <BreadcrumbItem label={cervejaria.nome} />
-            <BreadcrumbSeparator />
-            <BreadcrumbItem label={nomeCerveja} />
-        </div>
-    )
+export const Breadcrumbs: React.FC<{cerveja: CervejaBreadcrumbs}> = ({cerveja}) => {
+  const {cervejaria} = cerveja
+  return (
+    <div style={{width: '100%', padding: '.5rem 2rem'}}>
+      <BreadcrumbItem path={'/cervejas'} label="Cervejas" />
+      <BreadcrumbSeparator />
+      <BreadcrumbItem path={`/cervejarias/${cervejaria.path}`} label={cervejaria.nome} />
+      <BreadcrumbSeparator />
+      <BreadcrumbItem label={cerveja.nome} />
+    </div>
+  )
 }

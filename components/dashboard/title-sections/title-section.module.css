@@ -5,11 +5,17 @@
   letter-spacing: var(--letter-spacing);
 }
 
+.titleSmall {
+  color: var(--slate-barzim);
+  margin-bottom: 10px;
+  font-size: .85rem;
+}
+
 .sectionTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: .6rem 0;
 }
 
 .buttonContainer {
