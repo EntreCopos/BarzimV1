@@ -16,7 +16,7 @@ const AvaliarCerveja = async({
   return (
     <>
     <div style={{color: '#fffeef'}}>Avaliando cerveja: {cerveja?.nomeCerveja}</div>
-    <AvaliacaoForm/>
+    <AvaliacaoForm idCerveja={params.cervejaId} idUser={myId} />
 
     </>
   )

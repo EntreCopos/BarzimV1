@@ -5,7 +5,7 @@ import { addReview } from '@/actions/add-review'
 import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 
-export const AvaliacaoForm: React.FC = () => {
+export const AvaliacaoForm: React.FC<{idCerveja: string, idUser: string}> = ({idCerveja, idUser}) => {
   const [rating, setRating] = useState<number>(0)
   const [reviewText, setReviewText] = useState<string>('')
   const [reviewPics, setReviewPics] = useState<string[]>([])
@@ -30,6 +30,8 @@ export const AvaliacaoForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData()
+    formData.append('idCerveja', idCerveja)
+    formData.append('idUser', idUser)
     formData.append('rating', String(rating))
     formData.append('reviewText', reviewText)
     reviewPics.forEach((pic) => {
