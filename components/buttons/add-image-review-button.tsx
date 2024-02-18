@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
+import { type ChangeEvent } from 'react'
 import { FaCamera, FaImage } from 'react-icons/fa'
 
-export const AddImageButton = ({handler}) => {
+interface ImageUpladBtn {
+  handler: (e?: ChangeEvent<HTMLInputElement>) => void
+
+}
+
+export const AddImageButton: React.FC<ImageUpladBtn> = ({handler}) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleImageStore = (e: React.ChangeEvent<HTMLInputElement>) => {
     // faz teu trampo ai andre kkkkkkkkk

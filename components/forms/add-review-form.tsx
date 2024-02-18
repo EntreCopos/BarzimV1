@@ -1,20 +1,19 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
-import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+/* eslint-disable @next/next/no-img-element */
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { addReview } from '@/actions/add-review'
 import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
-import { AddImageButton } from '../buttons/add-image-review-button'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 
-export type DeleteImageFromState = (index: number) => void
+interface AvaliacaoFormProps {
+}
 
-
-export const AvaliacaoForm = () => {
-  const [rating, setRating] = useState<string | null>(null)
+export const AvaliacaoForm: React.FC<AvaliacaoFormProps> = () => {
+  const [rating, setRating] = useState<number>(0) // Defina o tipo como number
   const [reviewText, setReviewText] = useState<string>('')
   const [reviewPics, setReviewPics] = useState<string[]>([])
 
-  function handleFileInput(e: ChangeEvent<HTMLInputElement>) {
+  const handleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
     const pics = files.map((file) => URL.createObjectURL(file))
     if (reviewPics.length + pics.length > 4) {
@@ -24,14 +23,17 @@ export const AvaliacaoForm = () => {
     }
   }
 
-  function removeImage(index: number){
-    setReviewPics(reviewPics.splice(index, 1))
-  }
+  // const removeImage: DeleteImageFromState = (index) => {
+  //   // Tipo DeleteImageFromState adicionado
+  //   const newReviewPics = [...reviewPics]
+  //   newReviewPics.splice(index, 1)
+  //   setReviewPics(newReviewPics)
+  // }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData()
-    formData.append('rating', rating || '')
+    formData.append('rating', String(rating)) // Converta para string, pois formData aceita apenas string
     formData.append('reviewText', reviewText)
     reviewPics.forEach((pic) => {
       formData.append('reviewPics', pic)
@@ -39,28 +41,18 @@ export const AvaliacaoForm = () => {
     await addReview(formData)
   }
 
-  const twInput = "flex w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+  const twInput =
+    'text-white text-opacity-60 bg-zinc-700 bg-opacity-60 border-black border-2 border-opacity-20 w-full h-fit p-3 rounded-md'
 
   return (
     <form className="flex flex-col gap-4 p-6" onSubmit={handleSubmit}>
-
-      <input
-        className={twInput}
-        placeholder="Onde você bebeu?"
-        type="text"
-        onChange={(e) => setRating(e.target.value)}
+      <WrapperReviewImage
+        ratingSetter={setRating}
+        nota={rating}
+        //@ts-expect-error ts esta reclamando da tipagem da funcao que captura o change
+        handler={handleFileInput}
       />
-      {/* <AddImageButton handler={handleFileInput} /> */}
-      {/* <input
-
-        onChange={(e) => handleFileInput(e)}
-        type="file"
-        name="images"
-        multiple
-      /> */}
-      <WrapperReviewImage handler={handleFileInput}/>
-      <ImageSlotsWrapper delete={removeImage} imageUrls={reviewPics} />
-      <input type="number" min={0} max={5} step={1} onChange={(e) => setRating(e.target.value)} name="rating" />
+      <ImageSlotsWrapper imageUrls={reviewPics} />
       <textarea
         className={twInput}
         placeholder="O que achou?"
