@@ -38,4 +38,29 @@ interface TypeObjectCerveja {
   }
 }
 
-export { type CervejaData, type AgeVerifFormData, type TypeObjectCerveja }
+export interface CervejaDetails {
+  teorAlcoolico: { key: string; value: number | null }
+  tempIdeal: { key: string; value: string | null }
+  valorIBU: { key: string; value: number | null }
+  corpo: { key: string; value: string | null }
+}
+
+export interface Cervejaria {
+  nome: string
+  path: number
+}
+
+export interface CervejaBreadcrumbs {
+  cervejaria: Cervejaria
+  nome: string
+}
+
+export interface CervejaDetails {
+  teorAlcoolico: { key: string; value: number | null }
+  tempIdeal: { key: string; value: string | null }
+  valorIBU: { key: string; value: number | null }
+  corpo: { key: string; value: string | null }
+}
+
+
+export { type CervejaData, type AgeVerifFormData, type TypeObjectCerveja}

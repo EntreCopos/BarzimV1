@@ -1,22 +1,5 @@
+import { type CervejaDetails } from '@/data/data'
 import styles from './detalhes-cervejas.module.css'
-
-interface DetalhesCervejaProps {
-  id: number
-}
-
-interface BeerDetails {
-  valorIBU: number
-  teorAlcoolico: string
-  corpo: string
-  temperaturaIdeal: string
-}
-
-interface CervejaDetails {
-  teorAlcoolico: { key: string; value: number | null }
-  tempIdeal: { key: string; value: string | null }
-  valorIBU: { key: string; value: number | null }
-  corpo: { key: string; value: string | null }
-}
 
 const DetalhesCerveja: React.FC<{cervejaDetails: CervejaDetails}> = ({ cervejaDetails }) => {
   if (!cervejaDetails) {

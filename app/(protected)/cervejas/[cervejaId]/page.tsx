@@ -3,62 +3,13 @@ import { BeerNameLarge } from '@/components/titles/beer-name-lg'
 import { BeerDescription } from '@/components/wrappers/beer-description-wrapper'
 import { BeerImage } from '@/components/wrappers/beer-image-wrapper'
 import { getCervejaById } from '@/data/cervejas'
-import Link from 'next/link'
-
 import { Breadcrumbs } from '@/components/tags/breadcrumbs'
 import StarReviews from '@/components/stars/stars-reviews'
 import { ButtonsWrapper } from '@/components/wrappers/buttons-wrapper'
 import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
-
-interface Cervejaria {
-  nome: string
-  path: number
-}
-
-interface CervejaBreadcrumbs {
-  cervejaria: Cervejaria
-  nome: string
-}
-
-interface CervejaDetails {
-  teorAlcoolico: { key: string; value: number | null }
-  tempIdeal: { key: string; value: string | null }
-  valorIBU: { key: string; value: number | null }
-  corpo: { key: string; value: string | null }
-}
-
-// const cerveja = {
-//   id: 18,
-//   mainImage:
-//     'https://res.cloudinary.com/dvprux49g/image/upload/v1707497535/z9kqfbfykazjnuso6w5r.png',
-//   nomeCerveja: 'Berrió do Piauí',
-//   descriCerveja:
-//     'Produzida e vendida somente no Piauí, ideal para aliviar o B-R-O-BRÓ sem fim do estado. Leva na receita caju plantado e colhido por pequenos produtores do estado, adquirido sem intermédios gerando renda para as regiões menos favorecidas e diminuindo o desperdício do insumo.',
-//   teorAlcoolico: 4.4,
-//   tempIdeal: '0-4 °C',
-//   valorIBU: 7,
-//   corpo: '(1)',
-//   cervejariaId: 1,
-//   tipoCervejaId: 1,
-//   notaMedia: 3,
-//   ingredientes: ['Lúpulo', 'Água', 'Malte', 'Milho', 'Suco de caju'],
-//   harmonizacoes: ['Paçoca', 'Arroz', 'Capote frito'],
-//   createdAt: null,
-//   tipoCerveja: {
-//     id: 1,
-//     nome: 'Premium American Lager',
-//     descricao: 'Estilo de cerveja de baixa fermentação e sabor refrescante.',
-//     createdAt: null,
-//   },
-//   cervejaria: {
-//     id: 1,
-//     nome: 'Ambev',
-//     createdAt: '2024-02-17T08:47:03.771Z',
-//     logo: 'https://res.cloudinary.com/barzimbeerapp/image/upload/v1708159138/logos_cervejarias/tlz1ifyzcbh5sbf7vmvw.png',
-//   },
-// }
+import { type CervejaBreadcrumbs, type CervejaDetails } from '@/data/data'
 
 export default async function Cerveja({
   params,
@@ -129,26 +80,6 @@ export default async function Cerveja({
           <BeerDescription description={cerveja.descriCerveja} />
         )}
         <DetalhesCerveja cervejaDetails={cervejaDetails}/>
-        {/* <div>
-          {Object.entries(cervejaDetails).map(
-            ([key, { key: attrKey, value }]) => {
-              console.log(value)
-              
-              //eslint-disable-next-line @typescript-eslint/no-unsafe-return
-              return (
-                value && (
-                  <div
-                    key={key}
-                    style={{ display: 'flex', justifyContent: 'space-between' }}
-                  >
-                    <h3>{attrKey}</h3>
-                    <p>{value}</p>
-                  </div>
-                )
-              )
-            }
-          )}
-        </div> */}
         {/* 
       <ButtonsWrapper>
         <BrindarButton />
