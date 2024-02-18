@@ -1,15 +1,12 @@
 'use client'
 /* eslint-disable @next/next/no-img-element */
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { type ChangeEvent, type FormEvent, useState } from 'react'
 import { addReview } from '@/actions/add-review'
 import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 
-interface AvaliacaoFormProps {
-}
-
-export const AvaliacaoForm: React.FC<AvaliacaoFormProps> = () => {
-  const [rating, setRating] = useState<number>(0) // Defina o tipo como number
+export const AvaliacaoForm: React.FC = () => {
+  const [rating, setRating] = useState<number>(0)
   const [reviewText, setReviewText] = useState<string>('')
   const [reviewPics, setReviewPics] = useState<string[]>([])
 
@@ -33,7 +30,7 @@ export const AvaliacaoForm: React.FC<AvaliacaoFormProps> = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData()
-    formData.append('rating', String(rating)) // Converta para string, pois formData aceita apenas string
+    formData.append('rating', String(rating))
     formData.append('reviewText', reviewText)
     reviewPics.forEach((pic) => {
       formData.append('reviewPics', pic)
