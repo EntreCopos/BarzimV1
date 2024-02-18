@@ -21,55 +21,57 @@ interface CervejaBreadcrumbs {
   nome: string
 }
 
-const cerveja = {
-  id: 18,
-  mainImage:
-    'https://res.cloudinary.com/dvprux49g/image/upload/v1707497535/z9kqfbfykazjnuso6w5r.png',
-  nomeCerveja: 'Berrió do Piauí',
-  descriCerveja:
-    'Produzida e vendida somente no Piauí, ideal para aliviar o B-R-O-BRÓ sem fim do estado. Leva na receita caju plantado e colhido por pequenos produtores do estado, adquirido sem intermédios gerando renda para as regiões menos favorecidas e diminuindo o desperdício do insumo.',
-  teorAlcoolico: 4.4,
-  tempIdeal: '0-4 °C',
-  valorIBU: 7,
-  corpo: '(1)',
-  cervejariaId: 1,
-  tipoCervejaId: 1,
-  notaMedia: 3,
-  ingredientes: ['Lúpulo', 'Água', 'Malte', 'Milho', 'Suco de caju'],
-  harmonizacoes: ['Paçoca', 'Arroz', 'Capote frito'],
-  createdAt: null,
-  tipoCerveja: {
-    id: 1,
-    nome: 'Premium American Lager',
-    descricao: 'Estilo de cerveja de baixa fermentação e sabor refrescante.',
-    createdAt: null,
-  },
-  cervejaria: {
-    id: 1,
-    nome: 'Ambev',
-    createdAt: '2024-02-17T08:47:03.771Z',
-    logo: 'https://res.cloudinary.com/barzimbeerapp/image/upload/v1708159138/logos_cervejarias/tlz1ifyzcbh5sbf7vmvw.png',
-  },
-}
+// const cerveja = {
+//   id: 18,
+//   mainImage:
+//     'https://res.cloudinary.com/dvprux49g/image/upload/v1707497535/z9kqfbfykazjnuso6w5r.png',
+//   nomeCerveja: 'Berrió do Piauí',
+//   descriCerveja:
+//     'Produzida e vendida somente no Piauí, ideal para aliviar o B-R-O-BRÓ sem fim do estado. Leva na receita caju plantado e colhido por pequenos produtores do estado, adquirido sem intermédios gerando renda para as regiões menos favorecidas e diminuindo o desperdício do insumo.',
+//   teorAlcoolico: 4.4,
+//   tempIdeal: '0-4 °C',
+//   valorIBU: 7,
+//   corpo: '(1)',
+//   cervejariaId: 1,
+//   tipoCervejaId: 1,
+//   notaMedia: 3,
+//   ingredientes: ['Lúpulo', 'Água', 'Malte', 'Milho', 'Suco de caju'],
+//   harmonizacoes: ['Paçoca', 'Arroz', 'Capote frito'],
+//   createdAt: null,
+//   tipoCerveja: {
+//     id: 1,
+//     nome: 'Premium American Lager',
+//     descricao: 'Estilo de cerveja de baixa fermentação e sabor refrescante.',
+//     createdAt: null,
+//   },
+//   cervejaria: {
+//     id: 1,
+//     nome: 'Ambev',
+//     createdAt: '2024-02-17T08:47:03.771Z',
+//     logo: 'https://res.cloudinary.com/barzimbeerapp/image/upload/v1708159138/logos_cervejarias/tlz1ifyzcbh5sbf7vmvw.png',
+//   },
+// }
 
 export default async function Cerveja({
   params,
 }: {
   params: { cervejaId: string }
 }) {
-  //const cerveja = await getCervejaById(params.cervejaId)
+  const cerveja = await getCervejaById(params.cervejaId)
+
+  if(!cerveja) throw new Error('sem cerveja')
 
   const cervejaHeading = {
-    nomeCerveja: cerveja.nomeCerveja,
-    tipoCerveja: cerveja.tipoCerveja.nome,
+    nomeCerveja: cerveja?.nomeCerveja,
+    tipoCerveja: cerveja?.tipoCerveja.nome,
   }
 
   const cervejaBreadcrumbs: CervejaBreadcrumbs = {
     cervejaria: {
-      nome: cerveja.cervejaria.nome,
-      path: cerveja.cervejaria.id,
+      nome: cerveja?.cervejaria.nome,
+      path: cerveja?.cervejaria.id,
     },
-    nome: cerveja.nomeCerveja,
+    nome: cerveja?.nomeCerveja,
   }
 
   return (
