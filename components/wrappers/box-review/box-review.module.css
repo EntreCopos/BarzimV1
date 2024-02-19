@@ -1,0 +1,22 @@
+.boxReviewContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 30px 30px 30px;
+  background-color: rgba(32, 32, 32, 0.9);
+  background-repeat: repeat;
+  color: white;
+  gap: 2rem;
+  position: relative;
+}
+
+.dragBar {
+  width: 40px;
+  height: 5px;
+  border-radius: 1000px;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: grab;
+  position: absolute;
+  top: 5%; /* Move para o topo */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza horizontalmente */
+}

@@ -17,6 +17,9 @@ const TextareaReview = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         ref={ref}
         {...props}
         maxLength={300}
+        style={{
+          backgroundColor: "rgb(46 46 46 / var(--tw-bg-opacity))"
+        }}
       />
     )
   }
@@ -24,3 +27,4 @@ const TextareaReview = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 TextareaReview.displayName = "Textarea"
 
 export { TextareaReview }
+
