@@ -5,7 +5,7 @@ import styles from './copos-review.module.css'
 
 interface CoposReviewsProps {
   nota: number
-  setNota: (nota: number) => void
+  setNota?: (nota: number) => void
 }
 
 const CoposReviews: React.FC<CoposReviewsProps> = ({ nota, setNota }) => {

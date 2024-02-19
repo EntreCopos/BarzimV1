@@ -67,8 +67,8 @@ export default async function Cerveja({
               {cerveja.notaMedia && <StarReviews nota={cerveja.notaMedia} />}
 
               <ButtonsWrapper>
-                <BrindarButton />
-                <AddtoListButton />
+                <BrindarButton id={params.cervejaId} />
+                {/* <AddtoListButton id={params.cervejaId} /> */}
               </ButtonsWrapper>
             </div>
           </div>

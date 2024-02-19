@@ -1,9 +1,8 @@
 import { auth } from '@/auth'
 import { AvaliacaoForm } from '@/components/forms/add-review-form'
+import { relUserCerv } from '@/data/avaliacao'
 import { getCervejaById } from '@/data/cervejas'
-import { db } from '@/lib/db'
-import { equal } from 'assert'
-import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 const AvaliarCerveja = async ({
   params,
@@ -17,25 +16,10 @@ const AvaliarCerveja = async ({
   const myId = session?.user.id
 
   //checa se usuario e cerveja ja possui rel
-  const relUserCerv = await db.userCerveja.findFirst({
-    where: {
-      cervejaId: +params.cervejaId,
-      AND: {
-        usuarioId: myId,
-      },
-    },
-  })
+  const isRelUserCerveja = await relUserCerv(myId, params.cervejaId)
 
-  if (!!relUserCerv)
-    return (
-      <div className="flex flex-col gap-2 text-center text-white p-6 justify-center">
-        <h1 className="text-3xl">Parece que você ja avaliou essa cerveja.</h1>
-        <p>Por enquanto não é possivel editar sua avaliação.</p>
-        <Link href={"/"}>
-          <span className="block p-6 bg-yellow-barzim text-black hover:bg-slate-300">Voltar ao início</span>
-        </Link>
-      </div>
-    )
+
+  if (!!isRelUserCerveja) redirect(`/cervejas/${params.cervejaId}/avaliou`)
   else
     return (
       <>

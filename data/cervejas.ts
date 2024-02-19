@@ -13,6 +13,17 @@ export const getAllCervejas = async () => {
   }
 }
 
+export const getCervejaNameById = async (id: string | number) => {
+  return await db.cervejaShadow.findUnique({
+    where: {
+      id: +id
+    },
+    select: {
+      nomeCerveja: true
+    }
+  })
+}
+
 export const getCervejarias = async () => {
   try {
     const cervejarias = await db.cervejaria.findMany() 
