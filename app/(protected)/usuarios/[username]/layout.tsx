@@ -38,11 +38,7 @@ const UserPageLayout = async ({
   if (!session) throw new Error('session messed up')
 
   const myId = session?.user.id as string
-
-  const session = await auth()
-  if (!session) throw new Error('session messed up')
-
-  const myId = session.user.id
+  
   const user = await getUserByUsername(params.username)
   const metrics: Metrics = await getUserMetrics(params.username)
 
