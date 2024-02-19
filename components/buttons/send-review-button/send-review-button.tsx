@@ -1,11 +1,10 @@
-
 import styles from './send-review-button.module.css';
 
-const SendReviewButton: React.FC = () => {
+const SendReviewButton: React.FC<({isSubmitting: boolean, onClick: () => Promise<void>})> = ({isSubmitting, onClick}) => {
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.button}>
-        Avaliar
+      <button disabled={isSubmitting} onClick={onClick} className={styles.button}>
+        {isSubmitting ? 'Enviando...' : 'Avaliar'}
       </button>
     </div>
   );

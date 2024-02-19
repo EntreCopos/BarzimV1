@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache'
 import { getUserMetrics } from '@/data/social'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
+import { RiUserUnfollowLine, RiUserFollowLine } from 'react-icons/ri'
 import styles from './layout.module.css'
 
 enum SocialLabels {
@@ -33,11 +34,10 @@ const UserPageLayout = async ({
   children: React.ReactNode
   params: { username: string }
 }) => {
-  
   const session = await auth()
   if (!session) throw new Error('session messed up')
 
-  const myId = session?.user.id
+  const myId = session.user.id
   const user = await getUserByUsername(params.username)
   const metrics: Metrics = await getUserMetrics(params.username)
 
@@ -95,12 +95,23 @@ const UserPageLayout = async ({
           <form
             action={async () => {
               'use server'
+              
               await handleRelationship(myId, user.id)
               revalidatePath('/')
             }}
           >
             <button type="submit" className={styles.followBtn}>
-              {relationship ? 'Deixar de seguir' : 'Seguir'}
+              {relationship ? (
+                <>
+                  <RiUserUnfollowLine />
+                  <span className={styles.labelBtn}>Deixar de seguir</span>
+                </>
+              ) : (
+                <>
+                  <RiUserFollowLine />
+                  <span className={styles.labelBtn}>Seguir</span>
+                </>
+              )}
             </button>
           </form>
         ) : (
