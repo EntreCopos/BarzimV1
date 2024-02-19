@@ -1,12 +1,12 @@
 import { db } from '@/lib/db'
 
 export const findRelationship = async (
-  followerId: string,
+  meuId: string,
   followingId: string
 ) => {
   return await db.userFollowing.findFirst({
     where: {
-      followerId,
+      followerId: meuId,
       followingId,
     },
   })
@@ -74,7 +74,6 @@ export const countUserAvaliacoes = async (userId: string) => {
       }
     }
   })
-  
 }
 
 export const getUserMetrics = async (userName: string) => {

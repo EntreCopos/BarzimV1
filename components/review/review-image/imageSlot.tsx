@@ -12,7 +12,7 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl }) => {
   return (
     <div className="flex items-center space-x-1">
       {imageUrl ? (
-        <div className="relative grid h-[100px] aspect-square object-cover object-center items-center justify-center overflow-hidden rounded">
+        <div className="relative grid h-24 aspect-square items-center justify-center overflow-hidden rounded">
           <Image
             src={imageUrl}
             width={100}
@@ -26,7 +26,7 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl }) => {
             */}
         </div>
       ) : (
-        <div className="m-[2px] flex h-24 w-24 items-center justify-center rounded-lg border border-dashed  border-[#787878] text-white text-opacity-30">
+        <div className="m-[2px] flex h-24 aspect-square items-center justify-center rounded-lg border border-dashed  border-[#787878] text-white text-opacity-30">
           <FaCamera size={40} />
         </div>
       )}

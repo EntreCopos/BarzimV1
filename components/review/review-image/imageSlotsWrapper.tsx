@@ -1,9 +1,8 @@
-import { DeleteImageFromState } from '@/components/forms/add-review-form';
 import { ImageSlot } from './imageSlot'
 
 interface ImageSlotsWrapperProps {
   imageUrls?: string[]
-  delete?: DeleteImageFromState
+  //delete?: DeleteImageFromState
 }
 
 const ImageSlotsWrapper: React.FC<ImageSlotsWrapperProps> = ({
@@ -16,12 +15,12 @@ const ImageSlotsWrapper: React.FC<ImageSlotsWrapperProps> = ({
   // }
 
   const filledImageUrls = [...imageUrls]
-  while (filledImageUrls.length < 4) {
+  while (filledImageUrls.length < 3) {
     filledImageUrls.push('')
   }
 
   return (
-    <div style={{justifyContent: 'space-between'}} className="flex flex-wrap gap-1 justify-between">
+    <div style={{justifyContent: 'space-evenly'}} className="flex flex-wrap gap-1">
       {filledImageUrls.map((url, index) => (
         <div key={index} className='overflow-hidden space-x-2 gap-1'>
           <ImageSlot imageUrl={url} />

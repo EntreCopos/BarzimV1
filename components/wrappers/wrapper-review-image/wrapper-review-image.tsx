@@ -5,18 +5,18 @@ import styles from './wrapper-review-image.module.css' // Certifique-se de criar
 
 interface WrapperReviewImageProps {
   handler: (e?: ChangeEvent<HTMLInputElement>) => void
-  ratingSetter: Dispatch<SetStateAction<number>>
+  setNota: Dispatch<SetStateAction<number>>
   nota: number
 }
 
 const WrapperReviewImage: React.FC<WrapperReviewImageProps> = ({
   handler,
-  ratingSetter,
+  setNota,
   nota,
 }) => {
   return (
     <div className={styles.wrapper}>
-      <CoposReviews setter={ratingSetter} nota={nota} />
+      <CoposReviews setNota={setNota} nota={nota} />
       <AddImageButton handler={handler} />
     </div>
   )

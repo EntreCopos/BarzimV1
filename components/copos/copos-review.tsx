@@ -5,10 +5,10 @@ import styles from './copos-review.module.css'
 
 interface CoposReviewsProps {
   nota: number
-  setter: (nota: number) => void
+  setNota: (nota: number) => void
 }
 
-const CoposReviews: React.FC<CoposReviewsProps> = ({ nota, setter }) => {
+const CoposReviews: React.FC<CoposReviewsProps> = ({ nota, setNota }) => {
   return (
     <div>
       <p className={styles.textNota}>Sua Nota</p>
@@ -19,7 +19,7 @@ const CoposReviews: React.FC<CoposReviewsProps> = ({ nota, setter }) => {
           widgetEmptyColors="#fffeef60"
           widgetHoverColors="#fffeef"
           widgetSpacing="0px"
-          changeRating={setter}
+          changeRating={setNota}
         >
           <Ratings.Widget widgetDimension={'24px'} />
           <Ratings.Widget widgetDimension={'24px'} />

@@ -37,7 +37,7 @@ const UserPageLayout = async ({
   const session = await auth()
   if (!session) throw new Error('session messed up')
 
-  const myId = session?.user.id
+  const myId = session.user.id
   const user = await getUserByUsername(params.username)
   const metrics: Metrics = await getUserMetrics(params.username)
 
@@ -95,6 +95,7 @@ const UserPageLayout = async ({
           <form
             action={async () => {
               'use server'
+              
               await handleRelationship(myId, user.id)
               revalidatePath('/')
             }}
