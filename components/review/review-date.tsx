@@ -9,7 +9,12 @@ const ReviewDate: React.FC<ReviewDateProps> = ({ isoDate }) => {
         year: 'numeric',
     })
 
-    return <span className="text-[#FFFEEE] text-opacity-80 text-sm">em {formattedDate}</span>
+    return (
+        <div className="text-left">
+            <span className="text-[#FFFEEE] text-opacity-80 text-sm">em {formattedDate}</span>
+        </div>
+    )
+
 }
 
 export default ReviewDate
