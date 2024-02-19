@@ -1,0 +1,10 @@
+.followBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .725rem;
+    height: 100%;
+    width: 100%;
+    background-color: var(--yellow-barzim);
+    font-size: .8rem;
+  }
