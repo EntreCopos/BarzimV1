@@ -3,6 +3,7 @@
 import { handleRelationship } from "@/actions/social"
 import { revalidatePath } from "next/cache"
 import { useState } from "react"
+import { RiUserFollowLine, RiUserUnfollowLine } from "react-icons/ri"
 import styles from './follow.module.css'
 
 const FollowForm: React.FC<{
@@ -28,7 +29,17 @@ const FollowForm: React.FC<{
     return (
         <form onSubmit={handleSubmit}>
             <button type="submit" className={styles.followBtn}>
-                {isFollowing ? 'Deixar de seguir' : 'Seguir'}
+                {isFollowing ? (
+                    <>
+                        <RiUserUnfollowLine />
+                        <span className={styles.labelBtn}>Deixar de seguir</span>
+                    </>
+                ) : (
+                    <>
+                        <RiUserFollowLine />
+                        <span className={styles.labelBtn}>Seguir</span>
+                    </>
+                )}
             </button>
         </form>
     )
