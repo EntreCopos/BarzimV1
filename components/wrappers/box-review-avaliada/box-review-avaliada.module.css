@@ -2,12 +2,13 @@
 .boxReviewAvaliadaContainer {
     display: flex;
     flex-direction: column;
-    padding: 50px 30px 30px 30px;
-    background-image: url('../../assets/confetti-background.svg');
+    padding: 4rem;
     color: white;
     gap: 1rem;
     position: relative;
     align-items: center;
+    text-align: center;
+    min-height: 100svh;
   }
   
   .dragBar {

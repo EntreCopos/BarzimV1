@@ -1,6 +1,18 @@
 import { getUserIdByUsername } from './social'
 import { db } from '@/lib/db'
 
+export const relUserCerv = async (userId: string, cervejaId: string) => {
+  return await db.userCerveja.count({
+    where: {
+      cervejaId: +cervejaId,
+      AND: {
+        usuarioId: userId,
+      },
+    },
+  })
+}
+
+
 export const createAvaliacao = async (
   userId: string,
   cervejaId: string,
