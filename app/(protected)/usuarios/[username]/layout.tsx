@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { getUserMetrics } from '@/data/social'
 import { getUserByUsername } from '@/data/user'
 import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
+import { RiUserUnfollowLine, RiUserFollowLine } from 'react-icons/ri'
 import styles from './layout.module.css'
 import FollowForm from '@/components/forms/form-follow'
 
