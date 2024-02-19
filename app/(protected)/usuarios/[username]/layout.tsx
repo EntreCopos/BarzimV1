@@ -1,15 +1,14 @@
+import { isFollowing } from '@/actions/social'
 import { auth } from '@/auth'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
-import { getUserByUsername } from '@/data/user'
-import { cn } from '@/lib/utils'
-import { isFollowing, handleRelationship } from '@/actions/social'
-import { revalidatePath } from 'next/cache'
-import { getUserMetrics } from '@/data/social'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { getUserMetrics } from '@/data/social'
+import { getUserByUsername } from '@/data/user'
+import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
 import { RiUserUnfollowLine, RiUserFollowLine } from 'react-icons/ri'
 import styles from './layout.module.css'
+import FollowForm from '@/components/forms/form-follow'
 
 enum SocialLabels {
   avaliacaoUserCount = 'Avaliações',
@@ -34,6 +33,12 @@ const UserPageLayout = async ({
   children: React.ReactNode
   params: { username: string }
 }) => {
+
+  const session = await auth()
+  if (!session) throw new Error('session messed up')
+
+  const myId = session?.user.id as string
+
   const session = await auth()
   if (!session) throw new Error('session messed up')
 
@@ -48,7 +53,7 @@ const UserPageLayout = async ({
 
   // é possivel que esse dado seja extraivel no proprio objeto user acima
   // mas aqui é teste meus irmaozinho, aqui é teste
-  const relationship = await isFollowing(myId, user.id)
+  const relationship = !!await isFollowing(myId, user.id)
 
   return (
     <>
@@ -92,28 +97,11 @@ const UserPageLayout = async ({
           })}
         </section>
         {!!(myId !== user.id) ? (
-          <form
-            action={async () => {
-              'use server'
-              
-              await handleRelationship(myId, user.id)
-              revalidatePath('/')
-            }}
-          >
-            <button type="submit" className={styles.followBtn}>
-              {relationship ? (
-                <>
-                  <RiUserUnfollowLine />
-                  <span className={styles.labelBtn}>Deixar de seguir</span>
-                </>
-              ) : (
-                <>
-                  <RiUserFollowLine />
-                  <span className={styles.labelBtn}>Seguir</span>
-                </>
-              )}
-            </button>
-          </form>
+          <FollowForm
+            myId={myId}
+            user={user.id}
+            relationship={relationship}
+          />
         ) : (
           <button className={styles.followBtn}>Configurações</button>
         )}
