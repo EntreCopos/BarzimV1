@@ -25,9 +25,6 @@ export const AddImageButton: React.FC<ImageUpladBtn> = ({handler}) => {
           accept="image/*"
         />
       </button>
-      <button className="flex items-center justify-center rounded-r-lg bg-[#2E2E2E] px-4 py-2">
-        <FaCamera />
-      </button>
     </div>
   )
 }
