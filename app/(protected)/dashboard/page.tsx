@@ -12,6 +12,7 @@ import ListaCervejasDashboard from '@/components/lists/lista-cervejas-dashboard'
 import { getRandomCervejasDashboard } from '@/data/cervejas'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import Link from 'next/link'
+import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 
 
 
@@ -35,16 +36,12 @@ const DashboardPage = async () => {
 
   return (
     <div className={styles.bodyDashboard}>
-      {/* <Carousel/> */}
-      <div style={{ paddingInline: '2rem' }}>
-      <SectionTitle
-      title="Você pode se interessar por..."
-      button={buttonElement} />
-        
-      </div>
-      {/* <div className={styles.cardsBeers}></div> */}
-      <ListaCervejasDashboard cervejas={randCervejas}/>
-      {/* <BeersCarousel /> */}
+      <WrapperDefaultPadding>
+        <SectionTitle
+          title="Você pode se interessar por..."
+          button={buttonElement} />
+        <ListaCervejasDashboard cervejas={randCervejas}/>
+      </WrapperDefaultPadding>
       <ListFindings />
       <div className="flex h-fit w-full justify-center gap-4 align-middle">
         <Avatar>

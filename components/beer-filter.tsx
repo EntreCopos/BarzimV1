@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import ListaDeCervejas from './lists/lista-cervejas'
 import { type TypeObjectCerveja } from '@/data/data'
+import { WrapperDefaultPadding } from './wrappers/wrapper-default-padding'
 
 export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
@@ -59,7 +60,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   })
 
   return (
-    <>
+    <WrapperDefaultPadding>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="default">Ordenar</Button>
@@ -84,6 +85,6 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
         </DropdownMenuContent>
       </DropdownMenu>
       <ListaDeCervejas cervejas={cervejasFiltradas} />
-    </>
+    </WrapperDefaultPadding>
   )
 }
