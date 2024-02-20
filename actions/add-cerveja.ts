@@ -1,7 +1,7 @@
 "use server"
 import type * as z from 'zod'
 import { cervejaSchema } from '@/schemas'
-import { createNewCerveja, createNewCervejaria } from '@/data/cervejas'
+import { createNewCerveja, createNewCervejaria, createNewTipoCerveja } from '@/data/cervejas'
 import { uploadImageToCloudinary } from '@/lib/image_upload'
 
 export const addCervejaria = async (values: unknown) => {
@@ -18,8 +18,8 @@ export const addCervejaria = async (values: unknown) => {
 
 export const addTipoCerveja = async (values: unknown) => {
   try {
-    const newCervejaria = createNewCervejaria(values)
-    return {message: 'success', newCervejaria}
+    const newTipoCerveja = createNewTipoCerveja(values)
+    return {message: 'success', newTipoCerveja}
   }
   catch(err){
     console.error(err)

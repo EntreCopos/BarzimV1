@@ -130,7 +130,7 @@ model Cervejaria {
 model TipoCerveja {
   id            Int             @id @default(autoincrement())
   nome          String
-  descricao     String
+  descricao     String?
   createdAt     DateTime?
   cervejas      Cerveja[]
   CervejaShadow CervejaShadow[]
