@@ -1,7 +1,11 @@
 import NavWrapper from "@/components/dashboard/nav-wrapper/nav-wrapper"
 import Link from "next/link"
+import { currentRole } from '@/lib/auth'
 
-const AdminLayout: React.FC<{children: React.ReactNode}> = async ({ children }) => {
+const AdminLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
+  const role = await currentRole()
+  if (role !== 'ADMIN') return <h1>Você não pode ver esta página</h1>
+
   return (
     <div className="min-h-screen max-w-lg mx-auto bg-gray-200">
       <NavWrapper/>
