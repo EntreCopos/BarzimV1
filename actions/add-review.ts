@@ -21,8 +21,6 @@ export const addReview = async (formData: FormData) => {
       })
     )
 
-    //console.log('imagens:', uploadedImages)
-
     const arrString: string[] = []
 
     uploadedImages.forEach((image) => arrString.push(JSON.stringify(image)))

@@ -1,15 +1,18 @@
-//@ts-nocheck
 'use client'
-
+//@ts-nocheck
 // components/TipoCervejaForm.tsx
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { tipoCervejaSchema } from '@/schemas'
 import { addTipoCerveja } from '@/actions/add-cerveja'
+import { useState, useTransition } from 'react'
 
 
 
 const TipoCervejaForm: React.FC = () => {
+  const [successMessage, setSuccessMessage] = useState<string | undefined>('')
+  const [isPending, startTransition] = useTransition()
+
   const {
     register,
     handleSubmit,
@@ -18,8 +21,15 @@ const TipoCervejaForm: React.FC = () => {
     resolver: zodResolver(tipoCervejaSchema),
   })
 
-  const submitForm = (data: { nome: string; descricao: string }) => {
-    addTipoCerveja(data)
+  const submitForm = (values: { nome: string; descricao: string }) => {
+    startTransition(() => {
+      addTipoCerveja(values).then((data) => {
+        setSuccessMessage(`parece que tudo deu certo, ${data.success}`)
+        setTimeout(() => {
+          window.location.reload()          
+        }, 200)
+      })
+    })
   }
 
   return (
@@ -62,12 +72,16 @@ const TipoCervejaForm: React.FC = () => {
       </div>
       <div className="flex items-center justify-between">
         <button
+          disabled={isPending}
           type="submit"
           className="focus:shadow-outline rounded bg-yellow-barzim px-4 py-2 font-bold text-white hover:bg-yellow-600 focus:outline-none"
         >
-          Adicionar Tipo de Cerveja
+          {isPending ? 'adicionando' : 'adicionar tipo de cerveja'}
         </button>
       </div>
+      {successMessage && (
+        <div className="bg-green-200 text-green-800 p-2 mb-4 rounded">{successMessage}</div>
+      )}
     </form>
   )
 }
