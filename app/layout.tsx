@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={cn('bg-slate-300 w-full min-h-screen', font.className)}>
+        <body style={{minHeight: '100svh', backgroundColor: 'rgb(230 230 230)'}} className={font.className}>
           <PostHogPageView />
           {children}
         </body>
