@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-// @ts-ignore
-// @ts-nocheck
+//@ts-nocheck
 'use client'
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { cervejaSchema } from '@/schemas';
-import { addCerveja } from '@/actions/add-cerveja';
-import { redirect } from 'next/navigation';
+import { useState, useTransition } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { cervejaSchema } from '@/schemas'
+import { addCerveja } from '@/actions/add-cerveja'
 
 interface CervejaFormProps {
-  cervejarias: { id: number; nome: string }[];
-  tiposCerveja: { id: number; nome: string }[];
+  cervejarias: { id: number; nome: string }[]
+  tiposCerveja: { id: number; nome: string }[]
 }
 
 const MAX_IMAGE_SIZE_KB = 300
@@ -28,9 +26,10 @@ const NewCervejaForm: React.FC<CervejaFormProps> = ({
     resolver: zodResolver(cervejaSchema),
   });
 
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [error, setError] = useState<string | undefined>('')
+  const [isPending, startTransition] = useTransition()
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -58,15 +57,22 @@ const NewCervejaForm: React.FC<CervejaFormProps> = ({
     })
   }
 
-  const submitForm = async (data: any) => {
+  const submitForm = async (data: unknown) => {
     const base64Image = await convertFileToBase64(data.mainImage[0])
     const formData = { ...data, mainImage: base64Image }
-    const res = await addCerveja(formData)
-    if(res.success){
-      setSuccessMessage('Cerveja adicionada com sucesso!')
-      redirect('/')
-    }
+    setError('')
+    setSuccessMessage('')
 
+    startTransition(() => {
+      addCerveja(formData).then((data) => {
+        setError(data.error)
+        setSuccessMessage(`parece que tudo deu certo, ${data.success}`)
+        setTimeout(() => {
+          window.location.reload()          
+        }, 200)
+      })
+    })
+   
   }
 
   return (
@@ -169,9 +175,9 @@ const NewCervejaForm: React.FC<CervejaFormProps> = ({
         {errors.harmonizacoesCerveja && <p className="text-red-500 text-xs italic">{errors.harmonizacoesCerveja.message}</p>}
       </div>
       <div className="flex items-center justify-between">
-        <button type="submit" 
+        <button disabled={isPending} type="submit" 
           className="focus:shadow-outline rounded bg-yellow-barzim px-4 py-2 font-bold text-white hover:bg-yellow-600 focus:outline-none">
-          Adicionar Cerveja
+          {isPending? 'adicionando' : 'adicionar'}
         </button>
       </div>
       {successMessage && (
