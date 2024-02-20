@@ -136,8 +136,9 @@ export const LoginForm = () => {
         </Button>
 
         <div className='text-center'>
-          <Link href="/auth/login">Ainda não tem sua conta no Barzim? </Link>
-          <p className='text-yellow-barzim  font-medium text-sm'>Cadastre-se aqui.</p>
+          <Link href="/auth/register">Ainda não tem sua conta no Barzim?
+            <p className='text-yellow-barzim  font-medium text-sm'>Cadastre-se aqui.</p>
+          </Link>
         </div>
       </form>
     </Form>
