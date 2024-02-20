@@ -38,16 +38,16 @@ export const addCerveja = async (values: any) => {
     const newCerveja = validatedFields.data
     const image = await uploadImageToCloudinary(newCerveja.mainImage)
   
-    const arrIngredientes = newCerveja.ingredientesCerveja.split(',')
-    const arrHarmoniza = newCerveja.harmonizacoesCerveja.split(',')
+    const arrIngredientes = newCerveja.ingredientesCerveja.split(',').map(item => item.toString())
+    const arrHarmoniza = newCerveja.harmonizacoesCerveja.split(',').map(item => item.toString())
 
     if(image){
       const data = {
         ...newCerveja,
         //@ts-expect-error não vou tipar agora a resposta da api
         mainImage: image.secure_url as string,
-        ingredientesCerveja: arrIngredientes ?? [],
-        harmonizacoesCerveja: arrHarmoniza ?? [],
+        ingredientesCerveja: arrIngredientes ?? null,
+        harmonizacoesCerveja: arrHarmoniza ?? null,
         descriCerveja: newCerveja.descriCerveja ?? null,
         teorAlcoolico: newCerveja.teorAlcoolico ?? null,
         tempIdeal: newCerveja.tempIdeal ?? null,
