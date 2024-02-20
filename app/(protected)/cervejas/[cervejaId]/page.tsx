@@ -57,7 +57,7 @@ export default async function Cerveja({
         <section className="overflow-hidden bg-deep-black object-cover">
           <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
-          <div className="flex max-h-[280px] items-center justify-center gap-4">
+          <div className=" z-10 flex items-center justify-start gap-4">
             <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
             <div className="flex flex-col gap-2">

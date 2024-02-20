@@ -12,14 +12,12 @@ export const BeerImage: React.FC<ImageProps> = ({
   alt = 'Imagem Cerveja',
 }) => {
   return (
-    <div title={alt + ' no Barzim'} className='min-w-32 p-4 max-h-[320px] object-cover object-top'>
+    <div style={{zIndex: 10, position: 'relative', height: '250px', width: '200px', margin: -5 }} title={alt + ' no Barzim'} className='min-w-32 p-4 max-h-[320px] object-cover object-top'>
       <Image
-        style={{marginTop: -40, scale: ".85"}}
+        style={{objectFit: 'contain', padding: '.8rem'}}
         src={src}
-        width={width}
-        height={100}
+        fill={true}
         alt={alt + 'no Barzim'}
-        className="object-cover"
       />
     </div>
   )

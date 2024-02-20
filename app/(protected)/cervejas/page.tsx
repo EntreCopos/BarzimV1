@@ -6,6 +6,7 @@ import CarouselCard from '@/components/dashboard/carousel/carousel-card/carousel
 import { CarouselItem } from '@/components/ui/carousel'
 
 import { BeerFilter } from '@/components/beer-filter'
+import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,7 +18,9 @@ export default async function Cervejas() {
   if (!!listaDeCervejas?.length)
     return (
       <>
+        <WrapperDefaultPadding>
         <SectionTitle title='Por Cervejaria' />
+        </WrapperDefaultPadding>
         <CarouselWrapper>
           {cervejariasDuplicada?.map((cervejaria, index) => {
             return (

@@ -1,5 +1,4 @@
 import { db } from '@/lib/db'
-import { CervejaData } from './data'
 
 export const getAllCervejas = async () => {
   try {
@@ -61,7 +60,7 @@ export const getCervejasByCervejaria = async (id: string) => {
       },
       select: {
         nome: true,
-        CervejaShadow: {
+        cervejas: {
           include: {
             tipoCerveja: true
           }

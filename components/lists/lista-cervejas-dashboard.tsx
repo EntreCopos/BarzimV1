@@ -12,7 +12,7 @@ interface TItemCerveja {
 
 const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({ cervejas }) => {
     return (
-        <ul style={{paddingInline: '2rem', paddingBlock: '.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem'}}>
+        <ul style={{paddingBlock: '.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem'}}>
             {cervejas.map((itemCerveja: TItemCerveja): JSX.Element => {
                 const {
                     id,
