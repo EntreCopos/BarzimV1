@@ -1,39 +1,60 @@
-'use server'
-
+"use server"
 import type * as z from 'zod'
+import { cervejaSchema } from '@/schemas'
+import { createNewCerveja, createNewCervejaria } from '@/data/cervejas'
+import { uploadImageToCloudinary } from '@/lib/image_upload'
 
-// import { db } from '@/lib/db'
-import { AddCervejaSchema } from '@/schemas'
-import { createNewCerveja } from '@/data/cervejas'
+export const addCervejaria = async (values: unknown) => {
+  try {
+    const newCervejaria = createNewCervejaria(values)
 
-export const addCerveja = async (values: z.infer<typeof AddCervejaSchema>) => {
-  const validatedFields = AddCervejaSchema.safeParse(values)
-
-  if (!validatedFields.success) {
-    return { error: 'Campos inválidos' }
+    return {message: 'success', newCervejaria}
   }
-
-  const {
-    nomeCerveja,
-    teorAlcoolico,
-    imagem,
-    codBarras,
-    marcaId,
-    cervejariaId,
-    tipoCervejaId,
-  } = validatedFields.data
-
-  const newCerveja = {
-    nomeCerveja,
-    teorAlcoolico: parseFloat(teorAlcoolico),
-    imagem,
-    codBarras,
-    marcaId: parseInt(marcaId),
-    cervejariaId: parseInt(cervejariaId),
-    tipoCervejaId: parseInt(tipoCervejaId),
+  catch(err){
+    console.error(err)
+    return {error: 'não foi'}
   }
+}
 
-  await createNewCerveja(newCerveja)
+export const addTipoCerveja = async (values: unknown) => {
+  try {
+    const newCervejaria = createNewCervejaria(values)
+    return {message: 'success', newCervejaria}
+  }
+  catch(err){
+    console.error(err)
+    return {error: 'não foi'}
+  }
+}
 
-  return { success: 'cerveja criada!' }
+export const addCerveja = async (values: any) => {
+  try{
+    const validatedFields = cervejaSchema.safeParse(values)
+  
+    if (!validatedFields.success) {
+      return { error: 'Campos inválidos' }
+    }
+  
+    const newCerveja = validatedFields.data
+    const image = await uploadImageToCloudinary(newCerveja.mainImage)
+  
+    const arrIngredientes = newCerveja.ingredientesCerveja.split(',')
+    const arrHarmoniza = newCerveja.harmonizacoesCerveja.split(',')
+
+    if(image){
+      const data = {
+        ...newCerveja,
+        //@ts-expect-error não vou tipar agora a resposta da api
+        mainImage: image.secure_url as string,
+        ingredientesCerveja: arrIngredientes,
+        harmonizacoesCerveja: arrHarmoniza
+      }      
+      await createNewCerveja(data)
+    }
+    else throw new Error('algum problema de upload')
+  
+    return { success: 'Cerveja criada!' }
+  }catch(err){
+    return {error: 'deu ruim ali bichoo'}
+  }
 }

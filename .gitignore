@@ -8,8 +8,6 @@
 # testing
 /coverage
 
-/app/admin
-/app/cervejas
 
 # database
 /prisma/db.sqlite

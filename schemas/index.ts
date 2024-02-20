@@ -22,16 +22,15 @@ export const LoginSchema = z.object({
   code: z.optional(z.string()),
 })
 
-export const RegisterSchema = z
-  .object({
-    email: z.string().email({
-      message: 'E-mail é necessário',
-    }),
-    name: z.string(),
-    password: z.string().min(6, {
-      message: 'No minimo 6 caracteres, né',
-    }),
-  })
+export const RegisterSchema = z.object({
+  email: z.string().email({
+    message: 'E-mail é necessário',
+  }),
+  name: z.string(),
+  password: z.string().min(6, {
+    message: 'No minimo 6 caracteres, né',
+  }),
+})
 
 export const AddCervejaSchema = z.object({
   nomeCerveja: z.string().min(3, {
@@ -50,4 +49,34 @@ export const AgeVerificationSchema = z.object({
   day: z.coerce.number().int().min(1).max(31),
   month: z.coerce.number().int().min(1).max(12),
   year: z.coerce.number().int().min(1900).max(currYear),
+})
+
+export const cervejariaSchema = z.object({
+  nome: z
+    .string()
+    .min(2, { message: 'O nome deve ter pelo menos 2 caracteres' }),
+  logo: z.string().optional(),
+})
+
+export const tipoCervejaSchema = z.object({
+  nome: z
+    .string()
+    .min(2, { message: 'O nome deve ter pelo menos 2 caracteres' }),
+  descricao: z
+    .string()
+    .min(5, { message: 'A descrição deve ter pelo menos 5 caracteres' }),
+})
+
+export const cervejaSchema = z.object({
+  mainImage: z.any(),
+  nomeCerveja: z.string(),
+  descriCerveja: z.string().optional(),
+  teorAlcoolico: z.coerce.number().optional(),
+  tempIdeal: z.string().optional(),
+  valorIBU: z.coerce.number().optional(),
+  corpo: z.string().optional(),
+  cervejariaId: z.coerce.number(),
+  tipoCervejaId: z.coerce.number(),
+  ingredientesCerveja: z.string(), // Mantenha como z.string()
+  harmonizacoesCerveja: z.string(), // Mantenha como z.string()
 })

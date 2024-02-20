@@ -1,4 +1,5 @@
 import { db } from '@/lib/db'
+import { CervejaData } from './data'
 
 export const getAllCervejas = async () => {
   try {
@@ -96,8 +97,22 @@ export const getCervejaById = async (id: string) => {
   }
 }
 
-// export const createNewCerveja = async (data: CervejaData): Promise<void> => {
-//   await db.cerveja.create({
-//     data,
-//   })
-// }
+export const createNewTipoCerveja = async (data: any) => {
+  console.log('DADOS EM create new tipocerveja',data)
+  
+  await db.tipoCerveja.create({
+    data
+  })
+}
+export const createNewCervejaria = async (data: any) => {
+  console.log('DADOS EM create new cervejaria', data)
+  
+  await db.cervejaria.create({
+    data
+  })
+}
+export const createNewCerveja = async (data: any)=> {  
+  await db.cerveja.create({
+    data
+  })
+}
