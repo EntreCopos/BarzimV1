@@ -35,6 +35,24 @@ export const getCervejarias = async () => {
   }
 }
 
+export const getRandomCervejasDashboard = async () => {
+    try {
+      const cerveijaxx = await db.cerveja.findMany({
+      take: 8,
+      include: {
+        cervejaria: true,
+        tipoCerveja: true,
+      },
+      })
+
+      return cerveijaxx.sort(() => Math.random() - 0.5)
+      
+
+  } catch {
+    return null
+  }
+}
+
 export const getCervejasByCervejaria = async (id: string) => {
   try {
     return await db.cervejaria.findUnique({
