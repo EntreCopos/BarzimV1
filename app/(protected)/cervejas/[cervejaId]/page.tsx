@@ -10,6 +10,7 @@ import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import { type CervejaBreadcrumbs, type CervejaDetails } from '@/data/data'
+import { auth, signOut } from '@/auth'
 
 export default async function Cerveja({
   params,
@@ -23,6 +24,8 @@ export default async function Cerveja({
     nomeCerveja: cerveja?.nomeCerveja,
     tipoCerveja: cerveja?.tipoCerveja.nome,
   }
+
+  const session = await auth()
 
   const cervejaBreadcrumbs: CervejaBreadcrumbs = {
     cervejaria: {
@@ -68,7 +71,7 @@ export default async function Cerveja({
 
               <ButtonsWrapper>
                 <BrindarButton id={params.cervejaId} />
-                {/* <AddtoListButton id={params.cervejaId} /> */}
+                <AddtoListButton id={params.cervejaId} usuario={session?.user.id as string}/>
               </ButtonsWrapper>
             </div>
           </div>
@@ -77,7 +80,7 @@ export default async function Cerveja({
           <BeerDescription description={cerveja.descriCerveja} />
         )}
         <DetalhesCerveja cervejaDetails={cervejaDetails} />
-        
+
         {/*
       <div className="flex gap-2">
         <IngredientsTag label="Água" />
