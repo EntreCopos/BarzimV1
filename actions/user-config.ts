@@ -11,19 +11,16 @@ export const updateAccountSettings = async (values: AccountSettingsValues) => {
     return { error: 'Campos inválidos' } as const
   }
 
-  const { name, user, link, city, gender, bio } = validatedFields.data
+  const { name, username, link, cep, genero, bio } = validatedFields.data
 
   try {
     await db.user.update({
-      where: {
-        // COMO ACHA O USEERRRRRRR
-      },
       data: {
         name,
-        user,
+        username,
         link,
-        city,
-        gender,
+        cep,
+        genero,
         bio,
       },
     })
