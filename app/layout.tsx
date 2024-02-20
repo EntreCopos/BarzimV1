@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={cn('bg-deep-vermillo w-full min-h-screen', font.className)}>
+        <body className={cn('w-full min-h-screen', font.className)}>
           <PostHogPageView />
           {children}
         </body>
