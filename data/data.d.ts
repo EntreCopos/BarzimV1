@@ -18,7 +18,7 @@ interface AgeVerifFormData {
 }
 
 interface TypeObjectCerveja {
-  id: number;
+  id: number
   mainImage: string | null
   nomeCerveja: string
   descriCerveja: string | null
@@ -63,13 +63,41 @@ export interface CervejaDetails {
 }
 
 export interface CervejariaBreadcrumb {
-  nome: string;
-  path: number; 
+  nome: string
+  path: number
 }
 
 export interface CervejaBreadcrumbs {
-  cervejaria: CervejariaBreadcrumb;
-  nome: string;
+  cervejaria: CervejariaBreadcrumb
+  nome: string
 }
 
-export { type CervejaData, type AgeVerifFormData, type TypeObjectCerveja}
+export interface User {
+  name: string | null
+  link: string | null
+  bio: string
+  image: string | null
+  id: string
+  username: string | null
+  genero: string | null
+  following: Following[]
+  followers: Follower[]
+}
+
+export interface Following {
+  id: string
+  followerId: string
+  followingId: string
+  isRequested: boolean
+  createdAt: Date
+}
+
+export interface Follower {
+  id: string
+  followerId: string
+  followingId: string
+  isRequested: boolean
+  createdAt: Date
+}
+
+export { type AgeVerifFormData, type CervejaData, type TypeObjectCerveja }
