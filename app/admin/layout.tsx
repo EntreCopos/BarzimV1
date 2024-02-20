@@ -5,8 +5,9 @@ import { currentRole } from '@/lib/auth'
 const AdminLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
   const role = await currentRole()
   if (role !== 'ADMIN') return <h1>Você não pode ver esta página</h1>
-
+  else
   return (
+    <>
     <div className="min-h-screen max-w-lg mx-auto bg-gray-200">
       <NavWrapper/>
       <div className="flex justify-between gap-2 p-4">
@@ -27,8 +28,9 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = async ({ children }
           </Link>
       </div>
 
-      <div className="container mx-auto px-4 py-8">{children}</div>
+      <div className="px-4 py-8">{children}</div>
     </div>
+    </>
   )
 
 }
