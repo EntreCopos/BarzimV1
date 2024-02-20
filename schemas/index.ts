@@ -32,6 +32,19 @@ export const RegisterSchema = z.object({
   }),
 })
 
+export const AccountSettingsSchema = z.object({
+  name: z.string().min(2, {
+    message: 'O nome não pode estar vazio. Seu nome atual será mantido.',
+  }),
+  user: z
+    .string()
+    .min(2, { message: 'O nome de usuário não pode estar vazio.' }),
+  link: z.string(),
+  city: z.string(),
+  gender: z.string(),
+  bio: z.string(),
+})
+
 export const AddCervejaSchema = z.object({
   nomeCerveja: z.string().min(3, {
     message: 'cerveja precisa ter um nome, filhão',
