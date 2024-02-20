@@ -7,6 +7,8 @@ import { CarouselItem } from '@/components/ui/carousel'
 
 import { BeerFilter } from '@/components/beer-filter'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Cervejas() {
   const listaDeCervejas = await getAllCervejas()
   const cervejarias = await getCervejarias()
