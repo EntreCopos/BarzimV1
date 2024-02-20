@@ -1,17 +1,37 @@
-import { cn } from '@/lib/utils'
+import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-black-radial-gradient">
-      <div className="space-y-6 text-center">
-        <h1 className={cn('text-6xl font-semibold text-yellow-barzim')}>
-          Barzim (futuramente aqui)
-        </h1>
+    <div className='h-svh'>
+      <NavWrapper />
+      <div className=' h-[calc(100vh-87px)] flex-col md:flex-row-reverse items-center justify-center gap-10 flex  w-full  bg-black-radial-gradient '>
+        <section>
+          <Image src="https://res.cloudinary.com/barzimtech/image/upload/v1708452416/vwlpjq1r2hhxoyyyqyek.png" width={700} height={500} alt="Barzim mockup" />
+        </section>
+        <section className="px-4  max-w-screen-xl">
+          <div className="flex items-center">
+            <div>
+              <h2 className="mb-4 text-4xl font-extrabold text-white">Seja bem-vindo(a) ao <span className='text-yellow-barzim'>Barzim</span></h2>
+              <p className="mb-6 font-light text-gray-400 md:text-lg">Descubra. Avalie. Compartilhe.</p>
+              <div className="flex space-x-4">
+                <Link href="/auth/register" className="bg-yellow-barzim text-black hover:bg-yellow-400 focus:bg-yellow-400 focus:ring-1 focus:ring-yellow-300 font-medium rounded-lg px-6 py-3 text-lg">
+                  Criar Conta
+                </Link>
+                <Link href="/auth/login" className="bg-black text-white hover:bg-zinc-900 focus:bg-gray-800 focus:ring-1 focus:ring-yellow-barzim font-medium rounded-lg px-6 py-3 text-lg">
+                  Login
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div>
-          <p className="text-2xl text-yellow-barzim mb-4">Olá do Next.JS</p>
-        </div>
       </div>
-    </main>
+    </div>
+
   )
 }
+
+export default Home
