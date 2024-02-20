@@ -23,6 +23,8 @@ const config = {
     "@typescript-eslint/ban-ts-comment": "off", //porra chata do ****** se eu quero desabilitar o ts check, eu quero, me deixa porra
     "@typescript-eslint/prefer-optional-chain": "off",
     "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
 
     "@typescript-eslint/consistent-type-imports": [
       "warn",
