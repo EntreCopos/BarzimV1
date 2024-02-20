@@ -3,7 +3,7 @@ import { CervejaData } from './data'
 
 export const getAllCervejas = async () => {
   try {
-    return await db.cervejaShadow.findMany({
+    return await db.cerveja.findMany({
       include: {
         cervejaria: true,
         tipoCerveja: true,
@@ -15,7 +15,7 @@ export const getAllCervejas = async () => {
 }
 
 export const getCervejaNameById = async (id: string | number) => {
-  return await db.cervejaShadow.findUnique({
+  return await db.cerveja.findUnique({
     where: {
       id: +id
     },
@@ -31,6 +31,24 @@ export const getCervejarias = async () => {
     return cervejarias
   } catch (err) {
     console.error(err)
+    return null
+  }
+}
+
+export const getRandomCervejasDashboard = async () => {
+    try {
+      const cerveijaxx = await db.cerveja.findMany({
+      take: 8,
+      include: {
+        cervejaria: true,
+        tipoCerveja: true,
+      },
+      })
+
+      return cerveijaxx.sort(() => Math.random() - 0.5)
+      
+
+  } catch {
     return null
   }
 }
@@ -81,13 +99,13 @@ export const getCerverjasByTipo = async (id: string) => {
 export const getCervejaById = async (id: string) => {
   if (typeof id == undefined) return null
   try {
-    const cerveja = await db.cervejaShadow.findUnique({
+    const cerveja = await db.cerveja.findUnique({
+      where: {
+        id: +id,
+      },
       include: {
         tipoCerveja: true,
         cervejaria: true,
-      },
-      where: {
-        id: +id,
       },
     })
 

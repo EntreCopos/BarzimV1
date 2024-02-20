@@ -1,9 +1,13 @@
 import NavWrapper from "@/components/dashboard/nav-wrapper/nav-wrapper"
 import Link from "next/link"
+import { currentRole } from '@/lib/auth'
 
-const AdminLayout: React.FC<{children: React.ReactNode}> = async ({ children }) => {
+const AdminLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
+  const role = await currentRole()
+  if (role !== 'ADMIN') return <h1>Você não pode ver esta página</h1>
+  else
   return (
-    <div className="min-h-screen max-w-lg mx-auto bg-gray-200">
+    <div style={{backgroundColor: 'rgb(242 242 242)'}} className="flex min-h-screen w-full flex-col bg-slate-100 md:mx-auto md:max-w-[480px]">
       <NavWrapper/>
       <div className="flex justify-between gap-2 p-4">
           <Link href="/admin/cervejarias/adicionar">
@@ -22,8 +26,7 @@ const AdminLayout: React.FC<{children: React.ReactNode}> = async ({ children }) 
             </span>
           </Link>
       </div>
-
-      <div className="container mx-auto px-4 py-8">{children}</div>
+      <div style={{paddingBlock: '2rem', paddingInline: '1rem'}}>{children}</div>
     </div>
   )
 
