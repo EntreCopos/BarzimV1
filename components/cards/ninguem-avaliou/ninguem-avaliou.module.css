@@ -4,13 +4,13 @@
   }
   
   .image {
-    max-width: 200px;
+    max-width: 220px;
     margin-bottom: 10px;
   }
   
   .text {
     color: var(--slate-barzim);
-    font-size: 12px;
+    font-size: 1rem;
     margin-bottom: 10px;
   }
   
@@ -18,7 +18,7 @@
     background-color: transparent;
     color: var(--marfim-barzim);
     padding: 4px 10px;
-    font-size: 8px;
+    font-size: .8rem;
     border-radius: 9999px;
     border: 1px solid var(--marfim-barzim);
     cursor: pointer;

@@ -1,7 +1,6 @@
 'use client'
 
 import { FaPlus } from 'react-icons/fa'
-//@ts-expect-error não tem type declarations desse modulo
 import Popup from 'reactjs-popup'
 import { addCervejaToList } from '../../actions/userCerveja'
 import { useEffect, useState } from 'react'

@@ -11,7 +11,16 @@ import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import { type CervejaBreadcrumbs, type CervejaDetails } from '@/data/data'
 import { auth, signOut } from '@/auth'
-import { relUserCerv } from '@/data/avaliacao'
+import { getAvaliacoesByCerveja, relUserCerv } from '@/data/avaliacao'
+import { ReviewWrapper } from '@/components/wrappers/review-wrapper'
+import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
+import ReviewHeader from '@/components/review/review-header/review-header'
+import { BrindarReviewButton } from '@/components/buttons/brindar-review-button'
+import StarReviewsMini from '@/components/stars/startsMini/stars-mini'
+import { ReviewDescription } from '@/components/wrappers/review-description-wrapper'
+import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
+import NinguemAvaliou from '@/components/cards/ninguem-avaliou/ninguem-avaliou'
+import SectionTitle from '@/components/dashboard/title-sections/title-section'
 
 export default async function Cerveja({
   params,
@@ -23,13 +32,15 @@ export default async function Cerveja({
 
   const session = await auth()
 
-  const userRelCerveja = await relUserCerv(session?.user.id as string, (cerveja.id+"")) //a conversao pra string mais linda q vc ja viu, admita
+  const userRelCerveja = await relUserCerv(
+    session?.user.id as string,
+    cerveja.id + ''
+  ) //a conversao pra string mais linda q vc ja viu, admita
 
   const cervejaHeading = {
     nomeCerveja: cerveja?.nomeCerveja,
     tipoCerveja: cerveja?.tipoCerveja.nome,
   }
-
 
   const cervejaBreadcrumbs: CervejaBreadcrumbs = {
     cervejaria: {
@@ -58,9 +69,12 @@ export default async function Cerveja({
     },
   }
 
+  const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
+
+  console.log('as avaliacoes de cerveja aqui sao::', avaliacoesCerveja)
+
   return (
-    <>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4" style={{paddingBlockEnd: '2rem'}}>
         <section className="overflow-hidden bg-deep-black object-cover">
           <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
@@ -75,7 +89,11 @@ export default async function Cerveja({
 
               <ButtonsWrapper>
                 <BrindarButton id={params.cervejaId} />
-                <AddtoListButton id={params.cervejaId} usuario={session?.user.id as string} userReltoCerveja={userRelCerveja}/>
+                <AddtoListButton
+                  id={params.cervejaId}
+                  usuario={session?.user.id as string}
+                  userReltoCerveja={userRelCerveja}
+                />
               </ButtonsWrapper>
             </div>
           </div>
@@ -84,6 +102,36 @@ export default async function Cerveja({
           <BeerDescription description={cerveja.descriCerveja} />
         )}
         <DetalhesCerveja cervejaDetails={cervejaDetails} />
+        <WrapperDefaultPadding>
+          <SectionTitle variant={'small'} title="Avaliações dos Barzinhers" />
+          {!!avaliacoesCerveja &&
+            avaliacoesCerveja.map((avaliacao) => {
+              return (
+                <div
+                  style={{ display: 'contents' }}
+                  key={avaliacao.usuario.name + '_' + cerveja.nomeCerveja}
+                >
+                  <ReviewWrapper>
+                    <AvatarReview
+                      avatarSrc={avaliacao.usuario.image as string}
+                    />
+                    <ReviewHeader
+                      userName={avaliacao.usuario.username as string}
+                      beerName={cerveja.nomeCerveja}
+                    />
+                    <StarReviewsMini nota={avaliacao.nota as number} />
+                    <ReviewDescription
+                      description={avaliacao.reviewTexto as string}
+                    />
+                    {/* <BrindarReviewButton /> */}
+                  </ReviewWrapper>
+                </div>
+              )
+            })}
+          {avaliacoesCerveja && avaliacoesCerveja.length == 0 && (
+            <NinguemAvaliou cervejaId={cerveja.id + ''} />
+          )}
+        </WrapperDefaultPadding>
 
         {/*
       <div className="flex gap-2">
@@ -92,15 +140,8 @@ export default async function Cerveja({
         <IngredientsTag label="Lúpulo" />
       </div>
 
-      <ReviewWrapper>
-        <AvatarReview avatarSrc={'https://res.cloudinary.com/dvprux49g/image/upload/v1708016390/pirk4g0flwwfgytrd669.png'} />
-        <ReviewHeader userName="irina" beerName="Budweiser" />
-        <StarReviewsMini nota={2} />
-        <ReviewDescription description="esperava mais. Não que seja ruim, mas o sabor não me cativou. Faltou algo, sabe? Por isso, dou nota 2. Há espaço para evolução." />
-        <BrindarReviewButton />
-      </ReviewWrapper>
+      
        */}
       </div>
-    </>
   )
 }
