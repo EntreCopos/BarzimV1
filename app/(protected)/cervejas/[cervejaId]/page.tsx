@@ -11,6 +11,7 @@ import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import { type CervejaBreadcrumbs, type CervejaDetails } from '@/data/data'
 import { auth, signOut } from '@/auth'
+import { relUserCerv } from '@/data/avaliacao'
 
 export default async function Cerveja({
   params,
@@ -20,12 +21,15 @@ export default async function Cerveja({
   const cerveja = await getCervejaById(params.cervejaId)
   if (!cerveja) throw new Error('sem cerveja')
 
+  const session = await auth()
+
+  const userRelCerveja = await relUserCerv(session?.user.id as string, (cerveja.id+"")) //a conversao pra string mais linda q vc ja viu, admita
+
   const cervejaHeading = {
     nomeCerveja: cerveja?.nomeCerveja,
     tipoCerveja: cerveja?.tipoCerveja.nome,
   }
 
-  const session = await auth()
 
   const cervejaBreadcrumbs: CervejaBreadcrumbs = {
     cervejaria: {
@@ -71,7 +75,7 @@ export default async function Cerveja({
 
               <ButtonsWrapper>
                 <BrindarButton id={params.cervejaId} />
-                <AddtoListButton id={params.cervejaId} usuario={session?.user.id as string}/>
+                <AddtoListButton id={params.cervejaId} usuario={session?.user.id as string} userReltoCerveja={userRelCerveja}/>
               </ButtonsWrapper>
             </div>
           </div>
