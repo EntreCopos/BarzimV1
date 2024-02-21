@@ -6,12 +6,12 @@ import { FormSuccess } from '@/components/forms/form-success'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { type User } from "@/data/data"
+import { type User } from '@/data/data'
 import { AccountSettingsSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import * as z from 'zod'
+import type * as z from 'zod'
 
 interface AccountSettingsFormProps {
     user: User | null
@@ -29,7 +29,6 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
             username: user?.username || '',
             link: user?.link || '',
             cep: '',
-            genero: '',
             bio: user?.bio || ''
         },
     })
@@ -39,7 +38,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
         setSuccess('')
 
         startTransition(() => {
-            updateAccountSettings(values).then((data) => {
+            updateAccountSettings(values, user?.id as string).then((data) => {
                 setError(data.error)
                 setSuccess(data.success)
             })
@@ -126,7 +125,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                             </FormItem>
                         )}
                     />
-                    <FormField
+                    {/* <FormField
                         control={form.control}
                         name="genero"
                         render={({ field }) => (
@@ -135,8 +134,6 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                                     Gênero
                                 </FormLabel>
                                 <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 border-black border-2 border-opacity-20 w-full h-fit p-3'>
-
-
                                     <select
                                         className='rounded-md'
                                         disabled={isPending}>
@@ -148,28 +145,11 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                                         <option value="GENERO_FLUIDO">Gênero Fluido</option>
                                         <option value="OUTRO">Outro</option>
                                     </select>
-                                    {/* <Select
-                                        
-                                    >
-                                        <SelectTrigger className="w-[180px]">
-                                            <SelectValue placeholder="Identifique seu gênero" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="FEMININO">Feminino</SelectItem>
-                                            <SelectItem value="MASCULINO">Masculino</SelectItem>
-                                            <SelectItem value="BIGENERO">Bigênero</SelectItem>
-                                            <SelectItem value="AGENERO">Agênero</SelectItem>
-                                            <SelectItem value="NAO_BINARIO">Não binário</SelectItem>
-                                            <SelectItem value="GENERO_FLUIDO">Gênero Fluido</SelectItem>
-                                            <SelectItem value="OUTRO">Outro</SelectItem>
-                                            <SelectItem value="null"></SelectItem>
-                                        </SelectContent>
-                                    </Select> */}
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
-                    />
+                    /> */}
                     <FormField
                         control={form.control}
                         name="bio"
@@ -194,7 +174,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                 </div>
                 <FormError message={error} />
                 <FormSuccess message={success} />
-                <Button disabled={isPending} type="submit" className="w-full h-12 mt-3 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]">
+                <Button disabled={isPending} type="submit" className="w-full h-12 mt-6 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]">
                     Salvar Configurações
                 </Button>
             </form>

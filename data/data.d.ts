@@ -81,15 +81,12 @@ export interface CervejaBreadcrumbs {
 }
 
 export interface User {
-  name: string | null
-  link: string | null
-  bio: string
-  image: string | null
   id: string
+  name: string | null
   username: string | null
-  genero: string | null
-  following: Following[]
-  followers: Follower[]
+  image: string | null
+  bio: string
+  link: string | null
 }
 
 export interface Following {
