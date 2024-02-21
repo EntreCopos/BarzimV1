@@ -1,0 +1,33 @@
+.avatarWrapper {
+  padding-bottom: 1.8rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.icons {
+  position: absolute;
+  color: white;
+  top: 30%;
+  right: 31%;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.close {
+  color: red;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.image {
+  color: white;
+  background-color: #4C4C4C;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  padding: 3px;
+  cursor: pointer;
+}
