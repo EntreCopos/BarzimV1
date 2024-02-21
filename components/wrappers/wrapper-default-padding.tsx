@@ -1,6 +1,6 @@
 export const WrapperDefaultPadding: React.FC<{
   children: React.ReactNode | React.ReactNode[]
-  style?: {}
+  style: React.CSSProperties
 }> = ({ children, style }) => {
   return (
     <div
