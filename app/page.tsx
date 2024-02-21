@@ -6,8 +6,7 @@ import React from 'react'
 const Home: React.FC = () => {
   return (
     <div className='h-svh'>
-      <NavWrapper />
-      <div className=' h-[calc(100vh-87px)] flex-col md:flex-row-reverse items-center justify-center gap-10 flex  w-full  bg-black-radial-gradient '>
+      <div className=' h-[100%] flex-col md:flex-row-reverse items-center justify-center gap-10 flex  w-full  bg-black-radial-gradient '>
         <section>
           <Image src="https://res.cloudinary.com/barzimtech/image/upload/v1708452416/vwlpjq1r2hhxoyyyqyek.png" width={700} height={500} alt="Barzim mockup" />
         </section>

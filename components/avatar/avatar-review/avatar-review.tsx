@@ -13,7 +13,7 @@ const AvatarReview: React.FC<AvatarReviewProps> = ({
   width = 35,
   height = 35,
 }) => {
-  if (!!avatarSrc)
+  if (!!avatarSrc){
     return (
       <div
         style={{ width: `${width}px` }}
@@ -28,6 +28,10 @@ const AvatarReview: React.FC<AvatarReviewProps> = ({
         />
       </div>
     )
+  } else
+  return (
+    <div style={{width: width, height: height, borderRadius: '50%', backgroundColor: '#fec435'}} ></div>
+  )
 }
 
 export default AvatarReview

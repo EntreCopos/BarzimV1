@@ -19,7 +19,7 @@ interface AgeVerifFormData {
 
 interface TypeObjectCerveja {
   id: number
-  mainImage: string | null
+  mainImage: string
   nomeCerveja: string
   descriCerveja: string | null
   teorAlcoolico: number | null
@@ -29,12 +29,20 @@ interface TypeObjectCerveja {
   cervejariaId: number
   tipoCervejaId: number
   notaMedia: number | null
-  ingredientes: string[] | null
-  harmonizacoes: string[] | null
+  ingredientesCerveja: any[] | null
+  harmonizacoesCerveja: any[] | null
+  createdAt: Date | null
+  cervejaria: {
+    id: number
+    nome: string
+    createdAt: Date | null
+    logo: string | null
+  }
   tipoCerveja: {
     id: number
     nome: string
     descricao: string | null
+    createdAt: Date | null
   }
 }
 

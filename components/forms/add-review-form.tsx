@@ -78,6 +78,9 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
     try {
       const response = await addReview(formData)
       console.log('resposta da action', response)
+      if(response.success){
+        window.location.reload()
+      }
     } catch (err) {
       console.error(err)
       setError(
