@@ -1,17 +1,31 @@
 import { getUserIdByUsername } from './social'
 import { db } from '@/lib/db'
 
+// export const relUserCerv = async (userId: string, cervejaId: string) => {
+//   return await db.userCerveja.count({
+//     where: {
+//       cervejaId: +cervejaId,
+//       AND: {
+//         usuarioId: userId,
+//       },
+//     },
+//   })
+// }
+
 export const relUserCerv = async (userId: string, cervejaId: string) => {
-  return await db.userCerveja.count({
+  return await db.userCerveja.findFirst({
     where: {
       cervejaId: +cervejaId,
-      AND: {
-        usuarioId: userId,
-      },
+      usuarioId: userId,
+    },
+    select: {
+      favorita: true,
+      queroBeber: true,
+      jaBebida: true,
+      reviewTexto: true,
     },
   })
 }
-
 
 export const createAvaliacao = async (
   userId: string,
@@ -30,9 +44,7 @@ export const createAvaliacao = async (
   return newRel
 }
 
-export const createRelationUserCerveja = async () => {
-
-}
+export const createRelationUserCerveja = async () => {}
 
 // export const getUserCervejasAvaliadas = async (username: string) => {
 //   const userId = await getUserIdByUsername(username)
@@ -54,22 +66,21 @@ export const getCervejaAvaliacoes = async () => {
       usuario: {
         select: {
           username: true,
-          image: true
-        }
-      }
-    }
+          image: true,
+        },
+      },
+    },
   })
   return avaliacoes
 }
-
 
 export const getUserCervejaFavoritas = async (username: string) => {
   const userId = await getUserIdByUsername(username)
   const favoritas = await db.userCerveja.findMany({
     where: {
       usuarioId: userId,
-      favorita: true
-    }
+      favorita: true,
+    },
   })
   return favoritas
 }
@@ -79,8 +90,8 @@ export const getUserCerverjasQueroBeber = async (username: string) => {
   const queroBeber = await db.userCerveja.findMany({
     where: {
       usuarioId: userId,
-      queroBeber: true
-    }
+      queroBeber: true,
+    },
   })
   return queroBeber
 }
