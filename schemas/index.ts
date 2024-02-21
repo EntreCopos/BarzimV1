@@ -41,7 +41,6 @@ export const AccountSettingsSchema = z.object({
     .min(2, { message: 'O nome de usuário não pode estar vazio.' }),
   link: z.string(),
   cep: z.string(),
-  genero: z.string(),
   bio: z.string(),
 })
 
