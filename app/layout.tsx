@@ -4,11 +4,12 @@ import { Roboto } from 'next/font/google'
 import { PHProvider } from './providers'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
 const font = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
 })
-
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
   ssr: false,
@@ -28,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body style={{minHeight: '100svh', backgroundColor: 'rgb(230 230 230)'}} className={font.className}>
+        <body
+          style={{ minHeight: '100svh', backgroundColor: 'rgb(230 230 230)' }}
+          className={font.className}
+        >
+          <SpeedInsights />
           <PostHogPageView />
           {children}
         </body>
