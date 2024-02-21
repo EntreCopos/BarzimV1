@@ -1,6 +1,5 @@
 import { db } from '@/lib/db'
 import { getUserIdByUsername } from './social'
-import { notEqual } from 'assert'
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -69,15 +68,16 @@ export const getUserReviewPics = async (username: string) => {
     const reviewsWithPics = await db.userCerveja.findMany({
       where: {
         usuarioId: userId,
-        imagens: {isEmpty: false}
+        imagens: { isEmpty: false },
       },
       select: {
-        imagens: true
-      }
+        imagens: true,
+      },
     })
-    return reviewsWithPics.flatMap(reviewPic => reviewPic.imagens.map(imageString => JSON.parse(imageString)))
-
-  } catch(err){
+    return reviewsWithPics.flatMap((reviewPic) =>
+      reviewPic.imagens.map((imageString) => JSON.parse(imageString))
+    )
+  } catch (err) {
     return null
   }
 }

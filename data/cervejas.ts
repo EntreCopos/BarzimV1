@@ -16,17 +16,17 @@ export const getAllCervejas = async () => {
 export const getCervejaNameById = async (id: string | number) => {
   return await db.cerveja.findUnique({
     where: {
-      id: +id
+      id: +id,
     },
     select: {
-      nomeCerveja: true
-    }
+      nomeCerveja: true,
+    },
   })
 }
 
 export const getCervejarias = async () => {
   try {
-    const cervejarias = await db.cervejaria.findMany() 
+    const cervejarias = await db.cervejaria.findMany()
     return cervejarias
   } catch (err) {
     console.error(err)
@@ -35,18 +35,16 @@ export const getCervejarias = async () => {
 }
 
 export const getRandomCervejasDashboard = async (size: number) => {
-    try {
-      const cerveijaxx = await db.cerveja.findMany({
+  try {
+    const cerveijaxx = await db.cerveja.findMany({
       take: size,
       include: {
         cervejaria: true,
         tipoCerveja: true,
       },
-      })
+    })
 
-      return cerveijaxx.sort(() => Math.random() - 0.5)
-      
-
+    return cerveijaxx.sort(() => Math.random() - 0.5)
   } catch {
     return null
   }
@@ -62,8 +60,9 @@ export const getCervejasByCervejaria = async (id: string) => {
         nome: true,
         cervejas: {
           include: {
-            tipoCerveja: true
-          }
+            tipoCerveja: true,
+            cervejaria: true,
+          },
         },
       },
     })
@@ -115,21 +114,21 @@ export const getCervejaById = async (id: string) => {
 }
 
 export const createNewTipoCerveja = async (data: any) => {
-  console.log('DADOS EM create new tipocerveja',data)
-  
+  console.log('DADOS EM create new tipocerveja', data)
+
   await db.tipoCerveja.create({
-    data
+    data,
   })
 }
 export const createNewCervejaria = async (data: any) => {
   console.log('DADOS EM create new cervejaria', data)
-  
+
   await db.cervejaria.create({
-    data
+    data,
   })
 }
-export const createNewCerveja = async (data: any)=> {  
+export const createNewCerveja = async (data: any) => {
   await db.cerveja.create({
-    data
+    data,
   })
 }

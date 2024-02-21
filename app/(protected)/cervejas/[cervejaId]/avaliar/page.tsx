@@ -1,5 +1,7 @@
 import { auth } from '@/auth'
 import { AvaliacaoForm } from '@/components/forms/add-review-form'
+import ReviewTitle from '@/components/titles/review-title/review-title'
+import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 import { relUserCerv, userHasReviewedCervejaById } from '@/data/avaliacao'
 import { getCervejaById } from '@/data/cervejas'
 import { redirect } from 'next/navigation'
@@ -29,9 +31,9 @@ const AvaliarCerveja = async ({
   else
     return (
       <>
-        <div style={{ color: '#fffeef' }}>
-          Avaliando cerveja: {cerveja?.nomeCerveja}
-        </div>
+        <WrapperDefaultPadding style={{ marginTop: '30px' }}>
+          <ReviewTitle beerName={cerveja?.nomeCerveja as string} />
+        </WrapperDefaultPadding>
         <AvaliacaoForm idCerveja={params.cervejaId} idUser={myId} />
       </>
     )

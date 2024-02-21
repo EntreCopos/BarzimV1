@@ -32,7 +32,7 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
       </CarouselWrapper>
       <WrapperDefaultPadding>
         <h1 style={{ width: '100%', textAlign: 'center' }}>
-          As últimas análises, carrossel de fotos e últimas interações do
+          As análises, carrossel de fotos e últimas interações do
           usuário irão aparecer aqui
         </h1>
       </WrapperDefaultPadding>
