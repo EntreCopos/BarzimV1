@@ -1,14 +1,14 @@
 import { isFollowing } from '@/actions/social'
 import { auth } from '@/auth'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
+import FollowForm from '@/components/forms/form-follow'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { getUserMetrics } from '@/data/social'
 import { getUserByUsername } from '@/data/user'
 import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
-import { RiUserUnfollowLine, RiUserFollowLine } from 'react-icons/ri'
+import Link from 'next/link'
 import styles from './layout.module.css'
-import FollowForm from '@/components/forms/form-follow'
 
 enum SocialLabels {
   avaliacaoUserCount = 'Avaliações',
@@ -38,7 +38,7 @@ const UserPageLayout = async ({
   if (!session) throw new Error('session messed up')
 
   const myId = session?.user.id as string
-  
+
   const user = await getUserByUsername(params.username)
   const metrics: Metrics = await getUserMetrics(params.username)
 
@@ -99,7 +99,7 @@ const UserPageLayout = async ({
             relationship={relationship}
           />
         ) : (
-          <button className={styles.followBtn}>Configurações</button>
+          <Link href={`/usuarios/${user.username}/config`}><button className={styles.followBtn}>Configurações</button></Link>
         )}
       </div>
       <div className={styles.contentBody}>
