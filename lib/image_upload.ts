@@ -7,12 +7,15 @@ cloudinary.config({
   api_secret: process.env.CLD_SEC,
 })
 
-export const uploadImageToCloudinary = (base64String: string): Promise<unknown> => {
+export const uploadImageToCloudinary = (
+  base64String: string,
+  folder: string | undefined = 'review_images'
+): Promise<unknown> => {
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(
       base64String,
       {
-        folder: 'review_images',
+        folder: folder,
       },
       (error, result) => {
         if (error) {

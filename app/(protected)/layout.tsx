@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '../globals.css'
 
 import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Barzim App',
@@ -18,6 +19,7 @@ export default async function ProtectedLayout({
       <MobileScreenDefaulWrapper>
         <NavWrapper />
         {children}
+        <Toaster />
       </MobileScreenDefaulWrapper>
   )
 }

@@ -1,17 +1,23 @@
+"use server"
+
 import { db } from '@/lib/db'
 import { AccountSettingsSchema } from '@/schemas'
-import { z } from 'zod'
+import { type z } from 'zod'
 
 type AccountSettingsValues = z.infer<typeof AccountSettingsSchema>
 
-export const updateAccountSettings = async (values: AccountSettingsValues) => {
+export const updateAccountSettings = async (
+  values: AccountSettingsValues,
+  userId: string
+) => {
+  console.log('validated::' , values, userId)
   const validatedFields = AccountSettingsSchema.safeParse(values)
 
   if (!validatedFields.success) {
     return { error: 'Campos inválidos' } as const
   }
 
-  const { name, username, link, cep, genero, bio } = validatedFields.data
+  const { name, username, link, cep, bio } = validatedFields.data
 
   try {
     await db.user.update({
@@ -20,9 +26,9 @@ export const updateAccountSettings = async (values: AccountSettingsValues) => {
         username,
         link,
         cep,
-        genero,
         bio,
       },
+      where: { id: userId },
     })
 
     return {
