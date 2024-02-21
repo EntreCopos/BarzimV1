@@ -1,5 +1,5 @@
 interface ReviewDateProps {
-    isoDate: string
+    isoDate: Date
 }
 
 const ReviewDate: React.FC<ReviewDateProps> = ({ isoDate }) => {
