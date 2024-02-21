@@ -99,7 +99,7 @@ const UserPageLayout = async ({
             relationship={relationship}
           />
         ) : (
-          <Link href={`/usuarios/${user.username}/config`}><button className={styles.followBtn}>Configurações</button></Link>
+          <Link href={`/config`}><button className={styles.followBtn}>Configurações</button></Link>
         )}
       </div>
       <div className={styles.contentBody}>
