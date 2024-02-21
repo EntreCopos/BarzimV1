@@ -174,7 +174,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                 </div>
                 <FormError message={error} />
                 <FormSuccess message={success} />
-                <Button disabled={isPending} type="submit" className="w-full h-12 mt-3 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]">
+                <Button disabled={isPending} type="submit" className="w-full h-12 mt-6 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]">
                     Salvar Configurações
                 </Button>
             </form>
