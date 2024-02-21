@@ -34,10 +34,10 @@ export const getCervejarias = async () => {
   }
 }
 
-export const getRandomCervejasDashboard = async () => {
+export const getRandomCervejasDashboard = async (size: number) => {
     try {
       const cerveijaxx = await db.cerveja.findMany({
-      take: 8,
+      take: size,
       include: {
         cervejaria: true,
         tipoCerveja: true,

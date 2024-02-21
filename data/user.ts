@@ -1,4 +1,6 @@
 import { db } from '@/lib/db'
+import { getUserIdByUsername } from './social'
+import { notEqual } from 'assert'
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -56,6 +58,26 @@ export const getManyUsersNotPrivate = async (excludeId: string | undefined) => {
       },
     })
   } catch (err) {
+    return null
+  }
+}
+
+export const getUserReviewPics = async (username: string) => {
+  try {
+    const userId = await getUserIdByUsername(username)
+
+    const reviewsWithPics = await db.userCerveja.findMany({
+      where: {
+        usuarioId: userId,
+        imagens: {isEmpty: false}
+      },
+      select: {
+        imagens: true
+      }
+    })
+    return reviewsWithPics.flatMap(reviewPic => reviewPic.imagens.map(imageString => JSON.parse(imageString)))
+
+  } catch(err){
     return null
   }
 }
