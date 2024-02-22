@@ -2,7 +2,7 @@
 
 import FileInput from '@/components/forms/file-input'
 import { FaRegImage } from 'react-icons/fa'
-import { IoCloseCircle } from 'react-icons/io5'
+import { IoMdClose } from "react-icons/io"
 import styles from './config.module.css'
 
 import { removeProfilePic } from '@/actions/profile-image'
@@ -44,21 +44,30 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
     }
 
     const placeholderPic = 'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'
-    const isPlaceholderPic = profilePic === placeholderPic
+    const isPlaceholderPic = user.image === placeholderPic
 
     return (
         <div className={styles.profileHeaderWrapper}>
             <div className={styles.avatarWrapper}>
+
+                <Avatar style={{ width: 120, height: 120 }}>
+                    <AvatarReview
+                        avatarSrc={profilePic
+                            || user?.image as string
+                            || placeholderPic}
+                        width={120}
+                        height={120}
+                    />
+                </Avatar>
                 <div className={styles.icons}>
                     <label className={styles.image}>
                         <FileInput onProfilePicChange={handleProfilePicChange} userId={user?.id} />
                         <FaRegImage />
                     </label>
-
                     <AlertDialog>
                         <AlertDialogTrigger>
-                            <button disabled={isPlaceholderPic}>
-                                <IoCloseCircle className={styles.close} />
+                            <button className={styles.close} disabled={isPlaceholderPic}>
+                                <IoMdClose />
                             </button>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
@@ -75,15 +84,8 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
                         </AlertDialogContent>
                     </AlertDialog>
                 </div>
-                <Avatar style={{ width: 120, height: 120 }}>
-                    <AvatarReview
-                        avatarSrc={profilePic
-                            || user?.image as string
-                            || placeholderPic}
-                        width={120}
-                        height={120}
-                    />
-                </Avatar>
+
+
             </div>
         </div>
     )
