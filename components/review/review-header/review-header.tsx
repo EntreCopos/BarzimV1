@@ -4,9 +4,14 @@ import styles from './review-header.module.css'
 interface ReviewHeaderProps {
   userName: string
   beerName: string
+  beerId?: number | boolean
 }
 
-const ReviewHeader: React.FC<ReviewHeaderProps> = ({ userName, beerName }) => {
+const ReviewHeader: React.FC<ReviewHeaderProps> = ({
+  userName,
+  beerName,
+  beerId = false,
+}) => {
   return (
     <div className={styles.reviewHeader}>
       <p>
@@ -14,7 +19,12 @@ const ReviewHeader: React.FC<ReviewHeaderProps> = ({ userName, beerName }) => {
           <span className={styles.userName}>{`@${userName}`}</span>
         </Link>
         <span className={styles.avaliedText}> avaliou </span>
-        <span className={styles.beerName}>{beerName}</span>
+        {beerId && (
+          <Link href={`/cervejas/${beerId}`}>
+            <span className={styles.beerName}>{beerName}</span>
+          </Link>
+        )}
+        {!beerId && <span className={styles.beerName}>{beerName}</span>}
       </p>
     </div>
   )

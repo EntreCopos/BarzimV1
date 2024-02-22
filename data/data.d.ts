@@ -105,4 +105,5 @@ export interface Follower {
   createdAt: Date
 }
 
+
 export { type AgeVerifFormData, type CervejaData, type TypeObjectCerveja }

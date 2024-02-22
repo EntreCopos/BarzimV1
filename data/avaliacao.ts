@@ -65,6 +65,9 @@ export const getAvaliacoesByCerveja = async (id: string) => {
         },
       },
     },
+    orderBy: {
+      createdAt: 'desc'
+    }
   })
   return avaliacoes
 }
@@ -96,6 +99,38 @@ export const getAllCervejaAvaliacoes = async (size: number) => {
       createdAt: 'desc',
     },
     include: {
+      cerveja: {
+        select: {
+          nomeCerveja: true,
+          id: true,
+        },
+      },
+      usuario: {
+        select: {
+          username: true,
+          image: true,
+        },
+      },
+    },
+  })
+  return avaliacoes
+}
+export const getAllCervejaQuerBeber = async (size: number) => {
+  const avaliacoes = await db.userCerveja.findMany({
+    where: {
+      queroBeber: true,
+    },
+    take: size,
+    orderBy: {
+      createdAt: 'desc',
+    },
+    include: {
+      cerveja: {
+        select: {
+          nomeCerveja: true,
+          id: true,
+        },
+      },
       usuario: {
         select: {
           username: true,
