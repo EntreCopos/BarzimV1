@@ -15,6 +15,8 @@ import { getAllCervejaAvaliacoes } from '@/data/avaliacao'
 import ReviewHeader from '@/components/review/review-header/review-header'
 import ReviewDate from '@/components/review/review-date'
 
+export const dynamic = 'force-dynamic'
+
 const DashboardPage = async () => {
   const session = await auth()
 
