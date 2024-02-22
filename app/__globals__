@@ -1,26 +1,28 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-
 :root {
-  --yellow-barzim: #FEC435;
+  --yellow-barzim: #fec435;
   --slate-barzim: #434343;
-  --marfim-barzim: #FFFEEF;
+  --marfim-barzim: #fffeef;
   --deep-black: #141414;
-  --deep-vermillo: #B82F18;
+  --deep-vermillo: #b82f18;
   --tabs-background: #686868;
-  --stroke-bg-cervejas: rgb(117, 117, 117, .12);
-  --bg-cards: rgb(107, 107, 107, .12);
-  --black-fill-cards: rgba(19, 19, 19, .85);
+  --stroke-bg-cervejas: rgb(117, 117, 117, 0.12);
+  --bg-cards: rgb(107, 107, 107, 0.12);
+  --black-fill-cards: rgba(19, 19, 19, 0.85);
 
-  --yellow-trasparent-gradient: linear-gradient(#FEAE16, rgba(254, 174, 22, .35), #FEAE16);
+  --yellow-trasparent-gradient: linear-gradient(
+    #feae16,
+    rgba(254, 174, 22, 0.35),
+    #feae16
+  );
   --black-radial-gradient: radial-gradient(at right top, #1b1b1b, #141414);
 
   --sutil-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  --sharp-shadow: 1px 1px 1px rgba(0, 0, 0, 0.10);
-  --letter-spacing: 0.5px
+  --sharp-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  --letter-spacing: 0.5px;
 }
 
 html,
@@ -111,4 +113,4 @@ body,
     margin: 0;
     -moz-appearance: textfield !important;
   }
-}
+} */
