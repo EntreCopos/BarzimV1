@@ -1,4 +1,5 @@
 import { db } from '@/lib/db'
+import { shuffleArray } from '@/lib/utils'
 
 export const getAllCervejas = async () => {
   try {
@@ -36,15 +37,17 @@ export const getCervejarias = async () => {
 
 export const getRandomCervejasDashboard = async (size: number) => {
   try {
-    const cerveijaxx = await db.cerveja.findMany({
-      take: size,
+    const allCervejas = await db.cerveja.findMany({
       include: {
         cervejaria: true,
         tipoCerveja: true,
       },
     })
 
-    return cerveijaxx.sort(() => Math.random() - 0.5)
+    const shuffledCervejas = shuffleArray(allCervejas)
+    const randomCervejas = shuffledCervejas.slice(0, size)
+
+    return randomCervejas
   } catch {
     return null
   }
