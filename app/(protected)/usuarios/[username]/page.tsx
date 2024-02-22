@@ -8,7 +8,7 @@ import { getUserReviewPics } from '@/data/user'
 const UserPage = async ({ params }: { params: { username: string } }) => {
   const userPics = await getUserReviewPics(params.username)
 
-  console.log('userpics é::::', userPics)
+  // console.log('userpics é::::', userPics)
 
   return (
     <>
@@ -32,8 +32,8 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
       </CarouselWrapper>
       <WrapperDefaultPadding>
         <h1 style={{ width: '100%', textAlign: 'center' }}>
-          As análises, carrossel de fotos e últimas interações do
-          usuário irão aparecer aqui
+          As análises, carrossel de fotos e últimas interações do usuário irão
+          aparecer aqui
         </h1>
       </WrapperDefaultPadding>
     </>
