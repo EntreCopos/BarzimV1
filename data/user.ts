@@ -9,11 +9,32 @@ export const getUserByEmail = async (email: string) => {
   }
 }
 
-export const getUserById = async (id: string | undefined) => {
-  if (typeof id == undefined) return null
+//esse getter não é seguro no momento, esta vazando o hash da senha do usuario
+export const getUserById = async (id: string) => {
   try {
-    return await db.user.findUnique({ where: { id } })
-  } catch {
+    const user = await db.user.findUnique({
+      where: {
+        id,
+      },
+    })
+    return user
+  } catch (err) {
+    return null
+  }
+}
+
+export const getUsernameById = async (id: string) => {
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        username: true
+      }
+    })
+    return user
+  } catch (err) {
     return null
   }
 }
@@ -80,4 +101,27 @@ export const getUserReviewPics = async (username: string) => {
   } catch (err) {
     return null
   }
+}
+function exclude(
+  user: {
+    id: string
+    name: string | null
+    email: string | null
+    emailVerified: Date | null
+    image: string | null
+    bio: string
+    link: string | null
+    password: string | null
+    role: import('@prisma/client').$Enums.UserRole
+    isTwoFactorEnabled: boolean
+    dateOfBirth: Date | null
+    username: string | null
+    isPrivate: boolean
+    genero: import('@prisma/client').$Enums.Genero | null
+    cep: string | null
+    createdAt: Date
+  } | null,
+  arg1: string[]
+) {
+  throw new Error('Function not implemented.')
 }

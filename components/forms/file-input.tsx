@@ -1,13 +1,10 @@
 "use client"
 
 import { changeProfilePic } from "@/actions/profile-image"
-import { useState } from "react"
 
 const MAX_FILE_SIZE = 300 * 1024
 
 const FileInput = ({ userId, onProfilePicChange }: { userId: string, onProfilePicChange: (newPicUrl: string) => void }) => {
-    const [profilePic, setProfilePic] = useState<string>('')
-
     const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
 

@@ -42,7 +42,6 @@ const ExploreUsersPage = async () => {
           usersWithBio.map((user) => {
             return (
               <div key={user.id} className='p-2 flex items-start gap-2'>
-
                 {/* Link para a página de perfil do usuário */}
                 <Link href={`/usuarios/${user.username} ` ?? 'dashboard'}>
                   <Avatar>
@@ -62,6 +61,7 @@ const ExploreUsersPage = async () => {
                       : "Esse usuário misterioso ainda não escreveu uma bio"
                     }
                   </div>
+                  <div className='text-sm text-gray-500 break-words'>{user?.bio}</div>
                 </div>
               </div>
             )

@@ -2,7 +2,7 @@
 import { auth, signOut } from '@/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { firstTwoLetters } from '@/lib/utils'
+import { cn, firstTwoLetters } from '@/lib/utils'
 
 import styles from './page.module.css'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find'
@@ -18,7 +18,7 @@ import ReviewDate from '@/components/review/review-date'
 const DashboardPage = async () => {
   const session = await auth()
 
-  const randCervejas = await getRandomCervejasDashboard(8) //buscando 8 cervejas
+  const randCervejas = await getRandomCervejasDashboard(4) //buscando 8 cervejas
   const latestReviews = await getAllCervejaAvaliacoes(6) //buscando as 6 ultimas
 
   if (latestReviews && latestReviews?.length > 0) {
@@ -48,24 +48,14 @@ const DashboardPage = async () => {
         />
         {randCervejas && <ListaCervejasDashboard cervejas={randCervejas} />}
       </WrapperDefaultPadding>
+      <ListFindings />
       <WrapperDefaultPadding>
         <SectionTitle title="As últimas no Barzim" />
-        <ul
-          style={{
-            listStyle: 'none',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-          }}
-        >
+        <ul className={cn('flex list-none flex-col gap-2')}>
           {latestReviews.map((review) => {
             return (
               <li
-                style={{
-                  backgroundColor: 'rgb(30 30 30)',
-                  padding: '.5rem .8rem',
-                  borderRadius: '.2rem',
-                }}
+                className={cn('rounded-sm bg-zinc-700 px-3 py-2 ')}
                 key={review.id}
               >
                 <ReviewDate isoDate={review.createdAt} />
@@ -79,7 +69,6 @@ const DashboardPage = async () => {
           })}
         </ul>
       </WrapperDefaultPadding>
-      <ListFindings />
       <div className="flex h-fit w-full justify-center gap-4 align-middle">
         <Avatar>
           <AvatarImage src={user.imageUrl} />

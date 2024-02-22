@@ -30,14 +30,18 @@ export const changeProfilePic = async (
   id: string
 ): Promise<string> => {
   try {
-    const image: CloudinaryResponse = await uploadImageToCloudinary(img, 'profile_pics')
+    const imageBase64: CloudinaryResponse = await uploadImageToCloudinary(
+      img,
+      'profile_pics'
+    )
+    const imageUrl = imageBase64.secure_url
 
     await db.user.update({
-      data: { image: img },
+      data: { image: imageUrl },
       where: { id: id },
     })
 
-    return image.secure_url
+    return imageUrl
   } catch (error) {
     console.error(error)
     throw error
