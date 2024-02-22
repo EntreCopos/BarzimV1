@@ -65,7 +65,7 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
                         <FaRegImage />
                     </label>
                     <AlertDialog>
-                        <AlertDialogTrigger>
+                        <AlertDialogTrigger asChild>
                             <button className={styles.close} disabled={isPlaceholderPic}>
                                 <IoMdClose />
                             </button>
@@ -84,8 +84,6 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
                         </AlertDialogContent>
                     </AlertDialog>
                 </div>
-
-
             </div>
         </div>
     )
