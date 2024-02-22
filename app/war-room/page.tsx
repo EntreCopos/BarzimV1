@@ -21,6 +21,8 @@ import { TitleAvatarWrapper } from "@/components/wrappers/review-title-avatar-wr
 import { ReviewWrapper } from "@/components/wrappers/review-wrapper"
 import { ReviewPageDescription } from "@/components/wrappers/reviewPage-description-wrapper"
 import imgSuccess from '../../components/assets/icons/success.png'
+import AvatarConfig from "@/components/avatar/avatar-config/avatar-config"
+import avatarSrcFoto from '../../components/assets/icons/Designer (21) 1 (1).png'
 
 export default function War() {
 
@@ -48,10 +50,6 @@ export default function War() {
             </div>
           </div>
 
-          <ButtonsWrapper>
-            <BrindarButton />
-            <AddtoListButton />
-          </ButtonsWrapper>
 
           <div className=" flex gap-2">
             <IngredientsTag label="Água" />
@@ -67,16 +65,16 @@ export default function War() {
             <BrindarReviewButton />
           </ReviewWrapper>
 
-          <AddImageButton />
 
           <TitleAvatarWrapper>
             <ReviewTitle user="erlich69" />
             <AvatarReview avatarSrc={'https://res.cloudinary.com/dvprux49g/image/upload/v1708016390/pirk4g0flwwfgytrd669.png'} />
           </TitleAvatarWrapper>
 
-          <ReviewDate isoDate="2024-02-09T00:00:00Z" />
 
           <ReviewPageDescription description={description} />
+
+          <AvatarConfig avatarSrc={avatarSrcFoto}/>
 
 
         </div >
