@@ -20,8 +20,6 @@ export const AddtoListButton: React.FC<{
   usuario: string
   userReltoCerveja: TUserRelToCervea | null
 }> = ({ id, usuario, userReltoCerveja }) => {
-  console.log('userreltocerveja é:::', userReltoCerveja)
-
   const [localRel, setLocalRel] = useState<LocalRelType | null>({})
   const [isUpdating, setUpdating] = useState(false)
 

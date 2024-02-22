@@ -1,20 +1,11 @@
 import { isFollowing } from '@/actions/social'
 import { auth } from '@/auth'
-import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
-import FollowForm from '@/components/forms/form-follow'
 import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-listas'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { getUserMetrics } from '@/data/social'
 import { getUserByUsername } from '@/data/user'
-import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
-import Link from 'next/link'
-import styles from './layout.module.css'
-
-enum SocialLabels {
-  avaliacaoUserCount = 'Avaliações',
-  userFollowingsCount = 'Seguindo',
-  userFollowersCount = 'Seguidores',
-}
+import { cn } from '@/lib/utils'
+import { SocialBar } from '@/components/profile-social-bar/social-bar'
+import { UserDetails } from '@/components/userprofile/user-details'
 
 interface Metrics {
   [key: string]: number
@@ -33,7 +24,6 @@ const UserPageLayout = async ({
   children: React.ReactNode
   params: { username: string }
 }) => {
-
   const session = await auth()
   if (!session) throw new Error('session messed up')
 
@@ -49,64 +39,24 @@ const UserPageLayout = async ({
 
   // é possivel que esse dado seja extraivel no proprio objeto user acima
   // mas aqui é teste meus irmaozinho, aqui é teste
-  const relationship = !!await isFollowing(myId, user.id)
+  const relationship = !!(await isFollowing(myId, user.id))
 
   return (
-    <>
-      <div className={cn('', styles.profileHeaderWrapper)}>
-        <div className={styles.avatarWrapper}>
-          <Avatar style={{ width: 120, height: 120 }}>
-            <AvatarReview
-              avatarSrc={user.image as string}
-              width={120}
-              height={120}
-            />
-            {!user.image && (
-              <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
-            )}
-          </Avatar>
-        </div>
-        <div className={styles.infoTxtWrapper}>
-          <h2>{user.name}</h2>
-          <section>
-            <h3>Bio</h3>
-            <p>{user.bio}</p>
-          </section>
-          {user.link && (
-            <section className={styles.link}>
-              <h3>Link</h3>
-              <a href={user.link}>{sanitizeUserLink(user.link as string)}</a>
-            </section>
-          )}
-        </div>
+    <div className={cn('flex h-full flex-col justify-between')}>
+      <div className={cn('h-fit')}>
+        <UserDetails user={user} />
+        <SocialBar
+          metrics={metrics}
+          myId={myId}
+          userId={user?.id as string}
+          relationship={relationship}
+        />
       </div>
-      <div className={cn('', styles.interactionsBar)}>
-        <section className={styles.slots}>
-          {Object.keys(metrics).map((metricKey: keyof typeof metrics) => {
-            const metric = metricKey as keyof typeof SocialLabels
-            return (
-              <div className={styles.slot} key={metric}>
-                <span>{metrics[metricKey]}</span>
-                <h2>{SocialLabels[metric]}</h2>
-              </div>
-            )
-          })}
-        </section>
-        {!!(myId !== user.id) ? (
-          <FollowForm
-            myId={myId}
-            user={user.id}
-            relationship={relationship}
-          />
-        ) : (
-          <Link href={`/config`}><button className={styles.followBtn}>Configurações</button></Link>
-        )}
-      </div>
-      <div className={styles.contentBody}>
+      <div className={cn('flex h-full flex-col justify-start bg-[#131313]')}>
         <UnconventionalTabs tabs={tabsData} />
         {children}
       </div>
-    </>
+    </div>
   )
 }
 

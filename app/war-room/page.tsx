@@ -39,7 +39,6 @@ export default function War() {
   return (
     <>
       <div className='bg-black-radial-gradient min-h-svh bg-cover gap-10 flex justify-center items-center backdrop-blur-5'>
-
         <div className="flex flex-col gap-7">
           <div className="flex ">
             <BeerImage src="https://res.cloudinary.com/dvprux49g/image/upload/v1707497542/tjyxr8vuqy9qx9sjrgsb.png" />
@@ -76,7 +75,6 @@ export default function War() {
             <BrindarReviewButton />
           </ReviewWrapper>
 
-
           <TitleAvatarWrapper>
             <ReviewTitle user="erlich69" />
             <AvatarReview avatarSrc={'https://res.cloudinary.com/dvprux49g/image/upload/v1708016390/pirk4g0flwwfgytrd669.png'} />
@@ -89,8 +87,6 @@ export default function War() {
 
 
         </div >
-      </div>
-
     </>
   )
 }
