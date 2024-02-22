@@ -14,15 +14,18 @@ import { IngredientsTag } from "@/components/tags/ingredients-tag"
 import { BeerNameLarge } from "@/components/titles/beer-name-lg"
 import { BeerDescription } from "@/components/wrappers/beer-description-wrapper"
 import { BeerImage } from "@/components/wrappers/beer-image-wrapper"
-import BoxReviewAvaliada from "@/components/wrappers/box-review-avaliada/box-review-avaliada"
 import { ButtonsWrapper } from "@/components/wrappers/buttons-wrapper"
 import { ReviewDescription } from "@/components/wrappers/review-description-wrapper"
 import { TitleAvatarWrapper } from "@/components/wrappers/review-title-avatar-wrapper"
 import { ReviewWrapper } from "@/components/wrappers/review-wrapper"
 import { ReviewPageDescription } from "@/components/wrappers/reviewPage-description-wrapper"
+import BackgroundReview from "@/components/background/background-review/background-review"
+import BackgroundReviewImg from '../../components/assets/imgs-beers/Captura de tela 2024-02-22 020629.png'
+
 import imgSuccess from '../../components/assets/icons/success.png'
 import AvatarConfig from "@/components/avatar/avatar-config/avatar-config"
 import avatarSrcFoto from '../../components/assets/icons/Designer (21) 1 (1).png'
+
 
 export default function War() {
 
@@ -49,6 +52,14 @@ export default function War() {
               <BeerDescription description="O processo de produção da Budweiser é diferenciado, por utilizar lascas de Beechwood (madeira especial) durante os processos de fermentação e maturação. O resultado é um cerveja de sabor único e com equilíbrio perfeito: marcante no início e suave no final." />
             </div>
           </div>
+
+          <BackgroundReview imageUrl={BackgroundReviewImg.src} />
+          
+          <ButtonsWrapper>
+            <BrindarButton />
+            <AddtoListButton />
+          </ButtonsWrapper>
+
 
 
           <div className=" flex gap-2">
