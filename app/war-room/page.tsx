@@ -22,6 +22,11 @@ import { ReviewPageDescription } from "@/components/wrappers/reviewPage-descript
 import BackgroundReview from "@/components/background/background-review/background-review"
 import BackgroundReviewImg from '../../components/assets/imgs-beers/Captura de tela 2024-02-22 020629.png'
 
+import imgSuccess from '../../components/assets/icons/success.png'
+import AvatarConfig from "@/components/avatar/avatar-config/avatar-config"
+import avatarSrcFoto from '../../components/assets/icons/Designer (21) 1 (1).png'
+
+
 export default function War() {
 
   const cerveja = {
@@ -56,6 +61,7 @@ export default function War() {
           </ButtonsWrapper>
 
 
+
           <div className=" flex gap-2">
             <IngredientsTag label="Água" />
             <IngredientsTag label="Malte" />
@@ -70,16 +76,16 @@ export default function War() {
             <BrindarReviewButton />
           </ReviewWrapper>
 
-          <AddImageButton />
 
           <TitleAvatarWrapper>
             <ReviewTitle user="erlich69" />
             <AvatarReview avatarSrc={'https://res.cloudinary.com/dvprux49g/image/upload/v1708016390/pirk4g0flwwfgytrd669.png'} />
           </TitleAvatarWrapper>
 
-          <ReviewDate isoDate="2024-02-09T00:00:00Z" />
 
           <ReviewPageDescription description={description} />
+
+          <AvatarConfig avatarSrc={avatarSrcFoto}/>
 
 
         </div >
