@@ -30,19 +30,18 @@ const ExploreUsersPage = async () => {
 
   // Retornando o componente JSX para renderizar a página
   return (
-    <main className='text-white flex flex-col h-full items-center justify-center text-center gap-4 bg-black-radial-gradient mt-6'>
+    <div className='text-white flex flex-col items-center justify-center text-center gap-4 bg-black-radial-gradient mt-6'>
       <div>
         <h1 className='text-2xl pb-3'>Olá, <b className='text-yellow-barzim'>{session?.user.name}!</b></h1>
-        <p>Os usuários abaixo já fazem parte do Barzim</p>
+        <p>Os usuários abaixo já fazem parte do Barzim 😊</p>
       </div>
-      <div className='flex flex-col'>
+      <div className='flex flex-col px-1'>
         {/* Verificando se existem usuários */}
         {!!usersWithBio &&
           // Mapeando cada usuário para um componente Avatar
           usersWithBio.map((user) => {
             return (
               <div key={user.id} className='p-2 flex items-start gap-2'>
-                              
                 {/* Link para a página de perfil do usuário */}
                 <Link href={`/usuarios/${user.username} ` ?? 'dashboard'}>
                   <Avatar>
@@ -55,13 +54,20 @@ const ExploreUsersPage = async () => {
 
                 <div className='flex flex-col items-start'>
                   <div>{user?.name}</div>
+                  <div className='text-xs text-gray-500 break-words'>
+                    {/* Isso aqui tá BEM gambiarra mas tá funcionando */}
+                    {user?.bio && user.bio !== "Esse usuÃ¡rio misterioso ainda nÃ£o escreveu uma bio"
+                      ? user.bio
+                      : "Esse usuário misterioso ainda não escreveu uma bio"
+                    }
+                  </div>
                   <div className='text-sm text-gray-500 break-words'>{user?.bio}</div>
                 </div>
               </div>
             )
           })}
       </div>
-    </main>
+    </div>
   )
 }
 
