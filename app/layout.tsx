@@ -4,7 +4,7 @@ import { PHProvider } from './ph_providers'
 import { cn } from '@/lib/utils'
 import { Providers } from './providers'
 
-import './globals.css'
+import '../public/globals.css'
 
 const font = Roboto({
   subsets: ['latin'],
