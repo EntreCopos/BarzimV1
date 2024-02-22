@@ -5,6 +5,7 @@ import { changeProfilePic } from "@/actions/profile-image"
 const MAX_FILE_SIZE = 300 * 1024
 
 const FileInput = ({ userId, onProfilePicChange }: { userId: string, onProfilePicChange: (newPicUrl: string) => void }) => {
+
     const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
 
