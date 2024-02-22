@@ -4,13 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
   overflow: hidden;
 }
 
 .icons {
   color: white;
-  z-index: 999;
   display: inline-flex;
   align-items: center;
   justify-content: center;
