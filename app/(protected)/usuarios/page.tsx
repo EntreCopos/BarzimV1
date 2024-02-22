@@ -56,12 +56,11 @@ const ExploreUsersPage = async () => {
                   <div>{user?.name}</div>
                   <div className='text-xs text-gray-500 break-words'>
                     {/* Isso aqui tá BEM gambiarra mas tá funcionando */}
-                    {user?.bio && user.bio !== "Esse usuÃ¡rio misterioso ainda nÃ£o escreveu uma bio"
-                      ? user.bio
-                      : "Esse usuário misterioso ainda não escreveu uma bio"
+                    {user.bio == "Esse usuÃ¡rio misterioso ainda nÃ£o escreveu uma bio"
+                      ? "Esse usuário misterioso ainda não escreveu uma bio"
+                      : user.bio
                     }
                   </div>
-                  <div className='text-sm text-gray-500 break-words'>{user?.bio}</div>
                 </div>
               </div>
             )
