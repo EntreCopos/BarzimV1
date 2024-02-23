@@ -1,14 +1,8 @@
 import type { Config } from 'tailwindcss'
 
 const config = {
-  mode: 'jit',
   darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}'],
   prefix: '',
   theme: {
     container: {
@@ -75,7 +69,8 @@ const config = {
         'black-radial-gradient': 'var(--black-radial-gradient)',
         'hero-age-mobile': "url('../public/images/bg-age-mobile.png')",
         'hero-age-desktop': "url('../public/images/bg-age-desktop.png')",
-        'hero-register-desktop': "url('../public/images/bg-register-desktop.png')",
+        'hero-register-desktop':
+          "url('../public/images/bg-register-desktop.png')",
         'hero-login-desktop': "url('../public/images/bg-login-desktop.png')",
         'hero-login-mobile': "url('../public/images/bg-login-mobile.png')",
       },

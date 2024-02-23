@@ -1,14 +1,16 @@
-'use client'
-import posthog from 'posthog-js'
-import { PostHogProvider } from 'posthog-js/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import dynamic from 'next/dynamic'
 
-if (typeof window !== 'undefined') {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    capture_pageview: false,
-  })
-}
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
+  ssr: false,
+})
 
-export function PHProvider({ children }: { children: React.ReactNode }) {
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>
+export const Providers = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <SpeedInsights />
+      <PostHogPageView />
+      {children}
+    </>
+  )
 }

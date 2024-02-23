@@ -8,7 +8,7 @@
 # testing
 /coverage
 
-
+.gitpod.yml
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal

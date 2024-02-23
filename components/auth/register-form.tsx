@@ -19,11 +19,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { RegisterSchema } from '@/schemas'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -42,7 +44,10 @@ export const RegisterForm = () => {
     startTransition(() => {
       register(values).then((data) => {
         setError(data.error)
-        setSuccess(data.success)
+        if (data.success) {
+          setSuccess(data.success)
+          router.push('/auth/login')
+        }
       })
     })
   }
