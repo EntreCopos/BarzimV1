@@ -63,7 +63,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
     <WrapperDefaultPadding>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-        <Button variant="default" style={{ marginBottom: '12px' }}>Ordenar</Button>
+        <Button variant="btnCervejariaTela" style={{ marginBottom: '12px' }}>Ordenar</Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-56">
