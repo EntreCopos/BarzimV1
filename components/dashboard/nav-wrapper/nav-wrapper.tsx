@@ -17,7 +17,7 @@ const NavWrapper: React.FC = () => {
         <Logo width={120} />
       </Link>
       <div className={styles.icons}>
-        <IoNotifications className="text-3xl" />
+        <IoNotifications className="text-2xl" />
       </div>
     </div>
   )
