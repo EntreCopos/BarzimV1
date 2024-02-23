@@ -67,7 +67,7 @@ model User {
   email                 String?                @unique
   emailVerified         DateTime?
   image                 String?
-  bio                   String                 @default("Esse usuário misterioso ainda não escreveu uma bio")
+  bio                   String                 @default("Nada Informado")
   link                  String?
   password              String?
   role                  UserRole               @default(USER)
@@ -89,9 +89,9 @@ model User {
 //SOCIAL
 model UserFollowing {
   id          String   @id @default(cuid())
-  follower    User     @relation("Followers", fields: [followerId], references: [id])
+  follower    User     @relation("Followers", fields: [followerId], references: [id], onDelete: Cascade)
   followerId  String
-  following   User     @relation("Following", fields: [followingId], references: [id])
+  following   User     @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
   followingId String
   isRequested Boolean  @default(false)
   createdAt   DateTime @default(now())
@@ -145,11 +145,9 @@ model Cerveja {
   tempIdeal            String?
   valorIBU             Float?
   corpo                String?
-  // marcaId                 Int
   cervejariaId         Int
   tipoCervejaId        Int
   cervejaria           Cervejaria    @relation(fields: [cervejariaId], references: [id])
-  // marca                   Marca                 @relation(fields: [marcaId], references: [id])
   tipoCerveja          TipoCerveja   @relation(fields: [tipoCervejaId], references: [id])
   notaMedia            Float?
   ingredientesCerveja  String[]
@@ -191,8 +189,8 @@ model UserCerveja {
   createdAt   DateTime  @default(now())
   localizacao String?
 
-  usuario User    @relation(fields: [usuarioId], references: [id])
-  cerveja Cerveja @relation(fields: [cervejaId], references: [id])
+  usuario User    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  cerveja Cerveja @relation(fields: [cervejaId], references: [id], onDelete: Cascade)
 
   @@unique([usuarioId, cervejaId])
 }
@@ -210,7 +208,7 @@ model UserBadges {
   badgeId   Int
   createdAt DateTime @default(now())
 
-  user  User   @relation(fields: [userId], references: [id])
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   badge Badges @relation(fields: [badgeId], references: [id])
 
   @@unique([userId, badgeId])
