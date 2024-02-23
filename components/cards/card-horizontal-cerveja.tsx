@@ -1,7 +1,4 @@
-import beerData from '@/data/cervejas-mock.json'
-import { JsonObject } from '@prisma/client/runtime/library'
 import Image from 'next/image'
-import { BeerName } from '../titles/beer-name'
 
 interface CardHorizontalCervejaProps {
   children: React.ReactNode
@@ -21,7 +18,10 @@ export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({
       <div className="h-30 relative m-0 flex w-96 items-center gap-3 p-0">
         <div className="flex w-5/12 items-center justify-center bg-gray-cards">
           {novidade && (
-            <span style={{zIndex: 10}} className="text-black-500 absolute left-0 top-0 rounded-ee-lg bg-yellow-barzim p-1 text-xs font-medium">
+            <span
+              style={{ zIndex: 10 }}
+              className="text-black-500 absolute left-0 top-0 rounded-ee-lg bg-yellow-barzim p-1 text-xs font-medium"
+            >
               Novidade
             </span>
           )}

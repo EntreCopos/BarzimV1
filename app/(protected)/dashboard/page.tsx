@@ -2,7 +2,7 @@
 import { auth, signOut } from '@/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { cn, firstTwoLetters } from '@/lib/utils'
+import { cn, firstTwoLetters, normalizeTitleCase } from '@/lib/utils'
 
 import styles from './page.module.css'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find'
@@ -14,6 +14,7 @@ import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-pad
 import { getAllCervejaAvaliacoes } from '@/data/avaliacao'
 import ReviewHeader from '@/components/review/review-header/review-header'
 import ReviewDate from '@/components/review/review-date'
+import RelativeDate from '@/components/titles/relative-date/relative-date'
 
 export const dynamic = 'force-dynamic'
 
@@ -54,17 +55,17 @@ const DashboardPage = async () => {
       <WrapperDefaultPadding>
         <SectionTitle title="As últimas no Barzim" />
         <ul className={cn('flex list-none flex-col gap-2')}>
-          {latestReviews.map((review) => {
+          {latestReviews.map(({ usuario, cerveja, id, createdAt }) => {
             return (
               <li
-                className={cn('rounded-sm bg-zinc-700 px-3 py-2 ')}
-                key={review.id}
+                className={cn('rounded-sm bg-gray-cards px-3 py-2 ')}
+                key={id}
               >
-                <ReviewDate isoDate={review.createdAt} />
+                <RelativeDate className="text-gray-400" date={createdAt} />
                 <ReviewHeader
-                  userName={review.usuario.username as string}
-                  beerName={review.cerveja.nomeCerveja}
-                  beerId={review.cerveja.id}
+                  userName={usuario.username as string}
+                  beerName={normalizeTitleCase(cerveja.nomeCerveja)}
+                  beerId={cerveja.id}
                 />
               </li>
             )

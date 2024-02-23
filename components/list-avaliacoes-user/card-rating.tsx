@@ -10,7 +10,7 @@ export const FeedCardRating: React.FC<{ avaliacao: TReview }> = ({
 }) => {
   return (
     <>
-      <div className={cn('flex items-center justify-between gap-2 p-2')}>
+      <div className={cn('flex items-center justify-between gap-2 px-4 py-2')}>
         <div>
           <RelativeDate date={avaliacao.createdAt as Date} />
           <span>Avaliou </span>
