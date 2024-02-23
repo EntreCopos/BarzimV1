@@ -105,5 +105,17 @@ export interface Follower {
   createdAt: Date
 }
 
+export type TReview = {
+  map(arg0: (avaliacao: any) => import("react").JSX.Element): import("react").ReactNode
+  reviewTexto: string | null
+  reviewLikes: number | null
+  nota: number | null
+  imagens: string[]
+  usuario: {
+    name: string | null
+    username: string | null
+    image: string | null
+  }
+}
 
 export { type AgeVerifFormData, type CervejaData, type TypeObjectCerveja }

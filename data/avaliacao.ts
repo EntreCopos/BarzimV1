@@ -66,14 +66,19 @@ export const getAvaliacoesByCerveja = async (id: string) => {
       },
     },
     orderBy: {
-      createdAt: 'desc'
-    }
+      createdAt: 'desc',
+    },
   })
   return avaliacoes
 }
 
-export const getAvaliacoesByUser = async (id: string) => {
+export const getAvaliacoesByUser = async (
+  username: string,
+  size: number = 10
+) => {
+  const id = await getUserIdByUsername(username)
   const avaliacoes = await db.userCerveja.findMany({
+    take: size,
     where: {
       usuarioId: id,
       AND: {
@@ -95,8 +100,8 @@ export const getAvaliacoesByUser = async (id: string) => {
       },
     },
     orderBy: {
-      createdAt: 'desc'
-    }
+      createdAt: 'desc',
+    },
   })
   return avaliacoes
 }
