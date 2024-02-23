@@ -3,10 +3,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { PHProvider } from './ph_providers'
 import { Providers } from './providers'
-
-import { Suspense } from 'react'
 import '../public/globals.css'
-import Loading from './loading'
 
 const font = Roboto({
   subsets: ['latin'],
@@ -29,11 +26,9 @@ export default function RootLayout({
       <PHProvider>
         <body className={cn(font.className, 'min-h-screen bg-zinc-900')}>
           <Providers>
-            <Suspense fallback={<Loading />}>
-              <main className={cn('flex h-full flex-col justify-start')}>
-                {children}
-              </main>
-            </Suspense>
+            <main className={cn('flex h-full flex-col justify-start')}>
+              {children}
+            </main>
           </Providers>
         </body>
       </PHProvider>

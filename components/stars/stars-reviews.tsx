@@ -1,15 +1,14 @@
-
-import styles from './stars-review.module.css';
+import styles from './stars-review.module.css'
 
 interface StarReviewsProps {
-  nota: number;
+  nota: number
 }
 
 const StarReviews: React.FC<StarReviewsProps> = ({ nota }) => {
   return (
     <div>
       <p className={styles.textBarzim}>Nota no Barzim</p>
-      <div className={styles.starsContainer}>
+      <div>
         {[...Array(5)].map((_, index) => (
           <span
             key={index}
@@ -20,7 +19,7 @@ const StarReviews: React.FC<StarReviewsProps> = ({ nota }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StarReviews;
+export default StarReviews

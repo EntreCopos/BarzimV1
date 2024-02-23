@@ -1,24 +1,23 @@
 import CarouselWrapper from '@/components/dashboard/carousel/carousel'
 import CarouselCard from '@/components/dashboard/carousel/carousel-card/carousel-card'
-import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import { CarouselItem } from '@/components/ui/carousel'
 import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
+import { getAvaliacoesByUser } from '@/data/avaliacao'
 import { getUserReviewPics } from '@/data/user'
+import { ListAvaliações } from '@/components/list-avaliacoes-user/list-view'
 
 const UserPage = async ({ params }: { params: { username: string } }) => {
   const userPics = await getUserReviewPics(params.username)
+  const userAvaliacoes = await getAvaliacoesByUser(params.username)
 
-  // console.log('userpics é::::', userPics)
+  console.log(userAvaliacoes)
 
   return (
     <>
-      <WrapperDefaultPadding>
-        <SectionTitle title={`As mais recentes de @${params.username}`} />
-      </WrapperDefaultPadding>
       <CarouselWrapper>
         {userPics &&
           userPics.length > 2 &&
-          userPics?.map((userPic) => {
+          userPics.map((userPic) => {
             return (
               <CarouselItem key={userPic.asset_id} className="basis-1/3">
                 <CarouselCard
@@ -31,10 +30,13 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
           })}
       </CarouselWrapper>
       <WrapperDefaultPadding>
-        <h1 style={{ width: '100%', textAlign: 'center' }}>
-          As análises, carrossel de fotos e últimas interações do usuário irão
-          aparecer aqui
-        </h1>
+        {userAvaliacoes && userAvaliacoes.length > 0 ? (
+          <ListAvaliações userAvaliacoes={userAvaliacoes} />
+        ) : (
+          <h1 style={{ width: '100%', textAlign: 'center' }}>
+            Parece que não há nada aqui
+          </h1>
+        )}
       </WrapperDefaultPadding>
     </>
   )
