@@ -30,9 +30,9 @@ const ExploreUsersPage = async () => {
 
   // Retornando o componente JSX para renderizar a página
   return (
-    <div className='text-white flex flex-col items-center justify-center text-center gap-4 bg-black-radial-gradient mt-6'>
-      <div>
-        <h1 className='text-2xl pb-3'>Olá, <b className='text-yellow-barzim'>{session?.user.name}!</b></h1>
+    <div className='text-white flex flex-col items-center justify-center gap-4 bg-black-radial-gradient p-6'>
+      <div className='text-center'>
+        <h1 className='text-2xl pb-3 '>Olá, <b className='text-yellow-barzim'>{session?.user.name}!</b></h1>
         <p>Os usuários abaixo já fazem parte do Barzim 😊</p>
       </div>
       <div className='flex flex-col px-1'>

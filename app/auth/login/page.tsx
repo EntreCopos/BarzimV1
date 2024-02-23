@@ -17,26 +17,29 @@ const LoginPage = () => {
     <p className='text-[10px] font-medium text-center pt-6 w-full'>Ao usar o webapp você afirma estar de acordo com nossos <span className='text-yellow-barzim font-bold'><Link href={"/legal/termos"}>Termos e Condições de Uso</Link></span>, nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Cookies</Link></span > e nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Privacidade</Link></span></p>
   )
 
-  return <div>
-    <Background
-      desktopBackground='md:bg-hero-login-desktop'
-      mobileBackground='bg-hero-login-mobile'
-    >
-      <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-5 md:gap-64">
+  return (
+    <div className="border-t border-gray-300 min-h-svh"> 
+      <Background
+        desktopBackground='md:bg-hero-login-desktop'
+        mobileBackground='bg-hero-login-mobile'
+      >
+        <div className="flex flex-col md:flex-row h-full w-full justify-center items-center gap-5 md:gap-64">
 
-        <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem]' />
+          <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem] mt-4' />
 
-        <BoxRegister
-          headerTitle={headerTitle}
-          headerSubtitle={headerSubtitle}
-          showSocial={true}
-          footer={footer}>
-          <LoginForm />
-        </BoxRegister>
+          <BoxRegister
+            style={{ height: '75%' }}  
+            headerTitle={headerTitle}
+            headerSubtitle={headerSubtitle}
+            showSocial={true}
+            footer={footer}>
+            <LoginForm />
+          </BoxRegister>
 
-      </div>
-    </Background>
-  </div>
+        </div>
+      </Background>
+    </div>
+  )
 }
 
 export default LoginPage

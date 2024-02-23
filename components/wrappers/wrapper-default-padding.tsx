@@ -7,7 +7,7 @@ export const WrapperDefaultPadding: React.FC<{
   return (
     <div
       style={{ ...style }}
-      className={cn('flex flex-col justify-between px-4')}
+      className={cn('flex flex-col justify-between py-2 px-6')}
     >
       {children}
     </div>
