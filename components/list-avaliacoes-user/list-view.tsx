@@ -10,9 +10,7 @@ export const ListAvaliações: React.FC<{ userAvaliacoes: TReview[] }> = ({
     <ul className={cn('flex w-full flex-col gap-3 pb-6')}>
       {userAvaliacoes.map((avaliacao) => (
         <li
-          className={cn(
-            'bg-slate-barzim-80 overflow-hidden rounded-sm border-[1px] border-zinc-900'
-          )}
+          className={cn('bg-slate-barzim-80 overflow-hidden rounded-sm')}
           key={'avaliacao' + avaliacao.id}
         >
           {avaliacao.imagens.length > 0 && (

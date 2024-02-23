@@ -35,7 +35,7 @@ const RelativeDate: React.FC<{ date: Date; className?: string }> = ({
   }
 
   return (
-    <div className={cn('text-marfim-barzim/60 text-sm', className)}>
+    <div className={cn('text-marfim-barzim/60 mb-1 text-sm', className)}>
       <p>{formattedDate}</p>
     </div>
   )
