@@ -13,20 +13,23 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
       )}
     >
       <div
-        className={cn('flex content-center items-center [grid-area:_avatar]')}
+        className={cn('flex content-center items-center')}
       >
-        <Avatar className={cn('h-29 w-29 relative flex items-center')}>
+        <Avatar className={cn('h-29 w-29 relative')}>
           <AvatarReview
             avatarSrc={user.image as string}
             width={120}
             height={120}
           />
           {!user.image && (
-            <AvatarFallback className={cn('absolute left-0')}>
-              {firstTwoLetters(user?.name)}
+            <AvatarFallback className={cn('absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-white text-3xl font-bold h-full w-full')}>
+              <div>
+                {firstTwoLetters(user?.name)}
+              </div>
             </AvatarFallback>
           )}
         </Avatar>
+
       </div>
       <div
         className={cn(

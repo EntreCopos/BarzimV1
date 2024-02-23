@@ -72,11 +72,11 @@ export default async function Cerveja({
   const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
 
   return (
-    <div className="mx-auto max-w-2xl"> {/* Ajustado a div para ter margens laterais automáticas e largura máxima de 2xl */}
+    <div>
       <section className="overflow-hidden bg-deep-black object-cover">
         <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
-        <div className="flex items-center justify-center gap-2 mx-6">
+        <div className="flex items-center justify-center gap-1 mx-6">
           <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
           <div className="flex flex-col gap-2">
