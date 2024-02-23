@@ -1,9 +1,9 @@
 'use client'
+import { type User } from '@/data/data'
 import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
-import AvatarReview from '../avatar/avatar-review/avatar-review'
 import React from 'react'
-import { User } from '@/data/data'
+import AvatarReview from '../avatar/avatar-review/avatar-review'
 
 export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
   return (
@@ -41,7 +41,7 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
         {user.link && (
           <section className={cn('flex items-center gap-2')}>
             <h3 className={cn('pb-1 text-sm text-slate-barzim')}>Link</h3>
-            <a className={cn('text-sm text-yellow-barzim')} href={user.link}>
+            <a className={cn('text-sm text-yellow-barzim')} href={user.link} target='_blank'>
               {sanitizeUserLink(user.link as string)}
             </a>
           </section>
