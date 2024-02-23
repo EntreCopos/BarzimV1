@@ -15,6 +15,7 @@ const Avatar = React.forwardRef<
       "relative flex shrink-0 overflow-hidden rounded-full",
       className
     )}
+    style={{ width: '50px', height: '50px' }} // Set width and height here
     {...props}
   />
 ))
@@ -26,10 +27,12 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    // className={cn("aspect-square h-full w-full", className)}
+    className={cn("w-full h-full rounded-full", className)}
+    style={{ objectFit: 'cover', objectPosition: 'center center' }}
     {...props}
   />
 ))
+
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
 const AvatarFallback = React.forwardRef<

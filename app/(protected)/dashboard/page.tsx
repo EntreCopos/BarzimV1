@@ -43,7 +43,7 @@ const DashboardPage = async () => {
         <ListaCervejasDashboard cervejas={randCervejas}/>
       </WrapperDefaultPadding>
       <ListFindings />
-      <div className="flex h-fit w-full justify-center gap-4 align-middle">
+      <div className="flex items-center justify-center gap-4 mb-2">
         <Avatar>
           <AvatarImage src={user.imageUrl} />
           <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
