@@ -51,6 +51,7 @@ const DashboardPage = async () => {
         {randCervejas && <ListaCervejasDashboard cervejas={randCervejas} />}
       </WrapperDefaultPadding>
       <ListFindings />
+      <div className="flex items-center justify-center gap-4 mb-2">
       <WrapperDefaultPadding>
         <SectionTitle title="As últimas no Barzim" />
         <ul className={cn('flex list-none flex-col gap-2')}>
