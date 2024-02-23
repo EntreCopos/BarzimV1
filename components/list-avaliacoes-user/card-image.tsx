@@ -20,7 +20,7 @@ export const FeedCardImage: React.FC<{ avaliacao: TReview }> = ({
           alt={'Avaliação de ' + avaliacao.usuario.name}
         />
       </div>
-      <div className={cn('flex items-center justify-between gap-1 p-2')}>
+      <div className={cn('flex items-center justify-between gap-2 px-4 py-3')}>
         <div>
           <RelativeDate date={avaliacao.createdAt as Date} />
           <span>Avaliou </span>
@@ -33,7 +33,7 @@ export const FeedCardImage: React.FC<{ avaliacao: TReview }> = ({
         <StarReviewsMini nota={avaliacao.nota ?? 1} />
       </div>
       {avaliacao.reviewTexto && (
-        <div className={cn('mb-4 p-2 text-sm text-muted')}>
+        <div className={cn('mb-4 p-2 px-4 text-sm text-muted')}>
           <p>{avaliacao.reviewTexto}</p>
         </div>
       )}
