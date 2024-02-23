@@ -1,13 +1,10 @@
 import CarouselWrapper from '@/components/dashboard/carousel/carousel'
 import CarouselCard from '@/components/dashboard/carousel/carousel-card/carousel-card'
-import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import { CarouselItem } from '@/components/ui/carousel'
 import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 import { getAvaliacoesByUser } from '@/data/avaliacao'
-import { TReview } from '@/data/data'
 import { getUserReviewPics } from '@/data/user'
-import React from 'react'
-import { ListAvaliações } from '../../list-avaliacoes-user/list-view'
+import { ListAvaliações } from '@/components/list-avaliacoes-user/list-view'
 
 const UserPage = async ({ params }: { params: { username: string } }) => {
   const userPics = await getUserReviewPics(params.username)
@@ -17,9 +14,6 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
 
   return (
     <>
-      <WrapperDefaultPadding>
-        <SectionTitle title={`As mais recentes de @${params.username}`} />
-      </WrapperDefaultPadding>
       <CarouselWrapper>
         {userPics &&
           userPics.length > 2 &&

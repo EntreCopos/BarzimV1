@@ -20,8 +20,8 @@ export const dynamic = 'force-dynamic'
 const DashboardPage = async () => {
   const session = await auth()
 
-  const randCervejas = await getRandomCervejasDashboard(4) //buscando 8 cervejas
-  const latestReviews = await getAllCervejaAvaliacoes(6) //buscando as 6 ultimas
+  const randCervejas = await getRandomCervejasDashboard(4)
+  const latestReviews = await getAllCervejaAvaliacoes(6)
 
   if (latestReviews && latestReviews?.length > 0) {
     const imgArr = latestReviews[0].imagens

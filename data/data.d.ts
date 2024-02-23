@@ -106,15 +106,20 @@ export interface Follower {
 }
 
 export type TReview = {
-  map(arg0: (avaliacao: any) => import("react").JSX.Element): import("react").ReactNode
+  id: number
   reviewTexto: string | null
   reviewLikes: number | null
   nota: number | null
+  createdAt: Date | null
   imagens: string[]
   usuario: {
     name: string | null
     username: string | null
     image: string | null
+  }
+  cerveja: {
+    nomeCerveja: string
+    id: number
   }
 }
 

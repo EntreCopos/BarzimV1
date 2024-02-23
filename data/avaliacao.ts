@@ -87,10 +87,18 @@ export const getAvaliacoesByUser = async (
       },
     },
     select: {
+      id: true,
       reviewTexto: true,
       reviewLikes: true,
       nota: true,
+      createdAt: true,
       imagens: true,
+      cerveja: {
+        select: {
+          nomeCerveja: true,
+          id: true,
+        },
+      },
       usuario: {
         select: {
           name: true,

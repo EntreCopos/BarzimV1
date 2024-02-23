@@ -1,14 +1,13 @@
-
-import styles from './stars-mini.module.css';
+import styles from './stars-mini.module.css'
 
 interface StarReviewsProps {
-  nota: number;
+  nota: number
 }
 
 const StarReviewsMini: React.FC<StarReviewsProps> = ({ nota }) => {
   return (
     <div>
-      <div className={styles.starsContainer}>
+      <div>
         {[...Array(5)].map((_, index) => (
           <span
             key={index}
@@ -19,7 +18,7 @@ const StarReviewsMini: React.FC<StarReviewsProps> = ({ nota }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default StarReviewsMini
