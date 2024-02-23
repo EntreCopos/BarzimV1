@@ -26,7 +26,7 @@ const RegisterPage = () => {
 
       <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-5 md:gap-64">
 
-        <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem]' />
+      <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem] mt-4 w-[10rem]' />
 
         <BoxRegister
           headerTitle={headerTitle}
