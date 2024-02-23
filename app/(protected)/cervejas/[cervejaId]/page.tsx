@@ -72,11 +72,11 @@ export default async function Cerveja({
   const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
 
   return (
-    <div className="flex flex-col gap-2" style={{ paddingBlockEnd: '2rem' }}>
+    <div className="mx-auto max-w-2xl"> {/* Ajustado a div para ter margens laterais automáticas e largura máxima de 2xl */}
       <section className="overflow-hidden bg-deep-black object-cover">
         <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
-        <div className=" z-10 flex items-center justify-start gap-4">
+        <div className="flex items-center justify-center gap-2 mx-6">
           <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
           <div className="flex flex-col gap-2">
