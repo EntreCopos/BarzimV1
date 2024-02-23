@@ -51,7 +51,6 @@ const DashboardPage = async () => {
         {randCervejas && <ListaCervejasDashboard cervejas={randCervejas} />}
       </WrapperDefaultPadding>
       <ListFindings />
-      <div className="flex items-center justify-center gap-4 mb-2">
       <WrapperDefaultPadding>
         <SectionTitle title="As últimas no Barzim" />
         <ul className={cn('flex list-none flex-col gap-2')}>
@@ -72,7 +71,7 @@ const DashboardPage = async () => {
           })}
         </ul>
       </WrapperDefaultPadding>
-      <div className="flex h-fit w-full justify-center gap-4 align-middle">
+      <div className="flex items-center justify-center mb-3 mt-2 gap-2">
         <Avatar>
           <AvatarImage src={user.imageUrl} />
           <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
