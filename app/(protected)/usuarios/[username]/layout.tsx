@@ -52,7 +52,11 @@ const UserPageLayout = async ({
           relationship={relationship}
         />
       </div>
-      <div className={cn('flex h-full flex-col justify-start bg-[#131313]')}>
+      <div
+        className={cn(
+          'flex h-full flex-col justify-start bg-[#131313] text-marfim-barzim'
+        )}
+      >
         <UnconventionalTabs tabs={tabsData} />
         {children}
       </div>

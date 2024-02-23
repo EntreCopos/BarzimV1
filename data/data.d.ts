@@ -105,5 +105,22 @@ export interface Follower {
   createdAt: Date
 }
 
+export type TReview = {
+  id: number
+  reviewTexto: string | null
+  reviewLikes: number | null
+  nota: number | null
+  createdAt: Date | null
+  imagens: string[]
+  usuario: {
+    name: string | null
+    username: string | null
+    image: string | null
+  }
+  cerveja: {
+    nomeCerveja: string
+    id: number
+  }
+}
 
 export { type AgeVerifFormData, type CervejaData, type TypeObjectCerveja }

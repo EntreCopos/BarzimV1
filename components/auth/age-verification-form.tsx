@@ -61,6 +61,7 @@ export const AgeVerificationForm = () => {
                     max={31}
                     ref={dayRef}
                     onInput={(e) => handleInputChange(e, monthRef)}
+                    inputMode="numeric"
                   />
                 </FormControl>
                 <FormMessage />
@@ -80,6 +81,7 @@ export const AgeVerificationForm = () => {
                     max={12}
                     ref={monthRef}
                     onInput={(e) => handleInputChange(e, yearRef)}
+                    inputMode="numeric"
                   />
                 </FormControl>
                 <FormMessage />
@@ -98,6 +100,7 @@ export const AgeVerificationForm = () => {
                     maxLength={4}
                     max={2100}
                     ref={yearRef}
+                    inputMode="numeric"
                   />
                 </FormControl>
                 <FormMessage />
