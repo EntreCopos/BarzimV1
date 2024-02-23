@@ -15,15 +15,13 @@ export default async function ProtectedLayout({
   console.log('user é::', user)
 
   return (
-    <section
-      className={cn(
-        'no-scrollbar relative flex min-h-screen w-full flex-col justify-between overflow-y-auto bg-black-radial-gradient md:mx-auto md:max-w-[422px]'
-      )}
-    >
-      <NavWrapper />
-      {children}
+    <div className="flex flex-col min-h-screen bg-black-radial-gradient md:mx-auto md:max-w-[422px]">
+      <div className="flex-1 flex flex-col overflow-y-auto">
+        <NavWrapper />
+        <main className="flex-1">{children}</main>
+      </div>
       <BottomMenu currUser={user?.username as string} />
       <Toaster />
-    </section>
+    </div>
   )
 }
