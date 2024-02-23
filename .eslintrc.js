@@ -25,6 +25,7 @@ const config = {
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/restrict-template-expressions": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
 
     "@typescript-eslint/consistent-type-imports": [
       "warn",
