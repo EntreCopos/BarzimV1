@@ -68,7 +68,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                             </FormItem>
                         )}
                     />
-                    <FormField
+                    {/* <FormField
                         control={form.control}
                         name="username"
                         render={({ field }) => (
@@ -86,7 +86,7 @@ export const AccountSettingsForm: React.FC<AccountSettingsFormProps> = ({ user }
                                 <FormMessage />
                             </FormItem>
                         )}
-                    />
+                    /> */}
                     <FormField
                         control={form.control}
                         name="link"
