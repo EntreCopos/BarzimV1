@@ -11,7 +11,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
   idCerveja,
   idUser,
 }) => {
-  const [rating, setRating] = useState<number>(0)
+  const [rating, setRating] = useState<number>(1)
   const [reviewText, setReviewText] = useState<string>('')
   const [reviewPics, setReviewPics] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
@@ -21,7 +21,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
     const files = Array.from(e.target.files || [])
 
     if (reviewPics.length + files.length > 3) {
-      alert('Você pode adicionar no máximo 4 imagens')
+      alert('Você pode adicionar no máximo 3 imagens')
       return
     }
 
@@ -65,6 +65,10 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
   }
 
   const handleSubmit = async () => {
+    if (rating < 1) {
+      setError('Avaliação precisa ter no mínimo uma estrela')
+      return
+    }
     setIsSubmitting(true)
     const formData = new FormData()
     formData.append('idCerveja', idCerveja)
@@ -78,7 +82,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
     try {
       const response = await addReview(formData)
       console.log('resposta da action', response)
-      if(response.success){
+      if (response.success) {
         window.location.reload()
       }
     } catch (err) {
@@ -96,7 +100,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
 
   return (
     <div>
-      <div className="flex flex-col gap-4 py-6 px-8">
+      <div className="flex flex-col gap-4 px-8 py-6">
         <WrapperReviewImage
           setNota={setRating}
           nota={rating}
@@ -110,10 +114,14 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
         />
-        
-        <SendReviewButton isSubmitting={isSubmitting} onClick={handleSubmit}/>
-          
-        {error && <p className='bg-destructive w-full rounded-sm p-4 border-1 text-white border-solid border-red-700'>{error}</p>}
+
+        <SendReviewButton isSubmitting={isSubmitting} onClick={handleSubmit} />
+
+        {error && (
+          <p className="border-1 mt-2 w-full rounded-sm border-solid border-red-700 bg-destructive p-4 text-white">
+            {error}
+          </p>
+        )}
       </div>
     </div>
   )

@@ -72,6 +72,35 @@ export const getAvaliacoesByCerveja = async (id: string) => {
   return avaliacoes
 }
 
+export const getAvaliacoesByUser = async (id: string) => {
+  const avaliacoes = await db.userCerveja.findMany({
+    where: {
+      usuarioId: id,
+      AND: {
+        reviewTexto: { not: null },
+        OR: [{ nota: { not: null } }],
+      },
+    },
+    select: {
+      reviewTexto: true,
+      reviewLikes: true,
+      nota: true,
+      imagens: true,
+      usuario: {
+        select: {
+          name: true,
+          username: true,
+          image: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
+  return avaliacoes
+}
+
 export const userHasReviewedCervejaById = async (
   cerverjaId: string,
   userId: string
