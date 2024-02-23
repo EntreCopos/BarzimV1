@@ -42,7 +42,7 @@ const DashboardPage = async () => {
   )
 
   return (
-    <div className={styles.bodyDashboard}>
+    <div className={cn(styles.bodyDashboard, 'pb-4')}>
       <WrapperDefaultPadding>
         <SectionTitle
           title="Você pode se interessar por..."
@@ -71,22 +71,6 @@ const DashboardPage = async () => {
           })}
         </ul>
       </WrapperDefaultPadding>
-      <div className="flex h-fit w-full justify-center gap-4 align-middle">
-        <Avatar>
-          <AvatarImage src={user.imageUrl} />
-          <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
-        </Avatar>
-        <form
-          action={async () => {
-            'use server'
-            await signOut()
-          }}
-        >
-          <Button variant="destructive" type="submit">
-            Sair
-          </Button>
-        </form>
-      </div>
     </div>
   )
 }
