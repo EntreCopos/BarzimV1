@@ -15,10 +15,10 @@ export default async function ProtectedLayout({
   console.log('user é::', user)
 
   return (
-    <div className="flex flex-col min-h-screen bg-black-radial-gradient md:mx-auto md:max-w-[422px]">
+    <div className="flex flex-col min-h-screen bg-black-radial-gradient md:mx-auto md:max-w-[422px] w-full">
       <NavWrapper /> {/* Move NavWrapper to the top */}
       <div className="flex-1 flex flex-col overflow-y-auto">
-        <main className="flex-1">{children}</main>
+        <div className="flex-1">{children}</div>
       </div>
       <BottomMenu currUser={user?.username as string} />
       <Toaster />

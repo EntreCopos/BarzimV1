@@ -2,8 +2,8 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdSettings } from 'react-icons/md'
-import { PiBeerBottleFill } from 'react-icons/pi'
 import { PiUsersFourFill } from 'react-icons/pi'
+import { RiBeerFill } from "react-icons/ri";
 
 export const BottomMenu = ({ currUser }: { currUser: string }) => {
   return (
@@ -15,7 +15,7 @@ export const BottomMenu = ({ currUser }: { currUser: string }) => {
     >
       <ul
         className={cn(
-          'flex items-center justify-around gap-4 text-3xl text-yellow-barzim'
+          'flex items-center justify-around gap-6 text-3xl text-yellow-barzim'
         )}
       >
         <li title="Meu Perfil" className="text-center">
@@ -37,7 +37,7 @@ export const BottomMenu = ({ currUser }: { currUser: string }) => {
         <li title="Cervejas" className="text-center">
           <Link href={'/cervejas'}>
             <div className="flex flex-col items-center gap-1">
-              <PiBeerBottleFill size={32} />
+              <RiBeerFill size={32} />
               <p className="text-xs">Cervejas</p>
             </div>
           </Link>

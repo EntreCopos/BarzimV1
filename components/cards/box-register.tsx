@@ -17,7 +17,7 @@ export const BoxRegister: React.FC<CardWrapperProps> = ({
   children,
 }) => {
   return (
-    <Card className="flex h-fit w-[95%] flex-col rounded-lg bg-[#131313] bg-opacity-85 py-8 text-[#FFFEEE] backdrop-blur-lg md:w-[30rem]">
+    <Card className="flex h-fit w-[95%] flex-col rounded-lg bg-[#131313] bg-opacity-85 py-8 text-[#FFFEEE] backdrop-blur-lg md:w-[30rem] mb-4">
       <CardHeader>
         {headerTitle}
         {headerSubtitle}

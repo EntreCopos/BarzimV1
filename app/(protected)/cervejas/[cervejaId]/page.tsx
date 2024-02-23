@@ -72,7 +72,7 @@ export default async function Cerveja({
   const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
 
   return (
-    <div className="flex flex-col gap-4" style={{ paddingBlockEnd: '2rem' }}>
+    <div className="flex flex-col gap-2" style={{ paddingBlockEnd: '2rem' }}>
       <section className="overflow-hidden bg-deep-black object-cover">
         <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
