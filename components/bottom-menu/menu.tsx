@@ -11,12 +11,12 @@ export const BottomMenu = ({ currUser }: { currUser: string }) => {
     <section
       style={{ zIndex: 20 }}
       className={cn(
-        'sticky bottom-0 w-full bg-[#3b3b3b]/90 px-10 py-6 backdrop-blur-md'
+        'sticky bottom-0 w-full bg-[#141414]/90 px-12 py-4 backdrop-blur-md'
       )}
     >
       <ul
         className={cn(
-          'flex items-center justify-between gap-4 pb-2 text-4xl text-yellow-barzim'
+          'flex items-center justify-between gap-3 pb-4 text-3xl text-yellow-barzim'
         )}
       >
         <li title="Minha Geladeira">
