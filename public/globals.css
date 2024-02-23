@@ -97,7 +97,7 @@ body,
   }
 }
 
-@layer base {
+/* @layer base {
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button,
   input[type='number'] {
@@ -106,4 +106,4 @@ body,
     -moz-appearance: textfield !important;
     appearance: textfield !important;
   }
-}
+} */

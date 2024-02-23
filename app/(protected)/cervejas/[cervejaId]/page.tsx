@@ -103,11 +103,13 @@ export default async function Cerveja({
       <WrapperDefaultPadding>
         <SectionTitle variant={'small'} title="Avaliações dos Barzinhers" />
         {!!avaliacoesCerveja &&
-          avaliacoesCerveja.map((avaliacao) => {
+          avaliacoesCerveja.map((avaliacao, index) => {
             return (
               <div
                 style={{ display: 'contents' }}
-                key={avaliacao.usuario.name + '_' + cerveja.nomeCerveja}
+                key={
+                  avaliacao.usuario.username + '_' + index + '_' + cerveja.id
+                }
               >
                 <ReviewWrapper>
                   <AvatarReview avatarSrc={avaliacao.usuario.image as string} />
