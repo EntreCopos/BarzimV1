@@ -17,12 +17,21 @@ export const BoxRegister: React.FC<CardWrapperProps> = ({
   children,
 }) => {
   return (
-    <Card className="flex h-fit w-[95%] flex-col rounded-lg bg-[#131313] bg-opacity-85 py-8 text-[#FFFEEE] backdrop-blur-lg md:w-[30rem] mb-4">
+    <Card className="flex h-fit w-full flex-col rounded-lg bg-[#131313] bg-opacity-85 py-8 text-[#FFFEEE] backdrop-blur-lg md:w-[30rem] mb-4">
+      <style>
+        {`
+          @media (max-width: 640px) {
+            .custom-sm-height {
+              height: 40%;
+            }
+          }
+        `}
+      </style>
       <CardHeader>
         {headerTitle}
         {headerSubtitle}
       </CardHeader>
-      <CardContent className="flex w-full items-center justify-center">
+      <CardContent className="flex w-full items-center justify-center custom-sm-height">
         {children}
       </CardContent>
       {showSocial && <Social />}

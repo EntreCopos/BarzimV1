@@ -14,27 +14,30 @@ const LoginPage = () => {
   )
 
   const footer = (
-    <p className='text-[10px] font-medium text-center pt-6 w-full'>Ao usar o webapp você afirma estar de acordo com nossos <span className='text-yellow-barzim font-bold'><Link href={"/legal/termos"}>Termos e Condições de Uso</Link></span>, nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Cookies</Link></span > e nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Privacidade</Link></span></p>
+    <p className='text-[10px] font-medium text-center pt-6'>Ao usar o webapp você afirma estar de acordo com nossos <span className='text-yellow-barzim font-bold'><Link href={"/legal/termos"}>Termos e Condições de Uso</Link></span>, nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Cookies</Link></span> e nossa <span className='text-yellow-barzim font-bold'><Link href={"/legal/politicas-privacidade"}>Política de Privacidade</Link></span></p>
   )
 
   return (
-    <div className="border-t border-gray-300 min-h-svh"> 
+    <div className="overflow-hidden">
       <Background
         desktopBackground='md:bg-hero-login-desktop'
         mobileBackground='bg-hero-login-mobile'
       >
-        <div className="flex flex-col md:flex-row h-full w-full justify-center items-center gap-5 md:gap-64">
+        <div className="flex flex-row p-1 justify-center" style={{ margin: '0 auto', height: '100vh' }}>
 
-          <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem] mt-4' />
 
-          <BoxRegister
-            style={{ height: '75%' }}  
-            headerTitle={headerTitle}
-            headerSubtitle={headerSubtitle}
-            showSocial={true}
-            footer={footer}>
-            <LoginForm />
-          </BoxRegister>
+          <div className='flex flex-col items-center space-y-4 gap-6'>
+            <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem] mt-4 w-[10rem]' />
+
+            <BoxRegister
+              headerTitle={headerTitle}
+              headerSubtitle={headerSubtitle}
+              showSocial={true}
+              footer={footer}>
+              <LoginForm />
+            </BoxRegister>
+
+          </div>
 
         </div>
       </Background>
