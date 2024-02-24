@@ -1,6 +1,6 @@
 import { auth, signOut } from '@/auth'
 import { AccountSettingsForm } from '@/components/forms/account-configs-form'
-import { getUserById } from '@/data/user'
+import { safeGetUserById } from '@/data/user'
 
 import { HeaderConfigsWrapper } from '@/components/wrappers/header-configs/header-configs-wrapper'
 import { Button } from '@/components/ui/button'
@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 const UserConfigs = async () => {
   const session = await auth()
   const userId = session?.user.id
-  const user = await getUserById(userId)
+  const user = await safeGetUserById(userId as string)
 
   return (
     <div style={{ padding: '2rem' }}>

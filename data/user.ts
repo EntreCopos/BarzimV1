@@ -9,6 +9,32 @@ export const getUserByEmail = async (email: string) => {
   }
 }
 
+export const updateUserProfilePic = async (
+  userId: string,
+  pictureUrl: string
+) => {
+  await db.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      image: pictureUrl,
+    },
+  })
+}
+
+export const removeUserProfilePic = async (userId: string) => {
+  await db.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      image: null,
+    },
+  })
+  return 1
+}
+
 //esse getter não é seguro no momento, esta vazando o hash da senha do usuario
 export const getUserById = async (id: string) => {
   try {
@@ -23,6 +49,29 @@ export const getUserById = async (id: string) => {
   }
 }
 
+export const safeGetUserById = async (id: string) => {
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        bio: true,
+        link: true,
+      },
+    })
+    return user
+  } catch (err) {
+    return null
+  }
+}
+
+// export const getUserByr
+
 export const getUsernameById = async (id: string) => {
   try {
     const user = await db.user.findUnique({
@@ -30,8 +79,8 @@ export const getUsernameById = async (id: string) => {
         id,
       },
       select: {
-        username: true
-      }
+        username: true,
+      },
     })
     return user
   } catch (err) {
