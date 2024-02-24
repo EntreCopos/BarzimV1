@@ -1,4 +1,4 @@
-import React from 'react'
+'use client'
 //@ts-expect-error nao tem declaração de tipo
 import Ratings from 'react-ratings-declarative'
 import styles from './copos-review.module.css'
