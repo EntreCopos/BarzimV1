@@ -10,25 +10,27 @@ const UserConfigs = async () => {
   const userId = session?.user.id
   const user = await safeGetUserById(userId as string)
 
-  return (
-    <div style={{ padding: '2rem' }}>
-      <HeaderConfigsWrapper user={user} />
-      <AccountSettingsForm user={user} />
-      <div className="mt-4 flex w-full items-center justify-between gap-4 px-6 text-marfim-barzim ">
-        <h2>Deseja sair do Barzim?</h2>
-        <form
-          action={async () => {
-            'use server'
-            await signOut()
-          }}
-        >
-          <Button className="w-full" variant="destructive" type="submit">
-            Sair
-          </Button>
-        </form>
+  if (user) {
+    return (
+      <div style={{ padding: '2rem' }}>
+        <HeaderConfigsWrapper user={user} />
+        <AccountSettingsForm user={user} />
+        <div className="mt-4 flex w-full items-center justify-between gap-4 px-6 text-marfim-barzim ">
+          <h2>Deseja sair do Barzim?</h2>
+          <form
+            action={async () => {
+              'use server'
+              await signOut()
+            }}
+          >
+            <Button className="w-full" variant="destructive" type="submit">
+              Sair
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default UserConfigs

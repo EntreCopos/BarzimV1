@@ -6,9 +6,13 @@ import { getVerificationTokenByEmail } from '@/data/verificiation-token'
 import { getPasswordResetTokenByEmail } from '@/data/password-reset-token'
 import { getTwoFactorTokenByEmail } from '@/data/two-factor-token'
 
+/**
+ * Gera um token de autenticação de dois fatores para o usuário com o email fornecido.
+ * @param {string} email - O email do usuário para o qual o token está sendo gerado.
+ * @returns {Promise<object>} Uma promessa que resolve com o objeto do token de autenticação de dois fatores gerado.
+ */
 export const generateTwoFactorToken = async (email: string) => {
   const token = crypto.randomInt(100_000, 1_000_000).toString()
-  // TODO: Later change to 15 minutes
   const expires = new Date(new Date().getTime() + 3600 * 1000)
 
   const existingToken = await getTwoFactorTokenByEmail(email)
@@ -32,6 +36,11 @@ export const generateTwoFactorToken = async (email: string) => {
   return twoFactorToken
 }
 
+/**
+ * Gera um token de redefinição de senha para o usuário com o email fornecido.
+ * @param {string} email - O email do usuário para o qual o token está sendo gerado.
+ * @returns {Promise<object>} Uma promessa que resolve com o objeto do token de redefinição de senha gerado.
+ */
 export const generatePasswordResetToken = async (email: string) => {
   const token = uuidv4()
   const expires = new Date(new Date().getTime() + 3600 * 1000)
@@ -55,6 +64,11 @@ export const generatePasswordResetToken = async (email: string) => {
   return passwordResetToken
 }
 
+/**
+ * Gera um token de verificação de email para o usuário com o email fornecido.
+ * @param {string} email - O email do usuário para o qual o token está sendo gerado.
+ * @returns {Promise<object>} Uma promessa que resolve com o objeto do token de verificação de email gerado.
+ */
 export const generateVerificationToken = async (email: string) => {
   const token = uuidv4()
   const expires = new Date(new Date().getTime() + 3600 * 1000)
