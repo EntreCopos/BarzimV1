@@ -1,7 +1,6 @@
 'use client'
 import { updateProfilePic } from '@/actions/alter-profile-pic'
-import { changeProfilePic } from '@/actions/profile-image'
-import { updateUserProfilePic } from '@/data/user'
+import { uploadAvatarImage } from '@/actions/upload-image'
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024
 const FileInput = ({
@@ -27,16 +26,11 @@ const FileInput = ({
 
     try {
       const data = new FormData()
-      data.set('file', file)
+      data.set('image', file)
+      const response = await uploadAvatarImage(data)
 
-      const response = await fetch(`/api/internals/images/process_avatar`, {
-        method: 'POST',
-        body: data,
-      })
-      const imageData = await response.json()
-
-      await updateProfilePic(userId, imageData.secure_url)
-      onProfilePicChange(imageData.secure_url)
+      await updateProfilePic(userId, response.secure_url)
+      onProfilePicChange(response.secure_url)
     } catch (err) {
       console.error(err)
     }

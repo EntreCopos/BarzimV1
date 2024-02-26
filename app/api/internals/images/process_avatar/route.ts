@@ -38,9 +38,8 @@ async function uploadImage(
 ): Promise<UploadApiResponse> {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
-      {
-        folder: folder,
-      },
+      { folder: folder },
+      //@ts-expect-error TYPES DONT MATCH
       (error: Error, result: UploadApiResponse) => {
         if (result) resolve(result)
         else reject(error)
