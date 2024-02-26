@@ -1,15 +1,18 @@
-import { db } from "@/lib/db";
+import { db } from '@/lib/db'
 
-export const getTwoFactorConfirmationByUserId = async (
-  userId: string
-) => {
+/**
+ * Obtém a confirmação de autenticação em duas etapas por ID de usuário.
+ * @param {string} userId - O ID do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para a confirmação de autenticação em duas etapas ou null se não for encontrada.
+ */
+export const getTwoFactorConfirmationByUserId = async (userId: string) => {
   try {
     const twoFactorConfirmation = await db.twoFactorConfirmation.findUnique({
-      where: { userId }
-    });
+      where: { userId },
+    })
 
-    return twoFactorConfirmation;
+    return twoFactorConfirmation
   } catch {
-    return null;
+    return null
   }
-};
+}

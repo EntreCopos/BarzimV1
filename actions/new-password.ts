@@ -8,6 +8,15 @@ import { getPasswordResetTokenByToken } from '@/data/password-reset-token'
 import { getUserByEmail } from '@/data/user'
 import { db } from '@/lib/db'
 
+/**
+ * Define uma nova senha para um usuário com base em um token de redefinição de senha.
+ * @param {object} values - Os valores fornecidos para a nova senha.
+ * @param {string} values.password - A nova senha do usuário.
+ * @param {string | null} token - O token de redefinição de senha.
+ * @returns {Promise<{success: string} | {error: string}>} Um objeto indicando o resultado da operação.
+ * Se a senha for alterada com sucesso, retorna um objeto de sucesso.
+ * Se ocorrer algum erro durante o processo, retorna um objeto de erro com uma mensagem correspondente.
+ */
 export const newPassword = async (
   values: z.infer<typeof NewPasswordSchema>,
   token?: string | null
