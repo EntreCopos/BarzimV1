@@ -6,6 +6,8 @@ import SendReviewButton from '../buttons/send-review-button/send-review-button'
 import { addReviewV2 } from '@/actions/add-review-v2'
 import { useRouter } from 'next/navigation'
 
+//v3 agora na realidade
+
 export const AvaliacaoFormV2: React.FC<{
   idCerveja: string
   idUser: string
@@ -29,9 +31,11 @@ export const AvaliacaoFormV2: React.FC<{
       }
 
       try {
+        const data = new FormData()
+        data.set('file', file)
         const response = await fetch(
           `/api/internals/images/process_upload?filename=${file.name}`,
-          { method: 'POST', body: file }
+          { method: 'POST', body: data }
         )
 
         const imageData = await response.json()
