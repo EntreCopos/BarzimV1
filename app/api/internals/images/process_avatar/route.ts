@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { v2 as cloudinary } from 'cloudinary'
-import { put } from '@vercel/blob'
 
 cloudinary.config({
   cloud_name: process.env.CLD_NAME,
@@ -9,21 +8,37 @@ cloudinary.config({
 })
 
 export async function POST(request: Request): Promise<NextResponse> {
-  const { searchParams } = new URL(request.url)
-  const filename = searchParams.get('filename') || ''
+  const data = await request.formData()
+  const file: File | null = data.get('file') as unknown as File
 
-  if (filename && request.body) {
-    const blob = await put(filename, request.body, {
-      access: 'public',
-    })
-
-    const result = await cloudinary.uploader.upload(blob.url, {
-      folder: 'profile_pics',
-      use_filename: true,
-    })
-
-    return NextResponse.json(result)
-  } else {
-    return NextResponse.json({ message: 'not good' }, { status: 400 })
+  if (!file) {
+    return NextResponse.json({ success: false, error: 'No file received' })
   }
+
+  const bytes = await file.arrayBuffer()
+  const buffer = Buffer.from(bytes)
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream(
+        {
+          resource_type: 'image',
+          folder: 'profile_pics',
+        },
+        (error, result) => {
+          if (error) {
+            console.error('error:', error)
+            reject(error)
+          } else {
+            resolve(result)
+          }
+        }
+      )
+      .end(buffer)
+  })
+    .then((result) => {
+      return NextResponse.json(result)
+    })
+    .catch((error) => {
+      return NextResponse.json({ success: false, error: error })
+    })
 }
