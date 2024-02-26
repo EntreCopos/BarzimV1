@@ -2,8 +2,8 @@
 import { updateProfilePic } from '@/actions/alter-profile-pic'
 import { changeProfilePic } from '@/actions/profile-image'
 import { updateUserProfilePic } from '@/data/user'
-const MAX_FILE_SIZE = 4 * 1024 * 1024
 
+const MAX_FILE_SIZE = 4 * 1024 * 1024
 const FileInput = ({
   userId,
   onProfilePicChange,
@@ -26,9 +26,12 @@ const FileInput = ({
     }
 
     try {
+      const data = new FormData()
+      data.set('file', file)
+
       const response = await fetch(
         `/api/internals/images/process_avatar?filename=${file.name}`,
-        { method: 'POST', body: file }
+        { method: 'POST', body: data }
       )
       const imageData = await response.json()
 
