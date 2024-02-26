@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
 import {ListaDeUsuarios} from '../lists/lista-usuarios';
-import { WrapperDefaultPadding } from '../wrappers/wrapper-default-padding';
 import { User } from '@/data/data'; // Substitua pelo caminho correto para o tipo User
 
 export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {

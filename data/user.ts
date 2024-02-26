@@ -1,25 +1,6 @@
 import { db } from '@/lib/db'
 import { getUserIdByUsername } from './social'
 
-export const getAllUsers = async () => {
-  try {
-    return await db.user.findMany({
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        image: true,
-        bio: true,
-        link: true,
-        username: true,
-        // Adicione mais campos aqui se necessário
-      },
-    })
-  } catch {
-    return null
-  }
-}
-
 export const getUserByEmail = async (email: string) => {
   try {
     return await db.user.findUnique({ where: { email } })
