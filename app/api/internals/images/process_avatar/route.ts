@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 import { v2 as cloudinary } from 'cloudinary'
+import { uploadImageToCloudinary } from '@/lib/image_upload'
+import { UploadApiResponse } from 'cloudinary'
+import streamifier from 'streamifier'
 
 cloudinary.config({
   cloud_name: process.env.CLD_NAME,
@@ -19,26 +22,30 @@ export async function POST(request: Request): Promise<NextResponse> {
   const buffer = Buffer.from(bytes)
 
   try {
-    const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream(
-          {
-            resource_type: 'image',
-            folder: 'profile_pics',
-          },
-          (error, result) => {
-            if (error) {
-              console.error('error:', error)
-              reject(error)
-            } else {
-              resolve(result)
-            }
-          }
-        )
-        .end(buffer)
-    })
+    const result = await uploadImage(buffer, 'profile_pics')
+
+    console.log(result)
+
     return NextResponse.json(result)
   } catch (error) {
     return NextResponse.json({ success: false, error: error })
   }
+}
+
+async function uploadImage(
+  buffer: Buffer,
+  folder: string
+): Promise<UploadApiResponse> {
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: folder,
+      },
+      (error: Error, result: UploadApiResponse) => {
+        if (result) resolve(result)
+        else reject(error)
+      }
+    )
+    streamifier.createReadStream(buffer).pipe(uploadStream)
+  })
 }
