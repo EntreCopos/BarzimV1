@@ -29,10 +29,10 @@ const FileInput = ({
       const data = new FormData()
       data.set('file', file)
 
-      const response = await fetch(
-        `/api/internals/images/process_avatar?filename=${file.name}`,
-        { method: 'POST', body: data }
-      )
+      const response = await fetch(`/api/internals/images/process_avatar`, {
+        method: 'POST',
+        body: data,
+      })
       const imageData = await response.json()
 
       await updateProfilePic(userId, imageData.secure_url)
