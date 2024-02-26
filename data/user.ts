@@ -1,6 +1,11 @@
 import { db } from '@/lib/db'
 import { getUserIdByUsername } from './social'
 
+/**
+ * Obtém um usuário pelo endereço de e-mail.
+ * @param {string} email - O endereço de e-mail do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
+ */
 export const getUserByEmail = async (email: string) => {
   try {
     return await db.user.findUnique({ where: { email } })
@@ -9,6 +14,12 @@ export const getUserByEmail = async (email: string) => {
   }
 }
 
+/**
+ * Atualiza a foto de perfil do usuário.
+ * @param {string} userId - O ID do usuário.
+ * @param {string} pictureUrl - A URL da nova foto de perfil.
+ * @returns {Promise<void>} Uma Promise vazia.
+ */
 export const updateUserProfilePic = async (
   userId: string,
   pictureUrl: string
@@ -23,6 +34,11 @@ export const updateUserProfilePic = async (
   })
 }
 
+/**
+ * Remove a foto de perfil do usuário.
+ * @param {string} userId - O ID do usuário.
+ * @returns {Promise<number>} Uma Promise que resolve para 1 após a remoção da foto de perfil.
+ */
 export const removeUserProfilePic = async (userId: string) => {
   await db.user.update({
     where: {
@@ -35,7 +51,11 @@ export const removeUserProfilePic = async (userId: string) => {
   return 1
 }
 
-//esse getter não é seguro no momento, esta vazando o hash da senha do usuario
+/**
+ * Obtém um usuário pelo ID.
+ * @param {string} id - O ID do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
+ */
 export const getUserById = async (id: string) => {
   try {
     const user = await db.user.findUnique({
@@ -49,6 +69,11 @@ export const getUserById = async (id: string) => {
   }
 }
 
+/**
+ * Obtém um usuário pelo ID, selecionando apenas informações seguras.
+ * @param {string} id - O ID do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
+ */
 export const safeGetUserById = async (id: string) => {
   try {
     const user = await db.user.findUnique({
@@ -70,8 +95,11 @@ export const safeGetUserById = async (id: string) => {
   }
 }
 
-// export const getUserByr
-
+/**
+ * Obtém o nome de usuário pelo ID.
+ * @param {string} id - O ID do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o nome de usuário ou null se não for encontrado.
+ */
 export const getUsernameById = async (id: string) => {
   try {
     const user = await db.user.findUnique({
@@ -88,6 +116,11 @@ export const getUsernameById = async (id: string) => {
   }
 }
 
+/**
+ * Obtém um usuário pelo nome de usuário.
+ * @param {string} username - O nome de usuário do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
+ */
 export const getUserByUsername = async (username: string) => {
   try {
     return await db.user.findUnique({
@@ -110,6 +143,11 @@ export const getUserByUsername = async (username: string) => {
   }
 }
 
+/**
+ * Obtém uma lista de usuários que não são privados, excluindo um ID específico.
+ * @param {string} excludeId - O ID do usuário a ser excluído da lista.
+ * @returns {Promise<object[] | null>} Uma Promise que resolve para a lista de usuários ou null se ocorrer um erro.
+ */
 export const getManyUsersNotPrivate = async (excludeId: string | undefined) => {
   try {
     return await db.user.findMany({
@@ -131,6 +169,11 @@ export const getManyUsersNotPrivate = async (excludeId: string | undefined) => {
   }
 }
 
+/**
+ * Obtém as imagens das avaliações do usuário.
+ * @param {string} username - O nome de usuário do usuário.
+ * @returns {Promise<string[] | null>} Uma Promise que resolve para a lista de URLs das imagens das avaliações do usuário ou null se ocorrer um erro.
+ */
 export const getUserReviewPics = async (username: string) => {
   try {
     const userId = await getUserIdByUsername(username)
@@ -150,27 +193,4 @@ export const getUserReviewPics = async (username: string) => {
   } catch (err) {
     return null
   }
-}
-function exclude(
-  user: {
-    id: string
-    name: string | null
-    email: string | null
-    emailVerified: Date | null
-    image: string | null
-    bio: string
-    link: string | null
-    password: string | null
-    role: import('@prisma/client').$Enums.UserRole
-    isTwoFactorEnabled: boolean
-    dateOfBirth: Date | null
-    username: string | null
-    isPrivate: boolean
-    genero: import('@prisma/client').$Enums.Genero | null
-    cep: string | null
-    createdAt: Date
-  } | null,
-  arg1: string[]
-) {
-  throw new Error('Function not implemented.')
 }

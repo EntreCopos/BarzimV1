@@ -1,5 +1,12 @@
 import { db } from '@/lib/db'
 
+/**
+ * Adiciona uma cerveja à lista de um usuário.
+ * @param {number} idCerveja - O ID da cerveja a ser adicionada.
+ * @param {string} tipoLista - O tipo de lista (Favoritar, Quero Beber, Já Bebi).
+ * @param {string} usuarioId - O ID do usuário.
+ * @returns {Promise<object>} Uma Promise que resolve para a entrada atualizada ou recém-criada na lista do usuário.
+ */
 export const addToUserCerveja = async (
   idCerveja: number,
   tipoLista: string,
@@ -22,7 +29,7 @@ export const addToUserCerveja = async (
         ...existingEntry,
         favorita:
           tipoLista === 'Favoritar'
-            ? !existingEntry.favorita //transforma o bichinho num toggle
+            ? !existingEntry.favorita
             : existingEntry.favorita,
         queroBeber:
           tipoLista === 'Quero Beber'

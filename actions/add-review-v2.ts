@@ -1,6 +1,12 @@
 'use server'
-
 import { createAvaliacao } from '@/data/avaliacao'
+
+/**
+ * Adiciona uma nova avaliação.
+ * @param {FormData} formData - Os dados do formulário para criar a avaliação.
+ * @returns {Promise<{success: boolean}>} Um objeto contendo um indicador de sucesso, true se a avaliação for adicionada com sucesso, ou false se ocorrer algum erro.
+ * @throws Lança um erro se ocorrer algum problema durante o processo de adição da avaliação.
+ */
 
 export const addReviewV2 = async (formData: FormData) => {
   try {

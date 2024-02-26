@@ -1,6 +1,12 @@
 import { getUserIdByUsername } from './social'
 import { db } from '@/lib/db'
 
+/**
+ * Retorna a relação entre um usuário e uma cerveja.
+ * @param {string} userId - O ID do usuário.
+ * @param {string} cervejaId - O ID da cerveja.
+ * @returns {Promise<any>} A relação entre o usuário e a cerveja.
+ */
 export const relUserCerv = async (userId: string, cervejaId: string) => {
   return await db.userCerveja.findFirst({
     where: {
@@ -16,6 +22,13 @@ export const relUserCerv = async (userId: string, cervejaId: string) => {
   })
 }
 
+/**
+ * Cria ou atualiza uma avaliação de uma cerveja por um usuário.
+ * @param {string} userId - O ID do usuário.
+ * @param {string} cervejaId - O ID da cerveja.
+ * @param {object} moreData - Outros dados da avaliação.
+ * @returns {Promise<any>} A nova relação entre o usuário e a cerveja.
+ */
 export const createAvaliacao = async (
   userId: string,
   cervejaId: string,
@@ -43,6 +56,11 @@ export const createAvaliacao = async (
   return newRel
 }
 
+/**
+ * Retorna as avaliações de uma cerveja.
+ * @param {string} id - O ID da cerveja.
+ * @returns {Promise<any[]>} As avaliações da cerveja.
+ */
 export const getAvaliacoesByCerveja = async (id: string) => {
   const avaliacoes = await db.userCerveja.findMany({
     where: {
@@ -72,6 +90,12 @@ export const getAvaliacoesByCerveja = async (id: string) => {
   return avaliacoes
 }
 
+/**
+ * Retorna as avaliações de um usuário.
+ * @param {string} username - O nome de usuário.
+ * @param {number} [size=10] - O tamanho da lista de avaliações.
+ * @returns {Promise<any[]>} As avaliações do usuário.
+ */
 export const getAvaliacoesByUser = async (
   username: string,
   size: number = 10
@@ -114,6 +138,12 @@ export const getAvaliacoesByUser = async (
   return avaliacoes
 }
 
+/**
+ * Verifica se um usuário já avaliou uma cerveja pelo ID.
+ * @param {string} cerverjaId - O ID da cerveja.
+ * @param {string} userId - O ID do usuário.
+ * @returns {Promise<any>} A avaliação se existir, caso contrário, null.
+ */
 export const userHasReviewedCervejaById = async (
   cerverjaId: string,
   userId: string
@@ -129,6 +159,11 @@ export const userHasReviewedCervejaById = async (
   return result
 }
 
+/**
+ * Retorna todas as avaliações de cervejas.
+ * @param {number} size - O tamanho da lista de avaliações.
+ * @returns {Promise<any[]>} As avaliações de cervejas.
+ */
 export const getAllCervejaAvaliacoes = async (size: number) => {
   const avaliacoes = await db.userCerveja.findMany({
     where: {
@@ -157,6 +192,12 @@ export const getAllCervejaAvaliacoes = async (size: number) => {
   })
   return avaliacoes
 }
+
+/**
+ * Retorna todas as cervejas marcadas como 'Quero Beber'.
+ * @param {number} size - O tamanho da lista de cervejas.
+ * @returns {Promise<any[]>} As cervejas marcadas como 'Quero Beber'.
+ */
 export const getAllCervejaQuerBeber = async (size: number) => {
   const avaliacoes = await db.userCerveja.findMany({
     where: {
@@ -184,6 +225,11 @@ export const getAllCervejaQuerBeber = async (size: number) => {
   return avaliacoes
 }
 
+/**
+ * Retorna as cervejas favoritas de um usuário.
+ * @param {string} username - O nome de usuário.
+ * @returns {Promise<any[]>} As cervejas favoritas do usuário.
+ */
 export const getUserCervejaFavoritas = async (username: string) => {
   const userId = await getUserIdByUsername(username)
   const favoritas = await db.userCerveja.findMany({
@@ -195,6 +241,11 @@ export const getUserCervejaFavoritas = async (username: string) => {
   return favoritas
 }
 
+/**
+ * Retorna as cervejas já bebidas por um usuário.
+ * @param {string} username - O nome de usuário.
+ * @returns {Promise<any[]>} As cervejas já bebidas pelo usuário.
+ */
 export const getUserCervejasJaBebidas = async (username: string) => {
   const userId = await getUserIdByUsername(username)
   const jaBebidas = await db.userCerveja.findMany({
@@ -216,6 +267,11 @@ export const getUserCervejasJaBebidas = async (username: string) => {
   return cervejasJaBebidas
 }
 
+/**
+ * Retorna as cervejas que um usuário quer beber.
+ * @param {string} username - O nome de usuário.
+ * @returns {Promise<any[]>} As cervejas que o usuário quer beber.
+ */
 export const getUserCerverjasQueroBeber = async (username: string) => {
   const userId = await getUserIdByUsername(username)
   const queroBeber = await db.userCerveja.findMany({
