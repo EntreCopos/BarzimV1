@@ -2,7 +2,6 @@
 import { auth } from '@/auth'
 import { getManyUsersNotPrivate, getUserByUsername } from '@/data/user'
 import { UserFilter } from '@/components/filters/user-filter'
-import { getAllUsers } from '@/data/user'
 import { ListaDeUsuarios } from '@/components/lists/lista-usuarios' // Importando o componente ListaDeUsuarios
 
 // Função assíncrona para renderizar a página de exploração de usuários
@@ -24,18 +23,15 @@ const ExploreUsersPage = async () => {
     })
   ) : []
 
-  const listaDeUsuarios = await getAllUsers();
-
-  if (!!listaDeUsuarios?.length) {
+  if (!!usersWithBio?.length) {
     // Retornando o componente JSX para renderizar a página
     return (
       <div className='text-white flex flex-col items-center justify-center gap-4 bg-black-radial-gradient p-6'>
         <div className='text-center'>
           <h1 className='text-2xl pb-3 '>Olá, <b className='text-yellow-barzim'>{session?.user.name}!</b></h1>
           <p className='pb-4'>Os usuários abaixo já fazem parte do Barzim 😊</p>
-          <UserFilter usuarios={listaDeUsuarios}/>
+          <UserFilter usuarios={usersWithBio}/>
         </div>
-        {/* <ListaDeUsuarios usuarios={usersWithBio} /> */}
       </div>
     )
   }

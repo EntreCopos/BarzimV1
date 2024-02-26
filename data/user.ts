@@ -2,29 +2,6 @@ import { db } from '@/lib/db'
 import { getUserIdByUsername } from './social'
 
 /**
- * Recupera todos os usuários do banco de dados.
- * @async
- * @returns {Promise<Array<Object>|null>} Array de objetos de usuário contendo os campos id, name, email, image, bio, link e username, ou null se ocorrer um erro.
- */
-export const getAllUsers = async () => {
-  try {
-    return await db.user.findMany({
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        image: true,
-        bio: true,
-        link: true,
-        username: true,
-      },
-    })
-  } catch {
-    return null
-  }
-}
-
-/**
  * Obtém um usuário pelo endereço de e-mail.
  * @param {string} email - O endereço de e-mail do usuário.
  * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
