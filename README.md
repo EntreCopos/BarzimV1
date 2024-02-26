@@ -6,13 +6,16 @@ Bem-vindo ao Barzim, o seu espaço online para avaliação de cervejas! Este web
 
 - [Instalação](#instalação)
 - [Estrutura do Projeto](#estrutura-do-projeto)
+- [Funcionalidades](#funcionalidades)
 - [Dependências](#dependências)
 - [Ambiente (.env)](#ambiente-env)
 - [Scripts](#scripts)
 - [Desenvolvimento](#desenvolvimento)
+- [Banco de Dados](#banco-de-dados)
 - [Configurações Adicionais](#configurações-adicionais)
   - [Arquivos de Configuração](#arquivos-de-configuração)
 - [Contribuindo](#contribuindo)
+- [Autores](#autores)
 
 ## Instalação
 
@@ -36,6 +39,40 @@ O projeto segue uma estrutura organizada para facilitar o desenvolvimento e a ma
 - **styles**: Contém arquivos de estilos globais ou configuráveis.
 - **schemas**: Define esquemas para validação de dados.
 - **tests**: Inclui testes automatizados para o projeto.
+
+# Funcionalidades
+
+1. **Autenticação e Autorização:**
+   - **Registro de Usuários:** Permite que novos usuários se registrem na plataforma, utilizando métodos de registro como GitHub, Gmail, Discord, etc.
+   - **Login Seguro:** Mecanismo de autenticação seguro para usuários registrados, com suporte para login através de diferentes provedores.
+
+2. **Upload de Imagens dos Usuários:**
+   - **Integração com Cloudinary:** Utilização do serviço Cloudinary para o upload e armazenamento de imagens dos usuários.
+   - **Funcionalidade de Perfil:** Permite que os usuários associem uma imagem de perfil à sua conta, com a capacidade de alterar a imagem quando desejarem.
+
+3. **Esquemas de Validação:**
+   - Utilização de esquemas robustos de validação usando a biblioteca Zod para garantir a integridade dos dados dos usuários.
+   - **Recuperação de Senha:** Funcionalidade para redefinir a senha, incluindo métodos de recuperação como e-mail.
+
+4. **Persistência de Dados:**
+   - Utilização do Prisma como ORM para interação com o banco de dados PostgreSQL, garantindo eficiência na persistência de dados.
+
+5. **Utilitários Diversos:**
+   - Funções utilitárias, como embaralhamento de arrays, manipulação de strings, etc., para aprimorar a experiência do usuário.
+
+6. **Interatividade Social:**
+   - **Adicionar Amigos:** Os usuários podem seguir/ser seguidos, adicionando uma dimensão social à plataforma.
+   - **Avaliação de Cervejas:** Capacidade de avaliar cervejas, contribuindo para um sistema de avaliação colaborativo.
+   - **Visualização de Avaliações:** Os usuários podem visualizar as avaliações de outros usuários, promovendo interações e recomendações.
+
+7. **Configurações do Usuário:**
+   - **Configurações Personalizadas:** Permite que os usuários configurem preferências pessoais e ajustem as configurações da conta.
+
+8. **Verificação de Idade:**
+   - **Restrição para Maiores de 18 Anos:** Implementação de um sistema de verificação para garantir que apenas usuários maiores de 18 anos possam utilizar a plataforma.
+
+Estas funcionalidades combinadas oferecem uma experiência rica e interativa aos usuários, abrangendo desde autenticação segura até interações sociais e avaliação de conteúdo. Certifique-se de explorar e aproveitar esses recursos ao máximo.
+
 
 ## Dependências
 
@@ -124,6 +161,34 @@ O projeto também utiliza várias dependências de desenvolvimento para ferramen
 - **typescript**: `^5` - Superset de JavaScript que adiciona tipagem estática.
 
 Lembre-se de verificar a documentação oficial de cada dependência para obter informações detalhadas sobre suas funcionalidades e configurações.
+
+## Base de Dados do Projeto
+
+Este projeto utiliza um banco de dados com diversas entidades e tipos de dados. Abaixo estão as principais entidades e tipos de dados envolvidos.
+
+### Entidades Principais
+
+1. **CervejaData:**
+   - **Descrição:** Representa os dados essenciais associados a uma cerveja, incluindo nome, teor alcoólico, imagem, código de barras, ID da marca, ID da cervejaria e ID do tipo de cerveja.
+
+2. **AgeVerifFormData:**
+   - **Descrição:** Representa os dados associados à verificação de idade, incluindo dia, mês e ano.
+
+3. **TypeObjectCerveja:**
+   - **Descrição:** Representa um objeto complexo associado a uma cerveja, incluindo seu ID, imagem principal, nome, informações sobre a cervejaria e o tipo de cerveja.
+
+### Tipos Adicionais
+
+1. **CervejaDetails:**
+   - **Descrição:** Representa detalhes específicos de uma cerveja, incluindo teor alcoólico, temperatura ideal, valor IBU e corpo.
+
+2. **CervejariaBreadcrumb:**
+   - **Descrição:** Representa um item de navegação de trilha (breadcrumb) associado a uma cervejaria, incluindo nome e path.
+
+3. **CervejaBreadcrumbs:**
+   - **Descrição:** Representa a trilha de navegação (breadcrumbs) associada a uma cerveja, incluindo informações sobre a cervejaria e o nome da cerveja.
+
+Este conjunto de entidades e tipos de dados proporciona uma estrutura robusta para manipulação e representação dos dados relacionados a cervejas, verificação de idade e navegação associada a cervejarias. Certifique-se de entender essas estruturas ao trabalhar com o banco de dados no contexto deste projeto.
 
 ## Configurações Adicionais
 
