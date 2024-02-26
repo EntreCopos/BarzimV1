@@ -13,6 +13,17 @@ import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import { generateVerificationToken, generateTwoFactorToken } from '@/lib/tokens'
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation'
 
+/**
+ * Efetua o processo de login de um usuário.
+ * @param {object} values - Os valores fornecidos para o login.
+ * @param {string} values.email - O endereço de email do usuário.
+ * @param {string} values.password - A senha do usuário.
+ * @param {string} values.code - O código de autenticação de dois fatores, se aplicável.
+ * @returns {Promise<{success: string} | {error: string} | {twoFactor: boolean}>} Um objeto indicando o resultado do processo de login.
+ * Se o login for bem-sucedido, retorna um objeto de sucesso.
+ * Se houver um erro durante o processo de login, retorna um objeto de erro com uma mensagem correspondente.
+ * Se a autenticação de dois fatores for necessária, retorna um objeto indicando a necessidade de autenticação de dois fatores.
+ */
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values)
 
