@@ -1,6 +1,11 @@
 import { db } from '@/lib/db'
 import { getUserIdByUsername } from './social'
 
+/**
+ * Obtém um usuário pelo endereço de e-mail.
+ * @param {string} email - O endereço de e-mail do usuário.
+ * @returns {Promise<object | null>} Uma Promise que resolve para o usuário ou null se não for encontrado.
+ */
 export const getUserByEmail = async (email: string) => {
   try {
     return await db.user.findUnique({ where: { email } })
