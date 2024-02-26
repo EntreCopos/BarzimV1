@@ -17,28 +17,28 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   const bytes = await file.arrayBuffer()
   const buffer = Buffer.from(bytes)
-  return new Promise((resolve, reject) => {
-    cloudinary.uploader
-      .upload_stream(
-        {
-          resource_type: 'image',
-          folder: 'profile_pics',
-        },
-        (error, result) => {
-          if (error) {
-            console.error('error:', error)
-            reject(error)
-          } else {
-            resolve(result)
+
+  try {
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: 'image',
+            folder: 'profile_pics',
+          },
+          (error, result) => {
+            if (error) {
+              console.error('error:', error)
+              reject(error)
+            } else {
+              resolve(result)
+            }
           }
-        }
-      )
-      .end(buffer)
-  })
-    .then((result) => {
-      return NextResponse.json(result)
+        )
+        .end(buffer)
     })
-    .catch((error) => {
-      return NextResponse.json({ success: false, error: error })
-    })
+    return NextResponse.json(result)
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error })
+  }
 }
