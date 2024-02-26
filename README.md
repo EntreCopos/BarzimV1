@@ -73,7 +73,6 @@ O projeto segue uma estrutura organizada para facilitar o desenvolvimento e a ma
 
 Estas funcionalidades combinadas oferecem uma experiência rica e interativa aos usuários, abrangendo desde autenticação segura até interações sociais e avaliação de conteúdo. Certifique-se de explorar e aproveitar esses recursos ao máximo.
 
-
 ## Dependências
 
 O projeto utiliza diversas dependências para garantir seu funcionamento. Aqui estão algumas das principais:
@@ -190,9 +189,9 @@ Este projeto utiliza um banco de dados com diversas entidades e tipos de dados. 
 
 Este conjunto de entidades e tipos de dados proporciona uma estrutura robusta para manipulação e representação dos dados relacionados a cervejas, verificação de idade e navegação associada a cervejarias. Certifique-se de entender essas estruturas ao trabalhar com o banco de dados no contexto deste projeto.
 
-## Configurações Adicionais
+# Configurações Adicionais
 
-# Arquivos de Configuração
+### Arquivos de Configuração
 
  **`next.config.js`**
    - Contém configurações específicas para o Next.js, incluindo a ignorância de erros de tipo em builds de produção e definições de padrões remotos para imagens.
@@ -246,4 +245,4 @@ Esperamos que você desfrute da experiência do Barzim e contribua para torná-l
 
 ## Autores
 
-[<img src="https://www.github.com/ANACNETO.png" width="50" height="50" alt="ANACNETO" style="border-radius:50%">](https://www.github.com/ANACNETO)  [<img src="https://www.github.com/ahzorek.png" width="50" height="50" alt="ahzorek" style="border-radius:50%">](https://www.github.com/ahzorek)  [<img src="https://www.github.com/elianoliver.png" width="50" height="50" alt="elianoliver" style="border-radius:50%">](https://www.github.com/elianoliver)  [<img src="https://www.github.com/evandroreichert.png" width="50" height="50" alt="evandroreichert" style="border-radius:50%">](https://www.github.com/evandroreichert)  [<img src="https://www.github.com/laraberns.png" width="50" height="50" alt="laraberns" style="border-radius:50%">](https://www.github.com/laraberns)
+[<img src="https://www.github.com/ANACNETO.png" width="70" height="70" alt="ANACNETO" style="border-radius:70%">](https://www.github.com/ANACNETO)  [<img src="https://www.github.com/ahzorek.png" width="70" height="70" alt="ahzorek" style="border-radius:70%">](https://www.github.com/ahzorek)  [<img src="https://www.github.com/elianoliver.png" width="70" height="70" alt="elianoliver" style="border-radius:70%">](https://www.github.com/elianoliver)  [<img src="https://www.github.com/evandroreichert.png" width="70" height="70" alt="evandroreichert" style="border-radius:70%">](https://www.github.com/evandroreichert)  [<img src="https://www.github.com/laraberns.png" width="70" height="70" alt="laraberns" style="border-radius:70%">](https://www.github.com/laraberns)
