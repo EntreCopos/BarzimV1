@@ -18,10 +18,15 @@ export const uploadImageToCloudinary = (
   base64String: string,
   folder: string | undefined = 'review_images'
 ): Promise<CloudinaryResponse> => {
+  const currDate = new Date().toISOString()
+  const uploadString = 'data:image/jpeg;base64,' + base64String
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(
-      base64String,
+      uploadString,
       {
+        overwrite: true,
+        timeout: 120000,
+        filename_override: folder + '_' + currDate,
         folder: folder,
       },
       (error, result) => {

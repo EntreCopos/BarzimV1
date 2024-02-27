@@ -1,4 +1,6 @@
 'use server'
+import { uploadImageToCloudinary } from '@/lib/image_upload'
+import { convertFileToBase64 } from '@/lib/utils'
 import { v2 as cloudinary } from 'cloudinary'
 
 cloudinary.config({
@@ -14,22 +16,17 @@ cloudinary.config({
  */
 export async function uploadAvatarImage(formData: FormData) {
   const file = formData.get('image') as File
-  const bytes = await file.arrayBuffer()
-  const buffer = new Uint8Array(bytes)
+  const base64Image = await convertFileToBase64(file)
+  const res = await uploadImageToCloudinary(base64Image, 'profile_pic')
 
-  const res = await new Promise((resolve, reject) => {
-    cloudinary.uploader
-      .upload_stream({}, function (error, result) {
-        if (error) {
-          reject(error)
-          return
-        }
-        resolve(result)
-      })
-      .end(buffer)
-  })
+  console.log(res)
 
   return res
 }
-// ...
-// <form action={create}>
+
+export async function uploadReviewImage(formData: FormData) {
+  const file = formData.get('image') as File
+  const base64Image = await convertFileToBase64(file)
+
+  return await uploadImageToCloudinary(base64Image, 'review')
+}
