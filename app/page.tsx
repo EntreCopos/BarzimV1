@@ -42,7 +42,7 @@ const Home: React.FC = () => {
             <nav className={styles.nav}>
               <ul className={`${styles.navList} ${montserrat.className}`}>
                 <li className={styles.navItem}><Link href='#'>O que é o Barzim?</Link></li>
-                <li className={styles.navItem}><Link href='#'>A Equipe</Link></li>
+                <li className={styles.navItem}><Link href='https://dev.barzim.tech/equipe'>A Equipe</Link></li>
                 <li className={styles.navItem}><Link href='#'>Contato</Link></li>
                 <li className={`${styles.CTAbutton} rounded-lg`}><Link href='/auth/login'>Entrar</Link></li>
               </ul>
