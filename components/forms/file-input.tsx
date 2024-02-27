@@ -1,6 +1,7 @@
 'use client'
 import { updateProfilePic } from '@/actions/alter-profile-pic'
 import { uploadAvatarImage } from '@/actions/upload-image'
+import { CloudinaryResponse } from '@/data/data'
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024
 const FileInput = ({
@@ -26,11 +27,12 @@ const FileInput = ({
 
     try {
       const data = new FormData()
-      data.set('image', file)
-      const response = await uploadAvatarImage(data)
+      data.append('image', file)
 
-      await updateProfilePic(userId, response.secure_url)
-      onProfilePicChange(response.secure_url)
+      const uploadedImage: CloudinaryResponse = await uploadAvatarImage(data)
+
+      await updateProfilePic(userId, uploadedImage.secure_url)
+      onProfilePicChange(uploadedImage.secure_url)
     } catch (err) {
       console.error(err)
     }

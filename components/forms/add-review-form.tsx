@@ -4,6 +4,11 @@ import { addReview } from '@/actions/add-review'
 import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 import SendReviewButton from '../buttons/send-review-button/send-review-button'
+import { convertFileToBase64 } from '@/lib/utils'
+import { uploadReviewImage } from '@/actions/upload-image'
+import { CloudinaryResponse } from '@/data/data'
+import { useRouter } from 'next/navigation'
+import { addReviewV2 } from '@/actions/add-review-v2'
 
 const MAX_FILE_SIZE = 300 * 1024
 
@@ -13,55 +18,37 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
 }) => {
   const [rating, setRating] = useState<number>(1)
   const [reviewText, setReviewText] = useState<string>('')
-  const [reviewPics, setReviewPics] = useState<string[]>([])
+  const [reviewPics, setReviewPics] = useState<any[]>([])
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [isLoadingImage, setIsLoadingImage] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
+  const router = useRouter()
 
   const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || [])
+    if (e.target.files) {
+      setIsLoadingImage(true)
 
-    if (reviewPics.length + files.length > 3) {
-      alert('Você pode adicionar no máximo 3 imagens')
-      return
-    }
+      const file = e.target.files[0]
 
-    try {
-      const picsBase64Promises = files.map(async (file) => {
-        if (file.size > MAX_FILE_SIZE) {
-          alert(
-            `wow!!! ${file.name} é muito grande. meus grande infelizmente, o máximo permitido é de ${(MAX_FILE_SIZE / (1024 * 1024)).toFixed(2)} MB.`
-          )
-          return null
-        }
-        return await convertFileToBase64(file)
-      })
-
-      const picsBase64 = await Promise.all(picsBase64Promises)
-
-      const validPicsBase64 = picsBase64.filter(
-        (pic) => pic !== null
-      ) as string[]
-
-      setReviewPics((prevPics) => [...prevPics, ...validPicsBase64])
-    } catch (err) {
-      console.error(err)
-      alert('erro ao processar')
-    }
-  }
-
-  const convertFileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-
-      reader.onload = () => {
-        const base64String = reader.result as string
-        resolve(base64String)
+      if (reviewPics.length >= 3) {
+        alert('Você pode adicionar no máximo 3 imagens')
+        return
       }
-      reader.onerror = (error) => {
-        reject(error)
+
+      try {
+        const data = new FormData()
+        data.append('image', file)
+        const uploadedImage: CloudinaryResponse = await uploadReviewImage(data)
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        setReviewPics((prevPics) => [...prevPics, uploadedImage])
+      } catch (err) {
+        console.error(err)
+        alert('erro ao processar')
+      } finally {
+        setIsLoadingImage(true)
       }
-      reader.readAsDataURL(file)
-    })
+    }
   }
 
   const handleSubmit = async () => {
@@ -76,15 +63,12 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
     formData.append('rating', String(rating))
     formData.append('reviewText', reviewText)
     reviewPics.forEach((pic) => {
-      formData.append('reviewPics', pic)
+      formData.append('reviewPics', JSON.stringify(pic))
     })
 
     try {
-      const response = await addReview(formData)
+      const response = await addReviewV2(formData)
       console.log('resposta da action', response)
-      if (response.success) {
-        window.location.reload()
-      }
     } catch (err) {
       console.error(err)
       setError(
@@ -92,6 +76,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
       )
     } finally {
       setIsSubmitting(false)
+      router.refresh()
     }
   }
 
@@ -107,16 +92,21 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
           //@ts-expect-error ts esta de sacanagem
           handler={handleFileInput}
         />
-        <ImageSlotsWrapper imageUrls={reviewPics} />
+        {isLoadingImage && (
+          <div className="w-full text-center text-marfim-barzim">
+            Carregando imagem
+          </div>
+        )}
+        <ImageSlotsWrapper
+          imageUrls={reviewPics.map((pic) => pic.secure_url)}
+        />
         <textarea
           className={twInput}
           placeholder="O que achou?"
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
         />
-
         <SendReviewButton isSubmitting={isSubmitting} onClick={handleSubmit} />
-
         {error && (
           <p className="border-1 mt-2 w-full rounded-sm border-solid border-red-700 bg-destructive p-4 text-white">
             {error}
