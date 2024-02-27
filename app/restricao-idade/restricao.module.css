@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100svh;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+.logo {
+    box-shadow: var(drop-shadow-sharp-shadow);
+}
+
+.main {
+    background-color: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: var(drop-shadow-sharp-shadow);
+    width: 40%;
+    line-height: 1.8rem;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fec435;
+    margin-top: 2rem;
+    padding: 5px 25px 5px 15px;
+    border-radius: 7px;
+}
