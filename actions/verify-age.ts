@@ -1,8 +1,8 @@
 'use server'
 
-import { redirect } from 'next/navigation'
+import { type AgeVerifFormData } from '@/data/data'
 import { cookies } from 'next/headers'
-import { AgeVerifFormData } from '@/data/data'
+import { redirect } from 'next/navigation'
 
 /**
  * Calcula a idade com base na data de nascimento fornecida.
@@ -46,7 +46,7 @@ export default async function verifyAge(data: AgeVerifFormData) {
 
   const age = calculateAge(isoDateOfBirth)
   if (age < 18) {
-    redirect('https://www.peppapig.com/en-gb')
+    redirect('/restricao-idade')
   } else {
     cookies().set('dateOfBirth', isoDateOfBirth, {
       httpOnly: true,
