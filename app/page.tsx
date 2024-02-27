@@ -18,6 +18,7 @@ const montserrat = Montserrat({
 const Home: React.FC = () => {
   return (
     <div className={styles.page}>
+      <div className={styles.topLine}></div>
       <div className={styles.container}>
         <div className={styles.leftSide}>
           <header className={styles.header}>
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
               <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708960/qsrg37bo1jsim2rrha7r.png' width={120} height={120} alt='Lúpulo - Barzim' className={`${styles.hop1}`} />
               <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708961/jt2hmc70hifczwplhbhd.png' width={350} height={350} alt='Garrafa Barzim 1' className={`${styles.botter1}`} />
               <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708961/liekdoufok73auo9jbjl.png' width={350} height={250} alt='Garrafa Barzim 2' className={`${styles.botter2}`} />
+              <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708960/qsrg37bo1jsim2rrha7r.png' width={100} height={100} alt='Lúpulo - Barzim' className={`${styles.hop2}`} />
               <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708960/qsrg37bo1jsim2rrha7r.png' width={100} height={100} alt='Lúpulo - Barzim' className={`${styles.hop3}`} />
               <Image src='https://res.cloudinary.com/barzimtech/image/upload/v1708708961/jza5cip5p4hwvbaq9ghx.png' width={350} height={250} alt='Garrafa Barzim 3' className={`${styles.botter3}`} />
             </div>
@@ -42,6 +44,7 @@ const Home: React.FC = () => {
                 <li className={styles.navItem}><Link href='#'>O que é o Barzim?</Link></li>
                 <li className={styles.navItem}><Link href='https://dev.barzim.tech/equipe'>A Equipe</Link></li>
                 <li className={styles.navItem}><Link href='#'>Contato</Link></li>
+                <li className={`${styles.CTAbutton} rounded-lg`}><Link href='/auth/login'>Entrar</Link></li>
               </ul>
             </nav>
           </header>
