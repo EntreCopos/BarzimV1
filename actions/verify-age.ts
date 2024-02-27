@@ -1,8 +1,8 @@
 'use server'
 
-import { redirect } from 'next/navigation'
+import { type AgeVerifFormData } from '@/data/data'
 import { cookies } from 'next/headers'
-import { AgeVerifFormData } from '@/data/data'
+import { redirect } from 'next/navigation'
 
 /**
  * Calcula a idade com base na data de nascimento fornecida.
@@ -46,7 +46,9 @@ export default async function verifyAge(data: AgeVerifFormData) {
 
   const age = calculateAge(isoDateOfBirth)
   if (age < 18) {
-    redirect('https://www.peppapig.com/en-gb')
+    redirect(
+      'https://www.tjdft.jus.br/institucional/imprensa/noticias/2015/maio/ofertar-bebidas-alcoolicas-a-criancas-e-adolescentes-e-crime#:~:text=Agora%2C%20a%20nova%20lei%20altera,alco%C3%B3lica%20a%20crian%C3%A7as%20e%20adolescentes'
+    )
   } else {
     cookies().set('dateOfBirth', isoDateOfBirth, {
       httpOnly: true,
