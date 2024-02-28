@@ -21,6 +21,7 @@ export default auth((req) => {
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
   const isAuthRoute = authRoutes.includes(nextUrl.pathname)
   const isAgeCheckRoute = nextUrl.pathname == '/age-verification'
+const isRestricaoRoute = nextUrl.pathname == '/restricao-idade'
 
   const dob = cookies().get('dateOfBirth')
   const isDob = !!dob
@@ -29,7 +30,7 @@ export default auth((req) => {
     return null
   }
 
-  if ((!isDob && isAgeCheckRoute) || (!isDob && isLoggedIn)) {
+  if ((!isDob && isAgeCheckRoute) || (!isDob && isRestricaoRoute) || (!isDob && isLoggedIn)) {
     return null
   }
 
