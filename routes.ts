@@ -9,7 +9,8 @@ export const publicRoutes = [
   '/dashboardScreen',
   '/war-room',
   '/legal/termos',
-  '/legal/politicas-privacidade'
+  '/legal/politicas-privacidade',
+  '/restricao-idade'
 ]
 
 /**
