@@ -89,6 +89,6 @@ export const cervejaSchema = z.object({
   corpo: z.string().optional(),
   cervejariaId: z.coerce.number(),
   tipoCervejaId: z.coerce.number(),
-  ingredientesCerveja: z.string(), // Mantenha como z.string()
-  harmonizacoesCerveja: z.string(), // Mantenha como z.string()
+  ingredientesCerveja: z.string(),
+  harmonizacoesCerveja: z.string(),
 })

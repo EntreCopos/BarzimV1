@@ -54,12 +54,12 @@ export const normalizeTitleCase = (beer: string) => {
   })
 }
 
-export const convertFileToBase64 = async (file: File) => {
+export const convertFileToBase64 = async (file: File): Promise<string> => {
   const bytes = await file.arrayBuffer()
   const buffer = Buffer.from(bytes)
-  return new Promise((resolve, reject) => {
+  return new Promise<string>((resolve, reject) => {
     if (!Buffer.isBuffer(buffer)) {
-      reject(new Error('O argumento passado não é um Buffer.'))
+      reject(new Error('Argumento passado não é um Buffer'))
       return
     }
     const base64String = buffer.toString('base64')

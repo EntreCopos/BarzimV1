@@ -55,7 +55,10 @@ export const addCerveja = async (values: unknown) => {
     }
 
     const newCerveja = validatedFields.data
-    const image = await uploadImageToCloudinary(newCerveja.mainImage)
+    const image = await uploadImageToCloudinary(
+      newCerveja.mainImage,
+      'cervejas'
+    )
 
     const arrIngredientes = newCerveja.ingredientesCerveja
       .split(',')

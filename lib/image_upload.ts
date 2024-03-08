@@ -20,6 +20,7 @@ export const uploadImageToCloudinary = (
 ): Promise<CloudinaryResponse> => {
   const currDate = new Date().toISOString()
   const uploadString = 'data:image/jpeg;base64,' + base64String
+
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(
       uploadString,
