@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { LoginSchema } from '@/schemas'
+import { cn } from '@/lib/utils'
 
 export const LoginForm = () => {
   const searchParams = useSearchParams()
@@ -33,6 +34,7 @@ export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
+  const [isShowingPass, setShowingPass] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -78,7 +80,7 @@ export const LoginForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Código 2FA</FormLabel>
-                  <FormControl className=''>
+                  <FormControl className="">
                     <Input
                       {...field}
                       disabled={isPending}
@@ -97,7 +99,7 @@ export const LoginForm = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 border-black border-2 border-opacity-20 w-full h-fit p-3'>
+                    <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
                       <Input
                         {...field}
                         disabled={isPending}
@@ -114,12 +116,12 @@ export const LoginForm = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl className='text-white text-opacity-60 bg-zinc-700 bg-opacity-60 border-black border-2 border-opacity-20 w-full h-fit p-3'>
+                    <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
                       <Input
                         {...field}
                         disabled={isPending}
                         placeholder="Senha"
-                        type="password"
+                        type={isShowingPass ? 'text' : 'password'}
                       />
                     </FormControl>
                     <FormMessage />
@@ -129,15 +131,34 @@ export const LoginForm = () => {
             </>
           )}
         </div>
+        <div className={cn('flex gap-1')}>
+          <input
+            type="checkbox"
+            name="showPassword"
+            checked={isShowingPass}
+            onChange={() => setShowingPass((prev) => !prev)}
+          />
+          <label className="text-sm" htmlFor="showPassword">
+            Mostrar Senha
+          </label>
+        </div>
         <FormError message={error || urlError} />
         <FormSuccess message={success} />
-        <Button disabled={isPending} type="submit" className="w-full h-12 my-3 bg-yellow-barzim bg-opacity-80 font-bold text-black rounded-full hover:bg-opacity-100 hover:bg-[#ecbf4e]">
+        <Button
+          disabled={isPending}
+          type="submit"
+          className="my-3 h-12 w-full rounded-full bg-yellow-barzim bg-opacity-80 font-bold text-black hover:bg-[#ecbf4e] hover:bg-opacity-100"
+        >
           {showTwoFactor ? 'Confirmar' : 'Entrar'}
         </Button>
 
-        <div className='text-center'>
-          <Link href="/auth/login">Ainda não tem sua conta no Barzim? </Link>
-          <p className='text-yellow-barzim  font-medium text-sm'>Cadastre-se aqui.</p>
+        <div className="text-center">
+          <Link href="/auth/register">
+            Ainda não tem sua conta no Barzim?
+            <p className="text-sm  font-medium text-yellow-barzim">
+              Cadastre-se aqui.
+            </p>
+          </Link>
         </div>
       </form>
     </Form>

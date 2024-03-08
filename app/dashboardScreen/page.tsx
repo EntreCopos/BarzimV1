@@ -4,13 +4,15 @@ import styles from "./page.module.css"
 import BeersCarousel from '@/components/dashboard/beers-carousel/beers-carousel';
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find';
 
+
 const DashboardPage: React.FC = () => {
+
   return (
     <div className={styles.bodyDashboard}>
       <NavWrapper />
-      <Carousel/>
-      <BeersCarousel/>
-      <ListFindings/>
+      <Carousel />
+      <BeersCarousel />
+      <ListFindings />
     </div>
   );
 };

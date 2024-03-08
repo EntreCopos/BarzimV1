@@ -16,6 +16,7 @@ import { AgeVerificationSchema } from '@/schemas'
 
 import { Button } from '@/components/ui/button'
 import { type AgeVerifFormData } from '@/data/data'
+import { useRef, type ChangeEvent } from 'react'
 
 export const AgeVerificationForm = () => {
   const form = useForm({
@@ -26,6 +27,16 @@ export const AgeVerificationForm = () => {
       year: '',
     },
   })
+
+  const dayRef = useRef<HTMLInputElement>(null)
+  const monthRef = useRef<HTMLInputElement>(null)
+  const yearRef = useRef<HTMLInputElement>(null)
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>, nextRef: React.RefObject<HTMLInputElement>) => {
+    if (e.target.value.length === 2) {
+      nextRef.current?.focus()
+    }
+  }
 
   return (
     <Form {...form}>
@@ -43,7 +54,15 @@ export const AgeVerificationForm = () => {
             render={({ field }) => (
               <FormItem className="">
                 <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field} placeholder="Dia" type="number" />
+                  <Input {...field}
+                    placeholder="Dia"
+                    type="text"
+                    maxLength={2}
+                    max={31}
+                    ref={dayRef}
+                    onInput={(e) => handleInputChange(e, monthRef)}
+                    inputMode="numeric"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -55,7 +74,15 @@ export const AgeVerificationForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field} placeholder="Mês" type="number" />
+                  <Input {...field}
+                    placeholder="Mês"
+                    type="text"
+                    maxLength={2}
+                    max={12}
+                    ref={monthRef}
+                    onInput={(e) => handleInputChange(e, yearRef)}
+                    inputMode="numeric"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -67,7 +94,14 @@ export const AgeVerificationForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field} placeholder="Ano" type="number" />
+                  <Input {...field}
+                    placeholder="Ano"
+                    type="text"
+                    maxLength={4}
+                    max={2100}
+                    ref={yearRef}
+                    inputMode="numeric"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

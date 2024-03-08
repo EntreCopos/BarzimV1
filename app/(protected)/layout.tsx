@@ -1,36 +1,30 @@
-import type { Metadata } from 'next'
-import '../globals.css'
-
+import { auth } from '@/auth'
+import { BottomMenu } from '@/components/bottom-menu/menu'
 import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper'
-
-export const metadata: Metadata = {
-  title: 'Barzim App',
-  description: '',
-}
+import { Toaster } from '@/components/ui/toaster'
+import { getUsernameById } from '@/data/user'
+import { cn } from '@/lib/utils'
 
 export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await auth()
+  const user = await getUsernameById(session?.user.id as string)
+
   return (
-    <html lang="pt-br">
-      <body style={{backgroundColor: 'var(--deep-vermillo)', minHeight: '100svh'}}>
-        <MobileScreenDefaulWrapper>
-          <NavWrapper/>
-          <InnerContentWrapper>
-            {children}
-          </InnerContentWrapper>
-        </MobileScreenDefaulWrapper>
-      </body>
-    </html>
+    <div
+      className={cn(
+        'flex min-h-screen w-full flex-col bg-black-radial-gradient md:mx-auto md:max-w-[422px]'
+      )}
+    >
+      <NavWrapper />
+      <div className={cn('flex flex-1 flex-col overflow-y-auto')}>
+        <div className="flex-1">{children}</div>
+      </div>
+      <BottomMenu currUser={user?.username as string} />
+      <Toaster />
+    </div>
   )
-}
-
-const MobileScreenDefaulWrapper = ({children}: {children: React.ReactNode}) => {
-  return <section className="md:mx-auto w-full md:max-w-[480px] min-h-screen bg-black-radial-gradient flex flex-col" >{children}</section>
-}
-
-const InnerContentWrapper = ({children}: {children: React.ReactNode}) => {
-  return <section className='py-6 px-4 w-full h-full'>{children}</section>
 }

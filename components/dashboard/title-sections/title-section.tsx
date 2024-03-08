@@ -5,12 +5,13 @@ import styles from './title-section.module.css';
 interface SectionTitleProps {
   title: ReactNode; // Assuming title is a required prop
   button?: ReactNode; // Optional prop for the button
+  variant?: 'large' | 'small'
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ title, button }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title, button, variant = 'large' }) => {
   return (
     <div className={styles.sectionTitle}>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={variant !== 'large' ? styles.titleSmall : styles.title}>{title}</h2>
       {button && <div className={styles.buttonContainer}>{button}</div>}
     </div>
   );

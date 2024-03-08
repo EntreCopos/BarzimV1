@@ -1,9 +1,14 @@
 'use server'
 
-import { redirect } from 'next/navigation'
+import { type AgeVerifFormData } from '@/data/data'
 import { cookies } from 'next/headers'
-import { AgeVerifFormData } from '@/data/data'
+import { redirect } from 'next/navigation'
 
+/**
+ * Calcula a idade com base na data de nascimento fornecida.
+ * @param {string} birthdate - A data de nascimento no formato "YYYY-MM-DD".
+ * @returns {number} A idade calculada.
+ */
 function calculateAge(birthdate: string): number {
   const birthDateObj: Date = new Date(birthdate)
   const currentDate: Date = new Date()
@@ -24,8 +29,12 @@ function calculateAge(birthdate: string): number {
   }
 }
 
+/**
+ * Verifica a idade do usuário com base nos dados fornecidos e redireciona conforme a idade.
+ * @param {AgeVerifFormData} data - Os dados de verificação de idade, incluindo o ano, mês e dia de nascimento.
+ * @returns {Promise<void>} Uma promessa que resolve após a verificação da idade e o redirecionamento apropriado.
+ */
 export default async function verifyAge(data: AgeVerifFormData) {
-  console.log('action recebeu:::', data)
   const isoDateOfBirth = new Date(
     data?.year,
     data?.month - 1,
@@ -37,10 +46,8 @@ export default async function verifyAge(data: AgeVerifFormData) {
 
   const age = calculateAge(isoDateOfBirth)
   if (age < 18) {
-    console.log('n vai entrar naooo')
-    redirect('https://www.peppapig.com/en-gb')
+    redirect('/restricao-idade')
   } else {
-    console.log('liberado senhor')
     cookies().set('dateOfBirth', isoDateOfBirth, {
       httpOnly: true,
       expires: Date.now() + 60 * 60 * 1000,

@@ -1,16 +1,13 @@
+import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
-import './globals.css'
 import { Roboto } from 'next/font/google'
-import { PHProvider } from './providers'
-import dynamic from 'next/dynamic'
+import { PHProvider } from './ph_providers'
+import { Providers } from './providers'
+import '../public/globals.css'
+
 const font = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-})
-
-
-const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
-  ssr: false,
 })
 
 export const metadata: Metadata = {
@@ -27,9 +24,12 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={font.className}>
-          <PostHogPageView />
-          {children}
+        <body className={cn(font.className, 'min-h-screen bg-zinc-900')}>
+          <Providers>
+            <main className={cn('flex h-full flex-col justify-start')}>
+              {children}
+            </main>
+          </Providers>
         </body>
       </PHProvider>
     </html>

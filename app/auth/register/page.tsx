@@ -1,7 +1,7 @@
 import { Background } from '@/components/assets/background'
 import { RegisterForm } from '@/components/auth/register-form'
 import { BoxRegister } from '@/components/cards/box-register'
-import { Logo } from '@/components/logo'
+import { Logo } from '@/components/logos/logo-barzim'
 import Link from 'next/link'
 
 const RegisterPage = () => {
@@ -26,14 +26,14 @@ const RegisterPage = () => {
 
       <div className="flex flex-col md:flex-row min-h-svh w-full justify-center items-center gap-5 md:gap-64">
 
-        <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem]' />
+      <Logo color='#FFEEC3' width={120} className='drop-shadow-sharp-shadow md:w-[25rem] mt-4 w-[10rem]' />
 
         <BoxRegister
           headerTitle={headerTitle}
           headerSubtitle={headerSubtitle}
-          formComponent={<RegisterForm />}
           showSocial={true}
           footer={footer}>
+          <RegisterForm />
         </BoxRegister>
 
       </div>

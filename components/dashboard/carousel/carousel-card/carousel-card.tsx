@@ -5,28 +5,55 @@ import Link from 'next/link'
 
 interface CarouselCardProps {
   title: string
-  imageSrc: string | StaticImageData | null
+  imageSrc?: string | null
   altText: string
-  link: number | string
+  link?: number | string | boolean
+  forceShowtext?: boolean
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = ({
   title,
   imageSrc,
   altText,
-  link
+  link = false,
+  forceShowtext = false,
 }) => {
-  return (
-    <Card className={styles.card}>
-      <Link href={`/cervejarias/${link}`}>
-      {imageSrc && (
-        <Image className={styles.image} src={imageSrc} alt={altText} />
-      )}
-
-      <div className={styles.text}>{title}</div>
-      </Link>
-    </Card>
-  )
+  if (!link) {
+    return (
+      <Card title={altText} className={styles.card}>
+        {imageSrc && (
+          <Image
+            className={styles.image}
+            width={150}
+            height={80}
+            src={imageSrc as string}
+            alt={altText}
+          />
+        )}
+        {(!imageSrc || forceShowtext) && (
+          <div className={styles.text}>{title}</div>
+        )}
+      </Card>
+    )
+  } else
+    return (
+      <Card title={altText} className={styles.card}>
+        <Link href={`/cervejarias/${link}`}>
+          {imageSrc && (
+            <Image
+              className={styles.image}
+              width={150}
+              height={80}
+              src={imageSrc}
+              alt={altText}
+            />
+          )}
+          {(!imageSrc || forceShowtext) && (
+            <div className={styles.text}>{title}</div>
+          )}
+        </Link>
+      </Card>
+    )
 }
 
 export default CarouselCard

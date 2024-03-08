@@ -3,7 +3,15 @@
  * essas rotas nao demandam auth
  * @type {string[]}
  */
-export const publicRoutes = ['/', '/auth/new-verification','/dashboardScreen']
+export const publicRoutes = [
+  '/',
+  '/auth/new-verification',
+  '/dashboardScreen',
+  '/war-room',
+  '/legal/termos',
+  '/legal/politicas-privacidade',
+  '/restricao-idade'
+]
 
 /**
  * array de rotas que sao usadas na autenticacao

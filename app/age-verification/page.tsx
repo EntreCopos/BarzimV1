@@ -1,7 +1,7 @@
 import { Background } from '@/components/assets/background'
 import { AgeVerificationForm } from '@/components/auth/age-verification-form'
 import { BoxRegister } from '@/components/cards/box-register'
-import { Logo } from '@/components/logo'
+import { Logo } from '@/components/logos/logo-barzim'
 
 export default async function AgeVerificationPage() {
 
@@ -32,13 +32,13 @@ export default async function AgeVerificationPage() {
           <BoxRegister
             headerTitle={headerTitle}
             headerSubtitle={headerSubtitle}
-            formComponent={<AgeVerificationForm />}
             showSocial={false}
             footer={footer}>
+            <AgeVerificationForm />
           </BoxRegister>
 
         </div>
-      </Background>
-    </div>
+      </Background >
+    </div >
   )
 }

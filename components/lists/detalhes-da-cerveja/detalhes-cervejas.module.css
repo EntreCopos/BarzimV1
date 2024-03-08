@@ -1,0 +1,34 @@
+/* DetalhesCerveja.module.css */
+
+.container {
+    max-width: 600px;
+    color: var(--marfim-barzim);
+    font-size: 12px;
+    padding-inline: 30px;
+  }
+  
+  .title {
+    color: var(--slate-barzim); /* Alteração para cinza */
+    margin-bottom: 10px;
+    font-size: .85rem;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .detailRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+  
+  .data {
+    color: var(--yellow-barzim);
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
