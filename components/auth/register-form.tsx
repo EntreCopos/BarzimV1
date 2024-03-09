@@ -3,6 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
+
 import * as z from 'zod'
 
 import { register } from '@/actions/register'
@@ -20,14 +22,12 @@ import { Input } from '@/components/ui/input'
 import { RegisterSchema } from '@/schemas'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
   const [isShowingPass, setShowingPass] = useState<boolean>(false)
-  const router = useRouter()
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -48,7 +48,6 @@ export const RegisterForm = () => {
         setError(data.error)
         if (data.success) {
           setSuccess(data.success)
-          router.push('/auth/login')
         }
       })
     })
@@ -96,32 +95,35 @@ export const RegisterForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
-                  <Input
-                    {...field}
-                    disabled={isPending}
-                    placeholder="Senha     "
-                    type={isShowingPass ? 'text' : 'password'}
-                  />
-                </FormControl>
+                <div className="relative h-auto w-full">
+                  <button
+                    type="button"
+                    onClick={() => setShowingPass((prev) => !prev)}
+                    style={{
+                      position: 'absolute',
+                      right: 0,
+                      height: '100%',
+                      fontSize: '1.5rem',
+                      padding: '.6rem 1rem',
+                      color: 'darkgray',
+                    }}
+                  >
+                    {isShowingPass ? <IoMdEyeOff /> : <IoMdEye />}
+                  </button>
+                  <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="Senha     "
+                      type={isShowingPass ? 'text' : 'password'}
+                    />
+                  </FormControl>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className={cn('flex gap-1')}>
-            <input
-              type="checkbox"
-              name="showPassword"
-              checked={isShowingPass}
-              onChange={() => setShowingPass((prev) => !prev)}
-            />
-            <label className="text-sm" htmlFor="showPassword">
-              Mostrar Senha
-            </label>
-          </div>
         </div>
-        <FormError message={error} />
-        <FormSuccess message={success} />
         <Button
           disabled={isPending}
           type="submit"
@@ -129,12 +131,12 @@ export const RegisterForm = () => {
         >
           Cadastrar
         </Button>
-        <div className="text-center">
+        <FormError message={error} />
+        <FormSuccess message={success} />
+        <div className="mt-4 text-center text-sm">
           <Link href="/auth/login">
             Já tem seu lugar no Barzim?{' '}
-            <span className="text-sm  font-medium text-yellow-barzim">
-              Clique aqui.
-            </span>
+            <span className="font-medium text-yellow-barzim">Clique aqui.</span>
           </Link>
         </div>
       </form>

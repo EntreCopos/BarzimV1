@@ -47,7 +47,7 @@ export const ResetForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="Exxqueceu a senha, foi?"
+      headerLabel="Esqueceu sua senha?"
       backButtonLabel="Voltar ao Login"
       backButtonHref="/auth/login"
     >
@@ -64,7 +64,7 @@ export const ResetForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="zedobarzim@ambev.com"
+                      placeholder="ze@barzim.tech"
                       type="email"
                     />
                   </FormControl>

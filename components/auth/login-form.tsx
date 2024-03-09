@@ -22,12 +22,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { LoginSchema } from '@/schemas'
 import { cn } from '@/lib/utils'
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
 
 export const LoginForm = () => {
   const searchParams = useSearchParams()
   const urlError =
     searchParams.get('error') === 'OAuthAccountNotLinked'
-      ? 'Parece que alguém ja usou esse email :|'
+      ? 'Parece que alguém ja usou esse email :('
       : ''
 
   const [showTwoFactor, setShowTwoFactor] = useState(false)
@@ -65,7 +66,7 @@ export const LoginForm = () => {
             setShowTwoFactor(true)
           }
         })
-        .catch(() => setError('Algum erro rolou aí'))
+        .catch(() => setError('Ocorreu algum erro'))
     })
   }
 
@@ -84,7 +85,7 @@ export const LoginForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="666420"
+                      placeholder="999999"
                     />
                   </FormControl>
                   <FormMessage />
@@ -116,34 +117,44 @@ export const LoginForm = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
-                      <Input
-                        {...field}
-                        disabled={isPending}
-                        placeholder="Senha"
-                        type={isShowingPass ? 'text' : 'password'}
-                      />
-                    </FormControl>
+                    <div className="relative h-auto w-full">
+                      <button
+                        type="button"
+                        onClick={() => setShowingPass((prev) => !prev)}
+                        style={{
+                          position: 'absolute',
+                          right: 0,
+                          height: '100%',
+                          fontSize: '1.5rem',
+                          padding: '.6rem 1rem',
+                          color: 'darkgray',
+                        }}
+                      >
+                        {isShowingPass ? <IoMdEyeOff /> : <IoMdEye />}
+                      </button>
+                      <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="Senha"
+                          type={isShowingPass ? 'text' : 'password'}
+                        />
+                      </FormControl>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </>
           )}
+          <div className="text-left text-sm">
+            <Link href="/auth/reset">
+              <span className="font-medium text-yellow-barzim">
+                Esqueci minha senha
+              </span>
+            </Link>
+          </div>
         </div>
-        <div className={cn('flex gap-1')}>
-          <input
-            type="checkbox"
-            name="showPassword"
-            checked={isShowingPass}
-            onChange={() => setShowingPass((prev) => !prev)}
-          />
-          <label className="text-sm" htmlFor="showPassword">
-            Mostrar Senha
-          </label>
-        </div>
-        <FormError message={error || urlError} />
-        <FormSuccess message={success} />
         <Button
           disabled={isPending}
           type="submit"
@@ -151,13 +162,15 @@ export const LoginForm = () => {
         >
           {showTwoFactor ? 'Confirmar' : 'Entrar'}
         </Button>
-
-        <div className="text-center">
+        <FormError message={error || urlError} />
+        <FormSuccess message={success} />
+        <div className="text-center text-sm">
           <Link href="/auth/register">
             Ainda não tem sua conta no Barzim?
-            <p className="text-sm  font-medium text-yellow-barzim">
+            <br />
+            <span className="font-medium text-yellow-barzim">
               Cadastre-se aqui.
-            </p>
+            </span>
           </Link>
         </div>
       </form>

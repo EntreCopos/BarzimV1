@@ -1,6 +1,6 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { BeatLoader } from 'react-spinners'
 
@@ -12,6 +12,7 @@ import { FormSuccess } from '@/components/forms/form-success'
 export const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>()
   const [success, setSuccess] = useState<string | undefined>()
+  const router = useRouter()
 
   const searchParams = useSearchParams()
 
@@ -21,27 +22,33 @@ export const NewVerificationForm = () => {
     if (success || error) return
 
     if (!token) {
-      setError('Missing token!')
+      setError('Não há token!')
       return
     }
 
     newVerification(token)
-      .then((data) => {
-        setSuccess(data.success)
-        setError(data.error)
+      .then(({ success, error }) => {
+        if (success) {
+          setSuccess(success)
+          router.push('/auth/login')
+        } else if (error) {
+          setError(error)
+        }
       })
       .catch(() => {
-        setError('Algo deu errado!')
+        setError('Algo deu errado.')
       })
   }, [token, success, error])
 
   useEffect(() => {
-    onSubmit()
+    if (!success) {
+      onSubmit()
+    }
   }, [onSubmit])
 
   return (
     <CardWrapper
-      headerLabel="Confirme a verificação"
+      headerLabel="Verificando seu e-mail"
       backButtonLabel="Voltar ao Login"
       backButtonHref="/auth/login"
     >

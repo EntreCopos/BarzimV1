@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+const baseUrl = process.env.NEXTAUTH_URL
 
 /**
  * Envia um email com o token de autenticação de dois fatores para o endereço de email especificado.
@@ -10,7 +11,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
  */
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   await resend.emails.send({
-    from: 'onboarding@resend.dev',
+    from: 'contas@barzim.tech',
     to: email,
     subject: '2FA Code',
     html: `<p>Seu código 2FA: ${token}</p>`,
@@ -24,10 +25,10 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
  * @returns {Promise<void>} Uma promise que é resolvida quando o email é enviado com sucesso.
  */
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-  const resetLink = `http://localhost:3000/auth/new-password?token=${token}`
+  const resetLink = `${baseUrl}/auth/new-password?token=${token}`
 
   await resend.emails.send({
-    from: 'onboarding@resend.dev',
+    from: 'contas@barzim.tech',
     to: email,
     subject: 'Resetar sua senha',
     html: `<p>Clique <a href="${resetLink}">aqui</a> para resetar a senha.</p>`,
@@ -41,10 +42,10 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
  * @returns {Promise<void>} Uma promise que é resolvida quando o email é enviado com sucesso.
  */
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const confirmLink = `http://localhost:3000/auth/new-verification?token=${token}`
+  const confirmLink = `${baseUrl}/auth/new-verification?token=${token}`
 
   await resend.emails.send({
-    from: 'onboarding@resend.dev',
+    from: 'contas@barzim.tech',
     to: email,
     subject: 'Confirme seu email',
     html: `<p>Clique <a href="${confirmLink}">aqui</a> para confirmar o email.</p>`,

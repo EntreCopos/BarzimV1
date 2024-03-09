@@ -20,8 +20,9 @@ export default auth((req) => {
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
   const isAuthRoute = authRoutes.includes(nextUrl.pathname)
-  const isAgeCheckRoute = nextUrl.pathname == '/age-verification'
-const isRestricaoRoute = nextUrl.pathname == '/restricao-idade'
+  const isAgeCheckRoute = nextUrl.pathname == '/auth/age-verification'
+  const isRestricaoRoute = nextUrl.pathname == '/restricao-idade'
+  const isOBarzimRedirect = nextUrl.pathname == '/obarzim'
 
   const dob = cookies().get('dateOfBirth')
   const isDob = !!dob
@@ -30,12 +31,20 @@ const isRestricaoRoute = nextUrl.pathname == '/restricao-idade'
     return null
   }
 
-  if ((!isDob && isAgeCheckRoute) || (!isDob && isRestricaoRoute) || (!isDob && isLoggedIn)) {
+  if (isOBarzimRedirect) {
+    return Response.redirect('https://dev.barzim.tech/')
+  }
+
+  if (
+    (!isDob && isAgeCheckRoute) ||
+    (!isDob && isRestricaoRoute) ||
+    (!isDob && isLoggedIn)
+  ) {
     return null
   }
 
   if (!isDob && !isLoggedIn) {
-    return Response.redirect(new URL('/age-verification', nextUrl))
+    return Response.redirect(new URL('/auth/age-verification', nextUrl))
   }
 
   if (isAgeCheckRoute && isDob) {
