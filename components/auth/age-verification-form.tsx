@@ -32,7 +32,10 @@ export const AgeVerificationForm = () => {
   const monthRef = useRef<HTMLInputElement>(null)
   const yearRef = useRef<HTMLInputElement>(null)
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>, nextRef: React.RefObject<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    nextRef: React.RefObject<HTMLInputElement>
+  ) => {
     if (e.target.value.length === 2) {
       nextRef.current?.focus()
     }
@@ -41,8 +44,8 @@ export const AgeVerificationForm = () => {
   return (
     <Form {...form}>
       <form
-        className="flex w-10/12 flex-col items-center justify-center gap-2"
-        //@ts-expect-error handle submit ta se abobando ai, fique quieto
+        className="flex flex-col items-center justify-center gap-2"
+        //@ts-expect-error verificar depois
         onSubmit={form.handleSubmit((data: AgeVerifFormData) =>
           verifyAge(data)
         )}
@@ -53,13 +56,15 @@ export const AgeVerificationForm = () => {
             name="day"
             render={({ field }) => (
               <FormItem className="">
-                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field}
+                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                  <Input
+                    {...field}
                     placeholder="Dia"
                     type="text"
                     maxLength={2}
                     max={31}
                     ref={dayRef}
+                    //@ts-expect-error verificar depois
                     onInput={(e) => handleInputChange(e, monthRef)}
                     inputMode="numeric"
                   />
@@ -73,13 +78,15 @@ export const AgeVerificationForm = () => {
             name="month"
             render={({ field }) => (
               <FormItem>
-                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field}
+                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                  <Input
+                    {...field}
                     placeholder="Mês"
                     type="text"
                     maxLength={2}
                     max={12}
                     ref={monthRef}
+                    //@ts-expect-error verificar depois
                     onInput={(e) => handleInputChange(e, yearRef)}
                     inputMode="numeric"
                   />
@@ -93,8 +100,9 @@ export const AgeVerificationForm = () => {
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormControl className="w-24 border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60 md:w-24">
-                  <Input {...field}
+                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                  <Input
+                    {...field}
                     placeholder="Ano"
                     type="text"
                     maxLength={4}

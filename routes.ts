@@ -6,11 +6,9 @@
 export const publicRoutes = [
   '/',
   '/auth/new-verification',
-  '/dashboardScreen',
-  '/war-room',
   '/legal/termos',
   '/legal/politicas-privacidade',
-  '/restricao-idade'
+  '/restricao-idade',
 ]
 
 /**

@@ -8,8 +8,8 @@ import { db } from '@/lib/db'
 import { RegisterSchema } from '@/schemas'
 import { getUserByEmail } from '@/data/user'
 import { generateFromEmail } from 'unique-username-generator'
-//import { sendVerificationEmail } from '@/lib/mail'
-//import { generateVerificationToken } from '@/lib/tokens'
+import { sendVerificationEmail } from '@/lib/mail'
+import { generateVerificationToken } from '@/lib/tokens'
 
 /**
  * Registra um novo usuário com os dados fornecidos.
@@ -46,15 +46,11 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
       email,
       password: hashedPassword,
       dateOfBirth: dateOfBirth?.value,
-      emailVerified: new Date(), // PROVISÓRIO. enquanto n temos o dominio p enviar o email de verif. validamos o email ja no cadastro
     },
   })
 
-  // PROVISÓRIO. enquanto n temos o dominio p enviar o email de verif. pulamos a etapa de gerar e enviar o codigo de verif
-  // const verificationToken = await generateVerificationToken(email)
-  // await sendVerificationEmail(verificationToken.email, verificationToken.token)
+  const verificationToken = await generateVerificationToken(email)
+  await sendVerificationEmail(verificationToken.email, verificationToken.token)
 
-  // return { success: 'Email de confirmação enviado!' }
-
-  return { success: 'Usuário criado e validado!' }
+  return { success: 'Email de confirmação enviado!' }
 }
