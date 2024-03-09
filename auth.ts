@@ -46,6 +46,7 @@ export const {
       // deixa o login via oauth passar sem verificação
       if (account?.provider !== 'credentials') return true
 
+      //@ts-expect-error não falhou ate aqui
       const existingUser = await getUserById(user.id)
 
       // não deixa usuario logar sem verificar o email
@@ -66,6 +67,7 @@ export const {
 
       return true
     },
+    //@ts-expect-error erro apenas com esse type token na sessao
     async session({ session, token }) {
       if (token.sub && session.user) {
         session.user.id = token.sub
