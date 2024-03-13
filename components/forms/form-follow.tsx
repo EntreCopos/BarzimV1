@@ -1,6 +1,5 @@
 'use client'
 import { handleRelationship } from '@/actions/social'
-import { revalidatePath } from 'next/cache'
 import { useState } from 'react'
 import styles from './follow.module.css'
 import { cn } from '@/lib/utils'
@@ -32,12 +31,12 @@ const FollowForm: React.FC<{
    * Alterna o status de seguir e atualiza-o conforme necessário.
    * @returns {Promise<void>}
    */
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
     setIsFollowing(!isFollowing)
 
     try {
       await handleRelationship(myId, user)
-      revalidatePath('/')
     } catch (err) {
       console.error('erro ao atualizar relacionamento:', err)
       setIsFollowing(!isFollowing)

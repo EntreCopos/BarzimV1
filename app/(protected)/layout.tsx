@@ -3,8 +3,8 @@ import { BottomMenu } from '@/components/bottom-menu/menu'
 import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper'
 import { Toaster } from '@/components/ui/toaster'
 import { getUsernameById } from '@/data/user'
+import { notifications } from '@/lib/notifications'
 import { cn } from '@/lib/utils'
-import { Knock } from '@knocklabs/node'
 
 export default async function ProtectedLayout({
   children,
@@ -14,20 +14,18 @@ export default async function ProtectedLayout({
   const session = await auth()
   const user = await getUsernameById(session?.user.id as string)
 
-  const knockClient = new Knock(process.env.KNOCK_API_SECRET)
-  const notificationUser = await knockClient.users.identify(
-    session?.user.id as string,
-    {
-      name: session?.user.name ?? (user?.username as string),
-      email: session?.user.email as string,
-    }
-  )
-
-  console.log(notificationUser)
-
-  await knockClient.notify('notificacao-teste', {
-    recipients: [session!.user.id as string],
+  await notifications.users.identify(session?.user.id as string, {
+    name: session?.user.name || (user?.username as string),
+    email: session?.user.email as string,
+    avatar: session?.user.image,
+    properties: {
+      username: user?.username,
+    },
   })
+
+  // await notifications.notify('notificacao-teste', {
+  //   recipients: [session!.user.id as string],
+  // })
 
   return (
     <div

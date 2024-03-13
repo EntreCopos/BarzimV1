@@ -5,9 +5,6 @@ import { getUserByUsername } from '@/data/user'
 
 const JaBebidas = async ({ params }: { params: { username: string } }) => {
   const jabebidas = await getUserCervejasJaBebidas(params.username)
-
-  console.log('jabebidas é', jabebidas)
-
   if (jabebidas && jabebidas.length > 0) {
     return (
       <WrapperDefaultPadding>
