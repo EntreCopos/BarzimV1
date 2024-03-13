@@ -2,43 +2,49 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { firstTwoLetters } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
-import { PiCodeBold } from "react-icons/pi"
+import { PiCodeFill } from 'react-icons/pi'
 
-
-// URL para o ícone de avatar padrão
-const defaultAvatarIcon = 'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'
-const devs = ['andre', 'larabernspereira614', 'naneto', 'elianoliveira234647', 'evandroreichert']
-
-export const ListaDeUsuarios: React.FC<{ usuarios: any[] }> = ({ usuarios }) => {
+export const ListaDeUsuarios: React.FC<{ usuarios: any[] }> = ({
+  usuarios,
+}) => {
   return (
-    <div className='flex flex-col px-1'>
+    <ul className="flex flex-col px-1">
       {!!usuarios &&
         usuarios.map((user) => {
           return (
-            <div key={user.id} className='p-2 flex items-start gap-2'>
+            <li key={user.id} className="flex items-center gap-4 p-2">
               <Link href={`/usuarios/${user.username} ` ?? 'dashboard'}>
                 <Avatar>
-                  <AvatarImage src={user?.image ?? defaultAvatarIcon} className='h-12' />
-                  <AvatarFallback>{firstTwoLetters(user?.name)}</AvatarFallback>
+                  <AvatarImage
+                    src={user?.image ?? 'undefined'}
+                    className="h-12"
+                  />
+                  <AvatarFallback className="bg-yellow-barzim">
+                    {firstTwoLetters(user?.name)}
+                  </AvatarFallback>
                 </Avatar>
               </Link>
-
-              <div className='flex flex-col items-start'>
-                <div className='flex items-center'>
-                  {user?.name}
-                  <span className='ml-2 text-lg text-yellow-barzim' title='Desenvolvedor'>{devs.includes(user.username) ? <PiCodeBold /> : ''}</span>
+              <Link href={`/usuarios/${user.username} ` ?? 'dashboard'}>
+                <div className="flex flex-col items-start">
+                  <div className="flex items-center">
+                    {user?.name}
+                    {user.role === 'ADMIN' && (
+                      <span
+                        className="ml-2 text-lg text-yellow-barzim"
+                        title="DEV no Barzim"
+                      >
+                        <PiCodeFill size={20} />
+                      </span>
+                    )}
+                  </div>
+                  <div className="break-words text-xs text-gray-500">
+                    @{user.username}
+                  </div>
                 </div>
-                <div className='text-xs text-gray-500 break-words'>
-                  {/* Isso aqui tá BEM gambiarra mas tá funcionando */}
-                  {user.bio == "Esse usuÃ¡rio misterioso ainda nÃ£o escreveu uma bio"
-                    ? "Esse usuário misterioso ainda não escreveu uma bio"
-                    : user.bio
-                  }
-                </div>
-              </div>
-            </div>
+              </Link>
+            </li>
           )
         })}
-    </div>
+    </ul>
   )
 }

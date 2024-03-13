@@ -85,8 +85,9 @@ export interface User {
   name: string | null
   username: string | null
   image: string | null
-  bio: string
+  bio: string | null
   link: string | null
+  role: string
 }
 
 export interface Following {

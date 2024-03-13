@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { auth, signOut } from '@/auth'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { cn, firstTwoLetters, normalizeTitleCase } from '@/lib/utils'
+import { auth } from '@/auth'
+import { cn, normalizeTitleCase } from '@/lib/utils'
 
 import styles from './page.module.css'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find'
@@ -13,7 +11,6 @@ import Link from 'next/link'
 import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 import { getAllCervejaAvaliacoes } from '@/data/avaliacao'
 import ReviewHeader from '@/components/review/review-header/review-header'
-import ReviewDate from '@/components/review/review-date'
 import RelativeDate from '@/components/titles/relative-date/relative-date'
 
 export const dynamic = 'force-dynamic'

@@ -1,14 +1,19 @@
 /* nav-wrapper.module.css */
 .navWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--yellow-barzim); 
-    color: var(--deep-black);
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0.8rem 2rem;
+  background-color: var(--yellow-barzim);
+  color: var(--deep-black);
+  border-bottom: 2px solid rgb(0 0 0 /0.2);
+  box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+  z-index: 99;
+}
 
-  .icons {
-    display: flex;
-    gap: 1rem; /* Adjust the gap between icons as needed */
-  }
+.icons {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  /* border: 1px dotted green; */
+}

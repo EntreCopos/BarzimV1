@@ -7,15 +7,15 @@
 
 .titleSmall {
   color: var(--slate-barzim);
-  margin-bottom: 10px;
-  font-size: .85rem;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
 }
 
 .sectionTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .6rem 0;
+  padding: 0.4rem 0;
 }
 
 .buttonContainer {
@@ -31,7 +31,7 @@
 }
 
 .buttonContainer button {
-  color: var(  --marfim-barzim); /* Adicione a cor marfim ao texto do botão */
+  color: var(--marfim-barzim); /* Adicione a cor marfim ao texto do botão */
   margin: 0; /* Remova qualquer margem padrão do botão */
   padding: 0 5px; /* Adicione um espaçamento interno ao botão para melhorar a aparência */
 }
