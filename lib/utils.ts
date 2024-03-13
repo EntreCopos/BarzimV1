@@ -54,15 +54,49 @@ export const normalizeTitleCase = (beer: string) => {
   })
 }
 
+/**
+ * Converte um arquivo para uma string base64.
+ * @param file O arquivo a ser convertido.
+ * @returns Uma Promise que resolve com a string base64 do arquivo.
+ */
 export const convertFileToBase64 = async (file: File): Promise<string> => {
+  // Converte o arquivo para um ArrayBuffer
   const bytes = await file.arrayBuffer()
+
+  // Converte o ArrayBuffer para um Buffer
   const buffer = Buffer.from(bytes)
+
   return new Promise<string>((resolve, reject) => {
     if (!Buffer.isBuffer(buffer)) {
       reject(new Error('Argumento passado não é um Buffer'))
       return
     }
+
+    // Converte o Buffer para uma string base64
     const base64String = buffer.toString('base64')
+
+    // Resolve a Promise com a string base64
     resolve(base64String)
   })
+}
+
+/**
+ * Verifica se a diferença entre a data fornecida e a data atual é menor que duas semanas.
+ * @param dataString Uma string representando a data no formato ISO 8601.
+ * @returns True se a diferença for menor que duas semanas, false caso contrário.
+ */
+export function haMenosDeDuasSemanas(dataString: Date): boolean {
+  const dataFornecida: Date = new Date(dataString)
+  const dataAtual: Date = new Date()
+
+  // Calcula a diferença em milissegundos
+  const diferencaEmMilissegundos: number = Math.abs(
+    dataFornecida.getTime() - dataAtual.getTime()
+  )
+
+  // Converte milissegundos para semanas
+  const semanas: number = diferencaEmMilissegundos / (1000 * 60 * 60 * 24 * 7)
+
+  // Retorna true se a diferença for menor que duas semanas
+  return semanas < 2
 }

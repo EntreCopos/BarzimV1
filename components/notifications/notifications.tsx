@@ -17,26 +17,33 @@ const Notifications: React.FC<{ userId: string }> = ({ userId }) => {
   const notifButtonRef = useRef(null)
 
   return (
-    <KnockProvider
-      apiKey={process.env.NEXT_PUBLIC_KNOCK_PUBLIC_KEY as string}
-      userId={userId}
+    <div
+      style={{
+        alignSelf: 'flex-end',
+        marginBottom: '-4px',
+      }}
     >
-      <KnockFeedProvider
-        feedId={process.env.NEXT_PUBLIC_KNOCK_FEED_ID as string}
+      <KnockProvider
+        apiKey={process.env.NEXT_PUBLIC_KNOCK_PUBLIC_KEY as string}
+        userId={userId}
       >
-        <div>
-          <NotificationIconButton
-            ref={notifButtonRef}
-            onClick={(e) => setIsVisible(!isVisible)}
-          />
-          <NotificationFeedPopover
-            buttonRef={notifButtonRef}
-            isVisible={isVisible}
-            onClose={() => setIsVisible(false)}
-          />
-        </div>
-      </KnockFeedProvider>
-    </KnockProvider>
+        <KnockFeedProvider
+          feedId={process.env.NEXT_PUBLIC_KNOCK_FEED_ID as string}
+        >
+          <div>
+            <NotificationIconButton
+              ref={notifButtonRef}
+              onClick={(e) => setIsVisible(!isVisible)}
+            />
+            <NotificationFeedPopover
+              buttonRef={notifButtonRef}
+              isVisible={isVisible}
+              onClose={() => setIsVisible(false)}
+            />
+          </div>
+        </KnockFeedProvider>
+      </KnockProvider>
+    </div>
   )
 }
 

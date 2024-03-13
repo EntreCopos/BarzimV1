@@ -87,6 +87,7 @@ export const safeGetUserById = async (id: string) => {
         image: true,
         bio: true,
         link: true,
+        role: true,
       },
     })
     return user
@@ -136,6 +137,7 @@ export const getUserByUsername = async (username: string) => {
         username: true,
         followers: true,
         following: true,
+        role: true,
       },
     })
   } catch (err) {
@@ -162,6 +164,9 @@ export const getManyUsersNotPrivate = async (excludeId: string | undefined) => {
         name: true,
         image: true,
         username: true,
+        bio: true,
+        link: true,
+        role: true,
       },
     })
   } catch (err) {

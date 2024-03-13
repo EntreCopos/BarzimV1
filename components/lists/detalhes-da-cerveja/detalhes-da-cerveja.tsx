@@ -7,7 +7,6 @@ const DetalhesCerveja: React.FC<{ cervejaDetails: CervejaDetails }> = ({
   if (!cervejaDetails) {
     return <div>Detalhes não Encontrados</div>
   }
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Detalhes da Cerveja</h2>
@@ -15,7 +14,7 @@ const DetalhesCerveja: React.FC<{ cervejaDetails: CervejaDetails }> = ({
         {Object.entries(cervejaDetails).map(
           ([_, { key: attrKey, value }]): JSX.Element | null => {
             return value ? (
-              <div className={styles.detailRow}>
+              <div key={attrKey} className={styles.detailRow}>
                 <span>{attrKey}</span>
                 <span className={styles.data}>{value}</span>
               </div>

@@ -12,26 +12,14 @@ const ExploreUsersPage = async () => {
   // Obtendo uma lista de usuários que não são privados
   const manyUsers = await getManyUsersNotPrivate(session?.user.id)
 
-  // Obtendo a bio para cada usuário
-  const usersWithBio = manyUsers ? await Promise.all(
-    manyUsers.map(async (user) => {
-      if (user.username) {
-        const userWithBio = await getUserByUsername(user.username)
-        return { ...user, bio: userWithBio?.bio }
-      }
-      return user
-    })
-  ) : []
+  // manyUsers?.map((user) => console.log(user))
 
-  if (!!usersWithBio?.length) {
+  if (!!manyUsers?.length) {
     // Retornando o componente JSX para renderizar a página
     return (
-      <div className='text-white flex flex-col items-center justify-center gap-4 bg-black-radial-gradient p-6'>
-        <div className='text-center'>
-          <h1 className='text-2xl pb-3 '>Olá, <b className='text-yellow-barzim'>{session?.user.name}!</b></h1>
-          <p className='pb-4'>Os usuários abaixo já fazem parte do Barzim 😊</p>
-          <UserFilter usuarios={usersWithBio}/>
-        </div>
+      <div className="flex flex-col justify-center gap-2 p-6 text-white">
+        <h1 className="text-3xl ">Usuários</h1>
+        <UserFilter usuarios={manyUsers} />
       </div>
     )
   }

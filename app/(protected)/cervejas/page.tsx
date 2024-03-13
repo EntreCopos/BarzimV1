@@ -1,4 +1,3 @@
-//import { cn } from '@/lib/utils'
 import { getAllCervejas, getCervejarias } from '@/data/cervejas'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import CarouselWrapper from '@/components/dashboard/carousel/carousel'
@@ -19,18 +18,21 @@ export default async function Cervejas() {
     return (
       <>
         <WrapperDefaultPadding>
-          <SectionTitle title='Por Cervejaria' />
+          <SectionTitle title="Por Cervejaria" />
         </WrapperDefaultPadding>
         <CarouselWrapper>
           {cervejariasDuplicada?.map((cervejaria, index) => {
             return (
-
-              <CarouselItem key={index} className='basis-1/3'>
-                <CarouselCard link={cervejaria.id} altText={cervejaria.nome} title={cervejaria.nome} imageSrc={cervejaria.logo} />
+              <CarouselItem key={index} className="basis-1/3">
+                <CarouselCard
+                  link={cervejaria.id}
+                  altText={cervejaria.nome}
+                  title={cervejaria.nome}
+                  imageSrc={cervejaria.logo}
+                />
               </CarouselItem>
             )
           })}
-
         </CarouselWrapper>
         <BeerFilter cervejas={listaDeCervejas} />
       </>

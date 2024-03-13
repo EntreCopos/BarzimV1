@@ -13,7 +13,6 @@ import { getAvaliacoesByCerveja, relUserCerv } from '@/data/avaliacao'
 import { ReviewWrapper } from '@/components/wrappers/review-wrapper'
 import { ReviewDescription } from '@/components/wrappers/review-description-wrapper'
 import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
-// import { BrindarReviewButton } from '@/components/buttons/brindar-review-button'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import StarReviews from '@/components/stars/stars-reviews'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
@@ -76,7 +75,7 @@ export default async function Cerveja({
       <section className="overflow-hidden bg-deep-black object-cover">
         <Breadcrumbs cerveja={cervejaBreadcrumbs} />
 
-        <div className="flex items-center justify-center gap-1 mx-6">
+        <div className="mx-6 flex items-center justify-center gap-1">
           <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
           <div className="flex flex-col gap-2">
@@ -101,7 +100,9 @@ export default async function Cerveja({
       )}
       <DetalhesCerveja cervejaDetails={cervejaDetails} />
       <WrapperDefaultPadding>
-        <SectionTitle variant={'small'} title="Avaliações dos Barzinhers" />
+        {!!avaliacoesCerveja && (
+          <SectionTitle variant={'small'} title="Avaliações no Barzim" />
+        )}
         {!!avaliacoesCerveja &&
           avaliacoesCerveja.map((avaliacao, index) => {
             return (

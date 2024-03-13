@@ -2,7 +2,7 @@
 
 import { FaPlus } from 'react-icons/fa'
 import Popup from 'reactjs-popup'
-import { addCervejaToList } from '../../actions/userCerveja'
+import { addCervejaToList } from '@/actions/userCerveja'
 import { useEffect, useState } from 'react'
 
 interface TUserRelToCervea {
@@ -52,7 +52,7 @@ export const AddtoListButton: React.FC<{
           type="button"
           className="flex items-center rounded-full border-2 bg-transparent px-3 py-1 text-sm font-medium text-white"
         >
-          <FaPlus />
+          <FaPlus size={20} />
           <span className="ml-2">Listas</span>
         </button>
       }
@@ -66,7 +66,7 @@ export const AddtoListButton: React.FC<{
       >
         <a
           aria-disabled={isUpdating}
-          onClick={() => handleToggle(id, 'Quero Beber', usuario, 'queroBeber')} //eu jurava que isso aqui n ia funcionar
+          onClick={() => handleToggle(id, 'Quero Beber', usuario, 'queroBeber')}
           className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           role="menuitem"
         >

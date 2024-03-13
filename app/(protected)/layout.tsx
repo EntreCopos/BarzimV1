@@ -33,9 +33,12 @@ export default async function ProtectedLayout({
         'flex min-h-screen w-full flex-col bg-black-radial-gradient md:mx-auto md:max-w-[422px]'
       )}
     >
-      <NavWrapper userId={session?.user.id as string} />
+      <NavWrapper
+        username={user?.username as string}
+        userId={session?.user.id as string}
+      />
       <div className={cn('flex flex-1 flex-col overflow-y-auto')}>
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 rounded-md">{children}</div>
       </div>
       <BottomMenu currUser={user?.username as string} />
       <Toaster />
