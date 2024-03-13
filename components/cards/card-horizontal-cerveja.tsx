@@ -17,9 +17,9 @@ export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({
   const novidade = haMenosDeDuasSemanas(createdAt)
 
   return (
-    <div className="cursor-pointer overflow-hidden rounded-lg border-[1px] border-stroke-cervejas transition-all duration-200 hover:scale-[1.02]">
-      <div className="h-30 relative m-0 flex w-full items-center gap-3 p-0 md:w-96">
-        <div className="flex w-5/12 items-center justify-center bg-gray-cards">
+    <div className="cursor-pointer overflow-hidden rounded-lg border-[1px] border-stroke-cervejas ">
+      <div className="h-30 relative m-0 flex w-full items-center gap-3 p-0">
+        <div className="flex items-center justify-center bg-gray-cards">
           {novidade && (
             <span
               style={{ zIndex: 10 }}

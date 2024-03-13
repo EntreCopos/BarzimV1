@@ -17,7 +17,7 @@ const ExploreUsersPage = async () => {
   if (!!manyUsers?.length) {
     // Retornando o componente JSX para renderizar a página
     return (
-      <div className="flex flex-col justify-center gap-2 p-6 text-white">
+      <div className="flex min-h-screen flex-col justify-start gap-2 p-6 text-secondary-foreground">
         <h1 className="text-3xl ">Usuários</h1>
         <UserFilter usuarios={manyUsers} />
       </div>

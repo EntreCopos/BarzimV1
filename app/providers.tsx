@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components/theme-provider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import dynamic from 'next/dynamic'
 
@@ -10,7 +11,14 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
     <>
       <SpeedInsights />
       <PostHogPageView />
-      {children}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
     </>
   )
 }

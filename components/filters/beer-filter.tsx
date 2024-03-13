@@ -86,7 +86,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
           }}
         >
           <div style={{ position: 'absolute', left: '1rem' }}>
-            <IoSearchSharp style={{ color: 'var(--marfim-barzim)' }} />
+            <IoSearchSharp />
           </div>
           <Input
             type="text"
@@ -99,7 +99,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="btnCervejariaTela" style={{ marginBottom: '12px' }}>
+          <Button variant="secondary">
             <FaSort size={16} />
             <span className="ml-1">Ordenar</span>
           </Button>

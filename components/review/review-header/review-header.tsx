@@ -18,7 +18,7 @@ const ReviewHeader: React.FC<ReviewHeaderProps> = ({
         <Link href={`/usuarios/${userName}`}>
           <span className={styles.userName}>{`@${userName}`}</span>
         </Link>
-        <span className={styles.avaliedText}> avaliou </span>
+        <span className="text-secondary-foreground opacity-60"> avaliou </span>
         {beerId && (
           <Link href={`/cervejas/${beerId}`}>
             <span className={styles.beerName}>{beerName}</span>

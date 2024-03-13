@@ -5,7 +5,7 @@ import { BeerNameLarge } from '@/components/titles/beer-name-lg'
 import { BeerDescription } from '@/components/wrappers/beer-description-wrapper'
 import { BeerImage } from '@/components/wrappers/beer-image-wrapper'
 import { getCervejaById } from '@/data/cervejas'
-import { Breadcrumbs } from '@/components/tags/breadcrumbs'
+import { BreadcrumbsCerveja } from '@/components/tags/breadcrumbs'
 import { ButtonsWrapper } from '@/components/wrappers/buttons-wrapper'
 import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
@@ -15,11 +15,13 @@ import { ReviewDescription } from '@/components/wrappers/review-description-wrap
 import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import StarReviews from '@/components/stars/stars-reviews'
-import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
 import ReviewHeader from '@/components/review/review-header/review-header'
 import StarReviewsMini from '@/components/stars/startsMini/stars-mini'
 import NinguemAvaliou from '@/components/cards/ninguem-avaliou/ninguem-avaliou'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
+import { firstTwoLetters } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { BeerName } from '@/components/titles/beer-name'
 
 export default async function Cerveja({
   params,
@@ -27,7 +29,8 @@ export default async function Cerveja({
   params: { cervejaId: string }
 }) {
   const cerveja = await getCervejaById(params.cervejaId)
-  if (!cerveja) throw new Error('sem cerveja')
+
+  if (!cerveja) return
 
   const session = await auth()
 
@@ -49,38 +52,22 @@ export default async function Cerveja({
     nome: cerveja?.nomeCerveja,
   }
 
-  const cervejaDetails: CervejaDetails = {
-    teorAlcoolico: {
-      key: 'Teor Alcoólico',
-      value: cerveja.teorAlcoolico,
-    },
-    tempIdeal: {
-      key: 'Temperatura Ideal',
-      value: cerveja.tempIdeal,
-    },
-    valorIBU: {
-      key: 'Valor IBU',
-      value: cerveja.valorIBU,
-    },
-    corpo: {
-      key: 'Corpo',
-      value: cerveja.corpo,
-    },
-  }
-
   const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
 
   return (
-    <div>
-      <section className="overflow-hidden bg-deep-black object-cover">
-        <Breadcrumbs cerveja={cervejaBreadcrumbs} />
+    <div className="min-h-screen">
+      <section className="overflow-hidden bg-secondary object-cover p-1 text-secondary-foreground md:p-2">
+        <BreadcrumbsCerveja cerveja={cervejaBreadcrumbs} />
 
-        <div className="mx-6 flex items-center justify-center gap-1">
+        <div
+          style={{ justifyContent: 'space-evenly' }}
+          className="mx-6 flex items-center gap-1 md:gap-4"
+        >
           <BeerImage alt={cerveja.nomeCerveja} src={cerveja.mainImage} />
 
           <div className="flex flex-col gap-2">
             <LogoCervejaria src={cerveja?.cervejaria.logo} />
-            <BeerNameLarge variant="dark-mode" cerveja={cervejaHeading} />
+            <BeerName large cerveja={cervejaHeading} />
 
             {cerveja.notaMedia && <StarReviews nota={cerveja.notaMedia} />}
 
@@ -98,7 +85,7 @@ export default async function Cerveja({
       {cerveja.descriCerveja && (
         <BeerDescription description={cerveja.descriCerveja} />
       )}
-      <DetalhesCerveja cervejaDetails={cervejaDetails} />
+      <DetalhesCerveja cerveja={cerveja} />
       <WrapperDefaultPadding>
         {!!avaliacoesCerveja && (
           <SectionTitle variant={'small'} title="Avaliações no Barzim" />
@@ -113,7 +100,15 @@ export default async function Cerveja({
                 }
               >
                 <ReviewWrapper>
-                  <AvatarReview avatarSrc={avaliacao.usuario.image as string} />
+                  <Avatar>
+                    <AvatarImage
+                      src={avaliacao.usuario.image ?? 'undefined'}
+                      className="aspect-square"
+                    />
+                    <AvatarFallback className="bg-yellow-barzim">
+                      {firstTwoLetters(avaliacao.usuario.username)}
+                    </AvatarFallback>
+                  </Avatar>{' '}
                   <ReviewHeader
                     userName={avaliacao.usuario.username as string}
                     beerName={cerveja.nomeCerveja}

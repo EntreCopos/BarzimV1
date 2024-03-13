@@ -20,10 +20,10 @@ export default async function Cervejas() {
         <WrapperDefaultPadding>
           <SectionTitle title="Por Cervejaria" />
         </WrapperDefaultPadding>
-        <CarouselWrapper>
+        <CarouselWrapper logoCarousel>
           {cervejariasDuplicada?.map((cervejaria, index) => {
             return (
-              <CarouselItem key={index} className="basis-1/3">
+              <CarouselItem key={index} className="basis-1/3 lg:basis-1/5">
                 <CarouselCard
                   link={cervejaria.id}
                   altText={cervejaria.nome}

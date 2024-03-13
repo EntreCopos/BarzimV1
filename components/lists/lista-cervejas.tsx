@@ -24,10 +24,7 @@ const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
                 imagem={mainImage ?? 'undefined'}
                 createdAt={createdAt as unknown as Date}
               >
-                <BeerName
-                  variant="dark-mode"
-                  cerveja={{ nomeCerveja, tipoCerveja }}
-                />
+                <BeerName cerveja={{ nomeCerveja, tipoCerveja }} />
               </CardHorizontalCerveja>
             </Link>
           </li>

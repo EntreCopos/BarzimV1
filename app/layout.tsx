@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={cn(font.className, 'min-h-screen bg-zinc-900')}>
+        <body className={cn(font.className, 'min-h-screen')}>
           <Providers>
-            <main className={cn('flex h-full flex-col justify-start')}>
+            <div className={cn('flex h-full flex-col justify-start')}>
               {children}
-            </main>
+            </div>
           </Providers>
         </body>
       </PHProvider>

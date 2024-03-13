@@ -11,7 +11,10 @@ export const FeedCardRating: React.FC<{ avaliacao: TReview }> = ({
     <>
       <div className={cn('flex items-center justify-between gap-2 px-4 py-2')}>
         <div>
-          <RelativeDate date={avaliacao.createdAt as Date} />
+          <RelativeDate
+            className="text-accent-foreground"
+            date={avaliacao.createdAt as Date}
+          />
           <span>Avaliou </span>
           <span className="text-yellow-barzim">
             <Link href={`/cervejas/${avaliacao.cerveja.id}`}>
@@ -22,8 +25,8 @@ export const FeedCardRating: React.FC<{ avaliacao: TReview }> = ({
         <StarReviewsMini nota={avaliacao.nota ?? 1} />
       </div>
       {avaliacao.reviewTexto && (
-        <div className={cn('mb-4 p-2 px-4 text-sm text-muted')}>
-          <p>{avaliacao.reviewTexto}</p>
+        <div className={cn('mb-4 p-2 px-4 text-sm text-accent-foreground')}>
+          <p className="text-accent-foreground">{avaliacao.reviewTexto}</p>
         </div>
       )}
     </>

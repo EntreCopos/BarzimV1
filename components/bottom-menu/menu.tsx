@@ -1,9 +1,5 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { FaRegUserCircle } from 'react-icons/fa'
-import { MdSettings } from 'react-icons/md'
-import { PiUsersFourFill } from 'react-icons/pi'
-import { RiBeerFill } from 'react-icons/ri'
 import { FaUserCircle } from 'react-icons/fa'
 import { FaUsers } from 'react-icons/fa6'
 import { PiBeerBottleFill } from 'react-icons/pi'
@@ -13,7 +9,7 @@ export const BottomMenu = ({ currUser }: { currUser: string }) => {
 
   return (
     <section
-      style={{ zIndex: 20, padding: '0.5rem' }}
+      style={{ zIndex: 20, padding: '0.5rem', gridArea: 'menu' }}
       className={cn(
         'sticky bottom-0 flex w-full items-center justify-center bg-[#141414]/90 backdrop-blur-md'
       )}

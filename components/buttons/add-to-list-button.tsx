@@ -50,7 +50,7 @@ export const AddtoListButton: React.FC<{
       trigger={
         <button
           type="button"
-          className="flex items-center rounded-full border-2 bg-transparent px-3 py-1 text-sm font-medium text-white"
+          className="flex items-center rounded-full border-2 bg-transparent px-3 py-1 text-sm "
         >
           <FaPlus size={20} />
           <span className="ml-2">Listas</span>
@@ -59,7 +59,7 @@ export const AddtoListButton: React.FC<{
       position="bottom right"
     >
       <div
-        className="z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover bg-white p-1 py-1 text-popover-foreground shadow-md"
+        className="z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 py-1 text-popover-foreground shadow-md"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="options-menu"

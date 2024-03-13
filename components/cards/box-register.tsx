@@ -19,7 +19,7 @@ export const BoxRegister: React.FC<CardWrapperProps> = ({
   return (
     <Card
       style={{ maxWidth: 396 }}
-      className="mx-auto rounded-lg bg-[#131313] bg-opacity-85 py-6 text-[#FFFEEE] backdrop-blur-lg"
+      className="mx-auto rounded-lg border-none bg-[#131313]/90 py-6 text-marfim-barzim backdrop-blur-lg md:bg-[#131313]/65"
     >
       <CardHeader>
         {headerTitle}

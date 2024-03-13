@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic'
 const DashboardPage = async () => {
   const session = await auth()
 
-  const randCervejas = await getRandomCervejasDashboard(4)
+  const randCervejas = await getRandomCervejasDashboard(6)
   const latestReviews = await getAllCervejaAvaliacoes(6)
 
   if (latestReviews && latestReviews?.length > 0) {

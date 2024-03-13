@@ -14,20 +14,6 @@ const config = {
     },
     extend: {
       colors: {
-        'yellow-barzim': 'var(--yellow-barzim)',
-        'slate-barzim': 'var(--slate-barzim)',
-        'marfim-barzim': 'var(--marfim-barzim)',
-        'deep-black': 'var(--deep-black)',
-        'deep-vermillo': 'var(--deep-vermillo)',
-        'tabs-background': 'var(--tabs-background)',
-        'stroke-cervejas': 'var(--stroke-bg-cervejas)',
-        'gray-cards': 'var(--bg-cards)',
-        'black-fill': '--black-fill-cards',
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -56,6 +42,20 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'yellow-barzim': 'var(--yellow-barzim)',
+        'slate-barzim': 'var(--slate-barzim)',
+        'marfim-barzim': 'var(--marfim-barzim)',
+        'deep-black': 'var(--deep-black)',
+        'deep-vermillo': 'var(--deep-vermillo)',
+        'tabs-background': 'var(--tabs-background)',
+        'stroke-cervejas': 'var(--stroke-bg-cervejas)',
+        'gray-cards': 'var(--bg-cards)',
+        'black-fill': '--black-fill-cards',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
       },
       boxShadow: {
         'sutil-shadow': 'var(--sutil-shadow)',
@@ -63,16 +63,6 @@ const config = {
       },
       dropShadow: {
         'sharp-shadow': 'var(--sharp-shadow)',
-      },
-      backgroundImage: {
-        'yellow-transparent-gradient': 'var(--yellow-trasparent-gradient)',
-        'black-radial-gradient': 'var(--black-radial-gradient)',
-        'hero-age-mobile': "url('../public/images/bg-age-mobile.png')",
-        'hero-age-desktop': "url('../public/images/bg-age-desktop.png')",
-        'hero-register-desktop':
-          "url('../public/images/bg-register-desktop.png')",
-        'hero-login-desktop': "url('../public/images/bg-login-desktop.png')",
-        'hero-login-mobile': "url('../public/images/bg-login-mobile.png')",
       },
       borderRadius: {
         lg: 'var(--radius)',

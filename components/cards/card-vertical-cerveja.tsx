@@ -21,7 +21,7 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({
   return (
     <div
       style={{ height: '100%' }}
-      className="hover:scale-101 cursor-pointer rounded-b-xl rounded-t-xl border-[1px] border-stroke-cervejas transition-all duration-200"
+      className="cursor-pointer rounded-b-xl rounded-t-xl border-[1px] border-stroke-cervejas transition-all duration-200"
     >
       <div className="relative flex w-full flex-col items-center rounded-t-lg bg-stroke-cervejas p-2">
         {novidade && (
@@ -53,7 +53,7 @@ export const CardVertCerveja: React.FC<CardVertCervejaProps> = ({
           />
         </div>
       </div>
-      <div style={{ padding: '1rem .5rem', zIndex: 0 }}>{children}</div>
+      <div style={{ padding: '1rem', zIndex: 0 }}>{children}</div>
     </div>
   )
 }
