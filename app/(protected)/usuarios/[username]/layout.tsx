@@ -38,7 +38,6 @@ const UserPageLayout = async ({
     throw new Error('Não foi localizado um usuário com esse username')
 
   // é possivel que esse dado seja extraivel no proprio objeto user acima
-  // mas aqui é teste meus irmaozinho, aqui é teste
   const relationship = !!(await isFollowing(myId, user.id))
 
   return (

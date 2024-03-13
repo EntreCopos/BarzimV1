@@ -1,5 +1,7 @@
 'use server'
 import { createFollow, deleteFollow, findRelationship } from '@/data/social'
+import { revalidatePath } from 'next/cache'
+import { notifications } from '@/lib/notifications'
 
 /**
  * Verifica se um usuário está seguindo outro usuário.
@@ -57,12 +59,20 @@ export const handleRelationship = async (userIdA: string, userIdB: string) => {
 
     if (!!_isFollowing) {
       await deleteFollow(userIdA, userIdB)
-
-      console.log(userIdA, 'parou de seguir ', userIdB)
     } else {
       await createFollow(userIdA, userIdB)
+
+      notifications.notify('novo-seguidor', {
+        actor: userIdA,
+        recipients: [userIdB as string],
+        data: {
+          followerUrl: 'https://barzim.tech/usuarios/',
+        },
+      })
     }
   } catch (err) {
     return null
+  } finally {
+    revalidatePath('/', 'layout')
   }
 }
