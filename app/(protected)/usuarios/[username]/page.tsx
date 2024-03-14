@@ -14,7 +14,8 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
 
   return (
     <>
-      <CarouselWrapper>
+      {/* carrossel removido temporariamente */}
+      {/* <CarouselWrapper>
         {userPics &&
           userPics.length > 2 &&
           userPics.map((userPic) => {
@@ -28,7 +29,7 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
               </CarouselItem>
             )
           })}
-      </CarouselWrapper>
+      </CarouselWrapper> */}
       <WrapperDefaultPadding>
         {userAvaliacoes && userAvaliacoes.length > 0 ? (
           <ListAvaliações userAvaliacoes={userAvaliacoes} />

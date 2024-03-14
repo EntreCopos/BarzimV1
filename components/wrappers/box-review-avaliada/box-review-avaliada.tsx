@@ -2,6 +2,7 @@
 import styles from './box-review-avaliada.module.css'
 import Confetti from 'react-confetti'
 import { useEffect, useRef, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 interface BoxReviewAvaliadaProps {
   beerName: string
@@ -23,17 +24,23 @@ const BoxReviewAvaliada: React.FC<BoxReviewAvaliadaProps> = ({
   }, [])
 
   return (
-    <div ref={currentRef} className={styles.boxReviewAvaliadaContainer}>
+    <div
+      ref={currentRef}
+      className={cn(
+        styles.boxReviewAvaliadaContainer,
+        ' min-h-screen text-secondary-foreground'
+      )}
+    >
       <Confetti width={currentSize.width} height={currentSize.height} />
-      {/* <div className={styles.dragBar}></div> */}
       <SuccessIcon />
-      <h2 className={styles.title}>Parabéns</h2>
-      <p className={styles.avaliouText}>
+      <h2 className="text-3xl font-semibold">Parabéns!</h2>
+      <p className="text-lg">
         Você avaliou <span className={styles.cervejaText}>{beerName}</span>
       </p>
-      {/* <CoposReviews nota={2} /> */}
-      <p className={styles.finalText}>
-        Agora o mundo todo sabe como você se sente. <br/> Está feliz agora, hein?
+      <p className="text-lg">
+        O Barzim é melhor graças a você.
+        <br /> Compartilhe com seus amigos e ajude a espalhar a palavra do
+        Barzim.
       </p>
       {children}
     </div>

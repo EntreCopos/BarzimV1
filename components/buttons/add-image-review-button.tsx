@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { type ChangeEvent } from 'react'
 import { FaImage } from 'react-icons/fa'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
 
 interface ImageUpladBtn {
   handler: (e?: ChangeEvent<HTMLInputElement>) => void
@@ -11,22 +13,11 @@ export const AddImageButton: React.FC<ImageUpladBtn> = ({ handler }) => {
   // }
 
   return (
-    <div className="relative flex overflow-hidden text-[#CCCCCC]">
-      <button className="relative flex cursor-pointer items-center justify-center rounded-lg bg-[#2D2D2D] bg-opacity-65 px-4 py-3">
+    <div className="relative flex overflow-hidden">
+      <Button variant={'secondary'} className="h-12 w-full text-2xl">
         <FaImage />
-        <input
-          style={{
-            fontSize: '100px',
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            opacity: 0,
-          }}
-          type="file"
-          onChange={handler}
-          accept="image/*"
-        />
-      </button>
+        <Input type="file" onChange={handler} accept="image/*" />
+      </Button>
     </div>
   )
 }

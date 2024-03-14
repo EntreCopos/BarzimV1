@@ -1,21 +1,24 @@
 'use client'
 import { useState } from 'react'
-import { addReview } from '@/actions/add-review'
 import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 import SendReviewButton from '../buttons/send-review-button/send-review-button'
-import { convertFileToBase64 } from '@/lib/utils'
 import { uploadReviewImage } from '@/actions/upload-image'
 import { CloudinaryResponse } from '@/data/data'
 import { useRouter } from 'next/navigation'
 import { addReviewV2 } from '@/actions/add-review-v2'
+import { TextareaReview } from '../ui/textareaReview'
+import { Textarea } from '../ui/textarea'
+import { BeatLoader } from 'react-spinners'
+import SectionTitle from '../dashboard/title-sections/title-section'
 
 const MAX_FILE_SIZE = 300 * 1024
 
-export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
-  idCerveja,
-  idUser,
-}) => {
+export const AvaliacaoForm: React.FC<{
+  nomeCerveja: string
+  idCerveja: string
+  idUser: string
+}> = ({ nomeCerveja, idCerveja, idUser }) => {
   const [rating, setRating] = useState<number>(1)
   const [reviewText, setReviewText] = useState<string>('')
   const [reviewPics, setReviewPics] = useState<any[]>([])
@@ -30,8 +33,8 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
 
       const file = e.target.files[0]
 
-      if (reviewPics.length >= 3) {
-        alert('Você pode adicionar no máximo 3 imagens')
+      if (reviewPics.length >= 4) {
+        alert('Você pode adicionar no máximo 4 imagens')
         return
       }
 
@@ -46,7 +49,7 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
         console.error(err)
         alert('erro ao processar')
       } finally {
-        setIsLoadingImage(true)
+        setIsLoadingImage(false)
       }
     }
   }
@@ -80,12 +83,9 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
     }
   }
 
-  const twInput =
-    'text-white text-opacity-60 bg-zinc-700 bg-opacity-60 border-black border-2 border-opacity-20 w-full h-fit p-3 rounded-md'
-
   return (
     <div>
-      <div className="flex flex-col gap-4 px-8 py-6">
+      <div className="flex flex-col gap-4 px-8 py-6 text-secondary-foreground">
         <WrapperReviewImage
           setNota={setRating}
           nota={rating}
@@ -93,16 +93,22 @@ export const AvaliacaoForm: React.FC<{ idCerveja: string; idUser: string }> = ({
           handler={handleFileInput}
         />
         {isLoadingImage && (
-          <div className="w-full text-center text-marfim-barzim">
-            Carregando imagem
-          </div>
+          <>
+            <div className="flex w-full items-center justify-center gap-4 text-center">
+              <BeatLoader color="gray" />
+              Carregando imagem
+            </div>
+          </>
         )}
         <ImageSlotsWrapper
           imageUrls={reviewPics.map((pic) => pic.secure_url)}
         />
-        <textarea
-          className={twInput}
-          placeholder="O que achou?"
+        <SectionTitle title="Um pequeno texto contando o que você achou da cerveja" />
+
+        <Textarea
+          placeholder={'O que você achou da ' + nomeCerveja + '?'}
+          rows={5}
+          // className="border-none bg-accent text-secondary-foreground shadow-md"
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
         />

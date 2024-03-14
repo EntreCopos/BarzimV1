@@ -15,16 +15,14 @@ const ImageSlotsWrapper: React.FC<ImageSlotsWrapperProps> = ({
   // }
 
   const filledImageUrls = [...imageUrls]
-  while (filledImageUrls.length < 3) {
+  while (filledImageUrls.length < 4) {
     filledImageUrls.push('')
   }
 
   return (
-    <div style={{justifyContent: 'space-evenly'}} className="flex flex-wrap gap-1">
+    <div className="flex gap-4">
       {filledImageUrls.map((url, index) => (
-        <div key={index} className='overflow-hidden space-x-2 gap-1'>
-          <ImageSlot imageUrl={url} />
-        </div>
+        <ImageSlot imageUrl={url} />
       ))}
     </div>
   )

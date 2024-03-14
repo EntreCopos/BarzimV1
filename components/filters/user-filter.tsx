@@ -43,7 +43,7 @@ export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {
           }}
         >
           <div style={{ position: 'absolute', left: '1rem' }}>
-            <IoSearchSharp style={{ color: 'var(--marfim-barzim)' }} />
+            <IoSearchSharp />
           </div>
           <Input
             type="text"

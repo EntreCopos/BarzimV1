@@ -23,9 +23,7 @@ const Nav: React.FC<{ userId: string; username: string }> = ({
   username,
 }) => {
   const router = useRouter()
-  const { setTheme, theme } = useTheme()
-
-  console.log('theme is', useTheme())
+  const { setTheme } = useTheme()
 
   return (
     <div className={styles.nav}>
@@ -51,17 +49,17 @@ const Nav: React.FC<{ userId: string; username: string }> = ({
                 Configurações
               </DropdownMenuItem>
               <DropdownMenuItem disabled>Listas (em breve)</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => SignOut()}>
-                Sair do Barzim
-              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme('light')}>
-                Light
+                Tema Claro
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme('dark')}>
-                Dark
+                Tema Escuro
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('system')}>
+              {/* <DropdownMenuItem onClick={() => setTheme('system')}>
                 System
+              </DropdownMenuItem> */}
+              <DropdownMenuItem onClick={() => SignOut()}>
+                Sair do Barzim
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

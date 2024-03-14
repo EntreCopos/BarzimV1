@@ -32,7 +32,7 @@ export default async function ProtectedLayout({
   return (
     <div
       className={cn(
-        'grid min-h-screen w-full content-around',
+        'relative grid min-h-screen w-full content-around',
         styles.container
       )}
     >
@@ -41,7 +41,7 @@ export default async function ProtectedLayout({
         userId={session?.user.id as string}
       />
       <div className={cn('flex flex-1 flex-col overflow-y-auto', styles.main)}>
-        <div className="flex-1">{children}</div>
+        <div className="min-h-screen flex-1">{children}</div>
       </div>
       <div className={styles.menu}>
         <BottomMenu currUser={user?.username as string} />

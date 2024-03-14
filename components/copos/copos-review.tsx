@@ -10,25 +10,22 @@ interface CoposReviewsProps {
 
 const CoposReviews: React.FC<CoposReviewsProps> = ({ nota, setNota }) => {
   return (
-    <div>
-      <p className={styles.textNota}>Sua Nota</p>
-      <div className={styles.imagesContainer}>
-        <Ratings
-          rating={nota}
-          widgetRatedColors="#fec435"
-          widgetEmptyColors="#fffeef60"
-          widgetHoverColors="#fffeef"
-          widgetSpacing="0px"
-          changeRating={setNota}
-        >
-          <Ratings.Widget widgetDimension={'24px'} />
-          <Ratings.Widget widgetDimension={'24px'} />
-          <Ratings.Widget widgetDimension={'24px'} />
-          <Ratings.Widget widgetDimension={'24px'} />
-          <Ratings.Widget widgetDimension={'24px'} />
-        </Ratings>
-      </div>
-    </div>
+    <>
+      <p className="text-xl text-secondary-foreground">Sua Nota</p>
+      <Ratings
+        rating={nota}
+        widgetRatedColors="#fec435"
+        widgetHoverColors="#fec435"
+        widgetSpacing="0px"
+        changeRating={setNota}
+      >
+        <Ratings.Widget widgetDimension={'24px'} />
+        <Ratings.Widget widgetDimension={'24px'} />
+        <Ratings.Widget widgetDimension={'24px'} />
+        <Ratings.Widget widgetDimension={'24px'} />
+        <Ratings.Widget widgetDimension={'24px'} />
+      </Ratings>
+    </>
   )
 }
 

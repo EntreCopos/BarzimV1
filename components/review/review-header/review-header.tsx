@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import styles from './review-header.module.css'
+import { Separator } from '@radix-ui/react-dropdown-menu'
+import { SelectSeparator } from '@/components/ui/select'
 
 interface ReviewHeaderProps {
   userName: string
@@ -24,7 +26,7 @@ const ReviewHeader: React.FC<ReviewHeaderProps> = ({
             <span className={styles.beerName}>{beerName}</span>
           </Link>
         )}
-        {!beerId && <span className={styles.beerName}>{beerName}</span>}
+        {!beerId && <span>{beerName}</span>}
       </p>
     </div>
   )

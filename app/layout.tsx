@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <PHProvider>
-        <body className={cn(font.className, 'min-h-screen')}>
+        <body className={cn(font.className)}>
           <Providers>
             <div className={cn('flex h-full flex-col justify-start')}>
               {children}

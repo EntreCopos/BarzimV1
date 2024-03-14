@@ -22,6 +22,7 @@ import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import { firstTwoLetters } from '@/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { BeerName } from '@/components/titles/beer-name'
+import { SelectSeparator } from '@/components/ui/select'
 
 export default async function Cerveja({
   params,
@@ -86,7 +87,8 @@ export default async function Cerveja({
         <BeerDescription description={cerveja.descriCerveja} />
       )}
       <DetalhesCerveja cerveja={cerveja} />
-      <WrapperDefaultPadding>
+
+      <div className="px-8">
         {!!avaliacoesCerveja && (
           <SectionTitle variant={'small'} title="Avaliações no Barzim" />
         )}
@@ -94,7 +96,6 @@ export default async function Cerveja({
           avaliacoesCerveja.map((avaliacao, index) => {
             return (
               <div
-                style={{ display: 'contents' }}
                 key={
                   avaliacao.usuario.username + '_' + index + '_' + cerveja.id
                 }
@@ -108,7 +109,7 @@ export default async function Cerveja({
                     <AvatarFallback className="bg-yellow-barzim">
                       {firstTwoLetters(avaliacao.usuario.username)}
                     </AvatarFallback>
-                  </Avatar>{' '}
+                  </Avatar>
                   <ReviewHeader
                     userName={avaliacao.usuario.username as string}
                     beerName={cerveja.nomeCerveja}
@@ -119,13 +120,14 @@ export default async function Cerveja({
                   />
                   {/* <BrindarReviewButton /> */}
                 </ReviewWrapper>
+                <SelectSeparator />
               </div>
             )
           })}
         {avaliacoesCerveja && avaliacoesCerveja.length == 0 && (
           <NinguemAvaliou cervejaId={cerveja.id + ''} />
         )}
-      </WrapperDefaultPadding>
+      </div>
     </div>
   )
 }

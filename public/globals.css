@@ -27,6 +27,7 @@
 
     /* ABAIXO BARZIM  */
     --logo-filter: invert(1);
+    --icon-filter: invert(0);
     --yellow-barzim: #fec435;
     --yellow-barzim-HSL: 43, 99%, 60%;
     --slate-barzim: #434343;
@@ -72,8 +73,8 @@
     --ring: 35.5 91.7% 32.9%;
 
     /* ABAIXO BARZIM */
-
     --logo-filter: invert(0);
+    --icon-filter: invert(1);
   }
 }
 

@@ -16,7 +16,7 @@ export default async function Cervejas() {
 
   if (!!listaDeCervejas?.length)
     return (
-      <>
+      <div className="min-h-screen">
         <WrapperDefaultPadding>
           <SectionTitle title="Por Cervejaria" />
         </WrapperDefaultPadding>
@@ -35,7 +35,7 @@ export default async function Cervejas() {
           })}
         </CarouselWrapper>
         <BeerFilter cervejas={listaDeCervejas} />
-      </>
+      </div>
     )
   else throw new Error('faltou cerveja')
 }
