@@ -10,13 +10,12 @@ interface ImageSlotProps {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl }) => {
   return (
-    <div className="flex items-center space-x-1">
+    <div className="contents">
       {imageUrl ? (
-        <div className="relative grid h-24 aspect-square items-center justify-center overflow-hidden rounded">
+        <div className="relative grid h-24 w-full max-w-[25%] basis-1/4 items-center justify-center overflow-hidden rounded-lg">
           <Image
             src={imageUrl}
-            width={100}
-            height={100}
+            fill={true}
             alt="Imagem da avaliação"
             className="h-full object-cover"
           />
@@ -26,8 +25,8 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl }) => {
             */}
         </div>
       ) : (
-        <div className="m-[2px] flex h-24 aspect-square items-center justify-center rounded-lg border border-dashed  border-[#787878] text-white text-opacity-30">
-          <FaCamera size={40} />
+        <div className="flex h-24 basis-1/4 items-center justify-center rounded-lg border-2 border-secondary-foreground p-6 text-secondary-foreground opacity-60 ">
+          <FaCamera size={24} />
         </div>
       )}
     </div>

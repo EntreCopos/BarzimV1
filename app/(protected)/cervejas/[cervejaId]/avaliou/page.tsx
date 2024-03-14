@@ -1,4 +1,5 @@
 import { auth } from '@/auth'
+import { Button } from '@/components/ui/button'
 import BoxReviewAvaliada from '@/components/wrappers/box-review-avaliada/box-review-avaliada'
 import { relUserCerv } from '@/data/avaliacao'
 import { getCervejaNameById } from '@/data/cervejas'
@@ -17,15 +18,20 @@ const AvaliarCerveja = async ({
   const myId = session?.user.id
 
   //checa se usuario e cerveja ja possui rel
-  const isRelUserCerveja = await relUserCerv(myId, params.cervejaId)
+  const isRelUserCerveja = await relUserCerv(myId as string, params.cervejaId)
 
   if (!!isRelUserCerveja)
     return (
       <BoxReviewAvaliada beerName={cerveja?.nomeCerveja as string}>
         <Link href={'/cervejas'}>
-          <button className="mt-6 block bg-yellow-barzim p-6 text-black hover:bg-slate-300">
+          <Button variant="barzimPrimary" size="lg">
             Voltar para Cervejas
-          </button>
+          </Button>
+        </Link>
+        <Link href={'/dashboard'}>
+          <Button variant="ghost" size="lg">
+            Voltar para dashboard
+          </Button>
         </Link>
       </BoxReviewAvaliada>
     )

@@ -10,9 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         barzimPrimary:
-          'rounded-full bg-yellow-barzim bg-opacity-80 font-bold text-black hover:bg-[#ecbf4e] hover:bg-opacity-100',
+          'rounded-full bg-primary text-primary-foreground hover:bg-[#fec435]/90',
         default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+          'bg-primary text-primary-foreground shadow hover:bg-[#fec435]/90',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:
@@ -27,6 +27,7 @@ const buttonVariants = cva(
         default: 'h-9 px-4 py-2',
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
+        barzimXl: 'h-10 px-6 lg:h-12 lg:px-8',
         icon: 'h-9 w-9',
       },
     },

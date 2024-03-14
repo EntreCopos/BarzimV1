@@ -1,15 +1,34 @@
-import { type CervejaDetails } from '@/data/data'
+import { CervejaData, type CervejaDetails } from '@/data/data'
 import styles from './detalhes-cervejas.module.css'
+import { cn } from '@/lib/utils'
+import SectionTitle from '@/components/dashboard/title-sections/title-section'
+import { Cerveja } from '@prisma/client'
 
-const DetalhesCerveja: React.FC<{ cervejaDetails: CervejaDetails }> = ({
-  cervejaDetails,
-}) => {
+const DetalhesCerveja: React.FC<{ cerveja: Cerveja }> = ({ cerveja }) => {
+  const cervejaDetails: CervejaDetails = {
+    teorAlcoolico: {
+      key: 'Teor Alcoólico',
+      value: cerveja?.teorAlcoolico,
+    },
+    tempIdeal: {
+      key: 'Temperatura Ideal',
+      value: cerveja?.tempIdeal,
+    },
+    valorIBU: {
+      key: 'Valor IBU',
+      value: cerveja?.valorIBU,
+    },
+    corpo: {
+      key: 'Corpo',
+      value: cerveja?.corpo,
+    },
+  }
   if (!cervejaDetails) {
     return <div>Detalhes não Encontrados</div>
   }
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Detalhes da Cerveja</h2>
+    <div className={cn(styles.container, 'text-sm text-secondary-foreground')}>
+      <SectionTitle variant="small" title="Detalhes" />
       <div className={styles.details}>
         {Object.entries(cervejaDetails).map(
           ([_, { key: attrKey, value }]): JSX.Element | null => {

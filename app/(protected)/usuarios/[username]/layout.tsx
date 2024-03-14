@@ -41,7 +41,7 @@ const UserPageLayout = async ({
   const relationship = !!(await isFollowing(myId, user.id))
 
   return (
-    <div className={cn('flex h-full flex-col justify-between')}>
+    <div className={cn('flex h-full min-h-screen flex-col justify-between')}>
       <div className={cn('h-fit')}>
         <UserDetails user={user} />
         <SocialBar
@@ -53,7 +53,7 @@ const UserPageLayout = async ({
       </div>
       <div
         className={cn(
-          'flex h-full flex-col justify-start bg-[#131313] text-marfim-barzim'
+          'flex h-full flex-col justify-start bg-accent text-accent-foreground'
         )}
       >
         <UnconventionalTabs tabs={tabsData} />

@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import styles from './ninguem-avaliou.module.css'
-import imagemNinguemAvaliou from '../../assets/icons/wrapper_icon.png'
+import imagemNinguemAvaliou from '@/public/icons/empty-list-icon.png'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
 interface NinguemAvaliouProps {
   cervejaId: string
@@ -13,16 +15,16 @@ const NinguemAvaliou: React.FC<NinguemAvaliouProps> = ({ cervejaId }) => {
       <Image
         src={imagemNinguemAvaliou}
         alt="Imagem da Cerveja"
-        className={`${styles.image} mx-auto`}
+        className={cn(styles.image, 'mx-auto')}
       />
 
-      <p className={styles.text}>
-        Parece que ninguém avaliou essa cerveja ainda.
+      <p className="pb-6 text-lg text-secondary-foreground">
+        Parece que ninguém avaliou essa cerveja ainda
       </p>
 
-      <button className={styles.button}>
+      <Button variant={'outline'}>
         <Link href={`${cervejaId}/avaliar`}>Seja o Primeiro</Link>
-      </button>
+      </Button>
     </div>
   )
 }

@@ -1,16 +1,17 @@
-
-import styles from './review-title.module.css'; 
+import styles from './review-title.module.css'
 
 interface ReviewTitleProps {
-  beerName: string;
+  beerName: string
 }
 
 const ReviewTitle: React.FC<ReviewTitleProps> = ({ beerName }) => {
   return (
     <div>
-      <h2 className={styles.reviewLabel}>Você está avaliando <span className={styles.beerName}>{beerName}</span></h2>
+      <h2 className="text-2xl text-secondary-foreground">
+        Você está avaliando <span className={styles.beerName}>{beerName}</span>
+      </h2>
     </div>
-  );
-};
+  )
+}
 
-export default ReviewTitle;
+export default ReviewTitle

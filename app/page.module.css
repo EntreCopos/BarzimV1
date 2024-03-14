@@ -24,7 +24,6 @@
 
 .rightSide {
   flex: 2;
-  color: white;
   display: flex;
   flex-direction: column;
 }

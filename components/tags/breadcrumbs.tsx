@@ -1,16 +1,44 @@
 import { type CervejaBreadcrumbs } from '@/data/data'
-import { BreadcrumbItem } from './breadcrumb-item'
-import { BreadcrumbSeparator } from './breadcrumb-separator'
+// import { BreadcrumbItem } from './breadcrumb-item'
+// import { BreadcrumbSeparator } from './breadcrumb-separator'
 
-export const Breadcrumbs: React.FC<{cerveja: CervejaBreadcrumbs}> = ({cerveja}) => {
-  const {cervejaria} = cerveja
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+
+export const BreadcrumbsCerveja: React.FC<{ cerveja: CervejaBreadcrumbs }> = ({
+  cerveja,
+}) => {
+  const { cervejaria } = cerveja
   return (
-    <div style={{width: '100%', padding: '.5rem 2rem', zIndex: 99}}>
-      <BreadcrumbItem path={'/cervejas'} label="Cervejas" />
-      <BreadcrumbSeparator />
-      <BreadcrumbItem path={`/cervejarias/${cervejaria.path}`} label={cervejaria.nome} />
-      <BreadcrumbSeparator />
-      <BreadcrumbItem label={cerveja.nome} />
-    </div>
+    <Breadcrumb className="p-2">
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/cervejas">Cervejas</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href={`/cervejarias/${cervejaria.path}`}>
+            {cervejaria.nome}
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem
+          title={cerveja.nome}
+          className="block max-w-[16ch] truncate"
+        >
+          <BreadcrumbPage>{cerveja.nome}</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
   )
 }

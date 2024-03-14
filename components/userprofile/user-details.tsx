@@ -38,7 +38,7 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
       >
         <h2
           className={cn(
-            'inline-flex items-center gap-2 text-xl text-yellow-barzim'
+            'inline-flex items-center gap-2 text-xl text-accent-foreground'
           )}
         >
           {user.name}
@@ -52,12 +52,12 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
           )}
         </h2>
         <section>
-          <h3 className={cn('pb-1 text-sm text-slate-barzim')}>Bio</h3>
-          <p className={cn('text-sm text-marfim-barzim')}>{user.bio}</p>
+          <h3 className={cn('pb-1 text-sm text-accent-foreground')}>Bio</h3>
+          <p className={cn('text-sm text-accent-foreground')}>{user.bio}</p>
         </section>
         {user.link && (
           <section className={cn('flex items-center gap-2')}>
-            <h3 className={cn('pb-1 text-sm text-slate-barzim')}>Link</h3>
+            <h3 className={cn('pb-1 text-sm text-accent-foreground')}>Link</h3>
             <a
               className={cn('text-sm text-yellow-barzim')}
               href={user.link}

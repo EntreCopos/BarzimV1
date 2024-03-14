@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FollowForm from '../forms/form-follow'
 import React from 'react'
 import { MdSettings } from 'react-icons/md'
+import { Button } from '../ui/button'
 
 enum SocialLabels {
   avaliacaoUserCount = 'Avaliações',
@@ -26,13 +27,13 @@ export const SocialBar: React.FC<{
         'grid gap-3 px-6 pb-4 pt-0 [grid-template-columns:_3fr_2fr]'
       )}
     >
-      <section className={cn('flex items-stretch gap-3 text-marfim-barzim ')}>
+      <section className={cn('flex gap-2 text-marfim-barzim ')}>
         {Object.keys(metrics).map((metricKey: keyof typeof metrics) => {
           const metric = metricKey as keyof typeof SocialLabels
           return (
             <div
               className={cn(
-                'min-w-20 rounded-md bg-slate-barzim p-1 text-center'
+                'min-w-20 flex-1 rounded-md bg-slate-barzim p-1 text-center'
               )}
               key={metric}
             >
@@ -48,13 +49,9 @@ export const SocialBar: React.FC<{
         <FollowForm myId={myId} user={userId} relationship={relationship} />
       ) : (
         <Link href={`/config`}>
-          <button
-            className={cn(
-              'flex h-full w-full items-center justify-center rounded-md bg-yellow-barzim text-2xl'
-            )}
-          >
+          <Button className="h-full w-full text-2xl" variant="default">
             <MdSettings />
-          </button>
+          </Button>
         </Link>
       )}
     </div>

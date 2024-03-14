@@ -1,14 +1,21 @@
 /* nav-wrapper.module.css */
-.navWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.nav {
+  grid-area: nav;
   padding: 1rem 1rem 0.8rem 2rem;
   background-color: var(--yellow-barzim);
   color: var(--deep-black);
   border-bottom: 2px solid rgb(0 0 0 /0.2);
   box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
   z-index: 99;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 1096px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icons {

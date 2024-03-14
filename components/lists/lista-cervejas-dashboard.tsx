@@ -2,16 +2,17 @@ import { type TypeObjectCerveja } from '@/data/data'
 import Link from 'next/link'
 import { CardVertCerveja } from '../cards/card-vertical-cerveja'
 import { BeerName } from '../titles/beer-name'
+import styles from './lista-cervejas-dashboard.module.css'
 
 const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
 }) => {
   return (
     <ul
+      className={styles.gridCerveja}
       style={{
         paddingBlock: '.5rem',
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
         gap: '1rem',
       }}
     >
@@ -31,10 +32,7 @@ const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
                 nomeCerveja={nomeCerveja}
                 imagem={mainImage ?? 'undefined'}
               >
-                <BeerName
-                  variant="dark-mode"
-                  cerveja={{ nomeCerveja, tipoCerveja }}
-                />
+                <BeerName cerveja={{ nomeCerveja, tipoCerveja }} />
               </CardVertCerveja>
             </Link>
           </li>

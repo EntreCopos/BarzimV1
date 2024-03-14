@@ -1,47 +1,42 @@
 /* BoxReviewAvaliada.module.css */
 .boxReviewAvaliadaContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 4rem;
-    color: white;
-    gap: 1rem;
-    position: relative;
-    align-items: center;
-    text-align: center;
-    min-height: 100svh;
-  }
-  
-  .dragBar {
-    width: 40px;
-    height: 5px;
-    border-radius: 1000px;
-    background-color: rgba(255, 255, 255, 0.3);
-    cursor: grab;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .title {
-    color: var(--yellow-barzim);
-    font-weight: bold;
-    font-size: 32px;
-  }
-  
-  .avaliouText {
-    color: var(--marfim-barzim);
-    font-weight: bold;
-  }
-  
-  .cervejaText {
-    color: var(--yellow-barzim);
-  }
-  
-  .finalText {
-    color: var(--marfim-barzim);
-    font-size: 14px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2rem;
+  gap: 1rem;
+  position: relative;
+  align-items: center;
+  text-align: center;
+}
 
-  
+.dragBar {
+  width: 40px;
+  height: 5px;
+  border-radius: 1000px;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: grab;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title {
+  color: var(--yellow-barzim);
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.avaliouText {
+  color: var(--marfim-barzim);
+  font-weight: bold;
+}
+
+.cervejaText {
+  color: var(--yellow-barzim);
+}
+
+.finalText {
+  color: var(--marfim-barzim);
+  font-size: 14px;
+}

@@ -7,7 +7,7 @@ const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
 }) => {
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="mt-6 flex flex-col gap-4">
       {cervejas.map((itemCerveja: TypeObjectCerveja): JSX.Element => {
         const {
           id,
@@ -24,10 +24,7 @@ const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
                 imagem={mainImage ?? 'undefined'}
                 createdAt={createdAt as unknown as Date}
               >
-                <BeerName
-                  variant="dark-mode"
-                  cerveja={{ nomeCerveja, tipoCerveja }}
-                />
+                <BeerName cerveja={{ nomeCerveja, tipoCerveja }} />
               </CardHorizontalCerveja>
             </Link>
           </li>

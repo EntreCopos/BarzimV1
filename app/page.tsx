@@ -4,10 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 const Home: React.FC = () => {
   return (
-    <div className={styles.page}>
+    <div className={cn('bg-secondary text-secondary-foreground', styles.page)}>
       <div className={styles.topLine}></div>
       <div className={styles.container}>
         <div className={styles.leftSide}>
@@ -87,9 +88,8 @@ const Home: React.FC = () => {
               Descubra e compartilhe as melhores cervejas
             </h1>
             <div className={styles.buttons}>
-              {' '}
               <Link href={'/auth/register'}>
-                <Button size="lg" variant="barzimPrimary">
+                <Button size="lg" variant="default">
                   Criar Conta
                 </Button>
               </Link>

@@ -8,6 +8,7 @@ export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
   if (src) {
     return (
       <Image
+        style={{ marginLeft: '-10px', filter: 'var(--logo-filter)' }}
         src={src}
         width={70}
         height={70}

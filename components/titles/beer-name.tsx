@@ -1,14 +1,16 @@
-import { normalizeTitleCase } from '@/lib/utils'
+import { cn, normalizeTitleCase } from '@/lib/utils'
 
 export interface BeerProps {
   cerveja: {
     nomeCerveja: string
     tipoCerveja: string
   }
-  variant: 'light-mode' | 'dark-mode'
+  variant?: 'light-mode' | 'dark-mode' | null
+  large?: boolean
 }
 
 export const getThemeByVariant = (variant: BeerProps['variant']) => {
+  if (!variant) return
   switch (variant) {
     case 'light-mode':
       return 'text-black'
@@ -17,16 +19,28 @@ export const getThemeByVariant = (variant: BeerProps['variant']) => {
   }
 }
 
-export const BeerName: React.FC<BeerProps> = ({ cerveja, variant }) => {
+export const BeerName: React.FC<BeerProps> = ({
+  cerveja,
+  variant,
+  large = false,
+}) => {
   const { nomeCerveja, tipoCerveja } = cerveja
 
-  const nomeCervejaNormalizado = normalizeTitleCase(nomeCerveja)
-  const tipoCervejaNormalizado = normalizeTitleCase(tipoCerveja)
-
   return (
-    <div className={`${getThemeByVariant(variant)} text-left`}>
-      <p className="text-[12px] opacity-60">{tipoCervejaNormalizado}</p>
-      <p className="text-[20px] font-medium">{nomeCervejaNormalizado}</p>
+    <div
+      className={cn(
+        'text-left text-secondary-foreground',
+        getThemeByVariant(variant)
+      )}
+    >
+      <p className={cn('text-sm opacity-60', large && 'text-md')}>
+        {normalizeTitleCase(tipoCerveja)}
+      </p>
+      <p
+        className={cn('text-xl font-medium', large && 'text-2xl font-semibold')}
+      >
+        {normalizeTitleCase(nomeCerveja)}
+      </p>
     </div>
   )
 }
