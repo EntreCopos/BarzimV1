@@ -22,7 +22,7 @@ const ImageSlotsWrapper: React.FC<ImageSlotsWrapperProps> = ({
   return (
     <div className="flex gap-4">
       {filledImageUrls.map((url, index) => (
-        <ImageSlot imageUrl={url} />
+        <ImageSlot key={index} imageUrl={url} />
       ))}
     </div>
   )

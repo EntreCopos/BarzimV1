@@ -4,13 +4,14 @@ import { IoMdClose } from 'react-icons/io'
 
 interface ImageSlotProps {
   imageUrl: string
+  key: number
   // onDelete: () => void
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl }) => {
+export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl, key }) => {
   return (
-    <div className="contents">
+    <div key={'pic_' + key} className="contents">
       {imageUrl ? (
         <div className="relative grid h-24 w-full max-w-[25%] basis-1/4 items-center justify-center overflow-hidden rounded-lg">
           <Image
