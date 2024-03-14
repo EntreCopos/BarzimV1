@@ -1,12 +1,7 @@
 .desktopMenu {
   display: none;
-  justify-content: center;
-  width: 100%;
-  max-width: 320px;
-  margin-inline-start: auto;
 }
 .mobileMenu {
-  grid-area: menu;
   padding: 0.5rem;
   z-index: 10;
 }

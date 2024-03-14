@@ -5,7 +5,7 @@ import { BeerNameLarge } from '@/components/titles/beer-name-lg'
 import { BeerDescription } from '@/components/wrappers/beer-description-wrapper'
 import { BeerImage } from '@/components/wrappers/beer-image-wrapper'
 import { getCervejaById } from '@/data/cervejas'
-import { BreadcrumbsCerveja } from '@/components/tags/breadcrumbs'
+import { BreadcrumbsCerveja } from '@/components/breadcrumbs/breadcrumbs-cerveja'
 import { ButtonsWrapper } from '@/components/wrappers/buttons-wrapper'
 import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
@@ -23,6 +23,7 @@ import { firstTwoLetters } from '@/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { BeerName } from '@/components/titles/beer-name'
 import { SelectSeparator } from '@/components/ui/select'
+import { BrindarReviewButton } from '@/components/buttons/brindar-review-button'
 
 export default async function Cerveja({
   params,
@@ -38,7 +39,7 @@ export default async function Cerveja({
   const userRelCerveja = await relUserCerv(
     session?.user.id as string,
     cerveja.id + ''
-  ) //a conversao pra string mais linda q vc ja viu, admita
+  )
 
   const cervejaHeading = {
     nomeCerveja: cerveja?.nomeCerveja,
@@ -56,7 +57,7 @@ export default async function Cerveja({
   const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
 
   return (
-    <div className="min-h-screen">
+    <>
       <section className="overflow-hidden bg-secondary object-cover p-1 text-secondary-foreground md:p-2">
         <BreadcrumbsCerveja cerveja={cervejaBreadcrumbs} />
 
@@ -118,7 +119,7 @@ export default async function Cerveja({
                   <ReviewDescription
                     description={avaliacao.reviewTexto as string}
                   />
-                  {/* <BrindarReviewButton /> */}
+                  <BrindarReviewButton />
                 </ReviewWrapper>
                 <SelectSeparator />
               </div>
@@ -128,6 +129,6 @@ export default async function Cerveja({
           <NinguemAvaliou cervejaId={cerveja.id + ''} />
         )}
       </div>
-    </div>
+    </>
   )
 }

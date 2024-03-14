@@ -28,7 +28,7 @@ const BoxReviewAvaliada: React.FC<BoxReviewAvaliadaProps> = ({
       ref={currentRef}
       className={cn(
         styles.boxReviewAvaliadaContainer,
-        ' min-h-screen text-secondary-foreground'
+        'text-secondary-foreground'
       )}
     >
       <Confetti width={currentSize.width} height={currentSize.height} />

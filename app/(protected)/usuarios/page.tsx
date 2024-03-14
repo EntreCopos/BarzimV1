@@ -11,7 +11,7 @@ const ExploreUsersPage = async () => {
 
   if (!!manyUsers?.length) {
     return (
-      <div className="flex min-h-screen flex-col justify-start gap-2 p-6 text-secondary-foreground">
+      <div className="flex flex-col justify-start gap-2 p-6 text-secondary-foreground">
         <h1 className="text-3xl">Encontrar Usuários</h1>
         <UserFilter usuarios={manyUsers} />
       </div>

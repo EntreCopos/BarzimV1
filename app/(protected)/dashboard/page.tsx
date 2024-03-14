@@ -40,7 +40,7 @@ const DashboardPage = async () => {
   )
 
   return (
-    <div className={cn(styles.bodyDashboard, 'pb-4')}>
+    <>
       <WrapperDefaultPadding>
         <SectionTitle
           title="Você pode se interessar por..."
@@ -69,7 +69,7 @@ const DashboardPage = async () => {
           })}
         </ul>
       </WrapperDefaultPadding>
-    </div>
+    </>
   )
 }
 

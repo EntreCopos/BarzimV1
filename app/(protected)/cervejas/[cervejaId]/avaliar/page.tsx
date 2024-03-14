@@ -30,7 +30,7 @@ const AvaliarCerveja = async ({
   if (!!userHasReviewed) redirect(`/cervejas/${params.cervejaId}/avaliou`)
   else
     return (
-      <div className="min-h-screen">
+      <>
         <WrapperDefaultPadding style={{ marginTop: '30px' }}>
           <ReviewTitle beerName={cerveja?.nomeCerveja as string} />
         </WrapperDefaultPadding>
@@ -39,7 +39,7 @@ const AvaliarCerveja = async ({
           idCerveja={params.cervejaId}
           idUser={myId}
         />
-      </div>
+      </>
     )
 }
 
