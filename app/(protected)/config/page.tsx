@@ -10,7 +10,7 @@ const UserConfigs = async () => {
 
   if (user) {
     return (
-      <div className="min-h-screen p-6">
+      <div className="p-6">
         <HeaderConfigsWrapper user={user} />
         <AccountSettingsForm user={user} />
       </div>

@@ -85,3 +85,7 @@ body,
   -webkit-font-smoothing: antialised;
   -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+  border-color: transparent;
+}

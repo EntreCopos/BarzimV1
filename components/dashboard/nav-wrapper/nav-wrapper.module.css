@@ -1,7 +1,8 @@
 /* nav-wrapper.module.css */
 .nav {
-  grid-area: nav;
-  padding: 1rem 1rem 0.8rem 2rem;
+  position: fixed;
+  height: 70px;
+  padding: 1rem 1.5rem;
   background-color: var(--yellow-barzim);
   color: var(--deep-black);
   border-bottom: 2px solid rgb(0 0 0 /0.2);
@@ -11,6 +12,7 @@
 }
 
 .wrapper {
+  /* padding: 0 0 0 1.5rem; */
   max-width: 1096px;
   margin-inline: auto;
   display: flex;

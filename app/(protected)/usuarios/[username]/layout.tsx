@@ -41,7 +41,7 @@ const UserPageLayout = async ({
   const relationship = !!(await isFollowing(myId, user.id))
 
   return (
-    <div className={cn('flex h-full min-h-screen flex-col justify-between')}>
+    <div className={cn('flex h-full flex-col justify-between')}>
       <div className={cn('h-fit')}>
         <UserDetails user={user} />
         <SocialBar

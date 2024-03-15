@@ -1,6 +1,4 @@
 import { type CervejaBreadcrumbs } from '@/data/data'
-// import { BreadcrumbItem } from './breadcrumb-item'
-// import { BreadcrumbSeparator } from './breadcrumb-separator'
 
 import {
   Breadcrumb,
@@ -18,10 +16,6 @@ export const BreadcrumbsCerveja: React.FC<{ cerveja: CervejaBreadcrumbs }> = ({
   return (
     <Breadcrumb className="p-2">
       <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink href="/cervejas">Cervejas</BreadcrumbLink>
         </BreadcrumbItem>

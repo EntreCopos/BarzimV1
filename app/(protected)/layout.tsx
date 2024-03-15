@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import { BottomMenu } from '@/components/bottom-menu/menu'
+import { BottomMenu } from '@/components/menu/bottom-menu'
 import Nav from '@/components/dashboard/nav-wrapper/nav-wrapper'
 import { Toaster } from '@/components/ui/toaster'
 import { getUsernameById } from '@/data/user'
@@ -7,6 +7,7 @@ import { notifications } from '@/lib/notifications'
 import { cn } from '@/lib/utils'
 
 import styles from './layout.module.css'
+import { SideMenu } from '@/components/menu/side-menu'
 
 export default async function ProtectedLayout({
   children,
@@ -25,27 +26,19 @@ export default async function ProtectedLayout({
     },
   })
 
-  // await notifications.notify('notificacao-teste', {
-  //   recipients: [session!.user.id as string],
-  // })
-
   return (
-    <div
-      className={cn(
-        'relative grid min-h-screen w-full content-around',
-        styles.container
-      )}
-    >
+    <div className={'relative min-h-screen w-full'}>
       <Nav
         username={user?.username as string}
         userId={session?.user.id as string}
       />
-      <div className={cn('flex flex-1 flex-col overflow-y-auto', styles.main)}>
-        <div className="min-h-screen flex-1">{children}</div>
+      <div className={styles.container}>
+        <div className={styles.menu}>
+          <SideMenu currUser={user?.username as string} />
+        </div>
+        <div className={cn(styles.main, 'min-h-full')}>{children}</div>
       </div>
-      <div className={styles.menu}>
-        <BottomMenu currUser={user?.username as string} />
-      </div>
+      <BottomMenu currUser={user?.username as string} />
       <Toaster />
     </div>
   )
