@@ -1,10 +1,9 @@
 'use client'
 import { handleRelationship } from '@/actions/social'
 import { useState } from 'react'
-import styles from './follow.module.css'
-import { cn } from '@/lib/utils'
 import { IoMdPersonAdd } from 'react-icons/io'
 import { IoPersonRemove } from 'react-icons/io5'
+import { Button } from '../ui/button'
 
 /**
  * Representa um componente para lidar com ações de seguir/deixar de seguir.
@@ -45,17 +44,9 @@ const FollowForm: React.FC<{
 
   return (
     <form onSubmit={handleSubmit}>
-      <button type="submit" className={cn(styles.followBtn, 'text-2xl')}>
-        {isFollowing ? (
-          <>
-            <IoPersonRemove />
-          </>
-        ) : (
-          <>
-            <IoMdPersonAdd />
-          </>
-        )}
-      </button>
+      <Button className="h-full w-full text-2xl text-black" variant="default">
+        {isFollowing ? <IoPersonRemove /> : <IoMdPersonAdd />}
+      </Button>
     </form>
   )
 }

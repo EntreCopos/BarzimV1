@@ -52,7 +52,9 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
           )}
         </h2>
         <section>
-          <h3 className={cn('pb-1 text-sm text-accent-foreground')}>Bio</h3>
+          <h3 className={cn('pb-1 text-sm text-accent-foreground opacity-60')}>
+            Bio
+          </h3>
           <p className={cn('text-sm text-accent-foreground')}>{user.bio}</p>
         </section>
         {user.link && (

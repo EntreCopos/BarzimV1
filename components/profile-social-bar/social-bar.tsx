@@ -30,6 +30,7 @@ export const SocialBar: React.FC<{
       <section className={cn('flex gap-2 text-marfim-barzim ')}>
         {Object.keys(metrics).map((metricKey: keyof typeof metrics) => {
           const metric = metricKey as keyof typeof SocialLabels
+
           return (
             <div
               className={cn(
@@ -49,7 +50,10 @@ export const SocialBar: React.FC<{
         <FollowForm myId={myId} user={userId} relationship={relationship} />
       ) : (
         <Link href={`/config`}>
-          <Button className="h-full w-full text-2xl" variant="default">
+          <Button
+            className="h-full w-full text-2xl text-black"
+            variant="default"
+          >
             <MdSettings />
           </Button>
         </Link>

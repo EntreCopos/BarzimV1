@@ -42,18 +42,16 @@ const UserPageLayout = async ({
 
   return (
     <div className={cn('flex h-full flex-col justify-between')}>
-      <div className={cn('h-fit')}>
-        <UserDetails user={user} />
-        <SocialBar
-          metrics={metrics}
-          myId={myId}
-          userId={user?.id as string}
-          relationship={relationship}
-        />
-      </div>
+      <UserDetails user={user} />
+      <SocialBar
+        metrics={metrics}
+        myId={myId}
+        userId={user?.id as string}
+        relationship={relationship}
+      />
       <div
         className={cn(
-          'flex h-full flex-col justify-start bg-accent text-accent-foreground'
+          'flex h-full flex-col justify-start text-accent-foreground'
         )}
       >
         <UnconventionalTabs tabs={tabsData} />
