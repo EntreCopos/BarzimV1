@@ -37,9 +37,6 @@ export function DrawerDialogDemo() {
         <DialogContent className="min-h-96 sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle className="text-3xl">Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
           </DialogHeader>
           {/* <ProfileForm /> */}
         </DialogContent>
@@ -55,9 +52,6 @@ export function DrawerDialogDemo() {
       <DrawerContent className="min-h-[50vh]">
         <DrawerHeader className="text-left">
           <DrawerTitle className="text-3xl">Seguidores</DrawerTitle>
-          {/* <DrawerDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DrawerDescription> */}
         </DrawerHeader>
         {/* <ProfileForm className="px-4" /> */}
         {/* <DrawerFooter className="pt-2">
@@ -67,21 +61,5 @@ export function DrawerDialogDemo() {
         </DrawerFooter> */}
       </DrawerContent>
     </Drawer>
-  )
-}
-
-function ProfileForm({ className }: React.ComponentProps<'form'>) {
-  return (
-    <form className={cn('grid items-start gap-4', className)}>
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" defaultValue="shadcn@example.com" />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="username">Username</Label>
-        <Input id="username" defaultValue="@shadcn" />
-      </div>
-      <Button type="submit">Save changes</Button>
-    </form>
   )
 }
