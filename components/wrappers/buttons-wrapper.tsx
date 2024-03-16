@@ -1,9 +1,7 @@
 import { type ReactNode } from 'react'
 
-interface ButtonsWrapperProps {
-    children: ReactNode
-}
-
-export const ButtonsWrapper: React.FC<ButtonsWrapperProps> = ({ children }) => {
-    return <div className="flex gap-2 mt-4">{children}</div>
+export const ButtonsWrapper: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  return <div className="mt-4 flex gap-2">{children}</div>
 }

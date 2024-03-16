@@ -88,6 +88,7 @@ export interface User {
   bio: string | null
   link: string | null
   role: string
+  genero: string | null
 }
 
 export interface Following {

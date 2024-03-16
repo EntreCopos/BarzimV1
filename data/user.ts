@@ -88,6 +88,7 @@ export const safeGetUserById = async (id: string) => {
         bio: true,
         link: true,
         role: true,
+        genero: true,
       },
     })
     return user

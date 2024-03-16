@@ -4,7 +4,7 @@ import UnconventionalTabs from '@/components/stepper/stepper-listas/stepper-list
 import { getUserMetrics } from '@/data/social'
 import { getUserByUsername } from '@/data/user'
 import { cn } from '@/lib/utils'
-import { SocialBar } from '@/components/profile-social-bar/social-bar'
+import { SocialBar } from '@/components/userprofile/social-bar'
 import { UserDetails } from '@/components/userprofile/user-details'
 
 interface Metrics {

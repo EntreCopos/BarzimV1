@@ -2,13 +2,14 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { firstTwoLetters } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
-import { PiCodeFill } from 'react-icons/pi'
+import { type User } from '@/data/data'
+import { DevBadge } from '@/components/badges/name-badges/dev-badge/dev-badge'
 
-export const ListaDeUsuarios: React.FC<{ usuarios: any[] }> = ({
+export const ListaDeUsuarios: React.FC<{ usuarios: User[] }> = ({
   usuarios,
 }) => {
   return (
-    <ul className="flex flex-col px-1">
+    <ul className="mt-6 flex flex-col gap-4">
       {!!usuarios &&
         usuarios.map((user) => {
           return (
@@ -28,16 +29,9 @@ export const ListaDeUsuarios: React.FC<{ usuarios: any[] }> = ({
                 <div className="flex flex-col items-start">
                   <div className="flex items-center">
                     {user?.name}
-                    {user.role === 'ADMIN' && (
-                      <span
-                        className="ml-2 text-lg text-yellow-barzim"
-                        title="DEV no Barzim"
-                      >
-                        <PiCodeFill size={20} />
-                      </span>
-                    )}
+                    {user.role === 'ADMIN' && <DevBadge size={20} />}
                   </div>
-                  <div className="break-words text-xs text-gray-500">
+                  <div className="break-words text-xs text-accent-foreground/60">
                     @{user.username}
                   </div>
                 </div>

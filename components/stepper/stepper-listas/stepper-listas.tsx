@@ -14,15 +14,6 @@ interface Tab {
 export default function UnconventionalTabs({ tabs }: { tabs: Tab[] }) {
   const tabsRef = useRef<HTMLDivElement>(null)
 
-  const heightFix = () => {
-    if (tabsRef.current && tabsRef.current.parentElement)
-      tabsRef.current.parentElement.style.height = `${tabsRef.current.clientHeight}px`
-  }
-
-  useEffect(() => {
-    heightFix()
-  }, [])
-
   const fullCurrPath = usePathname()
 
   const currPath = fullCurrPath.split('/view_')[0]
@@ -30,14 +21,12 @@ export default function UnconventionalTabs({ tabs }: { tabs: Tab[] }) {
   return (
     <Tab.Group>
       {({ selectedIndex }) => (
-          <Tab.List
-            className={`mb-8 pt-4 inline-flex w-full flex-wrap justify-center`}
-          >
-            {tabs.map((tab, index) => (
-              <Tab key={index} as={Fragment}>
-                <Link style={{display: 'contents'}} href={currPath + tab.link}>
+        <Tab.List className="mb-8 inline-flex w-full flex-wrap justify-center pt-4">
+          {tabs.map((tab, index) => (
+            <Tab key={index} as={Fragment}>
+              <Link style={{ display: 'contents' }} href={currPath + tab.link}>
                 <div
-                  className={`text-center ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-indigo-300 h-8 flex-1 whitespace-nowrap rounded-none px-4 text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none ${
+                  className={`ui-focus-visible:outline-none ui-focus-visible:ring ui-focus-visible:ring-indigo-300 h-8 flex-1 whitespace-nowrap rounded-none px-4 text-center text-sm font-medium transition-colors duration-150 ease-in-out focus-visible:outline-none ${
                     selectedIndex === index
                       ? styles.selectedTab
                       : `${styles.notSelectedTab} hover:${styles.notSelectedTab}`
@@ -45,10 +34,10 @@ export default function UnconventionalTabs({ tabs }: { tabs: Tab[] }) {
                 >
                   {tab.title}
                 </div>
-                </Link>
-              </Tab>
-            ))}
-          </Tab.List>
+              </Link>
+            </Tab>
+          ))}
+        </Tab.List>
       )}
     </Tab.Group>
   )

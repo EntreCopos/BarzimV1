@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import FollowForm from '../forms/form-follow'
 import React from 'react'
@@ -22,26 +21,18 @@ export const SocialBar: React.FC<{
   relationship: boolean
 }> = ({ metrics, myId, userId, relationship }) => {
   return (
-    <div
-      className={cn(
-        'grid gap-3 px-6 pb-4 pt-0 [grid-template-columns:_3fr_2fr]'
-      )}
-    >
-      <section className={cn('flex gap-2 text-marfim-barzim ')}>
+    <div className="grid gap-3 px-6 pb-4 pt-0 [grid-template-columns:_3fr_2fr]">
+      <section className="flex gap-2 text-marfim-barzim ">
         {Object.keys(metrics).map((metricKey: keyof typeof metrics) => {
           const metric = metricKey as keyof typeof SocialLabels
 
           return (
             <div
-              className={cn(
-                'min-w-20 flex-1 rounded-md bg-slate-barzim p-1 text-center'
-              )}
+              className="min-w-20 flex-1 rounded-md bg-slate-barzim p-1 text-center"
               key={metric}
             >
               <span>{metrics[metricKey]}</span>
-              <h2 className={cn('text-xs lowercase')}>
-                {SocialLabels[metric]}
-              </h2>
+              <h2 className="text-xs lowercase">{SocialLabels[metric]}</h2>
             </div>
           )
         })}

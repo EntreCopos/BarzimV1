@@ -9,8 +9,7 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = async ({
   if (role !== 'ADMIN') return <h1>Você não pode ver esta página</h1>
   else
     return (
-      <div className="flex w-full flex-col bg-slate-100 md:mx-auto md:max-w-[480px]">
-        <NavWrapper />
+      <div className="flex w-full flex-col bg-slate-100">
         <div className="flex justify-between gap-2 p-4">
           <Link href="/admin/cervejarias/adicionar">
             <span className="cursor-pointer text-gray-700 hover:text-gray-900">

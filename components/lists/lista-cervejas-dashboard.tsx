@@ -8,14 +8,7 @@ const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
 }) => {
   return (
-    <ul
-      className={styles.gridCerveja}
-      style={{
-        paddingBlock: '.5rem',
-        display: 'grid',
-        gap: '1rem',
-      }}
-    >
+    <ul className={styles.gridCerveja}>
       {cervejas.map((itemCerveja: TypeObjectCerveja): JSX.Element => {
         const {
           id,

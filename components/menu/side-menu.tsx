@@ -3,12 +3,17 @@ import Link from 'next/link'
 import { FaUserCircle } from 'react-icons/fa'
 import { FaUsers } from 'react-icons/fa6'
 import { PiBeerBottleFill } from 'react-icons/pi'
+import { ImLab } from 'react-icons/im'
+import { RiAdminFill } from 'react-icons/ri'
 
 import styles from './menu.module.css'
 import { MdSettings } from 'react-icons/md'
 import { Button } from '../ui/button'
+import { currentRole } from '@/lib/auth'
 
-export const SideMenu = ({ currUser }: { currUser: string }) => {
+export const SideMenu = async ({ currUser }: { currUser: string }) => {
+  const role = await currentRole()
+
   return (
     <section className={cn('', styles.desktopMenu)}>
       <ul className={cn('flex flex-col gap-4 py-6 text-lg')}>
@@ -56,6 +61,32 @@ export const SideMenu = ({ currUser }: { currUser: string }) => {
             </Button>
           </Link>
         </li>
+        {role === 'ADMIN' && (
+          <>
+            <li title="Lab" className="text-center">
+              <Link href={'/lab'}>
+                <Button
+                  className="flex w-full justify-start gap-4 text-left"
+                  variant={'ghost'}
+                >
+                  <ImLab size={24} />
+                  <p>Lab</p>
+                </Button>
+              </Link>
+            </li>
+            <li title="Admin" className="text-center">
+              <Link href={'/admin'}>
+                <Button
+                  className="flex w-full justify-start gap-4 text-left"
+                  variant={'ghost'}
+                >
+                  <RiAdminFill size={24} />
+                  <p>Admin</p>
+                </Button>
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </section>
   )
