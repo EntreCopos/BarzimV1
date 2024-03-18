@@ -1,6 +1,6 @@
 'use server'
 
-import * as z from 'zod'
+import type * as z from 'zod'
 import { AuthError } from 'next-auth'
 
 import { db } from '@/lib/db'

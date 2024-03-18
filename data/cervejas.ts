@@ -19,6 +19,18 @@ export const getAllCervejas = async () => {
 }
 
 /**
+ * Conta todas as cervejas no banco de dados de forma assíncrona.
+ * @return {Promise<number>} O número de cervejas no banco de dados ou null se ocorrer um erro.
+ */
+export const countAllCervejas = async () => {
+  try {
+    return await db.cerveja.count()
+  } catch {
+    return null
+  }
+}
+
+/**
  * Obtém o nome de uma cerveja pelo seu ID.
  * @param {string | number} id - O ID da cerveja.
  * @returns {Promise<{ nomeCerveja: string } | null>} Uma Promise que resolve para o nome da cerveja ou null se não for encontrada.
@@ -182,7 +194,7 @@ export const createNewCervejaria = async (data: any) => {
  * @param {any} data - Os dados da cerveja a serem criados.
  */
 export const createNewCerveja = async (data: any) => {
-  await db.cerveja.create({
+  return await db.cerveja.create({
     data,
   })
 }

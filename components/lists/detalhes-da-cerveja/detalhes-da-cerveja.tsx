@@ -24,7 +24,7 @@ const DetalhesCerveja: React.FC<{ cerveja: Cerveja }> = ({ cerveja }) => {
     },
   }
   return (
-    <div className={cn(styles.container, 'text-sm text-secondary-foreground')}>
+    <div className="px-8 text-sm text-secondary-foreground">
       <SectionTitle variant="small" title="Detalhes" />
       <div className={styles.details}>
         {Object.entries(cervejaDetails).map(

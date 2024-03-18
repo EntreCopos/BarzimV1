@@ -1,8 +1,8 @@
+import dynamic from 'next/dynamic'
+const App = dynamic(() => import('./app'), { ssr: false })
+
 const AdminPage = async () => {
-  return (
-    <>
-      <h1>Admin</h1>
-    </>
-  )
+  return <App />
 }
+
 export default AdminPage
