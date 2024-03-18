@@ -1,5 +1,8 @@
 .gridCerveja {
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-block: .5rem;
 }
 @media only screen and (min-width: 1096px) {
   .gridCerveja {

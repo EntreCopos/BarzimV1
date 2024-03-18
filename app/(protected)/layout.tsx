@@ -27,7 +27,7 @@ export default async function ProtectedLayout({
   })
 
   return (
-    <div className={'relative min-h-screen w-full'}>
+    <div className="relative flex min-h-screen flex-col justify-between">
       <Nav
         username={user?.username as string}
         userId={session?.user.id as string}
@@ -36,7 +36,7 @@ export default async function ProtectedLayout({
         <div className={styles.menu}>
           <SideMenu currUser={user?.username as string} />
         </div>
-        <div className={cn(styles.main, 'min-h-full')}>{children}</div>
+        <div className={cn(styles.main, 'w-full')}>{children}</div>
       </div>
       <BottomMenu currUser={user?.username as string} />
       <Toaster />

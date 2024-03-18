@@ -1,13 +1,10 @@
 /* DetalhesCerveja.module.css */
 
-.container {
-  padding-inline: 32px;
-}
 
 .details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: .5rem;
 }
 
 .detailRow {

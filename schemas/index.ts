@@ -42,6 +42,7 @@ export const AccountSettingsSchema = z.object({
   link: z.string(),
   cep: z.string(),
   bio: z.string(),
+  genero: z.string(),
 })
 
 export const AddCervejaSchema = z.object({

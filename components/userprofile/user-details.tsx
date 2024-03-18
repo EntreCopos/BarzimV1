@@ -4,7 +4,7 @@ import { cn, firstTwoLetters, sanitizeUserLink } from '@/lib/utils'
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
 import React from 'react'
 import AvatarReview from '../avatar/avatar-review/avatar-review'
-import { PiCodeFill } from 'react-icons/pi'
+import { DevBadge } from '@/components/badges/name-badges/dev-badge/dev-badge'
 
 export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
   return (
@@ -31,25 +31,10 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
           )}
         </Avatar>
       </div>
-      <div
-        className={cn(
-          'flex flex-col content-start gap-2 py-4 [grid-area:_info-txt]'
-        )}
-      >
-        <h2
-          className={cn(
-            'inline-flex items-center gap-2 text-xl text-accent-foreground'
-          )}
-        >
+      <div className="flex flex-col content-start gap-2 py-4 [grid-area:_info-txt]">
+        <h2 className="inline-flex items-center gap-2 text-xl text-accent-foreground">
           {user.name}
-          {user.role === 'ADMIN' && (
-            <span
-              className="inline text-lg text-yellow-barzim"
-              title="DEV no Barzim"
-            >
-              <PiCodeFill size={20} />
-            </span>
-          )}
+          {user.role === 'ADMIN' && <DevBadge size={20} />}
         </h2>
         <section>
           <h3 className={cn('pb-1 text-sm text-accent-foreground opacity-60')}>
@@ -61,7 +46,7 @@ export const UserDetails: React.FC<{ user: User }> = ({ user }) => {
           <section className={cn('flex items-center gap-2')}>
             <h3 className={cn('pb-1 text-sm text-accent-foreground')}>Link</h3>
             <a
-              className={cn('text-sm text-yellow-barzim')}
+              className="text-sm text-yellow-barzim"
               href={user.link}
               target="_blank"
             >

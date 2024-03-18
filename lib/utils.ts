@@ -16,7 +16,7 @@ export function cn(...inputs: ClassValue[]) {
  * @returns {string} As duas primeiras letras do nome, em maiúsculas, ou 'US' se o nome for undefined ou null.
  */
 export function firstTwoLetters(name: string | undefined | null): string {
-  if (typeof name == 'undefined' || name == null) return 'US'
+  if (typeof name == 'undefined' || name == null) return ''
 
   return name.substring(0, 2).toUpperCase()
 }
@@ -35,11 +35,12 @@ export function sanitizeUserLink(src: string): string {
  * @param {any[]} array - O array a ser embaralhado.
  * @returns {any[]} O array com seus elementos embaralhados.
  */
-export function shuffleArray(array: any[]) {
+export function shuffleArray(array: unknown[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[array[i], array[j]] = [array[j], array[i]]
   }
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return array
 }
 
@@ -81,11 +82,28 @@ export const convertFileToBase64 = async (file: File): Promise<string> => {
 }
 
 /**
+ * Converte um arquivo bruto para base64.
+ * @param {RAFile} file - o arquivo bruto a ser convertido
+ * @return {Promise} uma promessa que resolve para a representação base64 do arquivo bruto
+ */
+export const convertRawFileToBase64 = (file: {
+  rawFile: File
+  src?: string
+  title?: string
+}): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = reject
+    reader.readAsDataURL(file.rawFile)
+  })
+
+/**
  * Verifica se a diferença entre a data fornecida e a data atual é menor que duas semanas.
  * @param dataString Uma string representando a data no formato ISO 8601.
  * @returns True se a diferença for menor que duas semanas, false caso contrário.
  */
-export function haMenosDeDuasSemanas(dataString: Date): boolean {
+export const haMenosDeDuasSemanas = (dataString: Date): boolean => {
   const dataFornecida: Date = new Date(dataString)
   const dataAtual: Date = new Date()
 

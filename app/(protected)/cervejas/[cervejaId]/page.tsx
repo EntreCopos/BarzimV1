@@ -24,6 +24,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { BeerName } from '@/components/titles/beer-name'
 import { SelectSeparator } from '@/components/ui/select'
 import { BrindarReviewButton } from '@/components/buttons/brindar-review-button'
+import { Badge } from '@/components/ui/badge'
 
 export default async function Cerveja({
   params,
@@ -88,6 +89,37 @@ export default async function Cerveja({
         <BeerDescription description={cerveja.descriCerveja} />
       )}
       <DetalhesCerveja cerveja={cerveja} />
+
+      <div className="grid w-full px-8 py-4 md:grid-cols-2">
+        {cerveja?.ingredientesCerveja && (
+          <div className="space-y-2">
+            <SectionTitle variant={'small'} title="Ingredientes" />
+            {cerveja.ingredientesCerveja.map((ingrediente) => (
+              <Badge
+                variant="default"
+                className="pointer mr-2 hover:bg-accent-foreground hover:text-accent"
+                key={ingrediente}
+              >
+                {ingrediente.toUpperCase()}
+              </Badge>
+            ))}
+          </div>
+        )}
+        {cerveja?.harmonizacoesCerveja && (
+          <div className="space-y-2">
+            <SectionTitle variant={'small'} title="Harmonizações" />
+            {cerveja.harmonizacoesCerveja.map((harmonizacao) => (
+              <Badge
+                variant="default"
+                className="pointer mr-2 hover:bg-accent-foreground hover:text-accent"
+                key={harmonizacao}
+              >
+                {harmonizacao.toUpperCase()}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="px-8">
         {!!avaliacoesCerveja && (

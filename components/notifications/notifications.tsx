@@ -1,8 +1,6 @@
 'use client'
 import '@knocklabs/react/dist/index.css'
 
-import './feed-overrides.css'
-
 import {
   KnockProvider,
   KnockFeedProvider,

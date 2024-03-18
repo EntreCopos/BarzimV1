@@ -16,10 +16,8 @@ cloudinary.config({
  */
 export async function uploadAvatarImage(formData: FormData) {
   const file = formData.get('image') as File
-  const base64Image = await convertFileToBase64(file)
+  const base64Image: string = await convertFileToBase64(file)
   const res = await uploadImageToCloudinary(base64Image, 'profile_pic')
-
-  console.log(res)
 
   return res
 }

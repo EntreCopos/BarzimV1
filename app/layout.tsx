@@ -26,9 +26,7 @@ export default function RootLayout({
       <PHProvider>
         <body className={cn(font.className)}>
           <Providers>
-            <div className={cn('flex h-full flex-col justify-start')}>
-              {children}
-            </div>
+            <div className={cn('flex flex-col justify-start')}>{children}</div>
           </Providers>
         </body>
       </PHProvider>

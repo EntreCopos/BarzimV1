@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import { IoSearchSharp } from 'react-icons/io5'
 import { ListaDeUsuarios } from '../lists/lista-usuarios'
-import { User } from '@/data/data'
+import { type User } from '@/data/data'
 import { Input } from '../ui/input'
+import { WrapperDefaultPadding } from '../wrappers/wrapper-default-padding'
 
 export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {
   const [usuariosFiltrados, setUsuariosFiltrados] = useState<User[]>(usuarios)
@@ -30,7 +31,7 @@ export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {
   }, [usuarios, searchText])
 
   return (
-    <>
+    <WrapperDefaultPadding>
       <div
         style={{ marginBottom: '12px', display: 'flex', alignItems: 'center' }}
       >
@@ -57,6 +58,6 @@ export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {
       {searchText && searchText.length > 2 && (
         <ListaDeUsuarios usuarios={usuariosFiltrados} />
       )}
-    </>
+    </WrapperDefaultPadding>
   )
 }

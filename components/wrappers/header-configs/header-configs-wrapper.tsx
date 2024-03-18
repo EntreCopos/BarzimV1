@@ -5,6 +5,8 @@ import { FaRegImage } from 'react-icons/fa'
 import { IoMdClose } from 'react-icons/io'
 import styles from './config.module.css'
 
+// import placeholderPic from '@/public/icons/avatar-placeholder.jpeg'
+
 import { removeProfilePic } from '@/actions/profile-image'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
 import {
@@ -44,17 +46,14 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
       toast('Erro ao remover foto de perfil. Tente novamente mais tarde.')
     }
   }
-
-  const placeholderPic =
-    'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg'
-  const isPlaceholderPic = user.image === placeholderPic
+  const hasNoPic = profilePic === ''
 
   return (
     <div className={styles.profileHeaderWrapper}>
       <div className={styles.avatarWrapper}>
         <Avatar style={{ width: 120, height: 120 }}>
           <AvatarReview
-            avatarSrc={profilePic || (user?.image as string) || placeholderPic}
+            avatarSrc={profilePic || (user?.image as string)}
             width={120}
             height={120}
           />
@@ -68,10 +67,10 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
             <FaRegImage />
           </label>
           <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <button className={styles.close} disabled={isPlaceholderPic}>
+            <AlertDialogTrigger disabled={hasNoPic} asChild>
+              <div aria-disabled={hasNoPic} className={styles.close}>
                 <IoMdClose />
-              </button>
+              </div>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>

@@ -13,17 +13,16 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl, key }) => {
   return (
     <div key={'pic_' + key} className="contents">
       {imageUrl ? (
-        <div className="relative grid h-24 w-full max-w-[25%] basis-1/4 items-center justify-center overflow-hidden rounded-lg">
+        <div className="max-w-1/4 relative grid h-24 w-full basis-1/4 items-center justify-center overflow-hidden rounded-lg">
           <Image
             src={imageUrl}
             fill={true}
             alt="Imagem da avaliação"
             className="h-full object-cover"
           />
-          {/* <button className="absolute top-1 right-1 bg-red-500 p-[2px] rounded-full text-white">
-                <IoMdClose />
-              </button> 
-            */}
+          <button className="absolute right-1 top-1 rounded-full bg-red-500 p-[2px] text-white">
+            <IoMdClose />
+          </button>
         </div>
       ) : (
         <div className="flex h-24 basis-1/4 items-center justify-center rounded-lg border-2 border-secondary-foreground p-6 text-secondary-foreground opacity-60 ">
