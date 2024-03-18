@@ -97,7 +97,7 @@ export default async function Cerveja({
             {cerveja.ingredientesCerveja.map((ingrediente) => (
               <Badge
                 variant="default"
-                className="pointer mr-2 hover:bg-accent-foreground hover:text-accent"
+                className="mr-2 border-none px-2 py-1 hover:bg-accent-foreground hover:text-accent"
                 key={ingrediente}
               >
                 {ingrediente.toUpperCase()}
@@ -111,7 +111,7 @@ export default async function Cerveja({
             {cerveja.harmonizacoesCerveja.map((harmonizacao) => (
               <Badge
                 variant="default"
-                className="pointer mr-2 hover:bg-accent-foreground hover:text-accent"
+                className="mr-2 border-none px-2 py-1 hover:bg-accent-foreground hover:text-accent"
                 key={harmonizacao}
               >
                 {harmonizacao.toUpperCase()}
@@ -151,7 +151,7 @@ export default async function Cerveja({
                   <ReviewDescription
                     description={avaliacao.reviewTexto as string}
                   />
-                  <BrindarReviewButton />
+                  {/* <BrindarReviewButton /> */}
                 </ReviewWrapper>
                 <SelectSeparator />
               </div>

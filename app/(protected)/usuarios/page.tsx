@@ -11,10 +11,10 @@ const ExploreUsersPage = async () => {
 
   if (!!manyUsers?.length) {
     return (
-      <>
+      <div className="space-y-6 px-6 py-8">
         <h1 className="text-3xl">Encontrar Usuários</h1>
         <UserFilter usuarios={manyUsers} />
-      </>
+      </div>
     )
   }
 }

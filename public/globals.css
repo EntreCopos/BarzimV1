@@ -28,7 +28,7 @@
     --radius: 0.75rem;
 
     /* ABAIXO BARZIM  */
-    --logo-filter: invert(1);
+    --logo-filter: invert(1) saturate(0);
     --icon-filter: invert(0);
     --yellow-barzim: #fec435;
     --yellow-barzim-HSL: 43, 99%, 60%;
@@ -75,7 +75,7 @@
     --ring: 35.5 91.7% 32.9%;
 
     /* ABAIXO BARZIM */
-    --logo-filter: invert(0);
+    --logo-filter: invert(0) saturate(0);
     --icon-filter: invert(1);
   }
 }
