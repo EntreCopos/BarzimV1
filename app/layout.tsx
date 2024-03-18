@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { PHProvider } from './ph_providers'
 import { Providers } from './providers'
-import '../public/globals.css'
+import '@/styles/globals.css'
 
 const font = Roboto({
   subsets: ['latin'],

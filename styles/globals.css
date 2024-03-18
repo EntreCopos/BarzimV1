@@ -1,9 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
   :root {
+    -webkit-font-smoothing: antialised;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* shadcn= theme light */
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
@@ -27,7 +31,7 @@
 
     --radius: 0.75rem;
 
-    /* ABAIXO BARZIM  */
+    /* especificos barzim  */
     --logo-filter: invert(1) saturate(0);
     --icon-filter: invert(0);
     --yellow-barzim: #fec435;
@@ -37,22 +41,21 @@
     --deep-black: #141414;
     --deep-vermillo: #b82f18;
     --tabs-background: #686868;
-    --stroke-bg-cervejas: rgb(117, 117, 117, 0.12);
-    --bg-cards: rgb(107, 107, 107, 0.12);
-    --black-fill-cards: rgba(19, 19, 19, 0.85);
-
+    --stroke-bg-cervejas: rgb(117 117 117 / 0.12);
+    --bg-cards: rgb(107 107 107 / 0.12);
+    --black-fill-cards: rgba(19 19 19 / 0.85);
     --yellow-trasparent-gradient: linear-gradient(
       #feae16,
-      rgba(254, 174, 22, 0.35),
+      rgba(254 174 22 / 0.35),
       #feae16
     );
     --black-radial-gradient: radial-gradient(at right top, #1b1b1b, #141414);
-
-    --sutil-shadow: 0px 2px 10px rgba(30 30 30 / 0.15);
-    --sharp-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    --sutil-shadow: 0px 2px 10px rgb(30 30 30 / 0.15);
+    --sharp-shadow: 1px 1px 1px rgb(0 0 0 / 0.1);
     --letter-spacing: 0.5px;
   }
-
+  
+  /* shadcn theme dark */
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
@@ -74,20 +77,8 @@
     --input: 12 6.5% 15.1%;
     --ring: 35.5 91.7% 32.9%;
 
-    /* ABAIXO BARZIM */
+    /* especificos barzim */
     --logo-filter: invert(0) saturate(0);
     --icon-filter: invert(1);
   }
-}
-
-html,
-body,
-:root {
-  height: 100%;
-  -webkit-font-smoothing: antialised;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  border-color: transparent;
 }
