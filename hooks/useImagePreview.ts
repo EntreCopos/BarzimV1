@@ -1,3 +1,4 @@
+import { convertFileToBase64 } from '@/lib/utils'
 import { useState } from 'react'
 
 /**
@@ -12,14 +13,18 @@ export const useImagePreview = (
 ) => {
   const [imagePreview, setImagePreview] = useState<string>(defaultImagePath)
 
-  const handleImagePreview = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImagePreview = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event?.target?.files?.[0]
     if (file) {
       if (file.size > maxImageSizeKB * 1024) {
         alert(`Escolha uma imagem menor que ${maxImageSizeKB} KB.`)
         return
       }
-      setImagePreview(URL.createObjectURL(file))
+      const previewBase64 = await convertFileToBase64(file)
+
+      setImagePreview('data:image/jpeg;base64,' + previewBase64)
     }
   }
 

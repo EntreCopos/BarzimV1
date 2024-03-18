@@ -168,6 +168,7 @@ export const getManyUsersNotPrivate = async (excludeId: string | undefined) => {
         bio: true,
         link: true,
         role: true,
+        genero: true,
       },
     })
   } catch (err) {

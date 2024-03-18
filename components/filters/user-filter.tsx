@@ -31,33 +31,22 @@ export const UserFilter: React.FC<{ usuarios: User[] }> = ({ usuarios }) => {
   }, [usuarios, searchText])
 
   return (
-    <WrapperDefaultPadding>
-      <div
-        style={{ marginBottom: '12px', display: 'flex', alignItems: 'center' }}
-      >
-        <div
-          style={{
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-          }}
-        >
-          <div style={{ position: 'absolute', left: '1rem' }}>
-            <IoSearchSharp />
-          </div>
-          <Input
-            type="text"
-            placeholder="Pesquisar usuários..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="h-12 border-2 border-stroke-cervejas pl-10"
-          />
+    <div className="mb-4 flex w-full flex-col justify-center space-y-2">
+      <div className="relative flex w-full items-center justify-center">
+        <div style={{ position: 'absolute', left: '1rem' }}>
+          <IoSearchSharp />
         </div>
+        <Input
+          type="text"
+          placeholder="Pesquisar usuários..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="h-12 border-2 border-stroke-cervejas pl-10"
+        />
       </div>
       {searchText && searchText.length > 2 && (
         <ListaDeUsuarios usuarios={usuariosFiltrados} />
       )}
-    </WrapperDefaultPadding>
+    </div>
   )
 }

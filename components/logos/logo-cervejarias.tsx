@@ -8,10 +8,10 @@ export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
   if (src) {
     return (
       <Image
-        style={{ marginLeft: '-10px', filter: 'var(--logo-filter)' }}
+        style={{ filter: 'var(--logo-filter)' }}
         src={src}
-        width={70}
-        height={70}
+        width={80}
+        height={80}
         alt="Logo cervejaria - Barzim"
         className="object-cover"
       ></Image>

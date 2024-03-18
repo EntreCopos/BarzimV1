@@ -20,12 +20,11 @@ const CarouselCard: React.FC<CarouselCardProps> = ({
 }) => {
   if (!link) {
     return (
-      <Card title={altText} className={styles.card}>
+      <Card className={styles.card} title={altText}>
         {imageSrc && (
           <Image
             className={styles.image}
-            width={150}
-            height={80}
+            fill
             src={imageSrc as string}
             alt={altText}
           />
