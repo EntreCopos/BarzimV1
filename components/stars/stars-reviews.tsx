@@ -24,7 +24,7 @@ export const StarReviews: React.FC<StarReviewsProps> = ({
             'mr-1 inline-flex cursor-default text-lg text-accent-foreground md:text-xl',
             index < refNota && 'text-yellow-barzim',
             size === 'xl' && 'text-xl md:text-3xl',
-            size === 'sm' && 'text-sm'
+            size === 'sm' && 'text-xs'
           )}
         >
           {variant !== 'copo' ? (
