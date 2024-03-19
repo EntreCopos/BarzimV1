@@ -1,4 +1,4 @@
-import NavWrapper from '@/components/dashboard/nav-wrapper/nav-wrapper'
+import NavWrapper from '@/components/nav-wrapper/nav-wrapper'
 import Link from 'next/link'
 import { currentRole } from '@/lib/auth'
 

@@ -2,7 +2,6 @@
 import { auth } from '@/auth'
 import { cn, normalizeTitleCase } from '@/lib/utils'
 
-import styles from './page.module.css'
 import ListFindings from '@/components/dashboard/list-where-you-find/list-where-you-find'
 import ListaCervejasDashboard from '@/components/lists/lista-cervejas-dashboard'
 import { getRandomCervejasDashboard } from '@/data/cervejas'
@@ -12,13 +11,17 @@ import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-pad
 import { getAllCervejaAvaliacoes } from '@/data/avaliacao'
 import ReviewHeader from '@/components/review/review-header/review-header'
 import RelativeDate from '@/components/titles/relative-date/relative-date'
+import { Badge } from '@/components/ui/badge'
+import { type TypeObjectCerveja } from '@/data/data'
 
 export const dynamic = 'force-dynamic'
 
 const DashboardPage = async () => {
   const session = await auth()
 
-  const randCervejas = await getRandomCervejasDashboard(6)
+  const randCervejas = (await getRandomCervejasDashboard(
+    6
+  )) as unknown as TypeObjectCerveja[]
   const latestReviews = await getAllCervejaAvaliacoes(6)
 
   // if (latestReviews && latestReviews?.length > 0) {
@@ -34,9 +37,12 @@ const DashboardPage = async () => {
     imageUrl: session?.user.image ?? 'undefined',
   }
   const buttonElement = (
-    <button className={styles.customButton}>
+    <Badge
+      className="rounded-full text-xs font-normal hover:border-none hover:bg-primary hover:text-accent"
+      variant="outline"
+    >
       <Link href={'/cervejas'}>Ver mais</Link>
-    </button>
+    </Badge>
   )
 
   return (

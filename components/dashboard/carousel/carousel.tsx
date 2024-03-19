@@ -1,4 +1,3 @@
-import styles from './carousel.module.css'
 import { type ReactNode } from 'react'
 import { Carousel, CarouselContent } from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
@@ -13,7 +12,12 @@ const CarouselWrapper = ({
   logoCarousel = false,
 }: Props): JSX.Element => {
   return (
-    <div className={cn(styles.carousel, logoCarousel && styles.logoCarousel)}>
+    <div
+      className={cn(
+        'overflow-x-hidden px-6 pb-4 pt-0',
+        logoCarousel && '[filter:_var(--logo-filter)]'
+      )}
+    >
       <Carousel
         opts={{ align: 'start', loop: true, dragFree: true }}
         className="w-full"

@@ -1,25 +1,41 @@
-import styles from './stars-review.module.css'
+import { cn } from '@/lib/utils'
+import { TbBeer, TbBeerFilled } from 'react-icons/tb'
 
 interface StarReviewsProps {
   nota: number
+  icon?: string | React.ReactNode
+  variant?: 'estrela' | 'copo'
+  size?: 'sm' | 'default' | 'xl'
 }
 
-const StarReviews: React.FC<StarReviewsProps> = ({ nota }) => {
+export const StarReviews: React.FC<StarReviewsProps> = ({
+  nota,
+  icon = '★',
+  variant,
+  size,
+}) => {
+  const refNota = Math.floor(nota)
   return (
-    <div>
-      <p className={styles.textBarzim}>Nota no Barzim</p>
-      <div>
-        {[...Array(5)].map((_, index) => (
-          <span
-            key={index}
-            className={`${styles.star} ${index < nota ? styles.gold : ''}`}
-          >
-            ★
-          </span>
-        ))}
-      </div>
+    <div title={'Nota ' + nota} className="min-w-[10ch]">
+      {[...Array(5)].map((_, index) => (
+        <span
+          key={'point' + index + 1}
+          className={cn(
+            'mr-1 inline-flex cursor-default text-lg text-accent-foreground md:text-xl',
+            index < refNota && 'text-yellow-barzim',
+            size === 'xl' && 'text-xl md:text-3xl',
+            size === 'sm' && 'text-sm'
+          )}
+        >
+          {variant !== 'copo' ? (
+            icon
+          ) : index < refNota ? (
+            <TbBeerFilled />
+          ) : (
+            <TbBeer />
+          )}
+        </span>
+      ))}
     </div>
   )
 }
-
-export default StarReviews

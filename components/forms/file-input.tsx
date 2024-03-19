@@ -1,7 +1,7 @@
 'use client'
 import { updateProfilePic } from '@/actions/alter-profile-pic'
 import { uploadAvatarImage } from '@/actions/upload-image'
-import { CloudinaryResponse } from '@/data/data'
+import { type CloudinaryResponse } from '@/data/data'
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024
 const FileInput = ({

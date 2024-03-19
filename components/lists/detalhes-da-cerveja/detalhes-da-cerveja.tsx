@@ -1,10 +1,9 @@
-import { type CervejaDetails } from '@/data/data'
-import styles from './detalhes-cervejas.module.css'
-import { cn } from '@/lib/utils'
+import { type TypeObjectCerveja, type CervejaDetails } from '@/data/data'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
-import { type Cerveja } from '@prisma/client'
 
-const DetalhesCerveja: React.FC<{ cerveja: Cerveja }> = ({ cerveja }) => {
+const DetalhesCerveja: React.FC<{ cerveja: TypeObjectCerveja }> = ({
+  cerveja,
+}) => {
   const cervejaDetails: CervejaDetails = {
     teorAlcoolico: {
       key: 'Teor Alcoólico',
@@ -26,15 +25,17 @@ const DetalhesCerveja: React.FC<{ cerveja: Cerveja }> = ({ cerveja }) => {
   return (
     <div className="px-8 text-sm text-secondary-foreground">
       <SectionTitle variant="small" title="Detalhes" />
-      <div className={styles.details}>
+      <div className="flex flex-col gap-2">
         {Object.entries(cervejaDetails).map(
           ([_, { key: attrKey, value }]): JSX.Element | null => {
             return value ? (
-              <div key={attrKey} className={styles.detailRow}>
+              <div key={attrKey} className="flex w-full justify-between">
                 <span>{attrKey}</span>
-                <span className={styles.data}>{value}</span>
+                <span className="font-bold text-yellow-barzim">{value}</span>
               </div>
-            ) : null //aqui talvez criar algo para caso o objeto details venha, mas venha vazio
+            ) : (
+              <></>
+            )
           }
         )}
       </div>

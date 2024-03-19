@@ -1,20 +1,18 @@
 import Image from 'next/image'
 
-interface LogoProps {
-  src: string | null
-}
-
-export const LogoCervejaria: React.FC<LogoProps> = ({ src }) => {
+export const LogoCervejaria: React.FC<{ src: string | null; alt?: string }> = ({
+  src,
+  alt = 'Cervejaria',
+}) => {
   if (src) {
     return (
       <Image
-        style={{ filter: 'var(--logo-filter)' }}
         src={src}
         width={80}
         height={80}
-        alt="Logo cervejaria - Barzim"
-        className="object-cover"
+        alt={alt + ' no Barzim'}
+        className="object-cover [filter:_var(--logo-filter)]"
       ></Image>
     )
-  }
+  } else return ''
 }

@@ -4,14 +4,9 @@ import { FaImage } from 'react-icons/fa'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 
-interface ImageUpladBtn {
+export const AddImageButton: React.FC<{
   handler: (e?: ChangeEvent<HTMLInputElement>) => void
-}
-
-export const AddImageButton: React.FC<ImageUpladBtn> = ({ handler }) => {
-  // const handleImageStore = (e: React.ChangeEvent<HTMLInputElement>) => {
-  // }
-
+}> = ({ handler }) => {
   return (
     <div className="relative flex overflow-hidden">
       <Button variant={'secondary'} className="h-12 w-full text-2xl">

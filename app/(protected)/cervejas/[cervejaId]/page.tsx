@@ -1,7 +1,6 @@
-import { type CervejaBreadcrumbs, type CervejaDetails } from '@/data/data'
+import { type CervejaBreadcrumbs } from '@/data/data'
 import { auth } from '@/auth'
 import { LogoCervejaria } from '@/components/logos/logo-cervejarias'
-import { BeerNameLarge } from '@/components/titles/beer-name-lg'
 import { BeerDescription } from '@/components/wrappers/beer-description-wrapper'
 import { BeerImage } from '@/components/wrappers/beer-image-wrapper'
 import { getCervejaById } from '@/data/cervejas'
@@ -12,11 +11,9 @@ import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import { getAvaliacoesByCerveja, relUserCerv } from '@/data/avaliacao'
 import { ReviewWrapper } from '@/components/wrappers/review-wrapper'
 import { ReviewDescription } from '@/components/wrappers/review-description-wrapper'
-import { WrapperDefaultPadding } from '@/components/wrappers/wrapper-default-padding'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
-import StarReviews from '@/components/stars/stars-reviews'
+import { StarReviews } from '@/components/stars/stars-reviews'
 import ReviewHeader from '@/components/review/review-header/review-header'
-import StarReviewsMini from '@/components/stars/startsMini/stars-mini'
 import NinguemAvaliou from '@/components/cards/ninguem-avaliou/ninguem-avaliou'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
 import { firstTwoLetters } from '@/lib/utils'
@@ -59,7 +56,7 @@ export default async function Cerveja({
 
   return (
     <>
-      <section className="overflow-hidden bg-secondary object-cover p-1 text-secondary-foreground md:p-2">
+      <section className="bg-beer-header-gradient overflow-hidden bg-secondary/60 object-cover p-1 text-secondary-foreground md:p-2">
         <BreadcrumbsCerveja cerveja={cervejaBreadcrumbs} />
 
         <div
@@ -72,7 +69,9 @@ export default async function Cerveja({
             <LogoCervejaria src={cerveja?.cervejaria.logo} />
             <BeerName large cerveja={cervejaHeading} />
 
-            {cerveja.notaMedia && <StarReviews nota={cerveja.notaMedia} />}
+            {cerveja.notaMedia && (
+              <StarReviews size="xl" variant="copo" nota={cerveja.notaMedia} />
+            )}
 
             <ButtonsWrapper>
               <BrindarButton id={params.cervejaId} />
@@ -90,7 +89,7 @@ export default async function Cerveja({
       )}
       <DetalhesCerveja cerveja={cerveja} />
 
-      <div className="grid w-full px-8 py-4 md:grid-cols-2">
+      <div className="grid w-full gap-4 px-8 py-4 md:grid-cols-2">
         {cerveja?.ingredientesCerveja && (
           <div className="space-y-2">
             <SectionTitle variant={'small'} title="Ingredientes" />
@@ -107,7 +106,7 @@ export default async function Cerveja({
         )}
         {cerveja?.harmonizacoesCerveja && (
           <div className="space-y-2">
-            <SectionTitle variant={'small'} title="Harmonizações" />
+            <SectionTitle variant="small" title="Harmonizações" />
             {cerveja.harmonizacoesCerveja.map((harmonizacao) => (
               <Badge
                 variant="default"
@@ -143,11 +142,17 @@ export default async function Cerveja({
                       {firstTwoLetters(avaliacao.usuario.username)}
                     </AvatarFallback>
                   </Avatar>
-                  <ReviewHeader
-                    userName={avaliacao.usuario.username as string}
-                    beerName={cerveja.nomeCerveja}
-                  />
-                  <StarReviewsMini nota={avaliacao.nota as number} />
+                  <div className="flex w-full justify-between">
+                    <ReviewHeader
+                      userName={avaliacao.usuario.username as string}
+                      beerName={cerveja.nomeCerveja}
+                    />
+                    <StarReviews
+                      size="sm"
+                      variant="copo"
+                      nota={avaliacao.nota as number}
+                    />
+                  </div>
                   <ReviewDescription
                     description={avaliacao.reviewTexto as string}
                   />

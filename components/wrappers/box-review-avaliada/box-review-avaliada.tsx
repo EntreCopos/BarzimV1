@@ -1,18 +1,12 @@
 'use client'
-import styles from './box-review-avaliada.module.css'
+
 import Confetti from 'react-confetti'
 import { useEffect, useRef, useState } from 'react'
-import { cn } from '@/lib/utils'
 
-interface BoxReviewAvaliadaProps {
+const BoxReviewAvaliada: React.FC<{
   beerName: string
   children: React.ReactNode
-}
-
-const BoxReviewAvaliada: React.FC<BoxReviewAvaliadaProps> = ({
-  beerName,
-  children,
-}) => {
+}> = ({ beerName, children }) => {
   const currentRef = useRef<HTMLDivElement>(null)
   const [currentSize, setCurrentSize] = useState({ width: 0, height: 0 })
 
@@ -26,16 +20,13 @@ const BoxReviewAvaliada: React.FC<BoxReviewAvaliadaProps> = ({
   return (
     <div
       ref={currentRef}
-      className={cn(
-        styles.boxReviewAvaliadaContainer,
-        'text-secondary-foreground'
-      )}
+      className="relative flex h-full flex-col items-center px-8 py-24 text-center text-secondary-foreground"
     >
       <Confetti width={currentSize.width} height={currentSize.height} />
       <SuccessIcon />
       <h2 className="text-3xl font-semibold">Parabéns!</h2>
       <p className="text-lg">
-        Você avaliou <span className={styles.cervejaText}>{beerName}</span>
+        Você avaliou <span className="text-yellow-barzim">{beerName}</span>
       </p>
       <p className="text-lg">
         O Barzim é melhor graças a você.

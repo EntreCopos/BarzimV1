@@ -1,5 +1,5 @@
 'use client'
-import styles from './nav-wrapper.module.css'
+
 import Link from 'next/link'
 import { HiDotsVertical } from 'react-icons/hi'
 
@@ -16,7 +16,6 @@ import {
 import { useRouter } from 'next/navigation'
 import { SignOut } from '@/actions/sign-out'
 import { useTheme } from 'next-themes'
-import { cn } from '@/lib/utils'
 
 const Nav: React.FC<{ userId: string; username: string }> = ({
   userId,
@@ -26,12 +25,12 @@ const Nav: React.FC<{ userId: string; username: string }> = ({
   const { setTheme } = useTheme()
 
   return (
-    <div className={styles.nav}>
-      <div className={styles.wrapper}>
+    <div className="fixed z-50 h-[70px] w-full max-w-[100vw] border-b-2 border-black/20 bg-yellow-barzim px-6 py-4 text-deep-black shadow-sutil-shadow ">
+      <div className="mx-auto flex max-w-screen-lg items-center justify-between">
         <Link href={'/dashboard'}>
           <Logo width={120} />
         </Link>
-        <div className={styles.icons}>
+        <div className="flex items-end justify-between">
           <Notifications userId={userId} />
           <DropdownMenu>
             <DropdownMenuTrigger className="ring:ring-0 focus:ring-0 active:ring-0">

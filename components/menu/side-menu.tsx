@@ -1,22 +1,21 @@
-import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { currentRole } from '@/lib/auth'
+
 import { FaUserCircle } from 'react-icons/fa'
 import { FaUsers } from 'react-icons/fa6'
 import { PiBeerBottleFill } from 'react-icons/pi'
 import { ImLab } from 'react-icons/im'
 import { RiAdminFill } from 'react-icons/ri'
-
-import styles from './menu.module.css'
 import { MdSettings } from 'react-icons/md'
+
 import { Button } from '../ui/button'
-import { currentRole } from '@/lib/auth'
 
 export const SideMenu = async ({ currUser }: { currUser: string }) => {
   const role = await currentRole()
 
   return (
-    <section className={cn('', styles.desktopMenu)}>
-      <ul className={cn('flex flex-col gap-4 py-6 text-lg')}>
+    <section className="hidden md:fixed md:block">
+      <ul className="flex flex-col gap-4 py-6 text-lg">
         <li title="Meu Perfil" className="text-center">
           <Link href={'/usuarios/' + currUser}>
             <Button
