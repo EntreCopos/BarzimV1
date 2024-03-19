@@ -3,9 +3,6 @@
 import FileInput from '@/components/forms/file-input'
 import { FaRegImage } from 'react-icons/fa'
 import { IoMdClose } from 'react-icons/io'
-import styles from './config.module.css'
-
-// import placeholderPic from '@/public/icons/avatar-placeholder.jpeg'
 
 import { removeProfilePic } from '@/actions/profile-image'
 import AvatarReview from '@/components/avatar/avatar-review/avatar-review'
@@ -49,8 +46,8 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
   const hasNoPic = profilePic === ''
 
   return (
-    <div className={styles.profileHeaderWrapper}>
-      <div className={styles.avatarWrapper}>
+    <div>
+      <div className="flex flex-col items-center justify-center overflow-hidden pb-7">
         <Avatar style={{ width: 120, height: 120 }}>
           <AvatarReview
             avatarSrc={profilePic || (user?.image as string)}
@@ -58,8 +55,8 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
             height={120}
           />
         </Avatar>
-        <div className={styles.icons}>
-          <label className={styles.image}>
+        <div className="text-foreground-accent mt-3 inline-flex items-center justify-center gap-[1px]">
+          <label className="cursor-pointer rounded-bl-md rounded-tl-md bg-accent px-4 py-3">
             <FileInput
               onProfilePicChange={handleProfilePicChange}
               userId={user?.id}
@@ -68,7 +65,10 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
           </label>
           <AlertDialog>
             <AlertDialogTrigger disabled={hasNoPic} asChild>
-              <div aria-disabled={hasNoPic} className={styles.close}>
+              <div
+                aria-disabled={hasNoPic}
+                className="cursor-pointer rounded-br-md rounded-tr-md bg-accent px-4 py-3 text-red-500"
+              >
                 <IoMdClose />
               </div>
             </AlertDialogTrigger>
@@ -78,15 +78,16 @@ export const HeaderConfigsWrapper = ({ user }: { user: User }) => {
                   Tem certeza que quer remover sua foto?
                 </AlertDialogTitle>
                 <AlertDialogDescription>
-                  Sua foto será perdida. Essa ação é irreversível.
+                  O Barzim fica mais bonito com você aqui.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogCancel>Mudei de Ideia :)</AlertDialogCancel>
                 <AlertDialogAction
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/80"
                   onClick={() => handleRemoveProfilePic(user.id)}
                 >
-                  Remover foto
+                  Confirmar e Remover
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

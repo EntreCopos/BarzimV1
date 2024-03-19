@@ -1,7 +1,4 @@
 import Link from 'next/link'
-import styles from './review-header.module.css'
-import { Separator } from '@radix-ui/react-dropdown-menu'
-import { SelectSeparator } from '@/components/ui/select'
 
 interface ReviewHeaderProps {
   userName: string
@@ -15,15 +12,18 @@ const ReviewHeader: React.FC<ReviewHeaderProps> = ({
   beerId = false,
 }) => {
   return (
-    <div className={styles.reviewHeader}>
+    <div className="font-bold">
       <p>
         <Link href={`/usuarios/${userName}`}>
-          <span className={styles.userName}>{`@${userName}`}</span>
+          <span className="text-yellow-barzim">{`@${userName}`}</span>
         </Link>
-        <span className="text-secondary-foreground opacity-60"> avaliou </span>
+        <span className="font-normal text-secondary-foreground/60">
+          {' '}
+          avaliou{' '}
+        </span>
         {beerId && (
           <Link href={`/cervejas/${beerId}`}>
-            <span className={styles.beerName}>{beerName}</span>
+            <span className="text-yellow-barzim">{beerName}</span>
           </Link>
         )}
         {!beerId && <span>{beerName}</span>}

@@ -1,8 +1,6 @@
 import Image from 'next/image'
-import styles from './ninguem-avaliou.module.css'
 import imagemNinguemAvaliou from '@/public/icons/empty-list-icon.png'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
 interface NinguemAvaliouProps {
@@ -11,18 +9,19 @@ interface NinguemAvaliouProps {
 
 const NinguemAvaliou: React.FC<NinguemAvaliouProps> = ({ cervejaId }) => {
   return (
-    <div className={styles.container}>
+    <div className="space-y-4 px-6 py-4 text-center">
       <Image
         src={imagemNinguemAvaliou}
         alt="Imagem da Cerveja"
-        className={cn(styles.image, 'mx-auto')}
+        className="mx-auto aspect-square max-w-[120px] object-contain"
       />
-
-      <p className="pb-6 text-lg text-secondary-foreground">
+      <h2 className="text-3xl font-semibold text-accent-foreground">
+        Tão vazio!
+      </h2>
+      <p className="text-lg text-secondary-foreground">
         Parece que ninguém avaliou essa cerveja ainda
       </p>
-
-      <Button variant={'outline'}>
+      <Button variant="outline">
         <Link href={`${cervejaId}/avaliar`}>Seja o Primeiro</Link>
       </Button>
     </div>

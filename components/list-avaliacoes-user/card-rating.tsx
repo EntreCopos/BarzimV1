@@ -1,8 +1,8 @@
-import { TReview } from '@/data/data'
+import { type TReview } from '@/data/data'
 import { cn } from '@/lib/utils'
-import StarReviewsMini from '../stars/startsMini/stars-mini'
 import Link from 'next/link'
 import RelativeDate from '../titles/relative-date/relative-date'
+import { StarReviews } from '../stars/stars-reviews'
 
 export const FeedCardRating: React.FC<{ avaliacao: TReview }> = ({
   avaliacao,
@@ -22,7 +22,7 @@ export const FeedCardRating: React.FC<{ avaliacao: TReview }> = ({
             </Link>
           </span>
         </div>
-        <StarReviewsMini nota={avaliacao.nota ?? 1} />
+        <StarReviews size="sm" nota={avaliacao.nota ?? 1} />
       </div>
       {avaliacao.reviewTexto && (
         <div className={cn('mb-4 p-2 px-4 text-sm text-accent-foreground')}>

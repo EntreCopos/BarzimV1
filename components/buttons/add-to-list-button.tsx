@@ -4,6 +4,7 @@ import { FaPlus } from 'react-icons/fa'
 import Popup from 'reactjs-popup'
 import { addCervejaToList } from '@/actions/userCerveja'
 import { useEffect, useState } from 'react'
+import { Button } from '../ui/button'
 
 interface TUserRelToCervea {
   favorita: boolean
@@ -47,39 +48,37 @@ export const AddtoListButton: React.FC<{
 
   return (
     <Popup
+      className="border-0"
       trigger={
-        <button
-          type="button"
-          className="flex items-center rounded-full border-2 bg-transparent px-3 py-1 text-sm "
-        >
+        <Button type="button" variant="outline" className="rounded-full">
           <FaPlus size={20} />
           <span className="ml-2">Listas</span>
-        </button>
+        </Button>
       }
       position="bottom right"
     >
       <div
-        className="z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 py-1 text-popover-foreground shadow-md"
+        className="z-50 flex min-w-[8rem] flex-col gap-1 overflow-hidden rounded-md border bg-accent-foreground p-2 text-accent shadow-md"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="options-menu"
       >
-        <a
+        <div
+          className="cursor-pointer rounded-md px-4 py-2 text-left text-sm hover:bg-gray-cards"
           aria-disabled={isUpdating}
           onClick={() => handleToggle(id, 'Quero Beber', usuario, 'queroBeber')}
-          className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           role="menuitem"
         >
           {localRel?.queroBeber ? 'Remover de Quero Beber' : 'Quero Beber'}
-        </a>
-        <a
+        </div>
+        <div
+          className="cursor-pointer rounded-md px-4 py-2 text-left text-sm hover:bg-gray-cards"
           aria-disabled={isUpdating}
           onClick={() => handleToggle(id, 'Já Bebi', usuario, 'jaBebida')}
-          className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           role="menuitem"
         >
           {localRel?.jaBebida ? 'Remover de Já Bebi' : 'Já Bebi'}
-        </a>
+        </div>
       </div>
     </Popup>
   )

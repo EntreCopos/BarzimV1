@@ -1,10 +1,6 @@
-interface BeerDescriptionProps {
-  description: string
-}
-
 import SectionTitle from '../dashboard/title-sections/title-section'
 
-export const BeerDescription: React.FC<BeerDescriptionProps> = ({
+export const BeerDescription: React.FC<{ description: string }> = ({
   description,
 }) => {
   return (

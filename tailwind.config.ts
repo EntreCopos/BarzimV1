@@ -42,7 +42,10 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        'yellow-barzim': 'var(--yellow-barzim)',
+        'yellow-barzim': {
+          DEFAULT: 'hsl(var(--yellow-barzim-HSL))',
+          foreground: 'hsl(var(--deep-black))',
+        },
         'slate-barzim': 'var(--slate-barzim)',
         'marfim-barzim': 'var(--marfim-barzim)',
         'deep-black': 'var(--deep-black)',
@@ -82,6 +85,9 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      backgroundImage: {
+        'beer-header-gradient': 'var(--beer-header-gradient)',
       },
     },
   },

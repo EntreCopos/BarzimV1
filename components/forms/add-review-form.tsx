@@ -4,10 +4,9 @@ import ImageSlotsWrapper from '../review/review-image/imageSlotsWrapper'
 import WrapperReviewImage from '../wrappers/wrapper-review-image/wrapper-review-image'
 import SendReviewButton from '../buttons/send-review-button/send-review-button'
 import { uploadReviewImage } from '@/actions/upload-image'
-import { CloudinaryResponse } from '@/data/data'
+import { type CloudinaryResponse } from '@/data/data'
 import { useRouter } from 'next/navigation'
 import { addReviewV2 } from '@/actions/add-review-v2'
-import { TextareaReview } from '../ui/textareaReview'
 import { Textarea } from '../ui/textarea'
 import { BeatLoader } from 'react-spinners'
 import SectionTitle from '../dashboard/title-sections/title-section'
@@ -89,7 +88,7 @@ export const AvaliacaoForm: React.FC<{
         <WrapperReviewImage
           setNota={setRating}
           nota={rating}
-          //@ts-expect-error ts esta de sacanagem
+          //@ts-ignore
           handler={handleFileInput}
         />
         {isLoadingImage && (

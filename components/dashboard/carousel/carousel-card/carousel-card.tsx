@@ -1,4 +1,3 @@
-import styles from './carousel-card.module.css'
 import { Card } from '@/components/ui/card'
 import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
@@ -20,35 +19,44 @@ const CarouselCard: React.FC<CarouselCardProps> = ({
 }) => {
   if (!link) {
     return (
-      <Card className={styles.card} title={altText}>
+      <Card
+        className="relative flex max-h-[100px] min-h-[100px] flex-col items-center justify-center rounded-2xl border border-stroke-cervejas bg-gray-cards p-4 shadow-sutil-shadow"
+        title={altText}
+      >
         {imageSrc && (
           <Image
-            className={styles.image}
+            className="w-full object-contain p-4"
             fill
             src={imageSrc as string}
             alt={altText}
           />
         )}
         {(!imageSrc || forceShowtext) && (
-          <div className={styles.text}>{title}</div>
+          <div className="mt-2 text-center text-[14px] tracking-wider text-marfim-barzim">
+            {title}
+          </div>
         )}
       </Card>
     )
   } else
     return (
-      <Card title={altText} className={styles.card}>
+      <Card
+        title={altText}
+        className="relative flex max-h-[100px] min-h-[100px] flex-col items-center justify-center rounded-2xl border border-stroke-cervejas bg-gray-cards shadow-sutil-shadow"
+      >
         <Link href={`/cervejarias/${link}`}>
           {imageSrc && (
             <Image
-              className={styles.image}
-              width={150}
-              height={80}
+              className="w-full object-contain p-4"
+              fill
               src={imageSrc}
               alt={altText}
             />
           )}
           {(!imageSrc || forceShowtext) && (
-            <div className={styles.text}>{title}</div>
+            <div className="mt-2 text-center text-[14px] tracking-wider text-marfim-barzim">
+              {title}
+            </div>
           )}
         </Link>
       </Card>

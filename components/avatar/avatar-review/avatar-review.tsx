@@ -1,6 +1,4 @@
-import styles from './avatar-review.module.css'
 import Image, { type StaticImageData } from 'next/image'
-import { cn } from '@/lib/utils'
 
 interface AvatarReviewProps {
   avatarSrc: string | StaticImageData
@@ -13,25 +11,31 @@ const AvatarReview: React.FC<AvatarReviewProps> = ({
   width = 35,
   height = 35,
 }) => {
-  if (!!avatarSrc){
+  if (!!avatarSrc) {
     return (
       <div
         style={{ width: `${width}px` }}
-        className={cn(`aspect-square`, styles.avatarContainer)}
+        className="aspect-square overflow-hidden rounded-full border-2 border-yellow-barzim"
       >
         <Image
           src={avatarSrc}
           alt="User Avatar"
-          className={styles.avatarImage}
+          className="h-full w-full object-cover"
           width={width}
           height={height}
         />
       </div>
     )
   } else
-  return (
-    <div style={{width: width, height: height, borderRadius: '50%', backgroundColor: '#fec435'}} ></div>
-  )
+    return (
+      <div
+        style={{
+          width: width,
+          height: height,
+        }}
+        className="rounded-full bg-yellow-barzim"
+      ></div>
+    )
 }
 
 export default AvatarReview

@@ -2,13 +2,12 @@ import { type TypeObjectCerveja } from '@/data/data'
 import Link from 'next/link'
 import { CardVertCerveja } from '../cards/card-vertical-cerveja'
 import { BeerName } from '../titles/beer-name'
-import styles from './lista-cervejas-dashboard.module.css'
 
 const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
 }) => {
   return (
-    <ul className={styles.gridCerveja}>
+    <ul className="grid grid-cols-[1fr_1fr] gap-4 pb-2 md:grid-cols-[1fr_1fr_1fr]">
       {cervejas.map((itemCerveja: TypeObjectCerveja): JSX.Element => {
         const {
           id,

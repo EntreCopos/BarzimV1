@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import SectionTitle from '../title-sections/title-section'
 import ListItem from './list-item/list-tem'
-import styles from './list-where-you-find.module.css'
 
 const ListFindings: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div className="p-6">
       <SectionTitle title="No Barzim você encontra" />
       <Link href={'/usuarios'}>
         <ListItem

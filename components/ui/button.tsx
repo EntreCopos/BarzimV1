@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         barzimPrimary:
-          'rounded-full bg-primary text-primary-foreground hover:bg-[#fec435]/90',
+          'rounded-full border-input bg-yellow-barzim text-primary-foreground hover:bg-[#fec435]/90',
         default:
           'bg-primary text-primary-foreground shadow hover:bg-[#fec435]/90',
         destructive:

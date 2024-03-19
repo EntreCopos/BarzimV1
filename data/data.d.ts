@@ -29,8 +29,8 @@ interface TypeObjectCerveja {
   cervejariaId: number
   tipoCervejaId: number
   notaMedia: number | null
-  ingredientesCerveja: any[] | null
-  harmonizacoesCerveja: any[] | null
+  ingredientesCerveja: string[] | null
+  harmonizacoesCerveja: string[] | null
   createdAt: Date | null
   cervejaria: {
     id: number

@@ -2,10 +2,7 @@ import Image from 'next/image'
 
 const Loading = () => {
   return (
-    <div
-      style={{ backgroundColor: '#201f1e' }}
-      className="flex h-svh items-center justify-center"
-    >
+    <div className="flex h-svh items-center justify-center">
       <Image
         src={
           'https://res.cloudinary.com/barzimtech/image/upload/v1708648459/ud3drroqim1zkaopsp7q.gif'
@@ -18,4 +15,4 @@ const Loading = () => {
   )
 }
 
-//export default Loading
+export default Loading

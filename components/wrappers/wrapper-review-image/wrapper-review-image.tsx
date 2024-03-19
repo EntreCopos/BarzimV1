@@ -5,7 +5,6 @@ import React, {
 } from 'react'
 import CoposReviews from '@/components/copos/copos-review'
 import { AddImageButton } from '@/components/buttons/add-image-review-button'
-import styles from './wrapper-review-image.module.css' // Certifique-se de criar o arquivo de módulo CSS
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
 
 interface WrapperReviewImageProps {
@@ -21,7 +20,7 @@ const WrapperReviewImage: React.FC<WrapperReviewImageProps> = ({
 }) => {
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className="w-full items-center justify-between rounded-lg py-8">
         <CoposReviews setNota={setNota} nota={nota} />
       </div>
       <SectionTitle title="Adicione imagens ao seu review" />

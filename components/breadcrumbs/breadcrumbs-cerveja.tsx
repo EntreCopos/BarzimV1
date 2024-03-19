@@ -28,7 +28,7 @@ export const BreadcrumbsCerveja: React.FC<{ cerveja: CervejaBreadcrumbs }> = ({
         <BreadcrumbSeparator />
         <BreadcrumbItem
           title={cerveja.nome}
-          className="block max-w-[16ch] truncate"
+          className="block max-w-[16ch] truncate lg:max-w-full"
         >
           <BreadcrumbPage>{cerveja.nome}</BreadcrumbPage>
         </BreadcrumbItem>

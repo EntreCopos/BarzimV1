@@ -1,8 +1,0 @@
-.carousel {
-  padding: 0 1.5rem 1rem;
-  overflow-x: hidden;
-}
-
-.logoCarousel img {
-  filter: var(--logo-filter);
-}

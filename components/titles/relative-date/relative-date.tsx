@@ -25,7 +25,7 @@ const RelativeDate: React.FC<{ date: Date; className?: string }> = ({
     formattedDate = 'hoje'
   } else if (daysAgo < 2) {
     formattedDate = 'ontem'
-  } else if (daysAgo < 7) {
+  } else if (daysAgo < 14) {
     formattedDate = formatDistanceToNowStrict(date, {
       addSuffix: true,
       locale: ptBR,
@@ -36,7 +36,7 @@ const RelativeDate: React.FC<{ date: Date; className?: string }> = ({
 
   return (
     <div className={cn('mb-1 text-sm text-marfim-barzim', className)}>
-      <p>{formattedDate}</p>
+      <>{formattedDate}</>
     </div>
   )
 }
