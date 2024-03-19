@@ -23,8 +23,8 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
     useState<TypeObjectCerveja[]>(cervejas)
   const [ordem, setOrdem] = useState<'asc' | 'desc'>('asc')
   const [ordenador, setOrdenador] = useState<
-    'Amargura' | 'Teor Alcoólico' | 'Ordem Alfabética' | 'Avaliação'
-  >('Ordem Alfabética')
+    'IBU' | '% Alcoól' | 'Nome' | 'Nota'
+  >('Nome')
   const [searchText, setSearchText] = useState<string>('')
 
   useEffect(() => {
@@ -54,26 +54,26 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
     }
 
   const ordenarPorNota = createOrdenador((a, b) => {
-    setOrdenador('Avaliação')
+    setOrdenador('Nota')
     const notaA = a.notaMedia ?? 0
     const notaB = b.notaMedia ?? 0
     return ordem === 'asc' ? notaA - notaB : notaB - notaA
   })
 
   const ordenarPorIBU = createOrdenador((a, b) => {
-    setOrdenador('Amargura')
+    setOrdenador('IBU')
     return ordem === 'asc' ? a.valorIBU - b.valorIBU : b.valorIBU - a.valorIBU
   })
 
   const ordenarPorTeorAlcoolico = createOrdenador((a, b) => {
-    setOrdenador('Teor Alcoólico')
+    setOrdenador('% Alcoól')
     return ordem === 'asc'
       ? a.teorAlcoolico - b.teorAlcoolico
       : b.teorAlcoolico - a.teorAlcoolico
   })
 
   const ordenarPorNome = createOrdenador((a, b) => {
-    setOrdenador('Ordem Alfabética')
+    setOrdenador('Nome')
     return ordem === 'asc'
       ? a.nomeCerveja.charCodeAt(0) - b.nomeCerveja.charCodeAt(0)
       : b.nomeCerveja.charCodeAt(0) - a.nomeCerveja.charCodeAt(0)
@@ -130,7 +130,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
               className="flex w-full justify-between"
               onClick={ordenarPorIBU}
             >
-              <span>Por Amargura</span>
+              <span>IBU (Amargura)</span>
               {ordem === 'asc' ? <GoSortDesc /> : <GoSortAsc />}
             </DropdownMenuItem>
 
@@ -138,7 +138,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
               className="flex w-full justify-between"
               onClick={ordenarPorTeorAlcoolico}
             >
-              <span>Por Teor Alcoólico</span>
+              <span>Teor Alcoólico</span>
               {ordem === 'asc' ? <GoSortDesc /> : <GoSortAsc />}
             </DropdownMenuItem>
 
@@ -146,7 +146,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
               className="flex w-full justify-between"
               onClick={ordenarPorNome}
             >
-              <span>Por Nome</span>
+              <span>Nome</span>
               {ordem === 'asc' ? <GoSortDesc /> : <GoSortAsc />}
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -164,7 +164,7 @@ export const BeerFilter: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
 
           <DropdownMenuContent>
             <DropdownMenuItem disabled className="flex w-full justify-between">
-              Em breve :D
+              Em breve
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

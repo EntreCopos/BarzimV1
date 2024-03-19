@@ -33,7 +33,7 @@ export const FeedCardImage: React.FC<{ avaliacao: TReview }> = ({
             </Link>
           </span>
         </div>
-        <StarReviews size="sm" nota={avaliacao.nota ?? 1} />
+        <StarReviews variant="copo" size="sm" nota={avaliacao.nota ?? 1} />
       </div>
       {avaliacao.reviewTexto && (
         <div className={cn('mb-4 p-2 px-4 text-sm text-accent-foreground')}>

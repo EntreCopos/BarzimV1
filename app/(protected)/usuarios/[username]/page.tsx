@@ -10,8 +10,6 @@ const UserPage = async ({ params }: { params: { username: string } }) => {
   const userPics = await getUserReviewPics(params.username)
   const userAvaliacoes = await getAvaliacoesByUser(params.username)
 
-  console.log(userAvaliacoes)
-
   return (
     <>
       {/* carrossel removido temporariamente */}
