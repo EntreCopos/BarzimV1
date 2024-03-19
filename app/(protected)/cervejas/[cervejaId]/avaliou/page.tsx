@@ -30,7 +30,7 @@ const AvaliarCerveja = async ({
         </Link>
         <Link href={'/dashboard'}>
           <Button variant="ghost" size="lg">
-            Voltar para dashboard
+            Ir para dashboard
           </Button>
         </Link>
       </BoxReviewAvaliada>
