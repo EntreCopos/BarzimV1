@@ -25,7 +25,6 @@ const AvaliarCerveja = async ({
     myId
   )
 
-  console.log('user has reviewed check', userHasReviewed)
 
   if (!!userHasReviewed) redirect(`/cervejas/${params.cervejaId}/avaliou`)
   else

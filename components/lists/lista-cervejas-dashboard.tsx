@@ -2,6 +2,7 @@ import { type TypeObjectCerveja } from '@/data/data'
 import Link from 'next/link'
 import { CardVertCerveja } from '../cards/card-vertical-cerveja'
 import { BeerName } from '../titles/beer-name'
+import { CardCerveja } from '../cards/card-cerveja'
 
 const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
@@ -19,13 +20,14 @@ const ListaCervejasDashboard: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
         return (
           <li className="col-span-1" key={id}>
             <Link href={`/cervejas/${id}`}>
-              <CardVertCerveja
+              <CardCerveja
                 createdAt={createdAt as unknown as Date}
                 nomeCerveja={nomeCerveja}
                 imagem={mainImage ?? 'undefined'}
+                variant="vertical"
               >
                 <BeerName cerveja={{ nomeCerveja, tipoCerveja }} />
-              </CardVertCerveja>
+              </CardCerveja>
             </Link>
           </li>
         )

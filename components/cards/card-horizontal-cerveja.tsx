@@ -1,5 +1,6 @@
 import { haMenosDeDuasSemanas } from '@/lib/utils'
 import Image from 'next/image'
+import { Novidade } from '../badges/card-badges/novidade'
 
 interface CardHorizontalCervejaProps {
   children: React.ReactNode
@@ -17,17 +18,10 @@ export const CardHorizontalCerveja: React.FC<CardHorizontalCervejaProps> = ({
   const novidade = haMenosDeDuasSemanas(createdAt)
 
   return (
-    <div className="cursor-pointer overflow-hidden rounded-lg border-[1px] border-stroke-cervejas ">
+    <div className="group cursor-pointer overflow-hidden rounded-lg border-[1px] border-stroke-cervejas ">
       <div className="h-30 relative m-0 flex w-full items-center gap-3 p-0">
-        <div className="flex items-center justify-center bg-gray-cards">
-          {novidade && (
-            <span
-              style={{ zIndex: 10 }}
-              className="text-black-500 absolute left-0 top-0 rounded-ee-lg bg-yellow-barzim p-1 text-xs font-medium"
-            >
-              Novidade
-            </span>
-          )}
+        <div className="group-hover:bg-beer-card-bg-gradient 200ms flex items-center justify-center bg-gray-cards transition-all ">
+          {novidade && <Novidade />}
           <div
             style={{
               position: 'relative',
