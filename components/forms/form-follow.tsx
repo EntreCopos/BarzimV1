@@ -43,9 +43,21 @@ const FollowForm: React.FC<{
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="col-span-2 w-full" onSubmit={handleSubmit}>
       <Button className="h-full w-full text-2xl text-black" variant="default">
-        {isFollowing ? <IoPersonRemove /> : <IoMdPersonAdd />}
+        {isFollowing ? (
+          <>
+            <IoPersonRemove />
+            <span className="ml-2 hidden text-sm md:inline">
+              Deixar de seguir
+            </span>
+          </>
+        ) : (
+          <>
+            <IoMdPersonAdd />
+            <span className="ml-2 hidden text-sm md:inline">Seguir</span>
+          </>
+        )}
       </Button>
     </form>
   )
