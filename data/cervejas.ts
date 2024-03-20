@@ -22,9 +22,11 @@ export const getAllCervejas = async () => {
  * Conta todas as cervejas no banco de dados de forma assíncrona.
  * @return {Promise<number>} O número de cervejas no banco de dados ou null se ocorrer um erro.
  */
-export const countAllCervejas = async () => {
+export const countAllCervejas = async (filter: any) => {
   try {
-    return await db.cerveja.count()
+    return await db.cerveja.count({
+      where: filter,
+    })
   } catch {
     return null
   }
