@@ -42,6 +42,8 @@ export const AvaliacaoForm: React.FC<{
         data.append('image', file)
         const uploadedImage: CloudinaryResponse = await uploadReviewImage(data)
 
+        console.log('uploadedImage ::::::', uploadedImage)
+
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         setReviewPics((prevPics) => [...prevPics, uploadedImage])
       } catch (err) {

@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import { SignOut } from '@/actions/sign-out'
 import { useTheme } from 'next-themes'
 
-const Nav: React.FC<{ userId: string; username: string }> = ({
+export const Nav: React.FC<{ userId: string; username: string }> = ({
   userId,
   username,
 }) => {
@@ -26,7 +26,7 @@ const Nav: React.FC<{ userId: string; username: string }> = ({
 
   return (
     <div className="fixed z-50 h-[70px] w-full max-w-[100vw] border-b-2 border-black/20 bg-yellow-barzim px-6 py-4 text-deep-black shadow-sutil-shadow ">
-      <div className="mx-auto flex max-w-screen-lg items-center justify-between">
+      <div className="mx-auto flex max-w-screen-lg items-center justify-between lg:pl-3">
         <Link href={'/dashboard'}>
           <Logo width={120} />
         </Link>
@@ -67,5 +67,3 @@ const Nav: React.FC<{ userId: string; username: string }> = ({
     </div>
   )
 }
-
-export default Nav

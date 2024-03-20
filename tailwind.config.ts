@@ -88,6 +88,7 @@ const config = {
       },
       backgroundImage: {
         'beer-header-gradient': 'var(--beer-header-gradient)',
+        'beer-card-bg-gradient': 'var(--beer-card-image-bg-gradient)',
       },
     },
   },

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { BeerName } from '../titles/beer-name'
 import { CardHorizontalCerveja } from '../cards/card-horizontal-cerveja'
 import { type TypeObjectCerveja } from '@/data/data'
+import { CardCerveja } from '../cards/card-cerveja'
 
 const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
   cervejas,
@@ -19,13 +20,13 @@ const ListaDeCervejas: React.FC<{ cervejas: TypeObjectCerveja[] }> = ({
         return (
           <li key={id}>
             <Link href={`/cervejas/${id}`}>
-              <CardHorizontalCerveja
+              <CardCerveja
                 nomeCerveja={nomeCerveja}
                 imagem={mainImage ?? 'undefined'}
                 createdAt={createdAt as unknown as Date}
               >
                 <BeerName cerveja={{ nomeCerveja, tipoCerveja }} />
-              </CardHorizontalCerveja>
+              </CardCerveja>
             </Link>
           </li>
         )
