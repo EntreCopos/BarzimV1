@@ -21,14 +21,14 @@ export const SocialBar: React.FC<{
   relationship: boolean
 }> = ({ metrics, myId, userId, relationship }) => {
   return (
-    <div className="grid gap-3 px-6 pb-4 pt-0 [grid-template-columns:_3fr_2fr]">
-      <section className="flex gap-2 text-marfim-barzim ">
+    <div className="grid grid-cols-[repeat(5,1fr)] gap-3 border-2 border-green-400 px-6 pb-4 pt-0 ">
+      <section className="col-span-3 flex gap-2 text-marfim-barzim ">
         {Object.keys(metrics).map((metricKey: keyof typeof metrics) => {
           const metric = metricKey as keyof typeof SocialLabels
 
           return (
             <div
-              className="min-w-20 flex-1 rounded-md bg-slate-barzim p-1 text-center"
+              className="min-w-20 flex-1 basis-1/3 rounded-md bg-slate-barzim p-1 text-center"
               key={metric}
             >
               <span>{metrics[metricKey]}</span>
@@ -37,6 +37,7 @@ export const SocialBar: React.FC<{
           )
         })}
       </section>
+
       {!!(myId !== userId) ? (
         <FollowForm myId={myId} user={userId} relationship={relationship} />
       ) : (

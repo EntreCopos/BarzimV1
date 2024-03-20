@@ -81,7 +81,7 @@ export interface CervejaBreadcrumbs {
 }
 
 export interface User {
-  id: string
+  id?: string
   name: string | null
   username: string | null
   image: string | null
