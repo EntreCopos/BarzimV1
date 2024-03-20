@@ -129,6 +129,65 @@ export const getUserMetrics = async (userName: string) => {
   }
 }
 
+export const getUserSocialProfile = async (userName: string) => {
+  const userId = await getUserIdByUsername(userName)
+
+  return await db.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      id: true,
+      name: true,
+      username: true,
+      image: true,
+      bio: true,
+      link: true,
+      genero: true,
+      role: true,
+      _count: {
+        select: {
+          UserCerveja: {
+            where: {
+              favorita: true,
+            },
+          },
+          followers: true,
+          following: true,
+        },
+      },
+      followers: {
+        select: {
+          follower: {
+            select: {
+              name: true,
+              id: true,
+              username: true,
+              image: true,
+              bio: true,
+              role: true,
+            },
+          },
+        },
+      },
+      following: {
+        select: {
+          following: {
+            select: {
+              name: true,
+              id: true,
+              username: true,
+              image: true,
+              bio: true,
+              role: true,
+            },
+          },
+        },
+      },
+    },
+  })
+}
+
 /**
  * Obtém a lista de seguidores de um usuário.
  * @param {string} userName - O nome de usuário do usuário.
