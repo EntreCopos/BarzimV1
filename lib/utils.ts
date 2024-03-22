@@ -81,6 +81,23 @@ export const convertFileToBase64 = async (file: File): Promise<string> => {
   })
 }
 
+export const readFileAsArrayBuffer = (file: File): Promise<ArrayBuffer> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+
+    reader.onload = (event) => {
+      if (event.target == null) return
+      resolve(event.target.result as ArrayBuffer)
+    }
+
+    reader.onerror = (error) => {
+      reject(error)
+    }
+
+    reader.readAsArrayBuffer(file)
+  })
+}
+
 /**
  * Converte um arquivo bruto para base64.
  * @param {RAFile} file - o arquivo bruto a ser convertido

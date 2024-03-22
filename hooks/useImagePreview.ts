@@ -1,5 +1,6 @@
-import { convertFileToBase64 } from '@/lib/utils'
+import { convertFileToBase64, readFileAsArrayBuffer } from '@/lib/utils'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 /**
  * Gera um hook para lidar com a visualização de imagem com um limite máximo de tamanho.
@@ -12,6 +13,7 @@ export const useImagePreview = (
   defaultImagePath: string = '/images/logo-placeholder.png'
 ) => {
   const [imagePreview, setImagePreview] = useState<string>(defaultImagePath)
+  // const [arrayBuffer, setArrayBuffer] = useState<ArrayBuffer | null>(null)
 
   const handleImagePreview = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -19,14 +21,20 @@ export const useImagePreview = (
     const file = event?.target?.files?.[0]
     if (file) {
       if (file.size > maxImageSizeKB * 1024) {
-        alert(`Escolha uma imagem menor que ${maxImageSizeKB} KB.`)
+        toast(`Escolha uma imagem menor que ${maxImageSizeKB} KB.`)
         return
       }
       const previewBase64 = await convertFileToBase64(file)
+      // const newArraryBuffer = await readFileAsArrayBuffer(file)
 
-      setImagePreview('data:image/jpeg;base64,' + previewBase64)
+      setImagePreview(`data:${file.type};base64,${previewBase64}`)
+      // setArrayBuffer(newArraryBuffer)
     }
   }
 
-  return { imagePreview, handleImagePreview }
+  return {
+    imagePreview,
+    handleImagePreview,
+    //arrayBuffer
+  }
 }
