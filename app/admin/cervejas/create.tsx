@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { useImagePreview } from '@/hooks/useImagePreview'
 import { Label } from '@radix-ui/react-label'
-import Image from 'next/image'
 import {
   Create,
   FileInput,
@@ -32,12 +32,10 @@ export const CreateCerveja = () => {
         <div className="flex w-full justify-center gap-6 space-x-4">
           <div>
             <Label>Imagem</Label>
-            <Image
-              className="mb-4 mt-2"
+            <img
+              className="mb-4 mt-2 h-[200px] w-[200px]"
               src={imagePreview}
               alt="logo"
-              width={200}
-              height={200}
             />
           </div>
         </div>

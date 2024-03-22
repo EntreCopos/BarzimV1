@@ -1,13 +1,6 @@
 'use server'
 import { uploadImageToCloudinary } from '@/lib/image_upload'
 import { convertFileToBase64 } from '@/lib/utils'
-import { v2 as cloudinary } from 'cloudinary'
-
-cloudinary.config({
-  cloud_name: process.env.CLD_NAME,
-  api_key: process.env.CLD_KEY,
-  api_secret: process.env.CLD_SEC,
-})
 
 /**
  * Faz o upload de uma imagem do avatar para o Cloudinary.
