@@ -27,6 +27,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({
           <Image
             className="w-full object-contain p-4"
             fill
+            sizes="100px"
             src={imageSrc as string}
             alt={altText}
           />
@@ -49,6 +50,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({
             <Image
               className="w-full object-contain p-4"
               fill
+              sizes="100px"
               src={imageSrc}
               alt={altText}
             />

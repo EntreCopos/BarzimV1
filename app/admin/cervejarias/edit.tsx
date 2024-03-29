@@ -1,5 +1,5 @@
 import { Label } from '@/components/ui/label'
-import { useImagePreview } from '@/hooks/useImagePreview'
+import { useImagePreviewAdmin } from '@/hooks/useImagePreview'
 import Image from 'next/image'
 import {
   DateInput,
@@ -11,7 +11,7 @@ import {
 } from 'react-admin'
 
 export const CervejariasEdit = () => {
-  const { imagePreview, handleImagePreview } = useImagePreview()
+  const { imagePreview, handleImagePreview } = useImagePreviewAdmin()
 
   return (
     <Edit mutationMode="pessimistic">
@@ -35,6 +35,7 @@ export const CervejariasEdit = () => {
           alt="logo"
           width={200}
           height={90}
+          sizes="300px"
         />
         <FileInput
           placeholder="Selecionar imagem"

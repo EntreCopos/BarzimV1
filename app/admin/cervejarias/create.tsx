@@ -1,10 +1,10 @@
-import { useImagePreview } from '@/hooks/useImagePreview'
+import { useImagePreviewAdmin } from '@/hooks/useImagePreview'
 import { Label } from '@radix-ui/react-label'
 import Image from 'next/image'
 import { Create, FileInput, SimpleForm, TextInput } from 'react-admin'
 
 export const CreateCervejaria = () => {
-  const { imagePreview, handleImagePreview } = useImagePreview()
+  const { imagePreview, handleImagePreview } = useImagePreviewAdmin()
   return (
     <Create>
       <SimpleForm>
