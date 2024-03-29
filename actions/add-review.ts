@@ -1,6 +1,8 @@
 'use server'
 import { createAvaliacao } from '@/data/avaliacao'
 import { uploadImageToCloudinary } from '@/lib/image_upload'
+import { reviewAdded_Activity } from './activities/review-added'
+import { getCurrentUserId } from '@/lib/auth'
 
 /**
  * Adiciona uma nova avaliação, fazendo upload de imagens para o Cloudinary antes de criar a avaliação.
@@ -10,6 +12,7 @@ import { uploadImageToCloudinary } from '@/lib/image_upload'
  */
 
 export const addReview = async (formData: FormData) => {
+  const currentUserId = await getCurrentUserId()
   try {
     const reviewData = {
       userId: formData.get('idUser') as string,
@@ -39,6 +42,8 @@ export const addReview = async (formData: FormData) => {
       reviewTexto: reviewData.reviewText,
       imagens: arrString,
     })
+
+    await reviewAdded_Activity(currentUserId, reviewData.cerveja as string)
 
     return { success: true }
   } catch (error) {

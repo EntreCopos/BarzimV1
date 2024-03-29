@@ -42,6 +42,7 @@ export const createAvaliacao = async (
       },
     },
     update: {
+      queroBeber: false, // assumindo que se fez o review, ja bebeu
       jaBebida: true, // assumindo que se fez o review, ja bebeu
       ...moreData,
     },
@@ -61,7 +62,7 @@ export const createAvaliacao = async (
  * @param {string} id - O ID da cerveja.
  * @returns {Promise<any[]>} As avaliações da cerveja.
  */
-export const getAvaliacoesByCerveja = async (id: string) => {
+export const getAvaliacoesByCerveja = async (id: string | number) => {
   const avaliacoes = await db.userCerveja.findMany({
     where: {
       cervejaId: +id,
@@ -72,9 +73,11 @@ export const getAvaliacoesByCerveja = async (id: string) => {
       },
     },
     select: {
+      id: true,
       reviewTexto: true,
       reviewLikes: true,
       nota: true,
+      createdAt: true,
       usuario: {
         select: {
           name: true,
@@ -86,6 +89,7 @@ export const getAvaliacoesByCerveja = async (id: string) => {
     orderBy: {
       createdAt: 'desc',
     },
+    take: 10,
   })
   return avaliacoes
 }

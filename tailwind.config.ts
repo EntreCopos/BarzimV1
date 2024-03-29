@@ -46,6 +46,10 @@ const config = {
           DEFAULT: 'hsl(var(--yellow-barzim-HSL))',
           foreground: 'hsl(var(--deep-black))',
         },
+        barzimContrast: {
+          DEFAULT: 'hsl(var(--yellow-barzim-HSL))',
+          foreground: 'hsl(var(--deep-black))',
+        },
         'slate-barzim': 'var(--slate-barzim)',
         'marfim-barzim': 'var(--marfim-barzim)',
         'deep-black': 'var(--deep-black)',

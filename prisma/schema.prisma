@@ -1,32 +1,12 @@
-enum UserRole {
-  ADMIN
-  USER
-  SUPPORT
-  GUEST
-}
-
-enum Genero {
-  MASCULINO
-  FEMININO
-  NAO_BINARIO
-  AGENERO
-  GENERO_FLUIDO
-  BIGENERO
-  OUTRO
-  N_INFORMADO
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DEV_URL_NON_POOLING")
 }
 
-//AUTH RELATED
 model VerificationToken {
   id      String   @id @default(cuid())
   email   String
@@ -60,46 +40,45 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-//USER RELATED
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
   email                 String?                @unique
   emailVerified         DateTime?
   image                 String?
-  bio                   String                 @default("Nada Informado")
-  link                  String?
   password              String?
   role                  UserRole               @default(USER)
   isTwoFactorEnabled    Boolean                @default(false)
   dateOfBirth           DateTime?
   username              String?                @unique
-  accounts              Account[]
-  twoFactorConfirmation TwoFactorConfirmation?
   isPrivate             Boolean                @default(false)
-  genero                Genero?
   cep                   String?
+  genero                Genero?
+  bio                   String                 @default("Nada Informado")
+  createdAt             DateTime               @default(now())
+  link                  String?
+  accounts              Account[]
+  Activity              Activity[]
+  twoFactorConfirmation TwoFactorConfirmation?
+  userBadges            UserBadges[]
+  UserCerveja           UserCerveja[]
   following             UserFollowing[]        @relation("Followers")
   followers             UserFollowing[]        @relation("Following")
-  UserCerveja           UserCerveja[]
-  userBadges            UserBadges[]
-  createdAt             DateTime               @default(now())
+  Liked                 UserLikedUserCerveja[]
 }
 
-//SOCIAL
 model UserFollowing {
   id          String   @id @default(cuid())
-  follower    User     @relation("Followers", fields: [followerId], references: [id], onDelete: Cascade)
   followerId  String
-  following   User     @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
   followingId String
   isRequested Boolean  @default(false)
   createdAt   DateTime @default(now())
+  follower    User     @relation("Followers", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
 
   @@unique([followerId, followingId])
 }
 
-//EXTERNAL ACCOUNT OAUTH CONNECTION
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -119,80 +98,70 @@ model Account {
 }
 
 model Cervejaria {
-  id            Int             @id @default(autoincrement())
-  nome          String
-  createdAt     DateTime?
-  logo          String?
-  cervejas      Cerveja[]
-  CervejaShadow CervejaShadow[]
+  id        Int       @id @default(autoincrement())
+  nome      String
+  logo      String?
+  createdAt DateTime? @default(now())
+  cervejas  Cerveja[]
 }
 
 model TipoCerveja {
-  id            Int             @id @default(autoincrement())
-  nome          String
-  descricao     String?
-  createdAt     DateTime?
-  cervejas      Cerveja[]
-  CervejaShadow CervejaShadow[]
+  id        Int       @id @default(autoincrement())
+  nome      String
+  descricao String?
+  createdAt DateTime? @default(now())
+  cervejas  Cerveja[]
 }
 
 model Cerveja {
   id                   Int           @id @default(autoincrement())
-  mainImage            String
   nomeCerveja          String
-  descriCerveja        String?
   teorAlcoolico        Float?
-  tempIdeal            String?
-  valorIBU             Float?
-  corpo                String?
   cervejariaId         Int
   tipoCervejaId        Int
+  corpo                String?
+  descriCerveja        String?
+  mainImage            String
+  tempIdeal            String?
+  valorIBU             Float?
+  notaMedia            Float?
+  createdAt            DateTime?     @default(now())
+  harmonizacoesCerveja String[]
+  ingredientesCerveja  String[]
   cervejaria           Cervejaria    @relation(fields: [cervejariaId], references: [id])
   tipoCerveja          TipoCerveja   @relation(fields: [tipoCervejaId], references: [id])
-  notaMedia            Float?
-  ingredientesCerveja  String[]
-  harmonizacoesCerveja String[]
-  createdAt            DateTime?     @default(now())
   UserCerveja          UserCerveja[]
 }
 
-model CervejaShadow {
-  id            Int         @id @default(autoincrement())
-  mainImage     String
-  nomeCerveja   String
-  descriCerveja String?
-  teorAlcoolico Float?
-  tempIdeal     String?
-  valorIBU      Float?
-  corpo         String?
-  cervejariaId  Int
-  tipoCervejaId Int
-  cervejaria    Cervejaria  @relation(fields: [cervejariaId], references: [id])
-  tipoCerveja   TipoCerveja @relation(fields: [tipoCervejaId], references: [id])
-  notaMedia     Float?
-  ingredientes  String[]
-  harmonizacoes String[]
-  createdAt     DateTime?
-}
-
 model UserCerveja {
-  id          Int       @id @default(autoincrement())
-  usuarioId   String
-  cervejaId   Int
-  favorita    Boolean   @default(false)
-  queroBeber  Boolean   @default(false)
-  jaBebida    Boolean   @default(false)
-  reviewTexto String?
-  reviewLikes Int?      @default(0)
-  nota        Float?
-  imagens     String[]
-  createdAt   DateTime  @default(now())
-  localizacao String?
-
-  usuario User    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  cerveja Cerveja @relation(fields: [cervejaId], references: [id], onDelete: Cascade)
+  id               Int                @id @default(autoincrement())
+  usuarioId        String
+  cervejaId        Int
+  favorita         Boolean            @default(false)
+  queroBeber       Boolean            @default(false)
+  jaBebida         Boolean            @default(false)
+  reviewTexto      String?
+  reviewLikes      Int?               @default(0)
+  nota             Float?
+  imagens          String[]
+  createdAt        DateTime           @default(now())
+  localizacao      String?
+  cerveja          Cerveja            @relation(fields: [cervejaId], references: [id], onDelete: Cascade)
+  usuario          User               @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  UsersLiked       UserLikedUserCerveja[]
 
   @@unique([usuarioId, cervejaId])
+}
+
+model UserLikedUserCerveja {
+  id      String      @id @default(cuid())
+  userId  String
+  user    User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likedId Int   
+  liked   UserCerveja @relation(fields: [likedId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+
+  @@unique([userId, likedId])
 }
 
 model Badges {
@@ -207,9 +176,70 @@ model UserBadges {
   userId    String
   badgeId   Int
   createdAt DateTime @default(now())
-
-  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  badge Badges @relation(fields: [badgeId], references: [id])
+  badge     Badges   @relation(fields: [badgeId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, badgeId])
+}
+
+model Activity {
+  id                   String      @id @default(cuid()) @unique
+  userId               String
+  createdAt            DateTime    @default(now())
+  actionType           UserActions
+  actionTarget         String?
+  actionAdditionalInfo String?
+  actionPerformer      User        @relation(fields: [userId], references: [id])
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  SUPPORT
+  GUEST
+}
+
+enum Genero {
+  MASCULINO
+  FEMININO
+  NAO_BINARIO
+  AGENERO
+  GENERO_FLUIDO
+  BIGENERO
+  OUTRO
+  N_INFORMADO
+}
+
+enum UserActions {
+  LOGGED
+  FEATURE_INTERACTED
+  BEER_RATED
+  PASSWORD_RESTORED
+  TWOFA_ACTIVATED
+  REVIEW_CREATED
+  REVIEW_DELETED
+  REVIEW_LIKED
+  REVIEW_DISLIKED
+  USER_FOLLOWED
+  USER_UNFOLLOWED
+  REQ_FOLLOW
+  REQ_ALLOWED
+  SHARED_USER
+  SHARED_REVIEW
+  SHARED_CONTENT
+  PROFILE_UPDATED
+  LIST_CREATED
+  LIST_ITEM_ADDED
+  LIST_ITEM_REMOVED
+  LIST_SHARED
+  LIST_DELETED
+  REPORT_USER
+  REPORT_REVIEW
+  REPORT_PICTURE
+  REPORT_ERROR
+  SELLER_REQUESTED
+  BADGE_RECEIVED
+  EVENT_CREATED
+  EVENT_ATTENDED
+  EVENT_CANCELLED
 }

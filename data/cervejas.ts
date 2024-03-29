@@ -148,8 +148,8 @@ export const getCerverjasByTipo = async (id: string) => {
  * @param {string} id - O ID da cerveja.
  * @returns {Promise<object | null>} Uma Promise que resolve para um objeto representando a cerveja ou null se não for encontrada.
  */
-export const getCervejaById = async (id: string) => {
-  if (typeof id == undefined) return null
+export const getCervejaById = async (id: string | number) => {
+  if (id === 'undefined') return null
   try {
     const cerveja = await db.cerveja.findUnique({
       where: {

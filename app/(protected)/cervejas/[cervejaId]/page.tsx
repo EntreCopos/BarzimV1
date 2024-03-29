@@ -9,30 +9,25 @@ import { ButtonsWrapper } from '@/components/wrappers/buttons-wrapper'
 import { BrindarButton } from '@/components/buttons/brindar-button'
 import { AddtoListButton } from '@/components/buttons/add-to-list-button'
 import { getAvaliacoesByCerveja, relUserCerv } from '@/data/avaliacao'
-import { ReviewWrapper } from '@/components/wrappers/review-wrapper'
-import { ReviewDescription } from '@/components/wrappers/review-description-wrapper'
 import DetalhesCerveja from '@/components/lists/detalhes-da-cerveja/detalhes-da-cerveja'
 import { StarReviews } from '@/components/stars/stars-reviews'
-import ReviewHeader from '@/components/review/review-header/review-header'
-import NinguemAvaliou from '@/components/cards/ninguem-avaliou/ninguem-avaliou'
 import SectionTitle from '@/components/dashboard/title-sections/title-section'
-import { firstTwoLetters } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { BeerName } from '@/components/titles/beer-name'
-import { SelectSeparator } from '@/components/ui/select'
-import { BrindarReviewButton } from '@/components/buttons/brindar-review-button'
 import { Badge } from '@/components/ui/badge'
+import { ListUserReviews } from '@/components/lists/lista-user-reviews-cerveja'
+import { Suspense } from 'react'
+import Loading from '@/app/loading'
 
 export default async function Cerveja({
   params,
 }: {
   params: { cervejaId: string }
 }) {
-  const cerveja = await getCervejaById(params.cervejaId)
-
-  if (!cerveja) return
-
   const session = await auth()
+  if (!session) return
+
+  const cerveja = await getCervejaById(params.cervejaId)
+  if (!cerveja) return
 
   const userRelCerveja = await relUserCerv(
     session?.user.id as string,
@@ -52,11 +47,9 @@ export default async function Cerveja({
     nome: cerveja?.nomeCerveja,
   }
 
-  const avaliacoesCerveja = await getAvaliacoesByCerveja(params.cervejaId)
-
   return (
     <>
-      <section className="bg-beer-header-gradient overflow-hidden bg-secondary/60 object-cover p-1 text-secondary-foreground md:p-2">
+      <section className="overflow-hidden bg-secondary/60 bg-beer-header-gradient object-cover p-1 text-secondary-foreground md:p-2">
         <BreadcrumbsCerveja cerveja={cervejaBreadcrumbs} />
 
         <div
@@ -119,53 +112,9 @@ export default async function Cerveja({
           </div>
         )}
       </div>
-
-      <div className="px-8">
-        {!!avaliacoesCerveja && (
-          <SectionTitle variant={'small'} title="Avaliações no Barzim" />
-        )}
-        {!!avaliacoesCerveja &&
-          avaliacoesCerveja.map((avaliacao, index) => {
-            return (
-              <div
-                key={
-                  avaliacao.usuario.username + '_' + index + '_' + cerveja.id
-                }
-              >
-                <ReviewWrapper>
-                  <Avatar>
-                    <AvatarImage
-                      src={avaliacao.usuario.image ?? 'undefined'}
-                      className="aspect-square"
-                    />
-                    <AvatarFallback className="bg-yellow-barzim">
-                      {firstTwoLetters(avaliacao.usuario.username)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex w-full justify-between">
-                    <ReviewHeader
-                      userName={avaliacao.usuario.username as string}
-                      beerName={cerveja.nomeCerveja}
-                    />
-                    <StarReviews
-                      size="sm"
-                      variant="copo"
-                      nota={avaliacao.nota as number}
-                    />
-                  </div>
-                  <ReviewDescription
-                    description={avaliacao.reviewTexto as string}
-                  />
-                  {/* <BrindarReviewButton /> */}
-                </ReviewWrapper>
-                <SelectSeparator />
-              </div>
-            )
-          })}
-        {avaliacoesCerveja && avaliacoesCerveja.length == 0 && (
-          <NinguemAvaliou cervejaId={cerveja.id + ''} />
-        )}
-      </div>
+      <Suspense fallback={<Loading />}>
+        <ListUserReviews cerveja={cerveja} />
+      </Suspense>
     </>
   )
 }
