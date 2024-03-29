@@ -1,5 +1,8 @@
 'use server'
 import { addToUserCerveja } from '@/data/userCerveja' // Atualize com o caminho para a função addToUserCerveja
+import { getCurrentUserId } from '@/lib/auth'
+import { db } from '@/lib/db'
+import { brindou_Activity, undoBrindou_Activity } from './activities/brindar'
 
 /**
  * Adiciona uma cerveja à lista de um usuário.
@@ -22,6 +25,58 @@ export const addCervejaToList = async (
     )
   } catch (err) {
     console.error('Erro ao adicionar cerveja à lista:', err)
+    return null
+  }
+}
+
+export const likeUserCerveja = async (likedId: number) => {
+  const userId = await getCurrentUserId()
+  try {
+    await db.userLikedUserCerveja.create({
+      data: {
+        userId,
+        likedId,
+      },
+    })
+    await brindou_Activity(likedId)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const undoLikeUserCerveja = async (likedId: number) => {
+  const userId = await getCurrentUserId()
+  try {
+    await db.userLikedUserCerveja.deleteMany({
+      where: {
+        userId,
+        likedId,
+      },
+    })
+    await undoBrindou_Activity(likedId)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const getUsersLikedUserCerveja = async (id: number) => {
+  try {
+    const usersLiked = await db.userCerveja.findFirst({
+      where: {
+        id,
+      },
+      select: {
+        _count: {
+          select: {
+            UsersLiked: true,
+          },
+        },
+        UsersLiked: true,
+      },
+    })
+    return usersLiked
+  } catch (err) {
+    console.error(err)
     return null
   }
 }

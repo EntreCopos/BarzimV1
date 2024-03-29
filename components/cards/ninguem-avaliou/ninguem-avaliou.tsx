@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 interface NinguemAvaliouProps {
-  cervejaId: string
+  cervejaId: string | number
 }
 
 const NinguemAvaliou: React.FC<NinguemAvaliouProps> = ({ cervejaId }) => {

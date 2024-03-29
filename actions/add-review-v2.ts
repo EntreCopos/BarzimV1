@@ -1,5 +1,7 @@
 'use server'
 import { createAvaliacao } from '@/data/avaliacao'
+import { reviewAdded_Activity } from './activities/review-added'
+import { getCurrentUserId } from '@/lib/auth'
 
 /**
  * Adiciona uma nova avaliação.
@@ -9,6 +11,8 @@ import { createAvaliacao } from '@/data/avaliacao'
  */
 
 export const addReviewV2 = async (formData: FormData) => {
+  const currentUserId = await getCurrentUserId()
+
   try {
     const reviewData = {
       userId: formData.get('idUser') as string,
@@ -25,6 +29,8 @@ export const addReviewV2 = async (formData: FormData) => {
       reviewTexto: reviewData.reviewText,
       imagens: reviewData.images,
     })
+
+    await reviewAdded_Activity(currentUserId, reviewData.cerveja as string)
 
     return { success: true }
   } catch (error) {

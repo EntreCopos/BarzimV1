@@ -6,15 +6,19 @@ interface SectionTitleProps {
   title: ReactNode
   button?: ReactNode
   variant?: 'large' | 'small'
+  className?: string
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({
   title,
   button,
   variant = 'large',
+  className,
 }) => {
   return (
-    <div className="flex items-center justify-between  pb-2 pt-4">
+    <div
+      className={cn('flex items-center justify-between  pb-2 pt-4', className)}
+    >
       <h2
         className={cn(
           variant !== 'large'

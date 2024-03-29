@@ -17,14 +17,10 @@ const AvaliarCerveja = async ({
   const cerveja = await getCervejaById(params.cervejaId)
   const myId = session?.user.id as string
 
-  //checa se usuario e cerveja ja possui rel
-  const isRelUserCerveja = await relUserCerv(myId, params.cervejaId)
-
   const userHasReviewed = await userHasReviewedCervejaById(
     params.cervejaId,
     myId
   )
-
 
   if (!!userHasReviewed) redirect(`/cervejas/${params.cervejaId}/avaliou`)
   else

@@ -113,15 +113,15 @@ export type TReview = {
   reviewLikes: number | null
   nota: number | null
   createdAt: Date | null
-  imagens: string[]
+  imagens?: string[]
   usuario: {
     name: string | null
     username: string | null
     image: string | null
   }
-  cerveja: {
-    nomeCerveja: string
-    id: number
+  cerveja?: {
+    nomeCerveja?: string
+    id?: number
   }
 }
 

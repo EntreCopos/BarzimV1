@@ -8,6 +8,7 @@ import authConfig from '@/auth.config'
 import { getUserById } from '@/data/user'
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation'
 import { generateFromEmail, generateUsername } from 'unique-username-generator'
+import { loggedIn_Activity } from './actions/activities/logged-in'
 
 export const {
   handlers: { GET, POST },
@@ -44,7 +45,11 @@ export const {
   callbacks: {
     async signIn({ user, account }) {
       // deixa o login via oauth passar sem verificação
-      if (account?.provider !== 'credentials') return true
+      if (account?.provider !== 'credentials') {
+        await loggedIn_Activity(user.id as string)
+
+        return true
+      }
 
       //@ts-expect-error não falhou ate aqui
       const existingUser = await getUserById(user.id)
@@ -64,7 +69,7 @@ export const {
           where: { id: twoFactorConfirmation.id },
         })
       }
-
+      await loggedIn_Activity(existingUser.id)
       return true
     },
     //@ts-expect-error erro apenas com esse type token na sessao
