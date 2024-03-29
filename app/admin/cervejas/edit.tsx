@@ -1,4 +1,4 @@
-import { useImagePreview } from '@/hooks/useImagePreview'
+import { useImagePreviewAdmin } from '@/hooks/useImagePreview'
 import { Label } from '@radix-ui/react-label'
 import Image from 'next/image'
 import {
@@ -14,7 +14,7 @@ import {
 } from 'react-admin'
 
 export const CervejaEdit = () => {
-  const { imagePreview, handleImagePreview } = useImagePreview(
+  const { imagePreview, handleImagePreview } = useImagePreviewAdmin(
     800,
     '/images/imagem-cerveja-placeholder.png'
   )
@@ -43,12 +43,10 @@ export const CervejaEdit = () => {
           </div>
           <div>
             <Label>Nova Imagem</Label>
-            <Image
-              className="mb-4 mt-2"
+            <img
+              className="mb-4 mt-2 size-[200px]"
               src={imagePreview}
               alt="logo"
-              width={200}
-              height={200}
             />
           </div>
         </div>

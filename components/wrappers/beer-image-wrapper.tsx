@@ -14,6 +14,7 @@ export const BeerImage: React.FC<{
         src={src}
         fill={true}
         alt={alt + 'no Barzim'}
+        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, (max-width: 2560px) 20vw"
       />
     </div>
   )

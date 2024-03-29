@@ -9,7 +9,7 @@ interface NinguemAvaliouProps {
 
 const NinguemAvaliou: React.FC<NinguemAvaliouProps> = ({ cervejaId }) => {
   return (
-    <div className="space-y-4 px-6 py-4 text-center">
+    <div className="space-y-4 px-6 py-12 text-center">
       <Image
         src={imagemNinguemAvaliou}
         alt="Imagem da Cerveja"

@@ -29,7 +29,7 @@ export const CardCerveja: React.FC<TCardCervejaProps> = ({
       >
         <div
           className={cn(
-            'group-hover:bg-beer-card-bg-gradient flex items-center justify-center bg-gray-cards transition-all',
+            'flex items-center justify-center bg-gray-cards transition-all group-hover:bg-beer-card-bg-gradient',
             variant === 'vertical' && 'w-full flex-col justify-start'
           )}
         >
@@ -42,6 +42,7 @@ export const CardCerveja: React.FC<TCardCervejaProps> = ({
           >
             <Image
               className="object-contain p-3 transition-all group-hover:scale-[1.05]"
+              sizes="(max-width: 768px) 200px, (max-width: 1200px) 500px"
               src={imagem}
               fill={true}
               alt={nomeCerveja}

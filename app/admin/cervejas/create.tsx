@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useImagePreview } from '@/hooks/useImagePreview'
+import { useImagePreviewAdmin } from '@/hooks/useImagePreview'
 import { Label } from '@radix-ui/react-label'
 import {
   Create,
@@ -12,7 +12,7 @@ import {
 } from 'react-admin'
 
 export const CreateCerveja = () => {
-  const { imagePreview, handleImagePreview } = useImagePreview(
+  const { imagePreview, handleImagePreview } = useImagePreviewAdmin(
     800,
     '/images/imagem-cerveja-placeholder.png'
   )

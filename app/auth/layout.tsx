@@ -16,7 +16,6 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <Image
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={blurDataURL}
           src={randomBg}
           fill={true}
           alt="Background"

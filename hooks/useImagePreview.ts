@@ -13,7 +13,6 @@ export const useImagePreview = (
   defaultImagePath: string = '/images/logo-placeholder.png'
 ) => {
   const [imagePreview, setImagePreview] = useState<string>(defaultImagePath)
-  // const [arrayBuffer, setArrayBuffer] = useState<ArrayBuffer | null>(null)
 
   const handleImagePreview = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -24,11 +23,38 @@ export const useImagePreview = (
         toast(`Escolha uma imagem menor que ${maxImageSizeKB} KB.`)
         return
       }
-      const previewBase64 = await convertFileToBase64(file)
+      const base64data = await convertFileToBase64(file)
+      const base64String = `data:${file.type};base64,${base64data}`
+
       // const newArraryBuffer = await readFileAsArrayBuffer(file)
 
-      setImagePreview(`data:${file.type};base64,${previewBase64}`)
+      setImagePreview(base64String)
       // setArrayBuffer(newArraryBuffer)
+    }
+  }
+
+  return {
+    imagePreview,
+    handleImagePreview,
+    //arrayBuffer
+  }
+}
+
+export const useImagePreviewAdmin = (
+  maxImageSizeKB: number = 500,
+  defaultImagePath: string = '/images/logo-placeholder.png'
+) => {
+  const [imagePreview, setImagePreview] = useState<string>(defaultImagePath)
+  const handleImagePreview = async (file: File) => {
+    if (file) {
+      if (file!.size > maxImageSizeKB * 1024) {
+        toast(`Escolha uma imagem menor que ${maxImageSizeKB} KB.`)
+        return
+      }
+      const base64data = await convertFileToBase64(file)
+      const base64String = `data:${file.type};base64,${base64data}`
+
+      setImagePreview(base64String)
     }
   }
 

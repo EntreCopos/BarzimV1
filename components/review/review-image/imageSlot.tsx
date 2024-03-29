@@ -19,10 +19,11 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ imageUrl, key }) => {
             fill={true}
             alt="Imagem da avaliação"
             className="h-full object-cover"
+            sizes="200px"
           />
-          <button className="absolute right-1 top-1 rounded-full bg-red-500 p-[2px] text-white">
+          {/* <button className="absolute right-1 top-1 rounded-full bg-red-500 p-[2px] text-white">
             <IoMdClose />
-          </button>
+          </button> */}
         </div>
       ) : (
         <div className="flex h-24 basis-1/4 items-center justify-center rounded-lg border-2 border-secondary-foreground p-6 text-secondary-foreground opacity-60 ">

@@ -15,14 +15,14 @@ const AvatarReview: React.FC<AvatarReviewProps> = ({
     return (
       <div
         style={{ width: `${width}px` }}
-        className="aspect-square overflow-hidden rounded-full border-2 border-yellow-barzim"
+        className="relative aspect-square overflow-hidden rounded-full border-2 border-yellow-barzim object-cover"
       >
         <Image
           src={avatarSrc}
           alt="User Avatar"
-          className="h-full w-full object-cover"
-          width={width}
-          height={height}
+          className="transition-200 h-full w-full object-cover transition-all hover:scale-105"
+          sizes="100px"
+          fill={true}
         />
       </div>
     )

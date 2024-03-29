@@ -8,15 +8,18 @@ import { StarReviews } from '../stars/stars-reviews'
 export const FeedCardImage: React.FC<{ avaliacao: TReview }> = ({
   avaliacao,
 }) => {
+  if (!avaliacao.cerveja || !avaliacao.imagens) return
+
   const image = JSON.parse(avaliacao.imagens[0])
 
   return (
     <>
-      <div className={cn('relative aspect-square w-full')}>
+      <div className="relative aspect-square w-full">
         <Image
           style={{ objectFit: 'cover' }}
           src={image.secure_url}
           fill={true}
+          sizes="480px"
           alt={'Avaliação de ' + avaliacao.usuario.name}
         />
       </div>

@@ -1,6 +1,11 @@
 import NinguemAvaliou from '../cards/ninguem-avaliou/ninguem-avaliou'
 import SectionTitle from '../dashboard/title-sections/title-section'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarImageNext,
+} from '@/components/ui/avatar'
 import ReviewHeader from '@/components/review/review-header/review-header'
 import { ReviewWrapper } from '../wrappers/review-wrapper'
 import { SelectSeparator } from '../ui/select'
@@ -36,9 +41,10 @@ export const ListUserReviews: React.FC<{
               >
                 <ReviewWrapper>
                   <Avatar>
-                    <AvatarImage
+                    <AvatarImageNext
+                      alt={avaliacao.usuario.name}
                       src={avaliacao.usuario.image ?? 'undefined'}
-                      className="aspect-square"
+                      className="aspect-square border-2 border-yellow-barzim"
                     />
                     <AvatarFallback className="bg-yellow-barzim text-black">
                       {firstTwoLetters(avaliacao.usuario.username)}
