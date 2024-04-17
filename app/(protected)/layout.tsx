@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { Suspense } from 'react'
 import Loading from '@/app/loading'
 import { getUsernameById } from '@/data/user'
+import { Footer } from '@/components/footer/footer'
 
 export default async function ProtectedLayout({
   children,
@@ -41,6 +42,7 @@ export default async function ProtectedLayout({
         </div>
       </div>
       <BottomMenu currUser={user?.username as string} />
+      <Footer />
       <Toaster />
     </div>
   )
