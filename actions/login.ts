@@ -12,6 +12,7 @@ import { sendVerificationEmail, sendTwoFactorTokenEmail } from '@/lib/mail'
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import { generateVerificationToken, generateTwoFactorToken } from '@/lib/tokens'
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation'
+import { cookies } from 'next/headers'
 
 /**
  * Efetua o processo de login de um usuário.
@@ -98,10 +99,12 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   }
 
   try {
+    const target = cookies().get('TARGET_LOGIN_REDIRECT')?.value || null
+    cookies().delete('TARGET_LOGIN_REDIRECT')
     await signIn('credentials', {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirectTo: target ?? DEFAULT_LOGIN_REDIRECT,
     })
   } catch (error) {
     if (error instanceof AuthError) {
