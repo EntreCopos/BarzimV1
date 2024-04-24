@@ -1,4 +1,6 @@
 import NextAuth from 'next-auth'
+import { NextRequest, NextResponse } from 'next/server'
+
 import { cookies } from 'next/headers'
 
 import authConfig from '@/auth.config'
@@ -11,7 +13,10 @@ import {
 
 const { auth } = NextAuth(authConfig)
 
-export default auth((req) => {
+type ReqWithAuth = NextRequest & {
+  auth: unknown
+}
+export default auth((req: ReqWithAuth) => {
   //console.log('REQ Auth Passando pelo Middleware contem session ::::', req.auth)
 
   const { nextUrl } = req
@@ -24,8 +29,7 @@ export default auth((req) => {
   const isRestricaoRoute = nextUrl.pathname == '/restricao-idade'
   const isOBarzimRedirect = nextUrl.pathname == '/obarzim'
 
-  const dob = cookies().get('dateOfBirth')
-  const isDob = !!dob
+  const hasDoB = cookies().has('dateOfBirth')
 
   if (isApiAuthRoute) {
     return null
@@ -36,30 +40,51 @@ export default auth((req) => {
   }
 
   if (
-    (!isDob && isAgeCheckRoute) ||
-    (!isDob && isRestricaoRoute) ||
-    (!isDob && isLoggedIn)
+    (!hasDoB && isAgeCheckRoute) ||
+    (!hasDoB && isRestricaoRoute) ||
+    (!hasDoB && isLoggedIn)
   ) {
     return null
   }
 
-  if (!isDob && !isLoggedIn) {
-    return Response.redirect(new URL('/auth/age-verification', nextUrl))
+  if (!hasDoB && !isLoggedIn) {
+    const response = NextResponse.redirect(
+      new URL('/auth/age-verification', nextUrl)
+    )
+    if (nextUrl.pathname !== '/' && !isAuthRoute) {
+      response.cookies.set('TARGET_LOGIN_REDIRECT', nextUrl.basePath, {
+        value: nextUrl.pathname,
+        expires: Date.now() + 10 * 60 * 1000,
+      })
+    }
+    return response
   }
 
-  if (isAgeCheckRoute && isDob) {
+  if (isAgeCheckRoute && hasDoB) {
     return Response.redirect(new URL('/', nextUrl))
   }
 
   if (isAuthRoute) {
     if (isLoggedIn) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
+      const target = cookies().get('TARGET_LOGIN_REDIRECT')?.value
+
+      const redirect = target ?? DEFAULT_LOGIN_REDIRECT
+      return Response.redirect(new URL(redirect, nextUrl))
     }
     return null
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL('/auth/login', nextUrl))
+    const response = NextResponse.redirect(new URL('/auth/login', nextUrl))
+
+    if (nextUrl.pathname !== DEFAULT_LOGIN_REDIRECT) {
+      response.cookies.set('TARGET_LOGIN_REDIRECT', nextUrl.basePath, {
+        value: nextUrl.pathname,
+        expires: Date.now() + 10 * 60 * 1000,
+      })
+    }
+
+    return response
   }
 
   return null

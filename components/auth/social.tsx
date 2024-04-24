@@ -5,11 +5,15 @@ import { FaDiscord, FaGithub, FaGoogle } from 'react-icons/fa'
 
 import { Button } from '@/components/ui/button'
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
+import Cookie from 'js-cookie'
 
 export const Social = () => {
+  const target = Cookie.get('TARGET_LOGIN_REDIRECT') || null
+
   const signInWith = (provider: 'google' | 'github' | 'discord' | 'apple') => {
+    if (!!target) Cookie.remove('TARGET_LOGIN_REDIRECT')
     signIn(provider, {
-      callbackUrl: DEFAULT_LOGIN_REDIRECT,
+      callbackUrl: target ?? DEFAULT_LOGIN_REDIRECT,
     })
   }
 
