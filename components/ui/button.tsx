@@ -9,6 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        pressable:
+          'border border-b-4 border-black/45 bg-white text-black hover:border-b hover:bg-[currentColor]/80',
         barzimPrimary:
           'rounded-full border-input bg-yellow-barzim text-primary-foreground hover:bg-[#fec435]/90',
         default:

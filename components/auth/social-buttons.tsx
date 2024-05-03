@@ -8,12 +8,12 @@ import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import Cookie from 'js-cookie'
 
 export const Social = () => {
-  const target = Cookie.get('TARGET_LOGIN_REDIRECT') || null
+  const target_redirect = Cookie.get('TARGET_LOGIN_REDIRECT') || null
 
   const signInWith = (provider: 'google' | 'github' | 'discord' | 'apple') => {
-    if (!!target) Cookie.remove('TARGET_LOGIN_REDIRECT')
+    if (!!target_redirect) Cookie.remove('TARGET_LOGIN_REDIRECT')
     signIn(provider, {
-      callbackUrl: target ?? DEFAULT_LOGIN_REDIRECT,
+      callbackUrl: target_redirect ?? DEFAULT_LOGIN_REDIRECT,
     })
   }
 
@@ -25,19 +25,22 @@ export const Social = () => {
 
       <div className="flex w-full items-center justify-center gap-x-2 px-6">
         <Button
-          className="w-full border border-b-4 border-stone-600 bg-stone-300 p-6 text-stone-900 hover:border-b hover:bg-stone-400"
+          variant={'pressable'}
+          className="w-full bg-stone-300 p-6 text-stone-900 hover:bg-stone-400"
           onClick={() => signInWith('google')}
         >
           <FaGoogle className="h-5 w-5" />
         </Button>
         <Button
-          className="w-full border border-b-4 border-stone-600 bg-stone-300 p-6 text-stone-900 hover:border-b hover:bg-stone-400"
+          variant={'pressable'}
+          className="w-full bg-stone-300 p-6 text-stone-900 hover:bg-stone-400"
           onClick={() => signInWith('discord')}
         >
           <FaDiscord className="h-5 w-5" />
         </Button>
         <Button
-          className="w-full border border-b-4 border-stone-600 bg-stone-300 p-6 text-stone-900 hover:border-b hover:bg-stone-400"
+          variant={'pressable'}
+          className="w-full bg-stone-300 p-6 text-stone-900 hover:bg-stone-400"
           onClick={() => signInWith('github')}
         >
           <FaGithub className="h-5 w-5" />

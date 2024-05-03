@@ -1,6 +1,6 @@
 import { Background } from '@/components/assets/background'
 import { LoginForm } from '@/components/auth/login-form'
-import { BoxRegister } from '@/components/cards/box-register'
+import { BoxRegister } from '@/components/auth/box-register'
 import { Logo } from '@/components/logos/logo-barzim'
 import { AuthFormsWrapper } from '@/components/wrappers/auth-forms-wrapper/auth-forms-wrapper'
 import Link from 'next/link'

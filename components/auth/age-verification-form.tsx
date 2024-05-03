@@ -56,7 +56,7 @@ export const AgeVerificationForm = () => {
             name="day"
             render={({ field }) => (
               <FormItem className="">
-                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                <FormControl className="bg-zinc-700 bg-opacity-60 text-center text-white text-opacity-60">
                   <Input
                     {...field}
                     placeholder="Dia"
@@ -78,7 +78,7 @@ export const AgeVerificationForm = () => {
             name="month"
             render={({ field }) => (
               <FormItem>
-                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                <FormControl className="bg-zinc-700 bg-opacity-60 text-center text-white text-opacity-60">
                   <Input
                     {...field}
                     placeholder="Mês"
@@ -100,7 +100,7 @@ export const AgeVerificationForm = () => {
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormControl className="border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-5 text-center text-white text-opacity-60">
+                <FormControl className="bg-zinc-700 bg-opacity-60 text-center text-white text-opacity-60">
                   <Input
                     {...field}
                     placeholder="Ano"

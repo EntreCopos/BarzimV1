@@ -15,12 +15,12 @@ const config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -43,8 +43,8 @@ const config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         'yellow-barzim': {
-          DEFAULT: 'hsl(var(--yellow-barzim-HSL))',
-          foreground: 'hsl(var(--deep-black))',
+          DEFAULT: 'hsl(var(--yellow-barzim-HSL) / <alpha-value>)',
+          foreground: 'hsl(var(--deep-black) / <alpha-value>)',
         },
         barzimContrast: {
           DEFAULT: 'hsl(var(--yellow-barzim-HSL))',
@@ -85,10 +85,15 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'caret-blink': 'caret-blink 1.25s ease-out infinite'
       },
       backgroundImage: {
         'beer-header-gradient': 'var(--beer-header-gradient)',

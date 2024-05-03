@@ -2,18 +2,18 @@ import Link from 'next/link'
 
 export default function TermsOfService() {
   return (
-    <div className="mx-auto w-2/4 px-4 py-8">
+    <div className="mx-auto w-full px-4 py-8 md:w-2/4">
       <h1 className="mb-3 text-3xl">Termos e Condições de Uso</h1>
       <h2 className="mb-4 text-2xl font-semibold">1. Termos</h2>
       <p className="mb-4 text-gray-700">
         Ao acessar ao site{' '}
-        <Link href="https://barzim.tech">
-          <span className="text-blue-500 hover:underline">Barzim</span>
+        <Link href="/">
+          <span className="text-yellow-barzim hover:underline">Barzim</span>
         </Link>
         , concorda em cumprir estes termos de serviço, todas as leis e
-        regulamentos aplicáveis ​​e concorda que é responsável pelo cumprimento
-        de todas as leis locais aplicáveis. Se você não concordar com algum
-        desses termos, está proibido de usar ou acessar este site. Os materiais
+        regulamentos aplicáveis e concorda que é responsável pelo cumprimento de
+        todas as leis locais aplicáveis. Se você não concordar com algum desses
+        termos, está proibido de usar ou acessar este site. Os materiais
         contidos neste site são protegidos pelas leis de direitos autorais e
         marcas comerciais aplicáveis.
       </p>
@@ -65,14 +65,14 @@ export default function TermsOfService() {
         </li>
         <li>
           Além disso, o Barzim não garante ou faz qualquer representação
-          relativa à precisão, aos resultados prováveis ​​ou à confiabilidade do
+          relativa à precisão, aos resultados prováveis ou à confiabilidade do
           uso dos materiais em seu site ou de outra forma relacionado a esses
           materiais ou em sites vinculados a este site.
         </li>
       </ol>
       <h2 className="mb-4 text-2xl font-semibold">4. Limitações</h2>
       <p className="mb-4 text-gray-700">
-        Em nenhum caso o Barzim ou seus fornecedores serão responsáveis ​​por
+        Em nenhum caso o Barzim ou seus fornecedores serão responsáveis por
         quaisquer danos (incluindo, sem limitação, danos por perda de dados ou
         lucro ou devido a interrupção dos negócios) decorrentes do uso ou da
         incapacidade de usar os materiais em Barzim, mesmo que Barzim ou um

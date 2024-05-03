@@ -15,18 +15,12 @@ export const LoginButton = ({
 }: LoginButtonProps) => {
   const router = useRouter()
 
-  const onClick = () => {
-    router.push('/auth/login')
-  }
-
-  //a fazer
-  if (mode === 'modal') {
-    return <span></span>
-  }
-
   return (
-    <span onClick={onClick} className="cursor-pointer">
+    <button
+      onClick={() => router.push('/auth/login')}
+      className="cursor-pointer"
+    >
       {children}
-    </span>
+    </button>
   )
 }

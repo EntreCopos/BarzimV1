@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { Social } from '../auth/social'
+import { Social } from './social-buttons'
 
 interface CardWrapperProps {
   headerTitle: React.ReactNode

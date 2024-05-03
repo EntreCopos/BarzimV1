@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input'
 import { LoginSchema } from '@/schemas'
 import { cn } from '@/lib/utils'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '../ui/input-otp'
 
 export const LoginForm = () => {
   const searchParams = useSearchParams()
@@ -79,17 +80,52 @@ export const LoginForm = () => {
               control={form.control}
               name="code"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Código 2FA</FormLabel>
-                  <FormControl className="">
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="999999"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+                <>
+                  {/* <InputOTP
+                    onChange={(e) => console.log(e)}
+                    className="w-full"
+                    maxLength={6}
+                  >
+                    <InputOTPGroup>
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={0}
+                      />
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={1}
+                      />
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={2}
+                      />
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={3}
+                      />
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={4}
+                      />
+                      <InputOTPSlot
+                        className="h-12 w-full bg-zinc-700 bg-opacity-60 text-white text-opacity-60"
+                        index={5}
+                      />
+                    </InputOTPGroup>
+                  </InputOTP> */}
+
+                  <FormItem>
+                    <FormLabel>Código 2FA</FormLabel>
+                    <FormControl className="h-fit w-full border-2 border-black border-opacity-20 bg-zinc-700 bg-opacity-60 p-3 text-white text-opacity-60">
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        placeholder="999999"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </>
               )}
             />
           )}
@@ -145,20 +181,21 @@ export const LoginForm = () => {
                   </FormItem>
                 )}
               />
+              <div className="text-left text-sm">
+                <Link href="/auth/reset">
+                  <span className="font-medium text-yellow-barzim">
+                    Esqueci minha senha
+                  </span>
+                </Link>
+              </div>
             </>
           )}
-          <div className="text-left text-sm">
-            <Link href="/auth/reset">
-              <span className="font-medium text-yellow-barzim">
-                Esqueci minha senha
-              </span>
-            </Link>
-          </div>
         </div>
         <Button
           disabled={isPending}
+          variant={'pressable'}
           type="submit"
-          className="my-3 h-12 w-full rounded-full bg-yellow-barzim bg-opacity-80 font-bold text-black hover:bg-[#ecbf4e] hover:bg-opacity-100"
+          className="my-3 h-12 w-full bg-yellow-barzim font-bold hover:bg-yellow-barzim/90"
         >
           {showTwoFactor ? 'Confirmar' : 'Entrar'}
         </Button>

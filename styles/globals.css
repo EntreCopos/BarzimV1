@@ -8,26 +8,26 @@
     -moz-osx-font-smoothing: grayscale;
 
     /* shadcn= theme light */
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 43, 99%, 60%;
-    --primary-foreground: 26 83.3% 14.1%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
+    --background: 0deg 0% 100%;
+    --foreground: 20deg 14.3% 4.1%;
+    --card: 0deg 0% 100%;
+    --card-foreground: 20deg 14.3% 4.1%;
+    --popover: 0deg 0% 100%;
+    --popover-foreground: 20deg 14.3% 4.1%;
+    --primary: 43degdeg 99%, 60%;
+    --primary-foreground: 26deg 83.3% 14.1%;
+    --secondary: 60deg 4.8% 95.9%;
+    --secondary-foreground: 24deg 9.8% 10%;
+    --muted: 60deg 4.8% 95.9%;
+    --muted-foreground: 25deg 5.3% 44.7%;
+    --accent: 60deg 4.8% 95.9%;
+    --accent-foreground: 24deg 9.8% 10%;
+    --destructive: 0deg 84.2% 60.2%;
+    --destructive-foreground: 60deg 9.1% 97.8%;
+    --border: 20deg 5.9% 90%;
+    --input: 20deg 5.9% 90%;
     /* --ring: 20 14.3% 4.1%; */
-    --ring: 35.5 91.7% 32.9%;
+    --ring: 35.5deg 91.7% 32.9%;
 
     --radius: 0.75rem;
 
@@ -35,7 +35,7 @@
     --logo-filter: invert(1) saturate(0);
     --icon-filter: invert(0);
     --yellow-barzim: #fec435;
-    --yellow-barzim-HSL: 43, 99%, 60%;
+    --yellow-barzim-HSL: 43deg 99% 60%;
     --slate-barzim: #434343;
     --marfim-barzim: #fffeef;
     --deep-black: #141414;
@@ -53,38 +53,52 @@
     --sutil-shadow: 0px 2px 10px rgb(30 30 30 / 0.15);
     --sharp-shadow: 1px 1px 1px rgb(0 0 0 / 0.1);
     --letter-spacing: 0.5px;
-    --beer-header-gradient: radial-gradient(at bottom left, rgb(250 250 250/ .45), rgb(100 100 100 / .05));
-    --beer-card-image-bg-gradient: radial-gradient(at center, rgb(255 255 255/ .9), transparent);
+    --beer-header-gradient: radial-gradient(
+      at bottom left,
+      rgb(250 250 250/ 0.45),
+      rgb(100 100 100 / 0.05)
+    );
+    --beer-card-image-bg-gradient: radial-gradient(
+      at center,
+      rgb(255 255 255/ 0.9),
+      transparent
+    );
   }
-  
+
   /* shadcn theme dark */
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 43, 99%, 60%;
-    --primary-foreground: 26 83.3% 14.1%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 35.5 91.7% 32.9%;
+    --background: 20deg 14.3% 4.1%;
+    --foreground: 60deg 9.1% 97.8%;
+    --card: 20deg 14.3% 4.1%;
+    --card-foreground: 60deg 9.1% 97.8%;
+    --popover: 20deg 14.3% 4.1%;
+    --popover-foreground: 60deg 9.1% 97.8%;
+    --primary: 43deg 99% 60%;
+    --primary-foreground: 26deg 83.3% 14.1%;
+    --secondary: 12deg 6.5% 15.1%;
+    --secondary-foreground: 60deg 9.1% 97.8%;
+    --muted: 12deg 6.5% 15.1%;
+    --muted-foreground: 24deg 5.4% 63.9%;
+    --accent: 12deg 6.5% 15.1%;
+    --accent-foreground: 60deg 9.1% 97.8%;
+    --destructive: 0deg 62.8% 30.6%;
+    --destructive-foreground: 60deg 9.1% 97.8%;
+    --border: 12deg 6.5% 15.1%;
+    --input: 12deg 6.5% 15.1%;
+    --ring: 35.5deg 91.7% 32.9%;
 
     /* especificos barzim */
     --logo-filter: invert(0) saturate(0);
     --icon-filter: invert(0);
-    --beer-header-gradient: radial-gradient(at bottom left, rgb(0 0 0/ .25), transparent);
-    --beer-card-image-bg-gradient: radial-gradient(at center, rgb(50 50 50/ .7), transparent);
-
-
+    --beer-header-gradient: radial-gradient(
+      at bottom left,
+      rgb(0 0 0/ 0.25),
+      transparent
+    );
+    --beer-card-image-bg-gradient: radial-gradient(
+      at center,
+      rgb(50 50 50/ 0.7),
+      transparent
+    );
   }
 }
